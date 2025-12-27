@@ -2,7 +2,7 @@
 # Build configuration
 target = "index.html"
 dist = "dist"
-public_url = "/portfolio-page/"
+public_url = "/"
 
 [serve]
 # Serve configuration
