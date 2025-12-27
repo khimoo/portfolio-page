@@ -1,0 +1,16 @@
+[build]
+# Build configuration
+target = "index.html"
+dist = "dist"
+public_url = "/"
+
+[serve]
+# Serve configuration
+addresses = ["127.0.0.1"]
+port = 8080
+open = false
+
+[watch]
+# Watch for changes in these directories
+watch = ["src/", "index.html"]
+ignore = ["target/", "dist/", "data/"]
