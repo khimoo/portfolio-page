@@ -16,14 +16,14 @@
             console.log('Current pathname:', pathname);
             console.log('Current hostname:', hostname);
             
-            if (pathname.startsWith('/khimoo.io/') || pathname.includes('/khimoo.io')) {
-                console.log('Detected GitHub Pages subdirectory, using /khimoo.io/data');
-                return '/khimoo.io/data';
+            if (pathname.startsWith('/portfolio-page/') || pathname.includes('/portfolio-page')) {
+                console.log('Detected GitHub Pages subdirectory, using /portfolio-page/data');
+                return '/portfolio-page/data';
             }
             
             if (hostname.includes('github.io')) {
-                console.log('Detected GitHub Pages, using /khimoo.io/data');
-                return '/khimoo.io/data';
+                console.log('Detected GitHub Pages, using /portfolio-page/data');
+                return '/portfolio-page/data';
             }
             
             console.log('Using default base URL: /data');

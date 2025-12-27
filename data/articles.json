@@ -37,7 +37,7 @@
         }
       ],
       "inbound_count": 2,
-      "processed_at": "2025-12-27T15:26:31.706137229+00:00"
+      "processed_at": "2025-12-27T15:38:34.777010559+00:00"
     },
     {
       "slug": "web-development",
@@ -70,7 +70,27 @@
         }
       ],
       "inbound_count": 1,
-      "processed_at": "2025-12-27T15:26:31.706723277+00:00"
+      "processed_at": "2025-12-27T15:38:34.777596546+00:00"
+    },
+    {
+      "slug": "test",
+      "title": "Untitled",
+      "content": "test\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\n",
+      "metadata": {
+        "title": "Untitled",
+        "home_display": false,
+        "category": null,
+        "importance": 3,
+        "related_articles": [],
+        "tags": [],
+        "created_at": null,
+        "updated_at": null,
+        "author_image": null
+      },
+      "file_path": "articles/test.md",
+      "outbound_links": [],
+      "inbound_count": 0,
+      "processed_at": "2025-12-27T15:38:34.777658490+00:00"
     },
     {
       "slug": "readme",
@@ -90,7 +110,7 @@
       "file_path": "articles/README.md",
       "outbound_links": [],
       "inbound_count": 0,
-      "processed_at": "2025-12-27T15:26:31.706825078+00:00"
+      "processed_at": "2025-12-27T15:38:34.777764246+00:00"
     },
     {
       "slug": "rust-async",
@@ -139,7 +159,7 @@
         }
       ],
       "inbound_count": 4,
-      "processed_at": "2025-12-27T15:26:31.707977827+00:00"
+      "processed_at": "2025-12-27T15:38:34.778911644+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -171,7 +191,7 @@
         }
       ],
       "inbound_count": 0,
-      "processed_at": "2025-12-27T15:26:31.708490939+00:00"
+      "processed_at": "2025-12-27T15:38:34.779479386+00:00"
     },
     {
       "slug": "broken-link-test",
@@ -212,7 +232,7 @@
         }
       ],
       "inbound_count": 0,
-      "processed_at": "2025-12-27T15:26:31.709136879+00:00"
+      "processed_at": "2025-12-27T15:38:34.780102461+00:00"
     },
     {
       "slug": "async-patterns",
@@ -251,7 +271,7 @@
         }
       ],
       "inbound_count": 2,
-      "processed_at": "2025-12-27T15:26:31.709892836+00:00"
+      "processed_at": "2025-12-27T15:38:34.780901753+00:00"
     },
     {
       "slug": "hello",
@@ -293,11 +313,11 @@
         }
       ],
       "inbound_count": 2,
-      "processed_at": "2025-12-27T15:26:31.710475488+00:00"
+      "processed_at": "2025-12-27T15:38:34.781545206+00:00"
     }
   ],
-  "generated_at": "2025-12-27T15:26:31.710623104+00:00",
-  "total_count": 8,
+  "generated_at": "2025-12-27T15:38:34.781689173+00:00",
+  "total_count": 9,
   "home_articles": [
     "tokio-basics",
     "web-development",
