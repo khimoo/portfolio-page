@@ -1,16 +1,6 @@
 {
   "graph": {
-    "neovim": {
-      "connections": [],
-      "inbound_count": 1,
-      "outbound_count": 0
-    },
-    "家庭菜園": {
-      "connections": [],
-      "inbound_count": 1,
-      "outbound_count": 0
-    },
-    "プログラミング": {
+    "linux": {
       "connections": [],
       "inbound_count": 1,
       "outbound_count": 0
@@ -25,7 +15,12 @@
       "inbound_count": 1,
       "outbound_count": 0
     },
-    "linux": {
+    "neovim": {
+      "connections": [],
+      "inbound_count": 1,
+      "outbound_count": 0
+    },
+    "音楽": {
       "connections": [],
       "inbound_count": 1,
       "outbound_count": 0
@@ -33,7 +28,7 @@
     "趣味": {
       "connections": [
         {
-          "target": "linux",
+          "target": "家庭菜園",
           "connection_type": "DirectLink",
           "bidirectional": false,
           "link_count": 1
@@ -45,13 +40,13 @@
           "link_count": 1
         },
         {
-          "target": "家庭菜園",
+          "target": "プログラミング",
           "connection_type": "DirectLink",
           "bidirectional": false,
           "link_count": 1
         },
         {
-          "target": "プログラミング",
+          "target": "linux",
           "connection_type": "DirectLink",
           "bidirectional": false,
           "link_count": 1
@@ -72,7 +67,7 @@
       "inbound_count": 1,
       "outbound_count": 6
     },
-    "個人開発": {
+    "数学": {
       "connections": [],
       "inbound_count": 1,
       "outbound_count": 0
@@ -80,19 +75,13 @@
     "about-khimoo": {
       "connections": [
         {
-          "target": "数学",
-          "connection_type": "DirectLink",
-          "bidirectional": false,
-          "link_count": 1
-        },
-        {
           "target": "個人開発",
           "connection_type": "DirectLink",
           "bidirectional": false,
           "link_count": 1
         },
         {
-          "target": "趣味",
+          "target": "数学",
           "connection_type": "DirectLink",
           "bidirectional": false,
           "link_count": 1
@@ -102,23 +91,34 @@
           "connection_type": "DirectLink",
           "bidirectional": false,
           "link_count": 1
+        },
+        {
+          "target": "趣味",
+          "connection_type": "DirectLink",
+          "bidirectional": false,
+          "link_count": 1
         }
       ],
       "inbound_count": 0,
       "outbound_count": 4
     },
-    "数学": {
+    "プログラミング": {
       "connections": [],
       "inbound_count": 1,
       "outbound_count": 0
     },
-    "音楽": {
+    "個人開発": {
+      "connections": [],
+      "inbound_count": 1,
+      "outbound_count": 0
+    },
+    "家庭菜園": {
       "connections": [],
       "inbound_count": 1,
       "outbound_count": 0
     }
   },
-  "generated_at": "2025-12-28T17:02:37.303105613+00:00",
+  "generated_at": "2025-12-28T17:11:52.177302938+00:00",
   "total_connections": 10,
   "bidirectional_pairs": 0,
   "direct_links": 10
