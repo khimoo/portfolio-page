@@ -18,7 +18,7 @@
       "file_path": "articles/Neovim.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.733687266+00:00"
+      "processed_at": "2025-12-28T17:02:31.225807801+00:00"
     },
     {
       "slug": "数学",
@@ -28,7 +28,7 @@
         "title": "数学",
         "home_display": true,
         "category": "",
-        "importance": 2,
+        "importance": 4,
         "related_articles": [],
         "tags": [],
         "created_at": "2025-12-28T18:30:38Z",
@@ -38,7 +38,7 @@
       "file_path": "articles/数学.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.733891628+00:00"
+      "processed_at": "2025-12-28T17:02:31.226024828+00:00"
     },
     {
       "slug": "linux",
@@ -58,7 +58,7 @@
       "file_path": "articles/Linux.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.734076745+00:00"
+      "processed_at": "2025-12-28T17:02:31.226211078+00:00"
     },
     {
       "slug": "趣味",
@@ -68,7 +68,7 @@
         "title": "趣味",
         "home_display": true,
         "category": "",
-        "importance": 2,
+        "importance": 4,
         "related_articles": [],
         "tags": [],
         "created_at": "2025-12-28T18:30:38Z",
@@ -121,7 +121,7 @@
         }
       ],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.736056133+00:00"
+      "processed_at": "2025-12-28T17:02:31.228058787+00:00"
     },
     {
       "slug": "音楽",
@@ -141,12 +141,12 @@
       "file_path": "articles/音楽.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.736265706+00:00"
+      "processed_at": "2025-12-28T17:02:31.228265014+00:00"
     },
     {
       "slug": "about-khimoo",
       "title": "Khimoo",
-      "content": "\n# About Khimoo\n\n[[数学]]\n[[趣味]]\n[[ガクチカ]]\n[[個人開発]]\n[[test]]",
+      "content": "\n# About Khimoo\n\n[[数学]]\n[[趣味]]\n[[ガクチカ]]\n[[個人開発]]",
       "metadata": {
         "title": "Khimoo",
         "home_display": true,
@@ -167,41 +167,34 @@
         {
           "target_slug": "数学",
           "link_type": "WikiLink",
-          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]] [[test]]",
+          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]]",
           "position": 17,
           "original_text": "[[数学]]"
         },
         {
           "target_slug": "趣味",
           "link_type": "WikiLink",
-          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]] [[test]]",
+          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]]",
           "position": 28,
           "original_text": "[[趣味]]"
         },
         {
           "target_slug": "ガクチカ",
           "link_type": "WikiLink",
-          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]] [[test]]",
+          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]]",
           "position": 39,
           "original_text": "[[ガクチカ]]"
         },
         {
           "target_slug": "個人開発",
           "link_type": "WikiLink",
-          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]] [[test]]",
+          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]]",
           "position": 56,
           "original_text": "[[個人開発]]"
-        },
-        {
-          "target_slug": "test",
-          "link_type": "WikiLink",
-          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]] [[test]]",
-          "position": 73,
-          "original_text": "[[test]]"
         }
       ],
       "inbound_count": 0,
-      "processed_at": "2025-12-28T15:56:59.737768992+00:00"
+      "processed_at": "2025-12-28T17:02:31.229464115+00:00"
     },
     {
       "slug": "絵",
@@ -221,7 +214,7 @@
       "file_path": "articles/絵.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.737931636+00:00"
+      "processed_at": "2025-12-28T17:02:31.229658740+00:00"
     },
     {
       "slug": "家庭菜園",
@@ -241,7 +234,7 @@
       "file_path": "articles/家庭菜園.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.738087198+00:00"
+      "processed_at": "2025-12-28T17:02:31.229831485+00:00"
     },
     {
       "slug": "プログラミング",
@@ -261,7 +254,7 @@
       "file_path": "articles/プログラミング.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.738303443+00:00"
+      "processed_at": "2025-12-28T17:02:31.230066035+00:00"
     },
     {
       "slug": "ガクチカ",
@@ -271,17 +264,17 @@
         "title": "ガクチカ",
         "home_display": true,
         "category": "",
-        "importance": 2,
+        "importance": 4,
         "related_articles": [],
         "tags": [],
-        "created_at": "2025-12-28T18:30:38Z",
-        "updated_at": "2025-12-29T00:52:01Z",
+        "created_at": "2025-12-29T03:30:38Z",
+        "updated_at": "2025-12-29T01:59:55Z",
         "author_image": null
       },
       "file_path": "articles/ガクチカ.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.738463673+00:00"
+      "processed_at": "2025-12-28T17:02:31.230250381+00:00"
     },
     {
       "slug": "個人開発",
@@ -291,7 +284,7 @@
         "title": "個人開発",
         "home_display": true,
         "category": "",
-        "importance": 2,
+        "importance": 4,
         "related_articles": [],
         "tags": [],
         "created_at": "2025-12-28T18:30:38Z",
@@ -301,10 +294,10 @@
       "file_path": "articles/個人開発.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T15:56:59.738645433+00:00"
+      "processed_at": "2025-12-28T17:02:31.230424097+00:00"
     }
   ],
-  "generated_at": "2025-12-28T15:56:59.738751021+00:00",
+  "generated_at": "2025-12-28T17:02:31.230559231+00:00",
   "total_count": 11,
   "home_articles": [
     "neovim",
