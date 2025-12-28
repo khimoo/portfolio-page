@@ -123,6 +123,12 @@ impl LinkValidationTool {
         for entry in WalkDir::new(&self.articles_dir)
             .into_iter()
             .filter_map(|e| e.ok())
+            .filter(|e| {
+                // Exclude Templates directory and its subdirectories
+                !e.path().components().any(|component| {
+                    component.as_os_str().to_string_lossy() == "Templates"
+                })
+            })
             .filter(|e| e.path().extension().map_or(false, |ext| ext == "md"))
         {
             match self.load_article_file(entry.path()) {
