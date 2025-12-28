@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数学.md",
+                "file": "math.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数学"
+              "title": "math"
             }
           },
           {
@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "趣味.md",
+                "file": "hobby.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "趣味"
+              "title": "hobby"
             }
           },
           {
@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "個人開発.md",
+                "file": "myworks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "個人開発"
+              "title": "myworks"
             }
           },
           {
@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ガクチカ.md",
+                "file": "about-khimoo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ガクチカ"
+              "title": "about-khimoo"
             }
           }
         ],
@@ -241,13 +241,13 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "12e1fb2632b2fdcf",
+  "active": "557c281a29a75c70",
   "lastOpenFiles": [
-    "個人開発.md",
-    "趣味.md",
-    "数学.md",
+    "gakuchika.md",
+    "myworks.md",
+    "hobby.md",
+    "math.md",
     "about-khimoo.md",
-    "ガクチカ.md",
     "無題のファイル.base",
     "絵.md",
     "家庭菜園.md",

@@ -6,12 +6,12 @@ importance: 5
 category: "author"
 tags: ["about", "profile", "author"]
 created_at: "2024-01-01T09:00:00Z"
-updated_at: "2025-12-28T22:23:06Z"
+updated_at: "2025-12-29T02:19:34Z"
 ---
 
 # About Khimoo
 
-[[数学]]
-[[趣味]]
-[[ガクチカ]]
-[[個人開発]]
+[[math|数学]]
+[[hobby|趣味]]
+[[gakuchika|ガクチカ]]
+[[myworks|個人開発]]
