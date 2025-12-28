@@ -18,7 +18,7 @@
       "file_path": "articles/Neovim.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T17:31:33.010681580+00:00"
+      "processed_at": "2025-12-28T17:51:14.219547557+00:00"
     },
     {
       "slug": "myworks",
@@ -37,8 +37,8 @@
       },
       "file_path": "articles/myworks.md",
       "outbound_links": [],
-      "inbound_count": 0,
-      "processed_at": "2025-12-28T17:31:33.010901820+00:00"
+      "inbound_count": 1,
+      "processed_at": "2025-12-28T17:51:14.219743311+00:00"
     },
     {
       "slug": "linux",
@@ -58,7 +58,7 @@
       "file_path": "articles/Linux.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T17:31:33.011094059+00:00"
+      "processed_at": "2025-12-28T17:51:14.219944636+00:00"
     },
     {
       "slug": "gakuchika",
@@ -77,8 +77,8 @@
       },
       "file_path": "articles/gakuchika.md",
       "outbound_links": [],
-      "inbound_count": 0,
-      "processed_at": "2025-12-28T17:31:33.011304411+00:00"
+      "inbound_count": 1,
+      "processed_at": "2025-12-28T17:51:14.220160859+00:00"
     },
     {
       "slug": "音楽",
@@ -98,7 +98,7 @@
       "file_path": "articles/音楽.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T17:31:33.011496689+00:00"
+      "processed_at": "2025-12-28T17:51:14.220349530+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -122,28 +122,28 @@
       "file_path": "articles/about-khimoo.md",
       "outbound_links": [
         {
-          "target_slug": "math数学",
+          "target_slug": "math",
           "link_type": "WikiLink",
           "context": "# About Khimoo [[math|数学]] [[hobby|趣味]] [[gakuchika|ガクチカ]] [[myworks|個人開発]]",
           "position": 17,
           "original_text": "[[math|数学]]"
         },
         {
-          "target_slug": "hobby趣味",
+          "target_slug": "hobby",
           "link_type": "WikiLink",
           "context": "# About Khimoo [[math|数学]] [[hobby|趣味]] [[gakuchika|ガクチカ]] [[myworks|個人開発]]",
           "position": 33,
           "original_text": "[[hobby|趣味]]"
         },
         {
-          "target_slug": "gakuchikaガクチカ",
+          "target_slug": "gakuchika",
           "link_type": "WikiLink",
           "context": "# About Khimoo [[math|数学]] [[hobby|趣味]] [[gakuchika|ガクチカ]] [[myworks|個人開発]]",
           "position": 50,
           "original_text": "[[gakuchika|ガクチカ]]"
         },
         {
-          "target_slug": "myworks個人開発",
+          "target_slug": "myworks",
           "link_type": "WikiLink",
           "context": "Khimoo [[math|数学]] [[hobby|趣味]] [[gakuchika|ガクチカ]] [[myworks|個人開発]]",
           "position": 77,
@@ -151,7 +151,7 @@
         }
       ],
       "inbound_count": 0,
-      "processed_at": "2025-12-28T17:31:33.012916837+00:00"
+      "processed_at": "2025-12-28T17:51:14.221744859+00:00"
     },
     {
       "slug": "math",
@@ -170,8 +170,8 @@
       },
       "file_path": "articles/math.md",
       "outbound_links": [],
-      "inbound_count": 0,
-      "processed_at": "2025-12-28T17:31:33.013122239+00:00"
+      "inbound_count": 1,
+      "processed_at": "2025-12-28T17:51:14.221954630+00:00"
     },
     {
       "slug": "絵",
@@ -191,7 +191,7 @@
       "file_path": "articles/絵.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T17:31:33.013303367+00:00"
+      "processed_at": "2025-12-28T17:51:14.222139404+00:00"
     },
     {
       "slug": "家庭菜園",
@@ -211,7 +211,7 @@
       "file_path": "articles/家庭菜園.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T17:31:33.013563652+00:00"
+      "processed_at": "2025-12-28T17:51:14.222325330+00:00"
     },
     {
       "slug": "hobby",
@@ -273,8 +273,8 @@
           "original_text": "[[音楽]]"
         }
       ],
-      "inbound_count": 0,
-      "processed_at": "2025-12-28T17:31:33.015240518+00:00"
+      "inbound_count": 1,
+      "processed_at": "2025-12-28T17:51:14.223971186+00:00"
     },
     {
       "slug": "プログラミング",
@@ -294,10 +294,10 @@
       "file_path": "articles/プログラミング.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T17:31:33.015536460+00:00"
+      "processed_at": "2025-12-28T17:51:14.224219027+00:00"
     }
   ],
-  "generated_at": "2025-12-28T17:31:33.015657936+00:00",
+  "generated_at": "2025-12-28T17:51:14.224335434+00:00",
   "total_count": 11,
   "home_articles": [
     "neovim",
