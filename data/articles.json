@@ -18,27 +18,27 @@
       "file_path": "articles/Neovim.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.021522360+00:00"
+      "processed_at": "2025-12-28T17:21:50.926447345+00:00"
     },
     {
-      "slug": "数学",
-      "title": "数学",
+      "slug": "myworks",
+      "title": "個人開発",
       "content": "",
       "metadata": {
-        "title": "数学",
+        "title": "個人開発",
         "home_display": true,
         "category": "",
         "importance": 4,
         "related_articles": [],
         "tags": [],
         "created_at": "2025-12-28T18:30:38Z",
-        "updated_at": "2025-12-29T00:53:06Z",
+        "updated_at": "2025-12-29T00:52:52Z",
         "author_image": null
       },
-      "file_path": "articles/数学.md",
+      "file_path": "articles/myworks.md",
       "outbound_links": [],
-      "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.021740066+00:00"
+      "inbound_count": 0,
+      "processed_at": "2025-12-28T17:21:50.926602049+00:00"
     },
     {
       "slug": "linux",
@@ -58,10 +58,163 @@
       "file_path": "articles/Linux.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.021934598+00:00"
+      "processed_at": "2025-12-28T17:21:50.926742707+00:00"
     },
     {
-      "slug": "趣味",
+      "slug": "gakuchika",
+      "title": "ガクチカ",
+      "content": "",
+      "metadata": {
+        "title": "ガクチカ",
+        "home_display": true,
+        "category": "",
+        "importance": 4,
+        "related_articles": [],
+        "tags": [],
+        "created_at": "2025-12-29T03:30:38Z",
+        "updated_at": "2025-12-29T01:59:55Z",
+        "author_image": null
+      },
+      "file_path": "articles/gakuchika.md",
+      "outbound_links": [],
+      "inbound_count": 0,
+      "processed_at": "2025-12-28T17:21:50.926910026+00:00"
+    },
+    {
+      "slug": "音楽",
+      "title": "音楽",
+      "content": "",
+      "metadata": {
+        "title": "音楽",
+        "home_display": true,
+        "category": "",
+        "importance": 2,
+        "related_articles": [],
+        "tags": [],
+        "created_at": "2025-12-28T18:30:38Z",
+        "updated_at": "2025-12-29T00:52:22Z",
+        "author_image": null
+      },
+      "file_path": "articles/音楽.md",
+      "outbound_links": [],
+      "inbound_count": 1,
+      "processed_at": "2025-12-28T17:21:50.927063375+00:00"
+    },
+    {
+      "slug": "about-khimoo",
+      "title": "Khimoo",
+      "content": "\n# About Khimoo\n\n[[math|数学]]\n[[hobby|趣味]]\n[[gakuchika|ガクチカ]]\n[[myworks|個人開発]]",
+      "metadata": {
+        "title": "Khimoo",
+        "home_display": true,
+        "category": "author",
+        "importance": 5,
+        "related_articles": [],
+        "tags": [
+          "about",
+          "profile",
+          "author"
+        ],
+        "created_at": "2024-01-01T09:00:00Z",
+        "updated_at": "2025-12-29T02:19:34Z",
+        "author_image": "/articles/img/author_img.png"
+      },
+      "file_path": "articles/about-khimoo.md",
+      "outbound_links": [
+        {
+          "target_slug": "math数学",
+          "link_type": "WikiLink",
+          "context": "# About Khimoo [[math|数学]] [[hobby|趣味]] [[gakuchika|ガクチカ]] [[myworks|個人開発]]",
+          "position": 17,
+          "original_text": "[[math|数学]]"
+        },
+        {
+          "target_slug": "hobby趣味",
+          "link_type": "WikiLink",
+          "context": "# About Khimoo [[math|数学]] [[hobby|趣味]] [[gakuchika|ガクチカ]] [[myworks|個人開発]]",
+          "position": 33,
+          "original_text": "[[hobby|趣味]]"
+        },
+        {
+          "target_slug": "gakuchikaガクチカ",
+          "link_type": "WikiLink",
+          "context": "# About Khimoo [[math|数学]] [[hobby|趣味]] [[gakuchika|ガクチカ]] [[myworks|個人開発]]",
+          "position": 50,
+          "original_text": "[[gakuchika|ガクチカ]]"
+        },
+        {
+          "target_slug": "myworks個人開発",
+          "link_type": "WikiLink",
+          "context": "Khimoo [[math|数学]] [[hobby|趣味]] [[gakuchika|ガクチカ]] [[myworks|個人開発]]",
+          "position": 77,
+          "original_text": "[[myworks|個人開発]]"
+        }
+      ],
+      "inbound_count": 0,
+      "processed_at": "2025-12-28T17:21:50.928427482+00:00"
+    },
+    {
+      "slug": "math",
+      "title": "数学",
+      "content": "",
+      "metadata": {
+        "title": "数学",
+        "home_display": true,
+        "category": "",
+        "importance": 4,
+        "related_articles": [],
+        "tags": [],
+        "created_at": "2025-12-28T18:30:38Z",
+        "updated_at": "2025-12-29T00:53:06Z",
+        "author_image": null
+      },
+      "file_path": "articles/math.md",
+      "outbound_links": [],
+      "inbound_count": 0,
+      "processed_at": "2025-12-28T17:21:50.928602960+00:00"
+    },
+    {
+      "slug": "絵",
+      "title": "絵",
+      "content": "",
+      "metadata": {
+        "title": "絵",
+        "home_display": true,
+        "category": "",
+        "importance": 2,
+        "related_articles": [],
+        "tags": [],
+        "created_at": "2025-12-28T18:30:38Z",
+        "updated_at": "2025-12-29T00:52:41Z",
+        "author_image": null
+      },
+      "file_path": "articles/絵.md",
+      "outbound_links": [],
+      "inbound_count": 1,
+      "processed_at": "2025-12-28T17:21:50.928759045+00:00"
+    },
+    {
+      "slug": "家庭菜園",
+      "title": "家庭菜園",
+      "content": "",
+      "metadata": {
+        "title": "家庭菜園",
+        "home_display": true,
+        "category": "",
+        "importance": 2,
+        "related_articles": [],
+        "tags": [],
+        "created_at": "2025-12-28T18:30:38Z",
+        "updated_at": "2025-12-29T00:52:32Z",
+        "author_image": null
+      },
+      "file_path": "articles/家庭菜園.md",
+      "outbound_links": [],
+      "inbound_count": 1,
+      "processed_at": "2025-12-28T17:21:50.928900490+00:00"
+    },
+    {
+      "slug": "hobby",
       "title": "趣味",
       "content": "[[プログラミング]]\n[[Linux]]\n[[Neovim]]\n[[家庭菜園]]\n[[絵]]\n[[音楽]]",
       "metadata": {
@@ -75,7 +228,7 @@
         "updated_at": "2025-12-29T00:52:59Z",
         "author_image": null
       },
-      "file_path": "articles/趣味.md",
+      "file_path": "articles/hobby.md",
       "outbound_links": [
         {
           "target_slug": "プログラミング",
@@ -120,121 +273,8 @@
           "original_text": "[[音楽]]"
         }
       ],
-      "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.023902581+00:00"
-    },
-    {
-      "slug": "音楽",
-      "title": "音楽",
-      "content": "",
-      "metadata": {
-        "title": "音楽",
-        "home_display": true,
-        "category": "",
-        "importance": 2,
-        "related_articles": [],
-        "tags": [],
-        "created_at": "2025-12-28T18:30:38Z",
-        "updated_at": "2025-12-29T00:52:22Z",
-        "author_image": null
-      },
-      "file_path": "articles/音楽.md",
-      "outbound_links": [],
-      "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.024177854+00:00"
-    },
-    {
-      "slug": "about-khimoo",
-      "title": "Khimoo",
-      "content": "\n# About Khimoo\n\n[[数学]]\n[[趣味]]\n[[ガクチカ]]\n[[個人開発]]",
-      "metadata": {
-        "title": "Khimoo",
-        "home_display": true,
-        "category": "author",
-        "importance": 5,
-        "related_articles": [],
-        "tags": [
-          "about",
-          "profile",
-          "author"
-        ],
-        "created_at": "2024-01-01T09:00:00Z",
-        "updated_at": "2025-12-28T22:23:06Z",
-        "author_image": "/articles/img/author_img.png"
-      },
-      "file_path": "articles/about-khimoo.md",
-      "outbound_links": [
-        {
-          "target_slug": "数学",
-          "link_type": "WikiLink",
-          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]]",
-          "position": 17,
-          "original_text": "[[数学]]"
-        },
-        {
-          "target_slug": "趣味",
-          "link_type": "WikiLink",
-          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]]",
-          "position": 28,
-          "original_text": "[[趣味]]"
-        },
-        {
-          "target_slug": "ガクチカ",
-          "link_type": "WikiLink",
-          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]]",
-          "position": 39,
-          "original_text": "[[ガクチカ]]"
-        },
-        {
-          "target_slug": "個人開発",
-          "link_type": "WikiLink",
-          "context": "# About Khimoo [[数学]] [[趣味]] [[ガクチカ]] [[個人開発]]",
-          "position": 56,
-          "original_text": "[[個人開発]]"
-        }
-      ],
       "inbound_count": 0,
-      "processed_at": "2025-12-28T17:11:46.025530161+00:00"
-    },
-    {
-      "slug": "絵",
-      "title": "絵",
-      "content": "",
-      "metadata": {
-        "title": "絵",
-        "home_display": true,
-        "category": "",
-        "importance": 2,
-        "related_articles": [],
-        "tags": [],
-        "created_at": "2025-12-28T18:30:38Z",
-        "updated_at": "2025-12-29T00:52:41Z",
-        "author_image": null
-      },
-      "file_path": "articles/絵.md",
-      "outbound_links": [],
-      "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.025745532+00:00"
-    },
-    {
-      "slug": "家庭菜園",
-      "title": "家庭菜園",
-      "content": "",
-      "metadata": {
-        "title": "家庭菜園",
-        "home_display": true,
-        "category": "",
-        "importance": 2,
-        "related_articles": [],
-        "tags": [],
-        "created_at": "2025-12-28T18:30:38Z",
-        "updated_at": "2025-12-29T00:52:32Z",
-        "author_image": null
-      },
-      "file_path": "articles/家庭菜園.md",
-      "outbound_links": [],
-      "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.025939243+00:00"
+      "processed_at": "2025-12-28T17:21:50.930607106+00:00"
     },
     {
       "slug": "プログラミング",
@@ -254,62 +294,22 @@
       "file_path": "articles/プログラミング.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.026277773+00:00"
-    },
-    {
-      "slug": "ガクチカ",
-      "title": "ガクチカ",
-      "content": "",
-      "metadata": {
-        "title": "ガクチカ",
-        "home_display": true,
-        "category": "",
-        "importance": 4,
-        "related_articles": [],
-        "tags": [],
-        "created_at": "2025-12-29T03:30:38Z",
-        "updated_at": "2025-12-29T01:59:55Z",
-        "author_image": null
-      },
-      "file_path": "articles/ガクチカ.md",
-      "outbound_links": [],
-      "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.026477355+00:00"
-    },
-    {
-      "slug": "個人開発",
-      "title": "個人開発",
-      "content": "",
-      "metadata": {
-        "title": "個人開発",
-        "home_display": true,
-        "category": "",
-        "importance": 4,
-        "related_articles": [],
-        "tags": [],
-        "created_at": "2025-12-28T18:30:38Z",
-        "updated_at": "2025-12-29T00:52:52Z",
-        "author_image": null
-      },
-      "file_path": "articles/個人開発.md",
-      "outbound_links": [],
-      "inbound_count": 1,
-      "processed_at": "2025-12-28T17:11:46.026672367+00:00"
+      "processed_at": "2025-12-28T17:21:50.930888130+00:00"
     }
   ],
-  "generated_at": "2025-12-28T17:11:46.026794114+00:00",
+  "generated_at": "2025-12-28T17:21:50.930998577+00:00",
   "total_count": 11,
   "home_articles": [
     "neovim",
-    "数学",
+    "myworks",
     "linux",
-    "趣味",
+    "gakuchika",
     "音楽",
     "about-khimoo",
+    "math",
     "絵",
     "家庭菜園",
-    "プログラミング",
-    "ガクチカ",
-    "個人開発"
+    "hobby",
+    "プログラミング"
   ]
 }
