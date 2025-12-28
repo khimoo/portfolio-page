@@ -258,16 +258,8 @@ function wasm_bindgen__convert__closures_____invoke__h4fa27094872dfb87(arg0, arg
     wasm.wasm_bindgen__convert__closures_____invoke__h4fa27094872dfb87(arg0, arg1, arg2);
 }
 
-function wasm_bindgen__convert__closures________invoke__ha1aa4aec4a1272c3(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures________invoke__ha1aa4aec4a1272c3(arg0, arg1, arg2);
-}
-
 function wasm_bindgen__convert__closures________invoke__h006b911f6f1346bc(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures________invoke__h006b911f6f1346bc(arg0, arg1, arg2);
-}
-
-function wasm_bindgen__convert__closures_____invoke__hcafb2fea6849723d(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__hcafb2fea6849723d(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__heaa197978ef2d8d6(arg0, arg1) {
@@ -278,6 +270,14 @@ function wasm_bindgen__convert__closures_____invoke__ha634a9db2bd7653f(arg0, arg
     const ptr0 = passArrayJsValueToWasm0(arg2, wasm.__wbindgen_malloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.wasm_bindgen__convert__closures_____invoke__ha634a9db2bd7653f(arg0, arg1, ptr0, len0);
+}
+
+function wasm_bindgen__convert__closures________invoke__ha1aa4aec4a1272c3(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures________invoke__ha1aa4aec4a1272c3(arg0, arg1, arg2);
+}
+
+function wasm_bindgen__convert__closures_____invoke__hcafb2fea6849723d(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__hcafb2fea6849723d(arg0, arg1, arg2);
 }
 
 const __wbindgen_enum_RequestMode = ["same-origin", "no-cors", "cors", "navigate"];
