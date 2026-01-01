@@ -1,13 +1,12 @@
 ---
-title: 自己紹介
+title: continuum_theory
 author_image: /articles/img/author_img.png
 home_display: true
-importance: 5
-category: author
-tags:
-  - profile
-created_at: "2024-01-02T03:00:00Z"
-updated_at: "2026-01-01T23:24:57Z"
+importance: 2
+category: ""
+tags: []
+created_at: 2024-01-02T03:00:00Z
+updated_at: 2026-01-01T23:24:57Z
 ---
 # プロフィール
 日比野 文です。
