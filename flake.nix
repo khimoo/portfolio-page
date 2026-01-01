@@ -19,6 +19,27 @@
           extensions = [ "rust-src" "rust-analyzer" ];
           targets = [ "wasm32-unknown-unknown" ];
         };
+
+        # CI-specific tools
+        ciTools = with pkgs; [
+          # Image processing
+          python3
+          python3Packages.pillow
+
+          # File operations and utilities
+          coreutils
+          findutils
+          gnugrep
+          gawk
+          
+          # Verification tools
+          file
+          tree
+          
+          # Additional utilities for CI
+          curl
+          jq
+        ];
       in
       {
         devShells.default = pkgs.mkShell {
@@ -37,12 +58,23 @@
             # System dependencies
             pkg-config
             openssl
-          ];
+          ] ++ ciTools;
 
           shellHook = ''
             echo "🦀 Rust WebAssembly development environment"
             echo "📦 Available commands:"
             just --list
+            
+            # CI environment detection and setup
+            if [ "$CI" = "true" ]; then
+              echo "🔧 CI environment detected"
+              echo "🐍 Python version: $(python3 --version)"
+              echo "🖼️ Pillow available: $(python3 -c "import PIL; print('✅ PIL version:', PIL.__version__)" 2>/dev/null || echo "❌ PIL not available")"
+              echo "📁 File utilities: $(file --version | head -1)"
+              echo "🔍 Verification tools ready"
+            else
+              echo "💻 Local development environment"
+            fi
           '';
         };
 

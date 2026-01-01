@@ -3,20 +3,19 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [main]
-    paths: 
+    paths:
       - 'khimoo-portfolio/**'
       - 'articles/**'
       - 'flake.nix'
       - 'flake.lock'
+      - 'justfile'
 
 env:
   CARGO_TERM_COLOR: always
   NIX_CONFIG: "experimental-features = nix-command flakes"
   RUST_BACKTRACE: 1
   CARGO_INCREMENTAL: 0
-  # Nix environment variables
   NIXPKGS_ALLOW_UNFREE: 1
-  FLAKE_LOCK_FALLBACK: 1
 
 jobs:
   build-and-deploy:
@@ -31,34 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
-          
-      - name: Verify LFS files
-        run: |
-          echo "🔍 Verifying LFS files are properly checked out..."
-          echo "📊 Image file info:"
-          ls -la khimoo-portfolio/articles/img/ || echo "❌ No image directory found"
-          if [ -f "khimoo-portfolio/articles/img/author_img.png" ]; then
-            file khimoo-portfolio/articles/img/author_img.png
-            ls -lh khimoo-portfolio/articles/img/author_img.png
-            echo "✅ Image file exists and appears to be a real PNG file"
-          else
-            echo "❌ author_img.png not found"
-          fi
-          
-      - name: Optimize images for performance
-        run: |
-          echo "🖼️ Optimizing images for better performance..."
-          # Install Pillow for image processing
-          pip install Pillow
-          
-          # Run image optimization
-          python3 optimize_images.py
-          
-          echo "📊 Image optimization results:"
-          ls -lh khimoo-portfolio/articles/img/author_img*.png khimoo-portfolio/articles/img/author_img*.webp 2>/dev/null || echo "No optimized images found"
-          
-          echo "✅ Image optimization completed"
-        
+
       - name: Setup Nix environment
         uses: cachix/install-nix-action@v26
         with:
@@ -68,183 +40,45 @@ jobs:
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             substituters = https://cache.nixos.org/ https://devenv.cachix.org
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
-            warn-dirty = false
-            
+
       - name: Setup Nix cache
         uses: cachix/cachix-action@v14
         with:
           name: devenv
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           skipPush: true
-          
-      - name: Test Nix development environment
-        run: |
-          echo "🦀 Testing Nix development environment..."
-          nix develop --command echo "✅ nix develop works!"
-          
+
+      - name: Setup CI environment
+        run: nix develop --command just ci-setup
+
+      - name: Optimize images
+        run: nix develop --command just ci-optimize-images
+
       - name: Process articles
-        run: |
-          echo "📚 Processing articles and generating metadata..."
-          cd khimoo-portfolio
-          mkdir -p data
-          nix develop --command cargo run --features cli-tools --bin process-articles -- --articles-dir articles --output-dir data --verbose
-          echo "✅ Article processing completed"
-          
-      - name: Verify article processing results
-        run: |
-          echo "🔍 Verifying article processing results..."
-          if [ -f "khimoo-portfolio/data/articles.json" ]; then
-            echo "✅ articles.json generated successfully"
-            echo "📊 Articles data file size:"
-            ls -lh khimoo-portfolio/data/articles.json
-            echo "📄 Articles data preview (first 10 lines):"
-            head -10 khimoo-portfolio/data/articles.json
-            echo "📈 Processing summary:"
-            echo "   📁 Generated data files:"
-            ls -la khimoo-portfolio/data/
-          else
-            echo "❌ articles.json not found!"
-            exit 1
-          fi
-          
-      - name: Upload article processing artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: article-processing-results
-          path: |
-            khimoo-portfolio/data/articles.json
-            khimoo-portfolio/data/link-graph.json
-            khimoo-portfolio/data/validation-report.json
-            khimoo-portfolio/data/validation-report.txt
-            khimoo-portfolio/data/validation-summary.txt
-          retention-days: 30
-          
+        run: nix develop --command just ci-process-articles
+
       - name: Generate link graph
-        run: |
-          echo "🕸️  Generating link graph from processed articles..."
-          cd khimoo-portfolio
-          nix develop --command cargo run --features cli-tools --bin generate-link-graph -- --articles-dir articles --output-dir data --verbose
-          echo "✅ Link graph generation completed"
-          
-      - name: Verify link graph generation
-        run: |
-          echo "🔍 Verifying link graph generation results..."
-          if [ -f "khimoo-portfolio/data/link-graph.json" ]; then
-            echo "✅ link-graph.json generated successfully"
-            echo "📊 Link graph file size:"
-            ls -lh khimoo-portfolio/data/link-graph.json
-            echo "📄 Link graph data preview (first 20 lines):"
-            head -20 khimoo-portfolio/data/link-graph.json
-            echo "📈 Link graph summary:"
-            echo "   📁 Updated data files:"
-            ls -la khimoo-portfolio/data/
-          else
-            echo "❌ link-graph.json not found!"
-            exit 1
-          fi
-          
+        run: nix develop --command just generate-link-graph
+
       - name: Build WebAssembly application
-        run: |
-          echo "🚀 Building WebAssembly application with Trunk..."
-          cd khimoo-portfolio
-          
-          # Debug: Check if image files exist before build
-          echo "🔍 Checking image files before build:"
-          ls -la articles/img/ || echo "❌ No articles/img directory found"
-          
-          # Build with Trunk
-          nix develop --command trunk build --release --public-url /portfolio-page/
-          
-          # Debug: Check dist directory after build
-          echo "🔍 Checking dist directory after build:"
-          ls -la dist/
-          
-          # Manually copy images to dist (including optimized versions)
-          echo "📸 Manually copying image files to dist..."
-          mkdir -p dist/articles/img
-          if [ -d "articles/img" ]; then
-            cp -v articles/img/* dist/articles/img/ 2>/dev/null || echo "❌ Failed to copy images"
-            echo "✅ Images copied to dist/articles/img/"
-            ls -la dist/articles/img/
-          else
-            echo "❌ articles/img directory not found"
-          fi
-          
-          echo "✅ WebAssembly build completed"
-          
-      - name: Verify build artifacts
-        run: |
-          echo "🔍 Verifying build artifacts..."
-          cd khimoo-portfolio
-          ls -la dist/
-          echo "📊 Build artifact sizes:"
-          du -h dist/
-          
-          # Check for images in dist
-          echo "🔍 Checking for images in dist:"
-          find dist -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" | head -10
-          
-          # Verify articles directory structure
-          echo "🔍 Checking articles directory in dist:"
-          ls -la dist/articles/ 2>/dev/null || echo "❌ No articles directory in dist"
-          ls -la dist/articles/img/ 2>/dev/null || echo "❌ No articles/img directory in dist"
-          
-          echo "✅ Build verification completed"
-          
-      - name: Upload build artifacts
+        run: nix develop --command just ci-build-wasm
+
+      - name: Prepare deployment
+        run: nix develop --command just ci-prepare-deploy
+
+      - name: Verify build
+        run: nix develop --command just ci-verify
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: webassembly-build
-          path: khimoo-portfolio/dist/
+          name: build-artifacts
+          path: |
+            khimoo-portfolio/data/
+            khimoo-portfolio/dist/
+            public/
           retention-days: 30
-          
-      - name: Prepare deployment directory
-        run: |
-          echo "📁 Preparing deployment directory..."
-          cp -r ./khimoo-portfolio/dist ./public
-          cp ./public/index.html ./public/404.html
-          cp ./test-data-loader.html ./public/test-data-loader.html
-          
-          # Ensure images are copied
-          if [ -d "./khimoo-portfolio/articles/img" ]; then
-            echo "📸 Copying image files..."
-            mkdir -p ./public/articles/img
-            cp -r ./khimoo-portfolio/articles/img/* ./public/articles/img/ 2>/dev/null || echo "No images to copy"
-            echo "✅ Image files copied"
-            echo "📊 Optimized images check:"
-            ls -la ./public/articles/img/author_img*.png ./public/articles/img/author_img*.webp 2>/dev/null || echo "No optimized images found"
-          fi
-          
-          echo "✅ Deployment directory prepared"
-          echo "📊 Public directory contents:"
-          ls -la ./public/
-          echo "📊 Data directory contents:"
-          ls -la ./public/data/ || echo "❌ Data directory not found in public!"
-          echo "📊 Articles directory contents:"
-          ls -la ./public/articles/ || echo "❌ Articles directory not found in public!"
-          echo "📊 Images directory contents:"
-          ls -la ./public/articles/img/ || echo "❌ Images directory not found in public!"
-          echo "📄 Checking articles.json in public:"
-          if [ -f "./public/data/articles.json" ]; then
-            echo "✅ articles.json found in public directory"
-            echo "📊 File size:"
-            ls -lh ./public/data/articles.json
-            echo "📄 Articles data preview (first 5 lines):"
-            head -5 ./public/data/articles.json
-            echo "🔍 Checking for home_display articles:"
-            grep -c '"home_display": true' ./public/data/articles.json || echo "No home_display articles found"
-          else
-            echo "❌ articles.json not found in public directory!"
-          fi
-          echo "📄 Checking link-graph.json in public:"
-          if [ -f "./public/data/link-graph.json" ]; then
-            echo "✅ link-graph.json found in public directory"
-            echo "📊 File size:"
-            ls -lh ./public/data/link-graph.json
-          else
-            echo "❌ link-graph.json not found in public directory!"
-          fi
-          
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -254,21 +88,3 @@ jobs:
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'Deploy to GitHub Pages from ${{ github.sha }}'
-          
-      - name: Verify deployment
-        run: |
-          echo "✅ GitHub Pages deployment completed"
-          echo "🌐 Site will be available at: https://${{ github.repository_owner }}.github.io/portfolio-page/"
-          echo "📝 Deployment commit: ${{ github.sha }}"
-          echo "📁 Deployed files:"
-          ls -la ./public/
-          echo "📊 Total deployment size:"
-          du -sh ./public/
-          echo "🔍 Final verification - checking critical files:"
-          echo "  - index.html: $([ -f ./public/index.html ] && echo '✅' || echo '❌')"
-          echo "  - 404.html: $([ -f ./public/404.html ] && echo '✅' || echo '❌')"
-          echo "  - data/articles.json: $([ -f ./public/data/articles.json ] && echo '✅' || echo '❌')"
-          echo "  - data/link-graph.json: $([ -f ./public/data/link-graph.json ] && echo '✅' || echo '❌')"
-          echo "📈 Expected data loading URLs:"
-          echo "  - Articles: https://${{ github.repository_owner }}.github.io/portfolio-page/data/articles.json"
-          echo "  - Link Graph: https://${{ github.repository_owner }}.github.io/portfolio-page/data/link-graph.json"

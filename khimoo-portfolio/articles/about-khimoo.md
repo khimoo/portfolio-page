@@ -1,12 +1,12 @@
 ---
-title: "Khimoo"
-author_image: "/articles/img/author_img.png"
+title: 絵
+author_image: /articles/img/author_img.png
 home_display: true
-importance: 5
-category: "author"
-tags: ["about", "profile", "author"]
-created_at: "2024-01-01T09:00:00Z"
-updated_at: "2025-12-29T02:19:34Z"
+importance: 2
+category: ""
+tags: []
+created_at: 2024-01-01T09:00:00Z
+updated_at: 2025-12-29T02:19:34Z
 ---
 
 # About Khimoo
