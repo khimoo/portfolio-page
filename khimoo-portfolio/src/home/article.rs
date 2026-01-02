@@ -391,11 +391,17 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
                                 if let Some(author_image) = &article_data.metadata.author_image {
                                     let resolved_image_path = resolve_image_path(author_image);
                                     html! {
-                                        <div style="flex-shrink: 0;">
+                                        <div style="flex-shrink: 0; display: flex; align-items: stretch;">
                                             <img
                                                 src={resolved_image_path}
                                                 alt="Author image"
-                                                style="object-fit: cover;"
+                                                style="
+                                                    height: 100%;
+                                                    // aspect-ratio: 1;
+                                                    object-fit: cover;
+                                                    // min-height: 60px;
+                                                    // max-height: 120px;
+                                                "
                                             />
                                         </div>
                                     }
