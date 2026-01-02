@@ -18,7 +18,7 @@
       "file_path": "articles/music.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:05:18.689519802+00:00"
+      "processed_at": "2026-01-02T16:14:13.783870077+00:00"
     },
     {
       "slug": "neovim",
@@ -38,7 +38,7 @@
       "file_path": "articles/Neovim.md",
       "outbound_links": [],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T16:05:18.689735175+00:00"
+      "processed_at": "2026-01-02T16:14:13.784064721+00:00"
     },
     {
       "slug": "myworks",
@@ -58,7 +58,7 @@
       "file_path": "articles/myworks.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:05:18.689936171+00:00"
+      "processed_at": "2026-01-02T16:14:13.784229279+00:00"
     },
     {
       "slug": "mini_farm",
@@ -78,7 +78,7 @@
       "file_path": "articles/mini_farm.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:05:18.690112400+00:00"
+      "processed_at": "2026-01-02T16:14:13.784383297+00:00"
     },
     {
       "slug": "linux",
@@ -98,7 +98,7 @@
       "file_path": "articles/Linux.md",
       "outbound_links": [],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T16:05:18.690362448+00:00"
+      "processed_at": "2026-01-02T16:14:13.784538307+00:00"
     },
     {
       "slug": "drawing",
@@ -118,7 +118,7 @@
       "file_path": "articles/drawing.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:05:18.690596034+00:00"
+      "processed_at": "2026-01-02T16:14:13.784729104+00:00"
     },
     {
       "slug": "gakuchika",
@@ -137,13 +137,13 @@
       },
       "file_path": "articles/gakuchika.md",
       "outbound_links": [],
-      "inbound_count": 0,
-      "processed_at": "2026-01-02T16:05:18.690773756+00:00"
+      "inbound_count": 1,
+      "processed_at": "2026-01-02T16:14:13.784899203+00:00"
     },
     {
       "slug": "about-khimoo",
       "title": "自己紹介",
-      "content": "# プロフィール\n日比野 文です。\\\n[専門](math)：[数学](math)\\\\[連続体理論](continuum_theory)\\\n[趣味](hobby)：絵、音楽、漫画、映画、Neovim、NixOS、Rust、家庭菜園(アクアポニックス)\\\n![](author_img.png)\n# 経歴\n2001年 山形県天童市生まれ\\\n2017年 山形県立山形南高校 入学\\\n2020年 山形県立山形南高校 卒業\\\n2021年 筑波大学 理工学群 数学類 入学\\\n2025年 筑波大学 理工学群 数学類 卒業\\\n2025年 筑波大学 理工情報生命学術院 数理物質科学研究群 数学学位プログラム 入学\\\n\n# アルバイト経験\n2023-2025年 株式会社shinonomeでバックエンド処理、API開発\n2026年-現在 シリコンスタジオで開発環境整備\n\n# 個人開発\n[個人開発](myworks)を参照ください。",
+      "content": "# プロフィール\n日比野 文です。\\\n[専門](math)：[数学](math)\\\\[連続体理論](continuum_theory)\\\n[趣味](hobby)：絵、音楽、漫画、映画、Neovim、NixOS、Rust、家庭菜園(アクアポニックス)\\\n# 経歴\n2001年 山形県天童市生まれ\\\n2017年 山形県立山形南高校 入学\\\n2020年 山形県立山形南高校 卒業\\\n2021年 筑波大学 理工学群 数学類 入学\\\n2025年 筑波大学 理工学群 数学類 卒業\\\n2025年 筑波大学 理工情報生命学術院 数理物質科学研究群 数学学位プログラム 入学\\\n# アルバイト経験\n2023-2025年 株式会社shinonomeでバックエンド処理、API開発\n2026年-現在 シリコンスタジオで開発環境整備\n業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。\n# 個人開発\n詳しくは[個人開発](myworks)に纏めました。",
       "metadata": {
         "title": "自己紹介",
         "home_display": true,
@@ -152,7 +152,7 @@
         "related_articles": [],
         "tags": [],
         "created_at": "2024-01-02T03:00:00Z",
-        "updated_at": "2026-01-02T23:35:11Z",
+        "updated_at": "2026-01-03T01:11:15Z",
         "author_image": "/articles/img/author_img.png"
       },
       "file_path": "articles/about-khimoo.md",
@@ -186,15 +186,22 @@
           "original_text": "[趣味](hobby)"
         },
         {
+          "target_slug": "gakuchika",
+          "link_type": "MarkdownLink",
+          "context": "株式会社shinonomeでバックエンド処理、API開発 2026年-現在 シリコンスタジオで開発環境整備 業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。 # 個人開発 詳し",
+          "position": 779,
+          "original_text": "[こちら](gakuchika)"
+        },
+        {
           "target_slug": "myworks",
           "link_type": "MarkdownLink",
-          "context": "株式会社shinonomeでバックエンド処理、API開発 2026年-現在 シリコンスタジオで開発環境整備 # 個人開発 [個人開発](myworks)を参照ください。",
-          "position": 777,
+          "context": "シリコンスタジオで開発環境整備 業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。 # 個人開発 詳しくは[個人開発](myworks)に纏めました。",
+          "position": 850,
           "original_text": "[個人開発](myworks)"
         }
       ],
       "inbound_count": 0,
-      "processed_at": "2026-01-02T16:05:18.691643843+00:00"
+      "processed_at": "2026-01-02T16:14:13.785724798+00:00"
     },
     {
       "slug": "math",
@@ -222,7 +229,7 @@
         }
       ],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T16:05:18.692157252+00:00"
+      "processed_at": "2026-01-02T16:14:13.786250651+00:00"
     },
     {
       "slug": "programming",
@@ -257,7 +264,7 @@
         }
       ],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:05:18.692848234+00:00"
+      "processed_at": "2026-01-02T16:14:13.786937727+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -277,7 +284,7 @@
       "file_path": "articles/continuum_theory.md",
       "outbound_links": [],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T16:05:18.692986001+00:00"
+      "processed_at": "2026-01-02T16:14:13.787077579+00:00"
     },
     {
       "slug": "hobby",
@@ -340,10 +347,10 @@
         }
       ],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:05:18.694628622+00:00"
+      "processed_at": "2026-01-02T16:14:13.788684866+00:00"
     }
   ],
-  "generated_at": "2026-01-02T16:05:18.694823335+00:00",
+  "generated_at": "2026-01-02T16:14:13.788910338+00:00",
   "total_count": 12,
   "home_articles": [
     "music",
