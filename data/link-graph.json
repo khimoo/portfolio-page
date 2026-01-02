@@ -5,11 +5,6 @@
       "inbound_count": 1,
       "outbound_count": 0
     },
-    "myworks": {
-      "connections": [],
-      "inbound_count": 1,
-      "outbound_count": 0
-    },
     "programming": {
       "connections": [
         {
@@ -28,8 +23,19 @@
       "inbound_count": 1,
       "outbound_count": 2
     },
+    "continuum_theory": {
+      "connections": [],
+      "inbound_count": 2,
+      "outbound_count": 0
+    },
     "hobby": {
       "connections": [
+        {
+          "target": "drawing",
+          "connection_type": "DirectLink",
+          "bidirectional": false,
+          "link_count": 1
+        },
         {
           "target": "linux",
           "connection_type": "DirectLink",
@@ -37,13 +43,7 @@
           "link_count": 1
         },
         {
-          "target": "mini_farm",
-          "connection_type": "DirectLink",
-          "bidirectional": false,
-          "link_count": 1
-        },
-        {
-          "target": "drawing",
+          "target": "neovim",
           "connection_type": "DirectLink",
           "bidirectional": false,
           "link_count": 1
@@ -55,7 +55,7 @@
           "link_count": 1
         },
         {
-          "target": "neovim",
+          "target": "mini_farm",
           "connection_type": "DirectLink",
           "bidirectional": false,
           "link_count": 1
@@ -70,9 +70,19 @@
       "inbound_count": 1,
       "outbound_count": 6
     },
+    "music": {
+      "connections": [],
+      "inbound_count": 1,
+      "outbound_count": 0
+    },
     "neovim": {
       "connections": [],
       "inbound_count": 2,
+      "outbound_count": 0
+    },
+    "gakuchika": {
+      "connections": [],
+      "inbound_count": 1,
       "outbound_count": 0
     },
     "about-khimoo": {
@@ -84,10 +94,10 @@
           "link_count": 1
         },
         {
-          "target": "math",
+          "target": "gakuchika",
           "connection_type": "DirectLink",
           "bidirectional": false,
-          "link_count": 2
+          "link_count": 1
         },
         {
           "target": "continuum_theory",
@@ -96,13 +106,13 @@
           "link_count": 1
         },
         {
-          "target": "myworks",
+          "target": "math",
           "connection_type": "DirectLink",
           "bidirectional": false,
-          "link_count": 1
+          "link_count": 2
         },
         {
-          "target": "gakuchika",
+          "target": "myworks",
           "connection_type": "DirectLink",
           "bidirectional": false,
           "link_count": 1
@@ -111,12 +121,17 @@
       "inbound_count": 0,
       "outbound_count": 6
     },
-    "linux": {
+    "mini_farm": {
       "connections": [],
-      "inbound_count": 2,
+      "inbound_count": 1,
       "outbound_count": 0
     },
-    "continuum_theory": {
+    "myworks": {
+      "connections": [],
+      "inbound_count": 1,
+      "outbound_count": 0
+    },
+    "linux": {
       "connections": [],
       "inbound_count": 2,
       "outbound_count": 0
@@ -132,24 +147,9 @@
       ],
       "inbound_count": 2,
       "outbound_count": 1
-    },
-    "mini_farm": {
-      "connections": [],
-      "inbound_count": 1,
-      "outbound_count": 0
-    },
-    "gakuchika": {
-      "connections": [],
-      "inbound_count": 1,
-      "outbound_count": 0
-    },
-    "music": {
-      "connections": [],
-      "inbound_count": 1,
-      "outbound_count": 0
     }
   },
-  "generated_at": "2026-01-02T17:09:26.340118926+00:00",
+  "generated_at": "2026-01-02T17:21:34.475447148+00:00",
   "total_connections": 14,
   "bidirectional_pairs": 0,
   "direct_links": 14
