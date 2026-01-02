@@ -18,7 +18,7 @@
       "file_path": "articles/music.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T15:46:58.421376248+00:00"
+      "processed_at": "2026-01-02T16:05:18.689519802+00:00"
     },
     {
       "slug": "neovim",
@@ -38,7 +38,7 @@
       "file_path": "articles/Neovim.md",
       "outbound_links": [],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T15:46:58.421580971+00:00"
+      "processed_at": "2026-01-02T16:05:18.689735175+00:00"
     },
     {
       "slug": "myworks",
@@ -58,7 +58,7 @@
       "file_path": "articles/myworks.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T15:46:58.421751810+00:00"
+      "processed_at": "2026-01-02T16:05:18.689936171+00:00"
     },
     {
       "slug": "mini_farm",
@@ -78,7 +78,7 @@
       "file_path": "articles/mini_farm.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T15:46:58.421921637+00:00"
+      "processed_at": "2026-01-02T16:05:18.690112400+00:00"
     },
     {
       "slug": "linux",
@@ -98,7 +98,7 @@
       "file_path": "articles/Linux.md",
       "outbound_links": [],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T15:46:58.422105561+00:00"
+      "processed_at": "2026-01-02T16:05:18.690362448+00:00"
     },
     {
       "slug": "drawing",
@@ -118,7 +118,7 @@
       "file_path": "articles/drawing.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T15:46:58.422302359+00:00"
+      "processed_at": "2026-01-02T16:05:18.690596034+00:00"
     },
     {
       "slug": "gakuchika",
@@ -138,7 +138,7 @@
       "file_path": "articles/gakuchika.md",
       "outbound_links": [],
       "inbound_count": 0,
-      "processed_at": "2026-01-02T15:46:58.422471154+00:00"
+      "processed_at": "2026-01-02T16:05:18.690773756+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -194,7 +194,7 @@
         }
       ],
       "inbound_count": 0,
-      "processed_at": "2026-01-02T15:46:58.423218300+00:00"
+      "processed_at": "2026-01-02T16:05:18.691643843+00:00"
     },
     {
       "slug": "math",
@@ -222,7 +222,7 @@
         }
       ],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T15:46:58.423738662+00:00"
+      "processed_at": "2026-01-02T16:05:18.692157252+00:00"
     },
     {
       "slug": "programming",
@@ -257,7 +257,7 @@
         }
       ],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T15:46:58.424450863+00:00"
+      "processed_at": "2026-01-02T16:05:18.692848234+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -277,7 +277,7 @@
       "file_path": "articles/continuum_theory.md",
       "outbound_links": [],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T15:46:58.424597136+00:00"
+      "processed_at": "2026-01-02T16:05:18.692986001+00:00"
     },
     {
       "slug": "hobby",
@@ -340,10 +340,10 @@
         }
       ],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T15:46:58.426280541+00:00"
+      "processed_at": "2026-01-02T16:05:18.694628622+00:00"
     }
   ],
-  "generated_at": "2026-01-02T15:46:58.426493489+00:00",
+  "generated_at": "2026-01-02T16:05:18.694823335+00:00",
   "total_count": 12,
   "home_articles": [
     "music",
