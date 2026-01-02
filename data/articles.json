@@ -18,7 +18,7 @@
       "file_path": "articles/music.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:14:13.783870077+00:00"
+      "processed_at": "2026-01-02T17:09:20.753397683+00:00"
     },
     {
       "slug": "neovim",
@@ -38,12 +38,12 @@
       "file_path": "articles/Neovim.md",
       "outbound_links": [],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T16:14:13.784064721+00:00"
+      "processed_at": "2026-01-02T17:09:20.753605222+00:00"
     },
     {
       "slug": "myworks",
       "title": "個人開発",
-      "content": "",
+      "content": "- https://github.com/khimoo/portfolio-page\n\t- Rust\\Yewで実装したブログ\n- https://github.com/khimoo/DriveStatus\n\t- サークル内で実際に使用していたカーシェア管理サイト\n- https://github.com/khimoo/pitch_controller\n\t- ゲームコントローラーでピッチベンドが使用できるようになるツール\n- https://github.com/khimoo/chrome-skk\n\t- chromebook用imeのskkでstickey shiftを設定できるようにしたもの\n- https://github.com/khimoo/ProvablyGoodPlanarMappings\n\t- [こちら](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC)の論文を実装したもの\n- https://github.com/khimoo/dreamarts-coding-test\n\t- 株式会社ドリームアーツのテストの一環で作成しました",
       "metadata": {
         "title": "個人開発",
         "home_display": true,
@@ -51,14 +51,14 @@
         "importance": 4,
         "related_articles": [],
         "tags": [],
-        "created_at": "2025-12-28T18:30:38Z",
-        "updated_at": "2025-12-29T00:52:52Z",
+        "created_at": "2025-12-29T03:30:38Z",
+        "updated_at": "2026-01-03T02:06:44Z",
         "author_image": null
       },
       "file_path": "articles/myworks.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:14:13.784229279+00:00"
+      "processed_at": "2026-01-02T17:09:20.754121528+00:00"
     },
     {
       "slug": "mini_farm",
@@ -78,7 +78,7 @@
       "file_path": "articles/mini_farm.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:14:13.784383297+00:00"
+      "processed_at": "2026-01-02T17:09:20.754296926+00:00"
     },
     {
       "slug": "linux",
@@ -98,7 +98,7 @@
       "file_path": "articles/Linux.md",
       "outbound_links": [],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T16:14:13.784538307+00:00"
+      "processed_at": "2026-01-02T17:09:20.754487112+00:00"
     },
     {
       "slug": "drawing",
@@ -118,7 +118,7 @@
       "file_path": "articles/drawing.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:14:13.784729104+00:00"
+      "processed_at": "2026-01-02T17:09:20.754686826+00:00"
     },
     {
       "slug": "gakuchika",
@@ -138,12 +138,12 @@
       "file_path": "articles/gakuchika.md",
       "outbound_links": [],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:14:13.784899203+00:00"
+      "processed_at": "2026-01-02T17:09:20.754857996+00:00"
     },
     {
       "slug": "about-khimoo",
       "title": "自己紹介",
-      "content": "# プロフィール\n日比野 文です。\\\n[専門](math)：[数学](math)\\\\[連続体理論](continuum_theory)\\\n[趣味](hobby)：絵、音楽、漫画、映画、Neovim、NixOS、Rust、家庭菜園(アクアポニックス)\\\n# 経歴\n2001年 山形県天童市生まれ\\\n2017年 山形県立山形南高校 入学\\\n2020年 山形県立山形南高校 卒業\\\n2021年 筑波大学 理工学群 数学類 入学\\\n2025年 筑波大学 理工学群 数学類 卒業\\\n2025年 筑波大学 理工情報生命学術院 数理物質科学研究群 数学学位プログラム 入学\\\n# アルバイト経験\n2023-2025年 株式会社shinonomeでバックエンド処理、API開発\n2026年-現在 シリコンスタジオで開発環境整備\n業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。\n# 個人開発\n詳しくは[個人開発](myworks)に纏めました。",
+      "content": "# プロフィール\n日比野 文です。\\\n[専門](math)：[数学](math)\\\\[連続体理論](continuum_theory)\\\n[趣味](hobby)：絵、音楽、漫画、映画、Neovim、NixOS、Rust、家庭菜園(アクアポニックス)\\\n# 経歴\n2001年 山形県天童市生まれ\\\n2017年 山形県立山形南高校 入学\\\n2020年 山形県立山形南高校 卒業\\\n2021年 筑波大学 理工学群 数学類 入学\\\n2025年 筑波大学 理工学群 数学類 卒業\\\n2025年 筑波大学 理工情報生命学術院 数理物質科学研究群 数学学位プログラム 入学\\\n# アルバイト経験\n2023-2025年 株式会社shinonomeでバックエンド処理、API開発\n2026年-現在 シリコンスタジオで開発環境整備\n業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。\n# 個人開発\n- https://github.com/khimoo/portfolio-page\n\t- Rust\\Yewで実装したブログ\n- https://github.com/khimoo/DriveStatus\n\t- サークル内で実際に使用していたカーシェア管理サイト\n- https://github.com/khimoo/pitch_controller\n\t- ゲームコントローラーでピッチベンドが使用できるようになるツール\n- https://github.com/khimoo/chrome-skk\n\t- chromebook用imeのskkでstickey shiftを設定できるようにしたもの\n- https://github.com/khimoo/ProvablyGoodPlanarMappings\n\t- [こちら](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC)の論文を実装したもの\n- https://github.com/khimoo/dreamarts-coding-test\n\t- 株式会社ドリームアーツのテストの一環で作成しました\n詳しくは[個人開発](myworks)に纏めました。",
       "metadata": {
         "title": "自己紹介",
         "home_display": true,
@@ -152,7 +152,7 @@
         "related_articles": [],
         "tags": [],
         "created_at": "2024-01-02T03:00:00Z",
-        "updated_at": "2026-01-03T01:11:15Z",
+        "updated_at": "2026-01-03T02:06:23Z",
         "author_image": "/articles/img/author_img.png"
       },
       "file_path": "articles/about-khimoo.md",
@@ -188,20 +188,20 @@
         {
           "target_slug": "gakuchika",
           "link_type": "MarkdownLink",
-          "context": "株式会社shinonomeでバックエンド処理、API開発 2026年-現在 シリコンスタジオで開発環境整備 業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。 # 個人開発 詳し",
+          "context": "株式会社shinonomeでバックエンド処理、API開発 2026年-現在 シリコンスタジオで開発環境整備 業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。 # 個人開発 - ",
           "position": 779,
           "original_text": "[こちら](gakuchika)"
         },
         {
           "target_slug": "myworks",
           "link_type": "MarkdownLink",
-          "context": "シリコンスタジオで開発環境整備 業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。 # 個人開発 詳しくは[個人開発](myworks)に纏めました。",
-          "position": 850,
+          "context": "https://github.com/khimoo/dreamarts-coding-test - 株式会社ドリームアーツのテストの一環で作成しました 詳しくは[個人開発](myworks)に纏めまし",
+          "position": 1667,
           "original_text": "[個人開発](myworks)"
         }
       ],
       "inbound_count": 0,
-      "processed_at": "2026-01-02T16:14:13.785724798+00:00"
+      "processed_at": "2026-01-02T17:09:20.755588232+00:00"
     },
     {
       "slug": "math",
@@ -229,7 +229,7 @@
         }
       ],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T16:14:13.786250651+00:00"
+      "processed_at": "2026-01-02T17:09:20.756285186+00:00"
     },
     {
       "slug": "programming",
@@ -264,7 +264,7 @@
         }
       ],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:14:13.786937727+00:00"
+      "processed_at": "2026-01-02T17:09:20.756984435+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -284,7 +284,7 @@
       "file_path": "articles/continuum_theory.md",
       "outbound_links": [],
       "inbound_count": 2,
-      "processed_at": "2026-01-02T16:14:13.787077579+00:00"
+      "processed_at": "2026-01-02T17:09:20.757185932+00:00"
     },
     {
       "slug": "hobby",
@@ -347,10 +347,10 @@
         }
       ],
       "inbound_count": 1,
-      "processed_at": "2026-01-02T16:14:13.788684866+00:00"
+      "processed_at": "2026-01-02T17:09:20.758802006+00:00"
     }
   ],
-  "generated_at": "2026-01-02T16:14:13.788910338+00:00",
+  "generated_at": "2026-01-02T17:09:20.759013382+00:00",
   "total_count": 12,
   "home_articles": [
     "music",
