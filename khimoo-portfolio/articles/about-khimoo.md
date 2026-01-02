@@ -6,7 +6,7 @@ importance: 5
 category: ""
 tags: []
 created_at: "2024-01-02T03:00:00Z"
-updated_at: "2026-01-03T01:11:15Z"
+updated_at: "2026-01-03T02:06:23Z"
 ---
 # プロフィール
 日比野 文です。\
@@ -24,4 +24,16 @@ updated_at: "2026-01-03T01:11:15Z"
 2026年-現在 シリコンスタジオで開発環境整備
 業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。
 # 個人開発
+- https://github.com/khimoo/portfolio-page
+	- Rust\Yewで実装したブログ
+- https://github.com/khimoo/DriveStatus
+	- サークル内で実際に使用していたカーシェア管理サイト
+- https://github.com/khimoo/pitch_controller
+	- ゲームコントローラーでピッチベンドが使用できるようになるツール
+- https://github.com/khimoo/chrome-skk
+	- chromebook用imeのskkでstickey shiftを設定できるようにしたもの
+- https://github.com/khimoo/ProvablyGoodPlanarMappings
+	- [こちら](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC)の論文を実装したもの
+- https://github.com/khimoo/dreamarts-coding-test
+	- 株式会社ドリームアーツのテストの一環で作成しました
 詳しくは[個人開発](myworks)に纏めました。
