@@ -15,8 +15,8 @@ dev:
 	@./scripts/dev.sh
 
 # Run the CI-like pipeline but with dev (non-release) wasm build
-dev-rebuild: ci-optimize-images ci-process-articles generate-link-graph _copy-assets _dev-build-wasm _verify-build
-	@echo "🎯 dev-rebuild complete"
+dev-rebuild: ci-optimize-images ci-process-articles _copy-assets _dev-build-wasm _verify-build
+    @echo "🎯 dev-rebuild complete"
 
 # Small helper: build wasm in dev (no --release) to keep quick feedback during dev
 _dev-build-wasm:
@@ -24,9 +24,9 @@ _dev-build-wasm:
 	@cd khimoo-portfolio && trunk build --public-url /portfolio-page/
 	@echo "✅ dev wasm build finished"
 
-# Optional convenience: run only data pipeline (images + articles + link graph) without wasm
-dev-data-only: ci-optimize-images ci-process-articles generate-link-graph _copy-assets
-	@echo "✅ Data pipeline complete (no wasm build)"
+# Optional convenience: run only data pipeline (images + articles) without wasm
+dev-data-only: ci-optimize-images ci-process-articles _copy-assets
+    @echo "✅ Data pipeline complete (no wasm build)"
 
 # === DATA PROCESSING RECIPES ===
 
@@ -40,13 +40,8 @@ validate-links:
     @echo "🔗 Validating links..."
     @cargo run --bin validate-links
 
-# Generate interactive link graph from article connections
-generate-link-graph:
-    @echo "🕸️  Generating link graph..."
-    @cd khimoo-portfolio && cargo run --features cli-tools --bin generate-link-graph
-
-# Build all data: process articles, validate links, and generate link graph
-build-data: process-articles validate-links generate-link-graph
+# Build all data: process articles and validate links
+build-data: process-articles validate-links
     @echo "✅ All data processed successfully"
 
 # === BUILD AND TEST RECIPES ===

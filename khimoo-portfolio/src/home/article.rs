@@ -1,4 +1,4 @@
-use super::data_loader::{use_article_content, use_lightweight_articles};
+use super::data_loader::{use_article_content, use_lightweight_articles, DataLoader};
 use super::routes::Route;
 use super::utils::resolve_image_path;
 use pulldown_cmark::{html, Parser};
@@ -170,7 +170,7 @@ pub fn article_index() -> Html {
                                                             html! {}
                                                         }
                                                     }
-                                                    <span>{"Links: "}{article.inbound_count}</span>
+                                                    <span>{"Links: "}{article.inbound_links.len()}</span>
                                                 </div>
                                             </li>
                                         }
@@ -194,13 +194,16 @@ pub struct ArticleViewProps {
 
 #[function_component(ArticleView)]
 pub fn article_view(props: &ArticleViewProps) -> Html {
+    // hooks: 必ず先頭で宣言（レンダー経路に関わらず同じ順序・個数で呼ばれるようにする）
     let (article, loading, error) = use_article_content(Some(props.slug.clone()));
-
-    // ナビゲーターを取得（これでRustコードから画面遷移できます）
     let navigator = use_navigator().unwrap();
 
-    // クリックイベントハンドラーの定義
-    // 記事本文内のクリックを監視し、.wiki-link がクリックされた時だけSPA遷移を割り込ませます
+    // 本文用の state も先頭で宣言（ここを早期 return の前に置く）
+    let article_content = use_state(|| None::<String>);
+    let content_loading = use_state(|| false);
+    let content_error = use_state(|| None::<String>);
+
+    // クリックイベントハンドラー（hook ではないので任意の位置でも良いが順序のため先に定義）
     let on_article_click = {
         let navigator = navigator.clone();
         Callback::from(move |e: MouseEvent| {
@@ -208,9 +211,7 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
             let target = e.target_unchecked_into::<web_sys::Element>();
 
             // クリックされた要素、またはその親要素が ".wiki-link" クラスを持っているか確認
-            // (closestを使うことで、リンク内の文字などをクリックしても反応するようにします)
             if let Ok(Some(element)) = target.closest(".wiki-link") {
-                // デフォルトのリンク動作（画面リロード）をキャンセル
                 e.prevent_default();
 
                 // href属性やpathnameから遷移先情報を取得するためにアンカー要素として扱う
@@ -218,10 +219,8 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
                 let pathname = anchor.pathname(); // 例: "/article/my-slug"
 
                 // パスからslug部分を抽出 (/article/以降)
-                // ※URLの構造に依存します。ここでは単純に最後のセグメントを取得
                 if let Some(slug) = pathname.split('/').last() {
                     if !slug.is_empty() {
-                        // ここで <Link> と同じ動き（ルーター遷移）を実行
                         navigator.push(&Route::ArticleShow {
                             slug: slug.to_string(),
                         });
@@ -230,6 +229,44 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
             }
         })
     };
+
+    // use_effect はここで定義（hook の順序が常に安定する）
+    {
+        let article = article.clone();
+        let article_content = article_content.clone();
+        let content_loading = content_loading.clone();
+        let content_error = content_error.clone();
+
+        use_effect_with(article.clone(), move |article| {
+            if let Some(article_data) = article.as_ref() {
+                let file_path = article_data.file_path.clone();
+                let article_content = article_content.clone();
+                let content_loading = content_loading.clone();
+                let content_error = content_error.clone();
+
+                content_loading.set(true);
+                content_error.set(None);
+
+                wasm_bindgen_futures::spawn_local(async move {
+                    let loader = DataLoader::new();
+                    match loader.load_article_content(&file_path).await {
+                        Ok(content) => {
+                            article_content.set(Some(content));
+                            content_error.set(None);
+                        }
+                        Err(e) => {
+                            content_error.set(Some(format!("{}", e)));
+                        }
+                    }
+                    content_loading.set(false);
+                });
+            }
+
+            || {}
+        });
+    }
+
+    // ここからはレンダー時の早期 return 等を行っても hook 呼び出し順は変わらない
     if *loading {
         return html! {
             <>
@@ -277,27 +314,57 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
     }
 
     if let Some(article_data) = article.as_ref() {
-        // 1. 本文をそのまま取得
-        let raw_content = &article_data.content;
+        // Show loading state while content is being loaded
+        if *content_loading {
+            return html! {
+                <>
+                    <style>
+                        {"html, body { background: #081D35; color: #e0e0e0; margin: 0; padding: 0; }
+                         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }"}
+                    </style>
+                    <div style="padding: 16px; background: #081D35; color: #e0e0e0; min-height: 100vh;">
+                        <h1>{&article_data.title}</h1>
+                        <div style="margin-top: 20px;">
+                            <div style="border: 4px solid #444; border-top: 4px solid #66b3ff; border-radius: 50%; width: 40px; height: 40px; animation: spin 2s linear infinite;"></div>
+                        </div>
+                        <p>{"Loading content..."}</p>
+                    </div>
+                </>
+            };
+        }
 
-        // 2. Wikiリンク記法をマーカーに変換
-        // ここで変換されないと、Markdownパーサーが [[ ]] をリンクとして認識しません
-        let processed_content = process_wiki_links(raw_content);
+        // Show error state if content loading failed
+        if let Some(err) = content_error.as_ref() {
+            return html! {
+                <>
+                    <style>
+                        {"html, body { background: #081D35; color: #e0e0e0; margin: 0; padding: 0; }"}
+                    </style>
+                    <div style="padding: 16px; background: #081D35; color: #e0e0e0; min-height: 100vh;">
+                        <h1>{&article_data.title}</h1>
+                        <p style="color: #ff6b6b;">{format!("Failed to load content: {}", err)}</p>
+                    </div>
+                </>
+            };
+        }
 
-        // 3. Markdown を HTML に変換
-        let parser = Parser::new(&processed_content);
-        let mut html_output = String::new();
-        html::push_html(&mut html_output, parser);
+        // 1. 本文を取得（ファイルから読み込んだ内容）
+        if let Some(raw_content) = article_content.as_ref() {
+            // 2. Wikiリンク記法をマーカーに変換
+            let processed_content = process_wiki_links(raw_content);
 
-        // 4. 【重要】生成されたHTML文字列に対して、マーカーを <a> タグに置換
-        // Markdownパーサーが特殊文字をエスケープしている可能性があるため、
-        // 最終的なHTML文字列に対して実行するのが最も確実です。
-        let final_html = convert_wiki_markers_to_html(&html_output);
+            // 3. Markdown を HTML に変換
+            let parser = Parser::new(&processed_content);
+            let mut html_output = String::new();
+            html::push_html(&mut html_output, parser);
 
-        // 5. HTMLとしてレンダリング
-        let rendered = Html::from_html_unchecked(AttrValue::from(final_html));
+            // 4. マーカーを <a> タグに置換
+            let final_html = convert_wiki_markers_to_html(&html_output);
 
-        html! {
+            // 5. HTMLとしてレンダリング
+            let rendered = Html::from_html_unchecked(AttrValue::from(final_html));
+
+            return html! {
             <>
                 <style>
                     {"html, body { background: #081D35; color: #e0e0e0; margin: 0; padding: 0; }
@@ -331,19 +398,6 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
                      "}
                 </style>
                 <div style="padding: 16px; max-width: 800px; margin: 0 auto; background: #081D35; min-height: 100vh;">
-                    // <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-                    //     <Link<Route> to={Route::Home}>
-                    //         <button style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                    //             {"← Back to Home"}
-                    //         </button>
-                    //     </Link<Route>>
-                    //     <Link<Route> to={Route::ArticleIndex}>
-                    //         <button style="padding: 8px 16px; background: #4a5568; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                    //             {"All Articles"}
-                    //         </button>
-                    //     </Link<Route>>
-                    // </div>
-
                     <article>
                         <header style="margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
                             <div style="flex: 1;">
@@ -363,7 +417,7 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
                                             html! {}
                                         }
                                     }
-                                    <span>{"Inbound links: "}<strong>{article_data.inbound_count}</strong></span>
+                                    <span>{"Inbound links: "}<strong>{article_data.inbound_links.len()}</strong></span>
                                     {
                                         if !article_data.metadata.tags.is_empty() {
                                             html! {
@@ -397,10 +451,7 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
                                                 alt="Author image"
                                                 style="
                                                     height: 120px;
-                                                    // aspect-ratio: 1;
                                                     object-fit: cover;
-                                                    // min-height: 60px;
-                                                    // max-height: 120px;
                                                 "
                                             />
                                         </div>
@@ -429,13 +480,6 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
                                                             <Link<Route> to={Route::ArticleShow { slug: link.target_slug.clone() }}>
                                                                 {&link.target_slug}
                                                             </Link<Route>>
-                                                            {
-                                                                if !link.context.is_empty() {
-                                                                    html! { <span style="color: #aaa; font-size: 12px; margin-left: 8px;">{format!("\"{}\"", &link.context)}</span> }
-                                                                } else {
-                                                                    html! {}
-                                                                }
-                                                            }
                                                         </li>
                                                     }
                                                 }).collect::<Html>()
@@ -450,6 +494,26 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
                     </article>
                 </div>
             </>
+            }
+        } else {
+            html! {
+                <>
+                    <style>
+                        {"html, body { background: #081D35; color: #e0e0e0; margin: 0; padding: 0; }"}
+                    </style>
+                    <div style="padding: 16px; background: #081D35; color: #e0e0e0; min-height: 100vh;">
+                        <div style="margin-bottom: 20px;">
+                            <Link<Route> to={Route::Home}>
+                                <button style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                                    {"← Back to Home"}
+                                </button>
+                            </Link<Route>>
+                        </div>
+                        <h1>{"Content Not Available"}</h1>
+                        <p>{"The article content could not be loaded."}</p>
+                    </div>
+                </>
+            }
         }
     } else {
         html! {
@@ -465,7 +529,7 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
                             </button>
                         </Link<Route>>
                     </div>
-                    <h1>{"Article Not Found"}</h1>
+                    <h1>{"こっちだろうArticle Not Found"}</h1>
                     <p>{"The article you're looking for doesn't exist."}</p>
                 </div>
             </>

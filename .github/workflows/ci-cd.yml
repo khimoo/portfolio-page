@@ -57,9 +57,6 @@ jobs:
       - name: Process articles
         run: nix develop --command just ci-process-articles
 
-      - name: Generate link graph
-        run: nix develop --command just generate-link-graph
-
       - name: Build WebAssembly application
         run: nix develop --command just ci-build-wasm
 

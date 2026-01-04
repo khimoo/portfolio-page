@@ -175,6 +175,7 @@ impl LinkValidationTool {
             title: metadata.title.clone(),
             metadata,
             outbound_links,
+            inbound_links: Vec::new(), // Will be calculated if needed
             file_path: file_path.to_string_lossy().to_string(),
         })
     }

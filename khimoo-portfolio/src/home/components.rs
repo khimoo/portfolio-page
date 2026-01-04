@@ -150,7 +150,7 @@ fn create_node_registry_from_articles(
 
         // 重要度とリンク数を設定
         reg.set_node_importance(node_id, article.metadata.importance.unwrap_or(3));
-        reg.set_node_inbound_count(node_id, article.inbound_count);
+        reg.set_node_inbound_count(node_id, article.inbound_links.len());
 
         slug_to_id.insert(article.slug.clone(), node_id);
         id_to_slug.insert(node_id, article.slug.clone());

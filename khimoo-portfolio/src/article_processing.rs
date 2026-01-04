@@ -55,8 +55,6 @@ pub enum LinkType {
 pub struct ExtractedLink {
     pub target_slug: String,
     pub link_type: LinkType,
-    pub context: String,
-    pub position: usize,
     pub original_text: String,
 }
 
@@ -88,7 +86,6 @@ impl LinkExtractor {
         for cap in self.wiki_regex.captures_iter(content) {
             let full_match = cap.get(0).unwrap();
             let inner = cap.get(1).unwrap().as_str(); // 内部の文字列 (例: "target" または "target|display")
-            let position = full_match.start();
 
             // '|' があれば左をリンクターゲット、右を表示テキストとして扱う
             let parts: Vec<&str> = inner.splitn(2, '|').collect();
@@ -99,11 +96,7 @@ impl LinkExtractor {
             links.push(ExtractedLink {
                 target_slug: self.generate_slug_from_title(link_target),
                 link_type: LinkType::WikiLink,
-                context: self.get_context(content, position, 100),
-                position,
                 original_text: full_match.as_str().to_string(),
-                // If ExtractedLink has display_text field, populate it here:
-                // display_text,
             });
         }
 
@@ -112,22 +105,16 @@ impl LinkExtractor {
             let full_match = cap.get(0).unwrap();
             let _text = cap.get(1).unwrap().as_str();
             let target = cap.get(2).unwrap().as_str();
-            let position = full_match.start();
 
             // Only process internal links (not starting with http/https)
             if !target.starts_with("http") && !target.starts_with("mailto:") {
                 links.push(ExtractedLink {
                     target_slug: target.to_string(),
                     link_type: LinkType::MarkdownLink,
-                    context: self.get_context(content, position, 100),
-                    position,
                     original_text: full_match.as_str().to_string(),
                 });
             }
         }
-
-        // Sort links by position for consistent ordering
-        links.sort_by_key(|link| link.position);
 
         links
     }
@@ -149,60 +136,6 @@ impl LinkExtractor {
         re.replace_all(&slug, "-").to_string()
     }
 
-    /// Get context around a link position
-    fn get_context(&self, content: &str, position: usize, context_length: usize) -> String {
-        // Work with character indices to handle Unicode properly
-        let chars: Vec<char> = content.chars().collect();
-
-        // Find the character position corresponding to the byte position
-        let char_position = content[..position].chars().count();
-
-        let half_length = context_length / 2;
-        let start_char = char_position.saturating_sub(half_length);
-        let end_char = std::cmp::min(char_position + half_length, chars.len());
-
-        // Find word boundaries to avoid cutting words
-        let start_boundary = self.find_char_word_boundary(&chars, start_char, true);
-        let end_boundary = self.find_char_word_boundary(&chars, end_char, false);
-
-        let context: String = chars[start_boundary..end_boundary].iter().collect();
-
-        // Clean up the context (remove excessive whitespace, newlines)
-        context
-            .lines()
-            .map(|line| line.trim())
-            .filter(|line| !line.is_empty())
-            .collect::<Vec<_>>()
-            .join(" ")
-            .chars()
-            .take(context_length)
-            .collect()
-    }
-
-    /// Find word boundary near the given character position
-    fn find_char_word_boundary(&self, chars: &[char], position: usize, search_backward: bool) -> usize {
-        if position >= chars.len() {
-            return chars.len();
-        }
-
-        if search_backward {
-            // Search backward for word boundary
-            for i in (0..=position).rev() {
-                if i == 0 || chars[i].is_whitespace() || chars[i] == '\n' {
-                    return i;
-                }
-            }
-            0
-        } else {
-            // Search forward for word boundary
-            for i in position..chars.len() {
-                if chars[i].is_whitespace() || chars[i] == '\n' {
-                    return i;
-                }
-            }
-            chars.len()
-        }
-    }
 }
 
 impl Default for LinkExtractor {
@@ -300,6 +233,7 @@ pub struct ProcessedArticleRef {
     pub title: String,
     pub metadata: ArticleMetadata,
     pub outbound_links: Vec<ExtractedLink>,
+    pub inbound_links: Vec<ExtractedLink>,
     pub file_path: String,
 }
 
@@ -362,8 +296,8 @@ impl LinkValidator {
                     error_type: ValidationErrorType::BrokenLink,
                     source_article: article.slug.clone(),
                     target_reference: link.target_slug.clone(),
-                    context: Some(link.context.clone()),
-                    line_number: None, // Could be calculated from position if needed
+                    context: None,
+                    line_number: None,
                     suggestion: self.suggest_similar_article(&link.target_slug),
                 });
                 broken_outbound_links += 1;

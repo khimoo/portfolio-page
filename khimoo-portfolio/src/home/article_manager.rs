@@ -1,4 +1,4 @@
-use super::data_loader::{ArticlesData, LinkGraphData, ProcessedArticle, LightweightArticle, DataLoadError, DataLoader};
+use super::data_loader::{ArticlesData, ProcessedArticle, LightweightArticle, DataLoadError, DataLoader};
 use super::types::{NodeId, NodeContent, Position, NodeRegistry, AUTHOR_NODE_ID, ConnectionLineType};
 use std::collections::HashMap;
 use yew::prelude::*;
@@ -30,8 +30,8 @@ impl ArticleManager {
         }
     }
 
-    // Load data from ArticlesData and LinkGraphData
-    pub fn load_from_data(&mut self, articles_data: ArticlesData, link_graph_data: LinkGraphData) {
+    // Load data from ArticlesData
+    pub fn load_from_data(&mut self, articles_data: ArticlesData) {
         // Clear existing data
         self.articles.clear();
         self.lightweight_articles.clear();
@@ -42,27 +42,34 @@ impl ArticleManager {
         self.next_node_id = 0;
         self.content_cache.clear();
 
-        // Load articles and create lightweight versions
+        // Build a set of all article slugs for link validation
+        let all_slugs: std::collections::HashSet<String> = articles_data.articles
+            .iter()
+            .map(|a| a.slug.clone())
+            .collect();
+
+        // Load articles and create lightweight versions, build link graph from outbound_links
         for article in articles_data.articles {
             let lightweight = LightweightArticle::from(article.clone());
             self.lightweight_articles.insert(article.slug.clone(), lightweight);
             
             // Only keep full articles for home articles in memory initially
             if articles_data.home_articles.contains(&article.slug) {
-                self.articles.insert(article.slug.clone(), article);
+                self.articles.insert(article.slug.clone(), article.clone());
+            }
+
+            // Build link graph from outbound_links (KISS: derive from articles directly)
+            let connections: Vec<String> = article.outbound_links
+                .iter()
+                .filter(|link| all_slugs.contains(&link.target_slug))
+                .map(|link| link.target_slug.clone())
+                .collect();
+            if !connections.is_empty() {
+                self.link_graph.insert(article.slug.clone(), connections);
             }
         }
         
         self.home_articles = articles_data.home_articles;
-
-        // Load link graph
-        for (slug, graph_node) in link_graph_data.graph {
-            let connections: Vec<String> = graph_node.connections
-                .into_iter()
-                .map(|conn| conn.target)
-                .collect();
-            self.link_graph.insert(slug, connections);
-        }
 
         // Assign node IDs to home articles (start from 1 since 0 is reserved for author)
         self.next_node_id = 1; // Reserve 0 for author node
@@ -77,7 +84,7 @@ impl ArticleManager {
     }
 
     // Load lightweight data only (for initial page load)
-    pub fn load_lightweight_data(&mut self, lightweight_articles: Vec<LightweightArticle>, link_graph_data: LinkGraphData) {
+    pub fn load_lightweight_data(&mut self, lightweight_articles: Vec<LightweightArticle>) {
         // Clear existing data
         self.articles.clear();
         self.lightweight_articles.clear();
@@ -88,21 +95,28 @@ impl ArticleManager {
         self.next_node_id = 0;
         self.content_cache.clear();
 
-        // Load lightweight articles
+        // Build a set of all article slugs for link validation
+        let all_slugs: std::collections::HashSet<String> = lightweight_articles
+            .iter()
+            .map(|a| a.slug.clone())
+            .collect();
+
+        // Load lightweight articles and build link graph from outbound_links
         for article in lightweight_articles {
             if article.metadata.home_display {
                 self.home_articles.push(article.slug.clone());
             }
-            self.lightweight_articles.insert(article.slug.clone(), article);
-        }
+            self.lightweight_articles.insert(article.slug.clone(), article.clone());
 
-        // Load link graph
-        for (slug, graph_node) in link_graph_data.graph {
-            let connections: Vec<String> = graph_node.connections
-                .into_iter()
-                .map(|conn| conn.target)
+            // Build link graph from outbound_links (KISS: derive from articles directly)
+            let connections: Vec<String> = article.outbound_links
+                .iter()
+                .filter(|link| all_slugs.contains(&link.target_slug))
+                .map(|link| link.target_slug.clone())
                 .collect();
-            self.link_graph.insert(slug, connections);
+            if !connections.is_empty() {
+                self.link_graph.insert(article.slug.clone(), connections);
+            }
         }
 
         // Assign node IDs to home articles (start from 1 since 0 is reserved for author)
@@ -234,7 +248,7 @@ impl ArticleManager {
                 let radius = registry.calculate_dynamic_radius(
                     node_id, 
                     article.metadata.importance, 
-                    article.inbound_count
+                    article.inbound_links.len()
                 );
 
                 // Create node content
@@ -334,7 +348,7 @@ impl ArticleManager {
         // Add article nodes
         for (slug, node_id) in &self.slug_to_node_id {
             if let Some(article) = self.lightweight_articles.get(slug) {
-                sizing_data.insert(*node_id, (article.metadata.importance, article.inbound_count));
+                sizing_data.insert(*node_id, (article.metadata.importance, article.inbound_links.len()));
             }
         }
         
@@ -352,7 +366,7 @@ impl ArticleManager {
                 let new_radius = registry.calculate_dynamic_radius(
                     *node_id,
                     article.metadata.importance,
-                    article.inbound_count
+                    article.inbound_links.len()
                 );
                 registry.update_node_radius(*node_id, new_radius);
             }
@@ -431,14 +445,14 @@ impl ArticleManager {
             .collect()
     }
 
-    // Search articles by title or content (full articles only)
+    // Search articles by title (full articles only)
+    // Note: Content search is not available since content is loaded from files
     pub fn search_articles(&self, query: &str) -> Vec<&ProcessedArticle> {
         let query_lower = query.to_lowercase();
         self.articles
             .values()
             .filter(|article| {
-                article.title.to_lowercase().contains(&query_lower) ||
-                article.content.to_lowercase().contains(&query_lower)
+                article.title.to_lowercase().contains(&query_lower)
             })
             .collect()
     }
@@ -499,16 +513,14 @@ pub fn use_article_manager() -> (
             
             wasm_bindgen_futures::spawn_local(async move {
                 let loader = super::data_loader::DataLoader::new();
-                let (articles_result, link_graph_result) = loader.load_all_data().await;
-                
-                match (articles_result, link_graph_result) {
-                    (Ok(articles_data), Ok(link_graph_data)) => {
+                match loader.load_articles().await {
+                    Ok(articles_data) => {
                         let mut article_manager = ArticleManager::new();
-                        article_manager.load_from_data(articles_data, link_graph_data);
+                        article_manager.load_from_data(articles_data);
                         manager.set(Some(article_manager));
                         error.set(None);
                     }
-                    (Err(e), _) | (_, Err(e)) => {
+                    Err(e) => {
                         error.set(Some(e));
                     }
                 }
@@ -545,19 +557,14 @@ pub fn use_lightweight_article_manager() -> (
             
             wasm_bindgen_futures::spawn_local(async move {
                 let loader = DataLoader::new();
-                let lightweight_future = loader.load_lightweight_articles();
-                let link_graph_future = loader.load_link_graph();
-                
-                let (lightweight_result, link_graph_result) = futures::join!(lightweight_future, link_graph_future);
-                
-                match (lightweight_result, link_graph_result) {
-                    (Ok(lightweight_articles), Ok(link_graph_data)) => {
+                match loader.load_lightweight_articles().await {
+                    Ok(lightweight_articles) => {
                         let mut article_manager = ArticleManager::new();
-                        article_manager.load_lightweight_data(lightweight_articles, link_graph_data);
+                        article_manager.load_lightweight_data(lightweight_articles);
                         manager.set(Some(article_manager));
                         error.set(None);
                     }
-                    (Err(e), _) | (_, Err(e)) => {
+                    Err(e) => {
                         error.set(Some(e));
                     }
                 }

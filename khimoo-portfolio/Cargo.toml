@@ -21,11 +21,6 @@ name = "validate-links"
 path = "src/bin/validate_links.rs"
 required-features = ["cli-tools"]
 
-[[bin]]
-name = "generate-link-graph"
-path = "src/bin/generate_link_graph.rs"
-required-features = ["cli-tools"]
-
 [dependencies]
 # Web framework
 yew = { version = "0.21", features = ["csr"] }
