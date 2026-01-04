@@ -249,7 +249,7 @@ pub fn article_view(props: &ArticleViewProps) -> Html {
 
                 wasm_bindgen_futures::spawn_local(async move {
                     let loader = DataLoader::new();
-                    match loader.load_article_content(&file_path).await {
+                    match loader.load_article_content_only(&file_path).await {
                         Ok(content) => {
                             article_content.set(Some(content));
                             content_error.set(None);

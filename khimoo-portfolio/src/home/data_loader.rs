@@ -137,6 +137,40 @@ impl std::fmt::Display for DataLoadError {
 
 impl std::error::Error for DataLoadError {}
 
+// Simple front matter parser for WASM environment
+struct SimpleFrontMatterParser;
+
+impl SimpleFrontMatterParser {
+    /// Parse front matter from markdown content
+    /// Returns (remaining_content) - metadata is stripped
+    fn parse_content_only(content: &str) -> String {
+        let content = content.trim();
+        
+        // Check if content starts with front matter delimiter
+        if content.starts_with("---") {
+            let lines: Vec<&str> = content.lines().collect();
+            
+            // Find the closing delimiter
+            let mut end_index = None;
+            for (i, line) in lines.iter().enumerate().skip(1) {
+                if line.trim() == "---" {
+                    end_index = Some(i);
+                    break;
+                }
+            }
+            
+            if let Some(end_idx) = end_index {
+                // Return content after the closing delimiter
+                let remaining_lines = &lines[end_idx + 1..];
+                return remaining_lines.join("\n").trim_start().to_string();
+            }
+        }
+        
+        // No front matter found, return original content
+        content.to_string()
+    }
+}
+
 // DataLoader structure for loading static JSON files
 #[derive(Debug, Clone)]
 pub struct DataLoader {
@@ -231,6 +265,17 @@ impl DataLoader {
             .ok_or_else(|| DataLoadError::ParseError("Response is not a string".to_string()))?;
 
         Ok(content)
+    }
+
+    // Load article content without front matter metadata (content only)
+    pub async fn load_article_content_only(&self, file_path: &str) -> Result<String, DataLoadError> {
+        let full_content = self.load_article_content(file_path).await?;
+        
+        // Parse and extract only the markdown content (without metadata)
+        let content_only = SimpleFrontMatterParser::parse_content_only(&full_content);
+        
+        web_sys::console::log_1(&"DataLoader: Successfully separated content from metadata".into());
+        Ok(content_only)
     }
 
 
