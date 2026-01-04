@@ -50,13 +50,16 @@ regex = "1.7"
 anyhow = "1.0"
 chrono = { version = "0.4", features = ["serde"] }
 
+# Image processing (only for CLI tools)
+image = { version = "0.24", optional = true }
+
 # CLI tools dependencies (optional)
 notify = { version = "6.0", optional = true }
 walkdir = { version = "2.3", optional = true }
 
 [features]
 default = []
-cli-tools = ["notify", "walkdir"]
+cli-tools = ["notify", "walkdir", "image"]
 
 # Target-specific dependencies
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]

@@ -1,7 +1,7 @@
 use khimoo_portfolio::articles::{
     FrontMatterParser, ArticleMetadata, LinkExtractor, ExtractedLink
 };
-use khimoo_portfolio::config_loader::get_default_articles_dir;
+use khimoo_portfolio::config_loader::{get_default_articles_dir, get_image_optimization_config, get_images_dir};
 use anyhow::{Context, Result};
 use clap::Parser;
 use serde::{Deserialize, Serialize};
@@ -9,6 +9,9 @@ use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
 use chrono::Utc;
+
+#[cfg(feature = "cli-tools")]
+use khimoo_portfolio::articles::image_optimizer::{ImageOptimizer, OptimizedImageSet};
 
 #[derive(Parser)]
 #[command(name = "process-articles")]
@@ -29,6 +32,10 @@ struct Args {
     /// Enable parallel processing
     #[arg(short, long)]
     parallel: bool,
+    
+    /// Enable image optimization
+    #[arg(long)]
+    optimize_images: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -40,6 +47,9 @@ pub struct ProcessedArticle {
     pub outbound_links: Vec<ExtractedLink>,
     pub inbound_links: Vec<ExtractedLink>,
     pub processed_at: String,
+    #[cfg(feature = "cli-tools")]
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub optimized_images: Vec<OptimizedImageSet>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -60,12 +70,15 @@ fn main() -> Result<()> {
         println!("🔄 Processing articles from {:?}", articles_dir);
         println!("📁 Output directory: {:?}", args.output_dir);
         println!("⚡ Parallel processing: {}", args.parallel);
+        println!("🖼️  Image optimization: {}", args.optimize_images);
     }
     
     let processor = ArticleProcessor::new(articles_dir, args.output_dir, args.verbose);
     
     if args.parallel {
         processor.process_all_articles_parallel()
+    } else if args.optimize_images {
+        processor.process_all_articles_with_images()
     } else {
         processor.process_all_articles_sequential()
     }
@@ -76,25 +89,50 @@ pub struct ArticleProcessor {
     output_dir: PathBuf,
     verbose: bool,
     link_extractor: LinkExtractor,
+    #[cfg(feature = "cli-tools")]
+    image_optimizer: Option<ImageOptimizer>,
+    #[cfg(feature = "cli-tools")]
+    images_dir: PathBuf,
 }
 
 impl ArticleProcessor {
     pub fn new(articles_dir: PathBuf, output_dir: PathBuf, verbose: bool) -> Self {
+        #[cfg(feature = "cli-tools")]
+        let image_optimizer = {
+            let config = get_image_optimization_config();
+            Some(ImageOptimizer::new(config, verbose))
+        };
+        
+        #[cfg(feature = "cli-tools")]
+        let images_dir = get_images_dir();
+        
         Self {
             articles_dir,
             output_dir,
             verbose,
             link_extractor: LinkExtractor::new().expect("Failed to create LinkExtractor"),
+            #[cfg(feature = "cli-tools")]
+            image_optimizer,
+            #[cfg(feature = "cli-tools")]
+            images_dir,
         }
     }
 
     pub fn process_all_articles_sequential(&self) -> Result<()> {
+        self.process_all_articles_sequential_impl(false)
+    }
+
+    pub fn process_all_articles_with_images(&self) -> Result<()> {
+        self.process_all_articles_sequential_impl(true)
+    }
+
+    fn process_all_articles_sequential_impl(&self, optimize_images: bool) -> Result<()> {
         // Create output directory
         std::fs::create_dir_all(&self.output_dir)
             .context("Failed to create output directory")?;
         
         // Load and parse all articles
-        let articles = self.load_and_parse_articles()
+        let articles = self.load_and_parse_articles(optimize_images)
             .context("Failed to load articles")?;
         
         if self.verbose {
@@ -126,7 +164,7 @@ impl ArticleProcessor {
         self.process_all_articles_sequential()
     }
 
-    fn load_and_parse_articles(&self) -> Result<Vec<ProcessedArticle>> {
+    fn load_and_parse_articles(&self, optimize_images: bool) -> Result<Vec<ProcessedArticle>> {
         let mut articles = Vec::new();
         
         for entry in WalkDir::new(&self.articles_dir)
@@ -140,7 +178,7 @@ impl ArticleProcessor {
             })
             .filter(|e| e.path().extension().map_or(false, |ext| ext == "md"))
         {
-            match self.process_article_file(entry.path()) {
+            match self.process_article_file(entry.path(), optimize_images) {
                 Ok(article) => {
                     if self.verbose {
                         println!("✅ Processed: {} - '{}'", 
@@ -160,7 +198,7 @@ impl ArticleProcessor {
         Ok(articles)
     }
 
-    fn process_article_file(&self, file_path: &Path) -> Result<ProcessedArticle> {
+    fn process_article_file(&self, file_path: &Path, optimize_images: bool) -> Result<ProcessedArticle> {
         // Read file content
         let content = std::fs::read_to_string(file_path)
             .with_context(|| format!("Failed to read file: {:?}", file_path))?;
@@ -179,8 +217,16 @@ impl ArticleProcessor {
         // Generate slug from file path
         let slug = self.generate_slug(file_path);
 
+        // Process images if requested
+        #[cfg(feature = "cli-tools")]
+        let optimized_images = if optimize_images {
+            self.process_article_images(&metadata)?
+        } else {
+            Vec::new()
+        };
+
         if self.verbose {
-            println!("   📝 Title: {}", metadata.title);
+            println!("   � TitlOe: {}", metadata.title);
             println!("   🆔 Slug: {}", slug);
             println!("   🏠 Home display: {}", metadata.home_display);
             if let Some(category) = &metadata.category {
@@ -201,6 +247,17 @@ impl ArticleProcessor {
             if !metadata.tags.is_empty() {
                 println!("   🏷️  Tags: {:?}", metadata.tags);
             }
+            #[cfg(feature = "cli-tools")]
+            if !optimized_images.is_empty() {
+                println!("   🖼️  Optimized images: {}", optimized_images.len());
+                for img in &optimized_images {
+                    println!("      → {} ({} bytes → {} bytes WebP)", 
+                        img.original_path.file_name().unwrap().to_string_lossy(),
+                        img.original_size,
+                        img.small_webp_size
+                    );
+                }
+            }
         }
 
         Ok(ProcessedArticle {
@@ -211,6 +268,8 @@ impl ArticleProcessor {
             outbound_links,
             inbound_links: Vec::new(), // Will be calculated later
             processed_at: Utc::now().to_rfc3339(),
+            #[cfg(feature = "cli-tools")]
+            optimized_images,
         })
     }
 
@@ -222,6 +281,38 @@ impl ArticleProcessor {
             .to_string()
             .to_lowercase()
             .replace(' ', "-")
+    }
+
+    /// Process images referenced in article metadata
+    #[cfg(feature = "cli-tools")]
+    fn process_article_images(&self, metadata: &ArticleMetadata) -> Result<Vec<OptimizedImageSet>> {
+        let mut optimized_images = Vec::new();
+
+        if let Some(image_optimizer) = &self.image_optimizer {
+            let image_refs = image_optimizer.extract_image_references(metadata);
+            
+            for image_filename in image_refs {
+                let input_path = self.images_dir.join(&image_filename);
+                
+                if input_path.exists() {
+                    match image_optimizer.optimize_image(&input_path, &self.images_dir) {
+                        Ok(optimized) => {
+                            if self.verbose {
+                                println!("      🖼️  Optimized: {}", image_filename);
+                            }
+                            optimized_images.push(optimized);
+                        }
+                        Err(e) => {
+                            eprintln!("      ⚠️  Failed to optimize {}: {}", image_filename, e);
+                        }
+                    }
+                } else if self.verbose {
+                    println!("      ⚠️  Image not found: {}", input_path.display());
+                }
+            }
+        }
+
+        Ok(optimized_images)
     }
 
     fn calculate_inbound_links(&self, mut articles: Vec<ProcessedArticle>) -> Result<Vec<ProcessedArticle>> {

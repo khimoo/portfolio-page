@@ -87,7 +87,19 @@ python3 scripts/config.py articles_dir --relative  # 相対パス
 画像を追加・更新した際は：
 
 ```bash
+# 記事処理と同時に画像最適化
+just process-articles-with-images
+
+# または CI/CD パイプラインで
 just ci-optimize-images
 ```
 
 これにより、WebP形式への変換や複数サイズの生成が自動実行されます。
+
+### 画像最適化の仕組み
+
+- **統合処理**: 記事処理の一部として画像最適化を実行
+- **効率性**: 記事で参照されている画像のみを最適化
+- **設定ベース**: `project.toml`で最適化パラメータを管理
+- **複数サイズ**: 小サイズ(64x64)、中サイズ(128x128)を自動生成
+- **WebP対応**: 軽量なWebP形式での保存

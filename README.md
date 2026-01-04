@@ -73,7 +73,10 @@ just dev
 # Process articles (uses configured paths)
 just process-articles
 
-# Optimize images (uses configured paths)
+# Process articles with image optimization
+just process-articles-with-images
+
+# Optimize images (integrated with article processing)
 just ci-optimize-images
 
 # Build for production

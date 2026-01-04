@@ -43,6 +43,11 @@ process-articles:
     @echo "📝 Processing articles..."
     @cd {{APP_DIR}} && cargo run --bin process-articles --features cli-tools -- --articles-dir ../{{ARTICLES_DIR}} --output-dir data
 
+# Process articles with image optimization
+process-articles-with-images:
+    @echo "📝 Processing articles with image optimization..."
+    @cd {{APP_DIR}} && cargo run --bin process-articles --features cli-tools -- --articles-dir ../{{ARTICLES_DIR}} --output-dir data --optimize-images --verbose
+
 # Validate internal and external links in articles
 validate-links:
     @echo "🔗 Validating links..."
@@ -98,17 +103,16 @@ ci-verify-setup:
     @echo "  RUST_BACKTRACE: ${RUST_BACKTRACE:-not set}"
     @echo "🎯 CI environment setup complete"
 
-# Optimize images using Python script with comprehensive verification
+# Optimize images using integrated Rust image processor
 ci-optimize-images:
     @echo "🖼️ Optimizing images..."
-    @python3 scripts/optimize_images.py --input-dir {{IMAGES_DIR}}
-    @just _verify-images
+    @just process-articles-with-images
     @echo "🎯 Image optimization complete"
 
 # Process articles with validation and comprehensive output verification
 ci-process-articles:
     @echo "📚 Processing articles..."
-    @cd {{APP_DIR}} && cargo run --features cli-tools --bin process-articles -- --articles-dir ../{{ARTICLES_DIR}} --output-dir data --verbose
+    @cd {{APP_DIR}} && cargo run --features cli-tools --bin process-articles -- --articles-dir ../{{ARTICLES_DIR}} --output-dir data --verbose --optimize-images
     @just _verify-article-processing
     @echo "🎯 Article processing complete"
 
