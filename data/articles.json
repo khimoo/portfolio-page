@@ -16,17 +16,11 @@
       },
       "file_path": "../content/articles/music.md",
       "outbound_links": [],
-      "inbound_links": [
-        {
-          "target_slug": "hobby",
-          "link_type": "WikiLink",
-          "original_text": "[[music|音楽]]"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.327754093+00:00"
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.643088646+00:00"
     },
     {
-      "slug": "neovim",
+      "slug": "Neovim",
       "title": "Neovim",
       "metadata": {
         "title": "Neovim",
@@ -41,19 +35,8 @@
       },
       "file_path": "../content/articles/Neovim.md",
       "outbound_links": [],
-      "inbound_links": [
-        {
-          "target_slug": "programming",
-          "link_type": "WikiLink",
-          "original_text": "[[Neovim]]"
-        },
-        {
-          "target_slug": "hobby",
-          "link_type": "WikiLink",
-          "original_text": "[[Neovim]]"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.327970444+00:00"
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.643278198+00:00"
     },
     {
       "slug": "myworks",
@@ -74,17 +57,30 @@
         {
           "target_slug": "myblog",
           "link_type": "MarkdownLink",
-          "original_text": "[ブログ](myblog)"
-        }
-      ],
-      "inbound_links": [
+          "original_text": "[ブログ](myblog)",
+          "display_text": "ブログ"
+        },
         {
-          "target_slug": "about-khimoo",
-          "link_type": "MarkdownLink",
-          "original_text": "[個人開発の記事一覧](myworks)"
+          "target_slug": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC",
+          "link_type": "ExternalLink",
+          "original_text": "[こちら](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC)",
+          "display_text": "こちら"
+        },
+        {
+          "target_slug": "https://github.com/khimoo/portfolio-page",
+          "link_type": "ExternalLink",
+          "original_text": "[リポジトリ](https://github.com/khimoo/portfolio-page)",
+          "display_text": "リポジトリ"
+        },
+        {
+          "target_slug": "https://rapier.rs/",
+          "link_type": "ExternalLink",
+          "original_text": "[Rapier](https://rapier.rs/)",
+          "display_text": "Rapier"
         }
       ],
-      "processed_at": "2026-01-04T07:21:56.328600523+00:00"
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.643873910+00:00"
     },
     {
       "slug": "mini_farm",
@@ -102,17 +98,11 @@
       },
       "file_path": "../content/articles/mini_farm.md",
       "outbound_links": [],
-      "inbound_links": [
-        {
-          "target_slug": "hobby",
-          "link_type": "WikiLink",
-          "original_text": "[[mini_farm|家庭菜園]]"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.328802548+00:00"
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.644034640+00:00"
     },
     {
-      "slug": "linux",
+      "slug": "Linux",
       "title": "Linux",
       "metadata": {
         "title": "Linux",
@@ -127,19 +117,27 @@
       },
       "file_path": "../content/articles/Linux.md",
       "outbound_links": [],
-      "inbound_links": [
-        {
-          "target_slug": "programming",
-          "link_type": "WikiLink",
-          "original_text": "[[Linux]]"
-        },
-        {
-          "target_slug": "hobby",
-          "link_type": "WikiLink",
-          "original_text": "[[Linux]]"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.328969758+00:00"
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.644164603+00:00"
+    },
+    {
+      "slug": "template_article",
+      "title": "Untitled",
+      "metadata": {
+        "title": "Untitled",
+        "home_display": false,
+        "category": null,
+        "importance": 3,
+        "related_articles": [],
+        "tags": [],
+        "created_at": null,
+        "updated_at": null,
+        "author_image": null
+      },
+      "file_path": "../content/articles/Templates/template_article.md",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.644241245+00:00"
     },
     {
       "slug": "drawing",
@@ -157,14 +155,8 @@
       },
       "file_path": "../content/articles/drawing.md",
       "outbound_links": [],
-      "inbound_links": [
-        {
-          "target_slug": "hobby",
-          "link_type": "WikiLink",
-          "original_text": "[[drawing|絵]]"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.329160753+00:00"
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.644406064+00:00"
     },
     {
       "slug": "gakuchika",
@@ -182,14 +174,8 @@
       },
       "file_path": "../content/articles/gakuchika.md",
       "outbound_links": [],
-      "inbound_links": [
-        {
-          "target_slug": "about-khimoo",
-          "link_type": "MarkdownLink",
-          "original_text": "[こちら](gakuchika)"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.329335607+00:00"
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.644555137+00:00"
     },
     {
       "slug": "myblog",
@@ -207,14 +193,8 @@
       },
       "file_path": "../content/articles/myblog.md",
       "outbound_links": [],
-      "inbound_links": [
-        {
-          "target_slug": "myworks",
-          "link_type": "MarkdownLink",
-          "original_text": "[ブログ](myblog)"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.329502276+00:00"
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.644721366+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -235,48 +215,72 @@
         {
           "target_slug": "math",
           "link_type": "MarkdownLink",
-          "original_text": "[専門](math)"
+          "original_text": "[専門](math)",
+          "display_text": "専門"
         },
         {
           "target_slug": "math",
           "link_type": "MarkdownLink",
-          "original_text": "[数学](math)"
+          "original_text": "[数学](math)",
+          "display_text": "数学"
         },
         {
           "target_slug": "continuum_theory",
           "link_type": "MarkdownLink",
-          "original_text": "[連続体理論](continuum_theory)"
+          "original_text": "[連続体理論](continuum_theory)",
+          "display_text": "連続体理論"
         },
         {
           "target_slug": "hobby",
           "link_type": "MarkdownLink",
-          "original_text": "[趣味](hobby)"
+          "original_text": "[趣味](hobby)",
+          "display_text": "趣味"
         },
         {
           "target_slug": "gakuchika",
           "link_type": "MarkdownLink",
-          "original_text": "[こちら](gakuchika)"
+          "original_text": "[こちら](gakuchika)",
+          "display_text": "こちら"
         },
         {
           "target_slug": "myworks",
           "link_type": "MarkdownLink",
-          "original_text": "[個人開発の記事一覧](myworks)"
+          "original_text": "[個人開発の記事一覧](myworks)",
+          "display_text": "個人開発の記事一覧"
+        },
+        {
+          "target_slug": "https://github.com/khimoo/portfolio-page",
+          "link_type": "ExternalLink",
+          "original_text": "[Rust\\Yew, wasmで実装したブログ](https://github.com/khimoo/portfolio-page)",
+          "display_text": "Rust\\Yew, wasmで実装したブログ"
+        },
+        {
+          "target_slug": "https://github.com/khimoo/DriveStatus",
+          "link_type": "ExternalLink",
+          "original_text": "[サークル内で実際に使用していたカーシェア管理サイト](https://github.com/khimoo/DriveStatus)",
+          "display_text": "サークル内で実際に使用していたカーシェア管理サイト"
+        },
+        {
+          "target_slug": "https://github.com/khimoo/pitch_controller",
+          "link_type": "ExternalLink",
+          "original_text": "[ゲームコントローラーでピッチベンドが使用できるようになるツール](https://github.com/khimoo/pitch_controller)",
+          "display_text": "ゲームコントローラーでピッチベンドが使用できるようになるツール"
+        },
+        {
+          "target_slug": "https://github.com/khimoo/chrome-skk",
+          "link_type": "ExternalLink",
+          "original_text": "[chromebook用imeのskkでstickey shiftを設定できるようにしたもの](https://github.com/khimoo/chrome-skk)",
+          "display_text": "chromebook用imeのskkでstickey shiftを設定できるようにしたもの"
+        },
+        {
+          "target_slug": "https://github.com/khimoo/ProvablyGoodPlanarMappings",
+          "link_type": "ExternalLink",
+          "original_text": "[Roi Poranneらの論文を実装したもの](https://github.com/khimoo/ProvablyGoodPlanarMappings)",
+          "display_text": "Roi Poranneらの論文を実装したもの"
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-04T07:21:56.565981742+00:00",
-      "optimized_images": [
-        {
-          "original_path": "../content/assets/img/author_img.png",
-          "small_png_path": "../content/assets/img/author_img_small.png",
-          "small_webp_path": "../content/assets/img/author_img_small.webp",
-          "medium_png_path": "../content/assets/img/author_img_medium.png",
-          "original_size": 206297,
-          "small_png_size": 11699,
-          "small_webp_size": 11699,
-          "medium_png_size": 42164
-        }
-      ]
+      "processed_at": "2026-01-05T17:47:07.645378196+00:00"
     },
     {
       "slug": "math",
@@ -293,26 +297,9 @@
         "author_image": null
       },
       "file_path": "../content/articles/math.md",
-      "outbound_links": [
-        {
-          "target_slug": "continuum_theory",
-          "link_type": "WikiLink",
-          "original_text": "[[continuum_theory]]"
-        }
-      ],
-      "inbound_links": [
-        {
-          "target_slug": "about-khimoo",
-          "link_type": "MarkdownLink",
-          "original_text": "[専門](math)"
-        },
-        {
-          "target_slug": "about-khimoo",
-          "link_type": "MarkdownLink",
-          "original_text": "[数学](math)"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.566775245+00:00"
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.645569327+00:00"
     },
     {
       "slug": "programming",
@@ -329,26 +316,9 @@
         "author_image": null
       },
       "file_path": "../content/articles/programming.md",
-      "outbound_links": [
-        {
-          "target_slug": "linux",
-          "link_type": "WikiLink",
-          "original_text": "[[Linux]]"
-        },
-        {
-          "target_slug": "neovim",
-          "link_type": "WikiLink",
-          "original_text": "[[Neovim]]"
-        }
-      ],
-      "inbound_links": [
-        {
-          "target_slug": "hobby",
-          "link_type": "WikiLink",
-          "original_text": "[[programming]]"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.567435079+00:00"
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.645735330+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -366,19 +336,8 @@
       },
       "file_path": "../content/articles/continuum_theory.md",
       "outbound_links": [],
-      "inbound_links": [
-        {
-          "target_slug": "about-khimoo",
-          "link_type": "MarkdownLink",
-          "original_text": "[連続体理論](continuum_theory)"
-        },
-        {
-          "target_slug": "math",
-          "link_type": "WikiLink",
-          "original_text": "[[continuum_theory]]"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.567603462+00:00"
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.645852131+00:00"
     },
     {
       "slug": "hobby",
@@ -395,56 +354,19 @@
         "author_image": null
       },
       "file_path": "../content/articles/hobby.md",
-      "outbound_links": [
-        {
-          "target_slug": "programming",
-          "link_type": "WikiLink",
-          "original_text": "[[programming]]"
-        },
-        {
-          "target_slug": "linux",
-          "link_type": "WikiLink",
-          "original_text": "[[Linux]]"
-        },
-        {
-          "target_slug": "neovim",
-          "link_type": "WikiLink",
-          "original_text": "[[Neovim]]"
-        },
-        {
-          "target_slug": "mini_farm",
-          "link_type": "WikiLink",
-          "original_text": "[[mini_farm|家庭菜園]]"
-        },
-        {
-          "target_slug": "drawing",
-          "link_type": "WikiLink",
-          "original_text": "[[drawing|絵]]"
-        },
-        {
-          "target_slug": "music",
-          "link_type": "WikiLink",
-          "original_text": "[[music|音楽]]"
-        }
-      ],
-      "inbound_links": [
-        {
-          "target_slug": "about-khimoo",
-          "link_type": "MarkdownLink",
-          "original_text": "[趣味](hobby)"
-        }
-      ],
-      "processed_at": "2026-01-04T07:21:56.569251820+00:00"
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-01-05T17:47:07.646033041+00:00"
     }
   ],
-  "generated_at": "2026-01-04T07:21:56.569450749+00:00",
-  "total_count": 13,
+  "generated_at": "2026-01-05T17:47:07.884383783+00:00",
+  "total_count": 14,
   "home_articles": [
     "music",
-    "neovim",
+    "Neovim",
     "myworks",
     "mini_farm",
-    "linux",
+    "Linux",
     "drawing",
     "gakuchika",
     "myblog",
