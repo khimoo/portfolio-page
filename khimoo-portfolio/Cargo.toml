@@ -10,17 +10,6 @@ edition = "2021"
 name = "khimoo-portfolio"
 path = "src/main.rs"
 
-# Article processing tools (only for native builds)
-[[bin]]
-name = "process-articles"
-path = "src/bin/process_articles.rs"
-required-features = ["cli-tools"]
-
-[[bin]]
-name = "validate-links"
-path = "src/bin/validate_links.rs"
-required-features = ["cli-tools"]
-
 [dependencies]
 # Web framework
 yew = { version = "0.21", features = ["csr"] }
@@ -48,6 +37,7 @@ toml = "0.8"
 
 regex = "1.7"
 anyhow = "1.0"
+thiserror = "1.0"
 chrono = { version = "0.4", features = ["serde"] }
 
 # Image processing (only for CLI tools)

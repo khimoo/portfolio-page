@@ -1,21 +1,17 @@
-pub mod home;
+// Configuration module (shared between CLI and Web)
 pub mod config;
 
-// Only include articles module for non-WASM targets
+// Core business logic modules (shared between CLI and Web)
+pub mod core;
+
+// Web application module (only for WASM targets)
+#[cfg(target_arch = "wasm32")]
+pub mod web;
+
+// CLI module (only for non-WASM targets)
 #[cfg(not(target_arch = "wasm32"))]
-pub mod articles;
+pub mod cli;
 
 // Only include config_loader for non-WASM targets
 #[cfg(not(target_arch = "wasm32"))]
 pub mod config_loader;
-
-// Re-export commonly used types (only for non-WASM)
-#[cfg(not(target_arch = "wasm32"))]
-pub use articles::{
-    ArticleMetadata, 
-    ExtractedLink, 
-    LinkType, 
-    LinkExtractor,
-    FrontMatterParser,
-    ArticleProcessor
-};

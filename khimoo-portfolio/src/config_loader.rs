@@ -2,7 +2,7 @@ use std::path::PathBuf;
 use std::collections::HashMap;
 
 #[cfg(feature = "cli-tools")]
-use crate::articles::image_optimizer::ImageOptimizationConfig;
+use crate::core::media::image_optimizer::ImageOptimizationConfig;
 
 /// Load configuration from project.toml
 pub fn load_project_config() -> Result<HashMap<String, String>, Box<dyn std::error::Error>> {

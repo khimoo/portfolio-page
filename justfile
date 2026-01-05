@@ -41,17 +41,17 @@ dev-data-only: ci-optimize-images ci-process-articles _copy-assets
 # Process markdown articles into JSON data structures
 process-articles:
     @echo "📝 Processing articles..."
-    @cd {{APP_DIR}} && cargo run --bin process-articles --features cli-tools -- --articles-dir ../{{ARTICLES_DIR}} --output-dir data
+    @cd {{APP_DIR}} && cargo test --features cli-tools test_process_articles_command -- --ignored --nocapture
 
 # Process articles with image optimization
 process-articles-with-images:
     @echo "📝 Processing articles with image optimization..."
-    @cd {{APP_DIR}} && cargo run --bin process-articles --features cli-tools -- --articles-dir ../{{ARTICLES_DIR}} --output-dir data --optimize-images --verbose
+    @cd {{APP_DIR}} && cargo test --features cli-tools test_process_articles_with_images_cli -- --ignored --nocapture
 
 # Validate internal and external links in articles
 validate-links:
     @echo "🔗 Validating links..."
-    @cargo run --bin validate-links
+    @cd {{APP_DIR}} && cargo test --features cli-tools test_validate_links_cli -- --ignored --nocapture
 
 # Build all data: process articles and validate links
 build-data: process-articles validate-links
@@ -112,7 +112,7 @@ ci-optimize-images:
 # Process articles with validation and comprehensive output verification
 ci-process-articles:
     @echo "📚 Processing articles..."
-    @cd {{APP_DIR}} && cargo run --features cli-tools --bin process-articles -- --articles-dir ../{{ARTICLES_DIR}} --output-dir data --verbose --optimize-images
+    @cd {{APP_DIR}} && cargo test --features cli-tools test_process_articles_with_images_cli -- --ignored --nocapture
     @just _verify-article-processing
     @echo "🎯 Article processing complete"
 

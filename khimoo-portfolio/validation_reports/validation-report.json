@@ -1,0 +1,276 @@
+{
+  "validation_date": "2026-01-05T16:53:03.533799955+00:00",
+  "summary": {
+    "total_articles": 14,
+    "total_links": 24,
+    "broken_links": 12,
+    "invalid_references": 0,
+    "orphaned_articles": 3,
+    "circular_references": 0,
+    "articles_with_errors": 4,
+    "articles_with_warnings": 7
+  },
+  "errors": [
+    {
+      "error_type": "BrokenLink",
+      "source_article": "about-khimoo",
+      "target_reference": "https://github.com/khimoo/portfolio-page",
+      "context": null,
+      "line_number": null,
+      "suggestion": null
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "about-khimoo",
+      "target_reference": "https://github.com/khimoo/DriveStatus",
+      "context": null,
+      "line_number": null,
+      "suggestion": null
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "about-khimoo",
+      "target_reference": "https://github.com/khimoo/pitch_controller",
+      "context": null,
+      "line_number": null,
+      "suggestion": null
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "about-khimoo",
+      "target_reference": "https://github.com/khimoo/chrome-skk",
+      "context": null,
+      "line_number": null,
+      "suggestion": null
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "about-khimoo",
+      "target_reference": "https://github.com/khimoo/ProvablyGoodPlanarMappings",
+      "context": null,
+      "line_number": null,
+      "suggestion": null
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "myworks",
+      "target_reference": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC",
+      "context": null,
+      "line_number": null,
+      "suggestion": null
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "myworks",
+      "target_reference": "https://github.com/khimoo/portfolio-page",
+      "context": null,
+      "line_number": null,
+      "suggestion": null
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "myworks",
+      "target_reference": "https://rapier.rs/",
+      "context": null,
+      "line_number": null,
+      "suggestion": null
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "programming",
+      "target_reference": "linux",
+      "context": null,
+      "line_number": null,
+      "suggestion": "Did you mean 'Linux'?"
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "programming",
+      "target_reference": "neovim",
+      "context": null,
+      "line_number": null,
+      "suggestion": "Did you mean 'Neovim'?"
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "hobby",
+      "target_reference": "linux",
+      "context": null,
+      "line_number": null,
+      "suggestion": "Did you mean 'Linux'?"
+    },
+    {
+      "error_type": "BrokenLink",
+      "source_article": "hobby",
+      "target_reference": "neovim",
+      "context": null,
+      "line_number": null,
+      "suggestion": "Did you mean 'Neovim'?"
+    }
+  ],
+  "warnings": [
+    {
+      "warning_type": "HighImportanceWithFewLinks",
+      "source_article": "about-khimoo",
+      "target_reference": null,
+      "context": "Importance: 5, Inbound links: 0",
+      "suggestion": "Consider adding more links to this important article or reducing its importance level"
+    },
+    {
+      "warning_type": "HighImportanceWithFewLinks",
+      "source_article": "myworks",
+      "target_reference": null,
+      "context": "Importance: 4, Inbound links: 1",
+      "suggestion": "Consider adding more links to this important article or reducing its importance level"
+    },
+    {
+      "warning_type": "MissingBacklinks",
+      "source_article": "Neovim",
+      "target_reference": null,
+      "context": "No inbound or outbound links",
+      "suggestion": "Consider adding links to/from this article to integrate it better"
+    },
+    {
+      "warning_type": "HighImportanceWithFewLinks",
+      "source_article": "hobby",
+      "target_reference": null,
+      "context": "Importance: 4, Inbound links: 1",
+      "suggestion": "Consider adding more links to this important article or reducing its importance level"
+    },
+    {
+      "warning_type": "MissingBacklinks",
+      "source_article": "template_article",
+      "target_reference": null,
+      "context": "No inbound or outbound links",
+      "suggestion": "Consider adding links to/from this article to integrate it better"
+    },
+    {
+      "warning_type": "HighImportanceWithFewLinks",
+      "source_article": "gakuchika",
+      "target_reference": null,
+      "context": "Importance: 4, Inbound links: 1",
+      "suggestion": "Consider adding more links to this important article or reducing its importance level"
+    },
+    {
+      "warning_type": "MissingBacklinks",
+      "source_article": "Linux",
+      "target_reference": null,
+      "context": "No inbound or outbound links",
+      "suggestion": "Consider adding links to/from this article to integrate it better"
+    }
+  ],
+  "article_stats": {
+    "Linux": {
+      "outbound_links": 0,
+      "inbound_links": 0,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": true
+    },
+    "drawing": {
+      "outbound_links": 0,
+      "inbound_links": 1,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": false
+    },
+    "music": {
+      "outbound_links": 0,
+      "inbound_links": 1,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": false
+    },
+    "math": {
+      "outbound_links": 1,
+      "inbound_links": 2,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": false
+    },
+    "mini_farm": {
+      "outbound_links": 0,
+      "inbound_links": 1,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": false
+    },
+    "continuum_theory": {
+      "outbound_links": 0,
+      "inbound_links": 2,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": false
+    },
+    "Neovim": {
+      "outbound_links": 0,
+      "inbound_links": 0,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": true
+    },
+    "myworks": {
+      "outbound_links": 4,
+      "inbound_links": 1,
+      "broken_outbound_links": 3,
+      "invalid_related_articles": 0,
+      "has_errors": true,
+      "has_warnings": true
+    },
+    "hobby": {
+      "outbound_links": 6,
+      "inbound_links": 1,
+      "broken_outbound_links": 2,
+      "invalid_related_articles": 0,
+      "has_errors": true,
+      "has_warnings": true
+    },
+    "template_article": {
+      "outbound_links": 0,
+      "inbound_links": 0,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": true
+    },
+    "about-khimoo": {
+      "outbound_links": 11,
+      "inbound_links": 0,
+      "broken_outbound_links": 5,
+      "invalid_related_articles": 0,
+      "has_errors": true,
+      "has_warnings": true
+    },
+    "programming": {
+      "outbound_links": 2,
+      "inbound_links": 1,
+      "broken_outbound_links": 2,
+      "invalid_related_articles": 0,
+      "has_errors": true,
+      "has_warnings": false
+    },
+    "gakuchika": {
+      "outbound_links": 0,
+      "inbound_links": 1,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": true
+    },
+    "myblog": {
+      "outbound_links": 0,
+      "inbound_links": 1,
+      "broken_outbound_links": 0,
+      "invalid_related_articles": 0,
+      "has_errors": false,
+      "has_warnings": false
+    }
+  }
+}
