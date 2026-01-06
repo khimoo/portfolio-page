@@ -5,21 +5,37 @@ importance: 4
 category: ""
 tags: []
 created_at: "2025-12-29T03:30:38Z"
-updated_at: "2026-01-03T23:28:51Z"
+updated_at: "2026-01-06T11:45:16Z"
 ---
-- https://github.com/khimoo/portfolio-page
-	- Rust\Yew, wasmで実装したブログ
-- https://github.com/khimoo/DriveStatus
-	- サークル内で実際に使用していたカーシェア管理サイト
-- https://github.com/khimoo/pitch_controller
-	- ゲームコントローラーでピッチベンドが使用できるようになるツール
-- https://github.com/khimoo/chrome-skk
-	- chromebook用imeのskkでstickey shiftを設定できるようにしたもの
-- https://github.com/khimoo/ProvablyGoodPlanarMappings
-	- [こちら](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC)の論文を実装したもの
- 
- 
- - WebAssemblyで作ってみたブログ
-	- [リポジトリ](https://github.com/khimoo/portfolio-page)
-	- wasmに興味があり作ってみました。せっかくのwasmなのでウェブ用のライブラリではないライブラリで開発してみようと、[Rapier](https://rapier.rs/)というRustの物理演算ライブラリを使いました。\
-	  詳細は[ブログ](myblog)をご確認ください。
+#  WebAssemblyで作ってみたブログ
+[リポジトリ](https://github.com/khimoo/portfolio-page)
+
+wasmに興味があり、あえてRust\\Yewを使用しました。
+wasmの良さを活かしてみたくてrapierというウェブ用ではない物理演算ライブラリを使用しました。
+
+詳細は[ブログ](myblog)。
+
+# ゲームコントローラーでピッチベンド
+[リポジトリ](https://github.com/khimoo/pitch_controller)
+
+midiキーボードとゲームコントローラーをPCに繋ぐことで、ピッチベンドが無いキーボードでもピッチベンドができるようになります。
+Rustの練習用に作ってみましたが、結果的にはリアルタイム性や並列処理がRustと相性がよかったかもしれないです。
+
+詳細は[ブログ](pitch-bend)
+
+# ProvablyGoodPlanarMappings
+[リポジトリ](https://github.com/khimoo/ProvablyGoodPlanarMappings)
+
+サマーインターンで[こちら](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC)の論文を実装しました。実働4〜5日にしてはよくがんばったと思います。
+
+詳細：[ブログ](provably-good-planar-mappings)
+
+# カーシェア管理サイト
+[リポジトリ](https://github.com/khimoo/DriveStatus)
+
+サークル内でカーシェアをしようという話になりざっと作ったもので、結局これを使い続けています。オブジェクト指向をよくわかっていなかった時期のコードです。
+
+# Chromebook用IDE(SKK)でのstickey shift
+[リポジトリ](https://github.com/khimoo/chrome-skk)
+
+[こちら](https://github.com/hkurokawa/chrome-skk)のコードをフォークしstickey shiftを追加したものです。
