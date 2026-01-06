@@ -1,12 +1,12 @@
 use crate::web::components::ArticleStateRenderer;
-use crate::web::data_loader::{use_lightweight_articles, LightweightArticle};
+use crate::web::data_loader::{use_lightweight_articles_with_summaries, LightweightArticle};
 use crate::web::routes::Route;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
 #[function_component(ArticleIndexPage)]
 pub fn article_index_page() -> Html {
-    let (articles, loading, error) = use_lightweight_articles();
+    let (articles, loading, error) = use_lightweight_articles_with_summaries();
 
     if *loading {
         return ArticleStateRenderer::render_index_loading();
@@ -52,14 +52,25 @@ fn render_articles_list(articles: &Option<Vec<LightweightArticle>>) -> Html {
 
 fn render_article_item(article: &LightweightArticle) -> Html {
     html! {
-        <li key={article.slug.clone()} style="margin-bottom: 20px; padding: 16px; border-radius: 8px;">
-            <h3 style="margin: 0 0 8px 0;">
+        <li key={article.slug.clone()} class="article-item">
+            <h3 class="article-title">
                 <Link<Route> to={Route::ArticleShow { slug: article.slug.clone() }}>
                     {&article.title}
                 </Link<Route>>
             </h3>
+            {render_article_summary(article)}
             {render_article_meta(article)}
         </li>
+    }
+}
+
+fn render_article_summary(article: &LightweightArticle) -> Html {
+    if let Some(summary) = &article.summary {
+        html! {
+            <p class="article-summary">{summary}</p>
+        }
+    } else {
+        html! {}
     }
 }
 
@@ -92,6 +103,8 @@ fn index_styles() -> &'static str {
         --text-color: #333333;
         --link-color: #007bff;
         --meta-color: #666;
+        --summary-color: #555;
+        --border-color: #e0e0e0;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -100,6 +113,8 @@ fn index_styles() -> &'static str {
             --text-color: #e0e0e0;
             --link-color: #66b3ff;
             --meta-color: #aaa;
+            --summary-color: #ccc;
+            --border-color: #333;
         }
     }
 
@@ -118,6 +133,26 @@ fn index_styles() -> &'static str {
     .article-index-container a {
         color: var(--link-color);
         text-decoration: none;
+    }
+
+    .article-item {
+        margin-bottom: 24px;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    .article-title {
+        margin: 0 0 12px 0;
+        font-size: 1.2em;
+    }
+
+    .article-summary {
+        margin: 0 0 12px 0;
+        color: var(--summary-color);
+        line-height: 1.5;
+        font-size: 0.95em;
     }
 
     .article-meta {
