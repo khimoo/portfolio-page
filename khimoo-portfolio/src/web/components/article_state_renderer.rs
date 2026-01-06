@@ -1,6 +1,4 @@
-use crate::web::routes::Route;
 use yew::prelude::*;
-use yew_router::prelude::*;
 
 /// ローディング/エラー状態の表示を担当
 pub struct ArticleStateRenderer;
@@ -27,14 +25,7 @@ impl ArticleStateRenderer {
             height: 40px; 
             animation: spin 2s linear infinite;
         }
-        .back-button {
-            padding: 8px 16px; 
-            background: #007bff; 
-            color: white; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer;
-        }
+
         .container {
             padding: 16px; 
             background: #081D35; 
@@ -53,13 +44,6 @@ impl ArticleStateRenderer {
             <>
                 <style>{Self::base_styles()}</style>
                 <div class="container">
-                    <div style="margin-bottom: 20px;">
-                        <Link<Route> to={Route::Home}>
-                            <button class="back-button">
-                                {"← Back to Home"}
-                            </button>
-                        </Link<Route>>
-                    </div>
                     <h1>{"Loading article..."}</h1>
                     <div style="margin-top: 20px;">
                         <div class="loading-spinner"></div>
@@ -75,13 +59,6 @@ impl ArticleStateRenderer {
             <>
                 <style>{Self::base_styles()}</style>
                 <div class="container">
-                    <div style="margin-bottom: 20px;">
-                        <Link<Route> to={Route::Home}>
-                            <button class="back-button">
-                                {"← Back to Home"}
-                            </button>
-                        </Link<Route>>
-                    </div>
                     <h1>{"Article Not Found"}</h1>
                     <p class="error-text">{format!("Error: {}", error)}</p>
                     <p>{"The article you're looking for doesn't exist or couldn't be loaded."}</p>
@@ -125,13 +102,6 @@ impl ArticleStateRenderer {
             <>
                 <style>{Self::base_styles()}</style>
                 <div class="container">
-                    <div style="margin-bottom: 20px;">
-                        <Link<Route> to={Route::Home}>
-                            <button class="back-button">
-                                {"← Back to Home"}
-                            </button>
-                        </Link<Route>>
-                    </div>
                     <h1>{"Content Not Available"}</h1>
                     <p>{"The article content could not be loaded."}</p>
                 </div>

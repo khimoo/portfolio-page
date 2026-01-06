@@ -21,13 +21,7 @@ pub fn article_index_page() -> Html {
             <style>{index_styles()}</style>
             <div class="article-index-container">
                 <h1>{"記事一覧"}</h1>
-                <div style="margin-bottom: 20px;">
-                    <Link<Route> to={Route::Home}>
-                        <button class="back-button">
-                            {"← Back to Home"}
-                        </button>
-                    </Link<Route>>
-                </div>
+
                 {render_articles_list(&*articles)}
             </div>
         </>
@@ -128,6 +122,7 @@ fn index_styles() -> &'static str {
         background: var(--bg-color);
         color: var(--text-color);
         min-height: 100vh;
+        width: 100%;
     }
 
     .article-index-container a {
@@ -160,13 +155,6 @@ fn index_styles() -> &'static str {
         color: var(--meta-color);
     }
 
-    .back-button {
-        padding: 8px 16px; 
-        background: #007bff; 
-        color: white; 
-        border: none; 
-        border-radius: 4px; 
-        cursor: pointer;
-    }
+
     "#
 }

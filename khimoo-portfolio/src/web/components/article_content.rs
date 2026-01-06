@@ -37,12 +37,11 @@ fn process_markdown_content(content: &str) -> String {
     html_output
 }
 
-/// 関連記事セクションをレンダリング
 fn render_related_articles(article: &ProcessedArticle) -> Html {
     if !article.outbound_links.is_empty() {
         html! {
             <footer style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #444;">
-                <h3 style="color: #e0e0e0;">{"Related Articles"}</h3>
+                <h3 style="color: #e0e0e0;">{"関連リンク"}</h3>
                 <ul style="list-style: none; padding: 0;">
                     {
                         article.outbound_links.iter().map(|link| {
@@ -66,51 +65,51 @@ fn render_related_articles(article: &ProcessedArticle) -> Html {
 /// コンテンツ用のCSS（WikiLinkスタイル削除）
 fn content_styles() -> String {
     r#"
-    .markdown-body { 
-        line-height: 1.6; 
-        color: #e0e0e0; 
+    .markdown-body {
+        line-height: 1.6;
+        color: #e0e0e0;
     }
-    .markdown-body h1, .markdown-body h2, .markdown-body h3 { 
-        margin-top: 24px; 
-        margin-bottom: 16px; 
-        color: #e0e0e0; 
+    .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+        margin-top: 24px;
+        margin-bottom: 16px;
+        color: #e0e0e0;
     }
-    .markdown-body p { 
-        margin-bottom: 16px; 
-        color: #e0e0e0; 
+    .markdown-body p {
+        margin-bottom: 16px;
+        color: #e0e0e0;
     }
-    .markdown-body ul, .markdown-body ol { 
-        margin-bottom: 16px; 
-        padding-left: 30px; 
-        color: #e0e0e0; 
+    .markdown-body ul, .markdown-body ol {
+        margin-bottom: 16px;
+        padding-left: 30px;
+        color: #e0e0e0;
     }
-    .markdown-body code { 
-        background: #2d3748; 
-        color: #e0e0e0; 
-        padding: 2px 4px; 
-        border-radius: 3px; 
-        font-size: 85%; 
+    .markdown-body code {
+        background: #2d3748;
+        color: #e0e0e0;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-size: 85%;
     }
-    .markdown-body pre { 
-        background: #2d3748; 
-        color: #e0e0e0; 
-        padding: 16px; 
-        border-radius: 6px; 
-        overflow: auto; 
+    .markdown-body pre {
+        background: #2d3748;
+        color: #e0e0e0;
+        padding: 16px;
+        border-radius: 6px;
+        overflow: auto;
     }
-    .markdown-body blockquote { 
-        border-left: 4px solid #66b3ff; 
-        padding-left: 16px; 
-        color: #aaa; 
-        margin: 0 0 16px 0; 
+    .markdown-body blockquote {
+        border-left: 4px solid #66b3ff;
+        padding-left: 16px;
+        color: #aaa;
+        margin: 0 0 16px 0;
     }
-    .markdown-body a { 
-        color: #66b3ff; 
-        text-decoration: none; 
+    .markdown-body a {
+        color: #66b3ff;
+        text-decoration: none;
     }
-    .markdown-body a:hover { 
-        color: #99ccff; 
-        text-decoration: underline; 
+    .markdown-body a:hover {
+        color: #99ccff;
+        text-decoration: underline;
     }
     "#
     .to_string()

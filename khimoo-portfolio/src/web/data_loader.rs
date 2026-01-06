@@ -1,10 +1,10 @@
+use pulldown_cmark::{Event, Parser};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::JsFuture;
 use web_sys::{Request, RequestInit, RequestMode, Response};
 use yew::prelude::*;
-use pulldown_cmark::{Parser, Event};
 
 use crate::config::{get_config, AppConfig};
 use crate::core::articles::links::ExtractedLink;
@@ -41,7 +41,7 @@ pub struct LightweightArticle {
     pub title: String,
     pub metadata: ArticleMetadata,
     pub inbound_links: Vec<String>, // Pre-calculated for performance optimization
-    pub summary: Option<String>, // Article summary for list display
+    pub summary: Option<String>,    // Article summary for list display
 }
 
 impl From<ProcessedArticle> for LightweightArticle {
@@ -161,7 +161,7 @@ impl DataLoader {
 
         for article in articles_data.articles {
             let mut lightweight_article = LightweightArticle::from(article.clone());
-            
+
             // Generate summary from content
             match self.generate_article_summary(&article.file_path).await {
                 Ok(summary) => {
@@ -171,10 +171,11 @@ impl DataLoader {
                     web_sys::console::warn_1(
                         &format!("Failed to generate summary for {}: {}", article.slug, e).into(),
                     );
-                    lightweight_article.summary = Some("サマリーを読み込めませんでした。".to_string());
+                    lightweight_article.summary =
+                        Some("サマリーを読み込めませんでした。".to_string());
                 }
             }
-            
+
             lightweight_articles.push(lightweight_article);
         }
 
@@ -476,7 +477,7 @@ impl DataLoader {
     /// Generate summary from article content
     pub async fn generate_article_summary(&self, file_path: &str) -> Result<String, DataLoadError> {
         let content = self.load_article_content_only(file_path).await?;
-        
+
         // Extract first paragraph or first few sentences as summary
         let summary = self.extract_summary_from_content(&content);
         Ok(summary)
@@ -487,7 +488,7 @@ impl DataLoader {
         // First, convert markdown to plain text
         let plain_text = self.extract_plain_text_from_markdown(content);
         let content = plain_text.trim();
-        
+
         // Try to get first paragraph
         if let Some(first_paragraph) = content.split("\n\n").next() {
             let cleaned = first_paragraph
@@ -496,12 +497,12 @@ impl DataLoader {
                 .filter(|line| !line.is_empty())
                 .collect::<Vec<_>>()
                 .join(" ");
-            
+
             if !cleaned.is_empty() {
                 return self.truncate_string_safely(&cleaned, 150);
             }
         }
-        
+
         // Fallback: take first 150 characters
         let cleaned = content
             .lines()
@@ -509,7 +510,7 @@ impl DataLoader {
             .filter(|line| !line.is_empty())
             .collect::<Vec<_>>()
             .join(" ");
-            
+
         if cleaned.is_empty() {
             "記事の概要はありません。".to_string()
         } else {
@@ -522,15 +523,15 @@ impl DataLoader {
         if text.len() <= max_len {
             return text.to_string();
         }
-        
+
         // Find safe truncation point
         let mut truncate_at = max_len - 3; // Reserve space for "..."
-        
+
         // Move back to find character boundary
         while truncate_at > 0 && !text.is_char_boundary(truncate_at) {
             truncate_at -= 1;
         }
-        
+
         format!("{}...", &text[..truncate_at])
     }
 
@@ -538,13 +539,13 @@ impl DataLoader {
     fn extract_plain_text_from_markdown(&self, content: &str) -> String {
         let parser = Parser::new(content);
         let mut plain_text = String::new();
-        
+
         for event in parser {
             if let Event::Text(text) = event {
                 plain_text.push_str(&text);
             }
         }
-        
+
         plain_text
     }
 
