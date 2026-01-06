@@ -1,10 +1,10 @@
+use crate::config::get_config;
+use crate::web::header::Header;
+use crate::web::pages::{ArticleIndexPage, ArticleViewPage, HomePage};
+use crate::web::routes::Route;
+use crate::web::styles::LayoutStyles;
 use yew::prelude::*;
 use yew_router::prelude::*;
-use crate::web::routes::Route;
-use crate::web::pages::{HomePage, ArticleIndexPage, ArticleViewPage};
-use crate::web::header::Header;
-use crate::web::styles::LayoutStyles;
-use crate::config::get_config;
 
 #[function_component(App)]
 pub fn app() -> Html {

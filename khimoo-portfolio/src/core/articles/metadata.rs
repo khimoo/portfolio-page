@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
 use anyhow::{Context, Result};
 use chrono::DateTime;
+use serde::{Deserialize, Serialize};
 use yaml_front_matter::{Document, YamlFrontMatter};
 
 /// Article metadata structure with default values
@@ -55,7 +55,10 @@ impl MetadataExtractor {
     pub fn extract_frontmatter(&self, content: &str) -> Result<(ArticleMetadata, String)> {
         // Try to parse with yaml-front-matter
         match YamlFrontMatter::parse(content) {
-            Ok(Document { metadata, content: markdown_content }) => {
+            Ok(Document {
+                metadata,
+                content: markdown_content,
+            }) => {
                 // Parse metadata into ArticleMetadata struct
                 let metadata: ArticleMetadata = serde_yaml::from_value(metadata)
                     .context("Failed to deserialize front matter metadata")?;
@@ -84,7 +87,7 @@ impl MetadataExtractor {
     /// Extract tags from content (hashtags or frontmatter)
     pub fn extract_tags(&self, content: &str) -> Vec<String> {
         let mut tags = Vec::new();
-        
+
         // Extract hashtags from content
         for word in content.split_whitespace() {
             if word.starts_with('#') && word.len() > 1 {
@@ -94,7 +97,7 @@ impl MetadataExtractor {
                 }
             }
         }
-        
+
         tags.sort();
         tags.dedup();
         tags
@@ -104,16 +107,18 @@ impl MetadataExtractor {
     pub fn extract_date(&self, content: &str) -> Option<chrono::DateTime<chrono::Utc>> {
         // Look for date patterns in content
         use regex::Regex;
-        
+
         let date_regex = Regex::new(r"(\d{4}-\d{2}-\d{2})").ok()?;
         if let Some(captures) = date_regex.captures(content) {
             if let Some(date_str) = captures.get(1) {
-                if let Ok(naive_date) = chrono::NaiveDate::parse_from_str(date_str.as_str(), "%Y-%m-%d") {
+                if let Ok(naive_date) =
+                    chrono::NaiveDate::parse_from_str(date_str.as_str(), "%Y-%m-%d")
+                {
                     return Some(naive_date.and_hms_opt(0, 0, 0)?.and_utc());
                 }
             }
         }
-        
+
         None
     }
 
@@ -193,7 +198,7 @@ tags: ["rust", "web"]
     fn test_extract_title() {
         let extractor = MetadataExtractor::new();
         let content = "Some text\n# Main Title\nMore content";
-        
+
         let title = extractor.extract_title(content);
         assert_eq!(title, Some("Main Title".to_string()));
     }
@@ -202,7 +207,7 @@ tags: ["rust", "web"]
     fn test_extract_tags() {
         let extractor = MetadataExtractor::new();
         let content = "This is about #rust and #webdev. Also #programming!";
-        
+
         let tags = extractor.extract_tags(content);
         assert_eq!(tags, vec!["programming", "rust", "webdev"]);
     }
@@ -211,14 +216,14 @@ tags: ["rust", "web"]
     fn test_validate_metadata() {
         let extractor = MetadataExtractor::new();
         let mut metadata = ArticleMetadata::default();
-        
+
         // Valid metadata
         assert!(extractor.validate_metadata(&metadata).is_ok());
-        
+
         // Invalid importance
         metadata.importance = 10;
         assert!(extractor.validate_metadata(&metadata).is_err());
-        
+
         // Empty title
         metadata.importance = 3;
         metadata.title = "".to_string();

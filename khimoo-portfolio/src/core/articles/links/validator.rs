@@ -1,9 +1,9 @@
-use serde::{Deserialize, Serialize};
 use anyhow::Result;
+use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
 
-use crate::core::articles::metadata::ArticleMetadata;
 use super::ExtractedLink;
+use crate::core::articles::metadata::ArticleMetadata;
 
 /// Validation error types
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -65,10 +65,7 @@ pub struct LinkValidator {
 impl LinkValidator {
     /// Create a new link validator with article data
     pub fn new(articles: &[ProcessedArticleRef]) -> Self {
-        let existing_articles: HashSet<String> = articles
-            .iter()
-            .map(|a| a.slug.clone())
-            .collect();
+        let existing_articles: HashSet<String> = articles.iter().map(|a| a.slug.clone()).collect();
 
         let article_map: HashMap<String, ProcessedArticleRef> = articles
             .iter()
@@ -159,13 +156,19 @@ impl LinkValidator {
     /// Generate summary statistics
     fn generate_summary(&self, errors: &[ValidationError]) -> ValidationSummary {
         let total_articles = self.article_map.len();
-        let total_links: usize = self.article_map.values().map(|a| a.outbound_links.len()).sum();
+        let total_links: usize = self
+            .article_map
+            .values()
+            .map(|a| a.outbound_links.len())
+            .sum();
 
-        let broken_links = errors.iter()
+        let broken_links = errors
+            .iter()
             .filter(|e| matches!(e.error_type, ValidationErrorType::BrokenLink))
             .count();
 
-        let invalid_references = errors.iter()
+        let invalid_references = errors
+            .iter()
             .filter(|e| matches!(e.error_type, ValidationErrorType::InvalidRelatedArticle))
             .count();
 
@@ -219,12 +222,10 @@ mod tests {
 
     #[test]
     fn test_validate_internal_links() {
-        let articles = vec![
-            create_test_article("existing-article", "Existing Article"),
-        ];
+        let articles = vec![create_test_article("existing-article", "Existing Article")];
 
         let validator = LinkValidator::new(&articles);
-        
+
         let links = vec![
             ExtractedLink {
                 target_slug: "existing-article".to_string(),

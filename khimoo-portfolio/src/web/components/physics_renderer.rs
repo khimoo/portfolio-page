@@ -1,8 +1,8 @@
-use crate::web::physics_sim::{PhysicsWorld, Viewport};
-use crate::web::styles::{LayoutStyles, AnimationStyles};
-use crate::web::types::*;
 use crate::web::components::debug_panel::DebugPanel;
 use crate::web::components::node_renderer::NodeRenderer;
+use crate::web::physics_sim::{PhysicsWorld, Viewport};
+use crate::web::styles::{AnimationStyles, LayoutStyles};
+use crate::web::types::*;
 use std::cell::RefCell;
 use std::rc::Rc;
 use yew::prelude::*;
@@ -42,7 +42,9 @@ pub fn physics_renderer(props: &PhysicsRendererProps) -> Html {
         let force_settings_clone = force_settings.clone();
         use_effect_update_with_deps(
             move |_| {
-                physics_world.borrow_mut().update_force_settings(*force_settings_clone);
+                physics_world
+                    .borrow_mut()
+                    .update_force_settings(*force_settings_clone);
                 || {}
             },
             force_settings.clone(),
@@ -58,7 +60,9 @@ pub fn physics_renderer(props: &PhysicsRendererProps) -> Html {
                 web_sys::console::log_1(
                     &format!("Container bound changed in effect: {:?}", container_bound).into(),
                 );
-                physics_world.borrow_mut().update_container_bound(container_bound.clone());
+                physics_world
+                    .borrow_mut()
+                    .update_container_bound(container_bound.clone());
                 || {}
             },
             props.container_bound.clone(),

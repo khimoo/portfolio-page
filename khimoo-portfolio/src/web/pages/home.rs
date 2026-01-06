@@ -21,12 +21,16 @@ pub fn home_page() -> Html {
     };
 
     // デバッグ情報をコンソールに出力
-    web_sys::console::log_1(&format!("Container measure: width={}, height={}, x={}, y={}",
-        container_measure_handle.width,
-        container_measure_handle.height,
-        container_measure_handle.x,
-        container_measure_handle.y
-    ).into());
+    web_sys::console::log_1(
+        &format!(
+            "Container measure: width={}, height={}, x={}, y={}",
+            container_measure_handle.width,
+            container_measure_handle.height,
+            container_measure_handle.x,
+            container_measure_handle.y
+        )
+        .into(),
+    );
 
     html! {
         <div onmousemove={on_mouse_move} style="display: flex; width: 100%; height: 100%; flex: 1;" ref={container_ref.clone()}>

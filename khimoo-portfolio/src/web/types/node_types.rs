@@ -1,7 +1,7 @@
+use crate::web::routes::Route;
 use crate::web::styles::NodeStyles;
 use yew::{html, Html};
 use yew_router::prelude::*;
-use crate::web::routes::Route;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Default)]
 pub struct NodeId(pub u32);
@@ -19,9 +19,19 @@ pub enum NodeType {
 pub enum NodeContent {
     Text(String),
     Image(String),
-    Link { text: String, url: String },
-    Author { name: String, image_url: String, bio: Option<String> },
-    Article { title: String, slug: String },
+    Link {
+        text: String,
+        url: String,
+    },
+    Author {
+        name: String,
+        image_url: String,
+        bio: Option<String>,
+    },
+    Article {
+        title: String,
+        slug: String,
+    },
 }
 
 impl Default for NodeContent {
@@ -52,7 +62,7 @@ impl NodeContent {
                         </span>
                     </Link<Route>>
                 }
-            },
+            }
             NodeContent::Link { text, url } => {
                 if url.starts_with("/") && !url.starts_with("//") {
                     if url == "/" {
@@ -102,8 +112,12 @@ impl NodeContent {
                         </a>
                     }
                 }
-            },
-            NodeContent::Author { name: _, image_url, bio: _ } => html! {
+            }
+            NodeContent::Author {
+                name: _,
+                image_url,
+                bio: _,
+            } => html! {
                 <img
                     src={image_url.clone()}
                     style={NodeStyles::author_image()}

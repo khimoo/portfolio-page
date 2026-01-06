@@ -1,15 +1,15 @@
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::JsFuture;
 use web_sys::{Request, RequestInit, RequestMode, Response};
 use yew::prelude::*;
-use std::collections::HashMap;
 
 use crate::config::{get_config, AppConfig};
-use crate::core::articles::metadata::ArticleMetadata;
 use crate::core::articles::links::ExtractedLink;
+use crate::core::articles::metadata::ArticleMetadata;
 use crate::web::types::data_types::NodeRegistry;
-use crate::web::types::node_types::{NodeId, NodeContent, ConnectionLineType, AUTHOR_NODE_ID};
+use crate::web::types::node_types::{ConnectionLineType, NodeContent, NodeId, AUTHOR_NODE_ID};
 use crate::web::types::physics_types::Position;
 
 /// Articles data structure matching CLI output
@@ -48,7 +48,8 @@ impl From<ProcessedArticle> for LightweightArticle {
             slug: article.slug,
             title: article.title,
             metadata: article.metadata,
-            inbound_links: article.inbound_links
+            inbound_links: article
+                .inbound_links
                 .into_iter()
                 .map(|link| link.target_slug)
                 .collect(),
@@ -88,7 +89,7 @@ pub struct DataLoader {
 impl DataLoader {
     /// Create a new DataLoader instance
     pub fn new() -> Self {
-        Self { 
+        Self {
             config: get_config(),
         }
     }
@@ -102,9 +103,15 @@ impl DataLoader {
 
         match self.fetch_json::<ArticlesData>(&url).await {
             Ok(data) => {
-                web_sys::console::log_1(&format!("DataLoader: Successfully loaded {} articles", data.articles.len()).into());
+                web_sys::console::log_1(
+                    &format!(
+                        "DataLoader: Successfully loaded {} articles",
+                        data.articles.len()
+                    )
+                    .into(),
+                );
                 Ok(data)
-            },
+            }
             Err(e) => {
                 web_sys::console::warn_1(&format!("Failed to load articles data: {}", e).into());
                 // Fallback to empty data structure
@@ -120,14 +127,23 @@ impl DataLoader {
 
     /// Convert ArticlesData to LightweightArticle for performance optimization
     /// Requirements: 3.2, 3.3 - Data flow optimization
-    pub async fn load_lightweight_articles(&self) -> Result<Vec<LightweightArticle>, DataLoadError> {
+    pub async fn load_lightweight_articles(
+        &self,
+    ) -> Result<Vec<LightweightArticle>, DataLoadError> {
         let articles_data = self.load_articles().await?;
-        let lightweight_articles: Vec<LightweightArticle> = articles_data.articles
+        let lightweight_articles: Vec<LightweightArticle> = articles_data
+            .articles
             .into_iter()
             .map(LightweightArticle::from)
             .collect();
-        
-        web_sys::console::log_1(&format!("DataLoader: Converted to {} lightweight articles", lightweight_articles.len()).into());
+
+        web_sys::console::log_1(
+            &format!(
+                "DataLoader: Converted to {} lightweight articles",
+                lightweight_articles.len()
+            )
+            .into(),
+        );
         Ok(lightweight_articles)
     }
 
@@ -153,7 +169,7 @@ impl DataLoader {
 
             // Calculate position based on importance and category
             let position = self.calculate_node_position(&article.metadata, node_id);
-            
+
             // Create node content
             let content = NodeContent::Article {
                 title: article.title.clone(),
@@ -174,7 +190,11 @@ impl DataLoader {
             registry.set_node_inbound_count(node_id, inbound_count);
 
             // Update radius based on importance and inbound links
-            let dynamic_radius = registry.calculate_dynamic_radius(node_id, Some(article.metadata.importance), inbound_count);
+            let dynamic_radius = registry.calculate_dynamic_radius(
+                node_id,
+                Some(article.metadata.importance),
+                inbound_count,
+            );
             registry.update_node_radius(node_id, dynamic_radius);
 
             slug_to_node_id.insert(article.slug.clone(), node_id);
@@ -187,13 +207,17 @@ impl DataLoader {
                 for link in &article.outbound_links {
                     if let Some(&to_node_id) = slug_to_node_id.get(&link.target_slug) {
                         registry.add_edge(from_node_id, to_node_id);
-                        
+
                         // Add connection line with appropriate type and strength
                         let connection_type = match link.link_type {
-                            crate::core::articles::links::LinkType::MarkdownLink => ConnectionLineType::Medium,
-                            crate::core::articles::links::LinkType::ExternalLink => ConnectionLineType::Weak,
+                            crate::core::articles::links::LinkType::MarkdownLink => {
+                                ConnectionLineType::Medium
+                            }
+                            crate::core::articles::links::LinkType::ExternalLink => {
+                                ConnectionLineType::Weak
+                            }
                         };
-                        
+
                         let strength = match connection_type {
                             ConnectionLineType::Strong => 1.0,
                             ConnectionLineType::Medium => 0.7,
@@ -201,44 +225,69 @@ impl DataLoader {
                             _ => 0.5,
                         };
 
-                        registry.add_connection_line(from_node_id, to_node_id, connection_type, strength);
+                        registry.add_connection_line(
+                            from_node_id,
+                            to_node_id,
+                            connection_type,
+                            strength,
+                        );
                     }
                 }
 
                 // Add connection from author to home display articles
                 if article.metadata.home_display {
                     registry.add_edge(AUTHOR_NODE_ID, from_node_id);
-                    registry.add_connection_line(AUTHOR_NODE_ID, from_node_id, ConnectionLineType::Medium, 0.8);
+                    registry.add_connection_line(
+                        AUTHOR_NODE_ID,
+                        from_node_id,
+                        ConnectionLineType::Medium,
+                        0.8,
+                    );
                 }
             }
         }
 
-        web_sys::console::log_1(&format!("DataLoader: Built node registry with {} nodes and {} connections", 
-            registry.positions.len(), 
-            registry.connection_lines.len()
-        ).into());
+        web_sys::console::log_1(
+            &format!(
+                "DataLoader: Built node registry with {} nodes and {} connections",
+                registry.positions.len(),
+                registry.connection_lines.len()
+            )
+            .into(),
+        );
 
         Ok(registry)
     }
 
     /// Load article by slug (metadata only, content loaded separately)
-    pub async fn load_article_by_slug(&self, slug: &str) -> Result<ProcessedArticle, DataLoadError> {
-        web_sys::console::log_1(&format!("DataLoader: Looking for article with slug: {}", slug).into());
+    pub async fn load_article_by_slug(
+        &self,
+        slug: &str,
+    ) -> Result<ProcessedArticle, DataLoadError> {
+        web_sys::console::log_1(
+            &format!("DataLoader: Looking for article with slug: {}", slug).into(),
+        );
 
         let articles_data = self.load_articles().await?;
 
-        let found_article = articles_data.articles
+        let found_article = articles_data
+            .articles
             .into_iter()
             .find(|article| article.slug == slug);
 
         match found_article {
             Some(article) => {
-                web_sys::console::log_1(&format!("DataLoader: Found article: {}", article.title).into());
+                web_sys::console::log_1(
+                    &format!("DataLoader: Found article: {}", article.title).into(),
+                );
                 Ok(article)
             }
             None => {
                 web_sys::console::log_1(&format!("DataLoader: Article not found: {}", slug).into());
-                Err(DataLoadError::NotFound(format!("Article not found: {}", slug)))
+                Err(DataLoadError::NotFound(format!(
+                    "Article not found: {}",
+                    slug
+                )))
             }
         }
     }
@@ -246,14 +295,17 @@ impl DataLoader {
     /// Load full article content from file path
     pub async fn load_article_content(&self, file_path: &str) -> Result<String, DataLoadError> {
         let url = self.config.article_url(file_path);
-        web_sys::console::log_1(&format!("DataLoader: Loading article content from: {}", url).into());
+        web_sys::console::log_1(
+            &format!("DataLoader: Loading article content from: {}", url).into(),
+        );
 
         let opts = RequestInit::new();
         opts.set_method("GET");
         opts.set_mode(RequestMode::Cors);
 
-        let request = Request::new_with_str_and_init(&url, &opts)
-            .map_err(|e| DataLoadError::NetworkError(format!("Failed to create request: {:?}", e)))?;
+        let request = Request::new_with_str_and_init(&url, &opts).map_err(|e| {
+            DataLoadError::NetworkError(format!("Failed to create request: {:?}", e))
+        })?;
 
         let window = web_sys::window()
             .ok_or_else(|| DataLoadError::NetworkError("No window object".to_string()))?;
@@ -274,25 +326,30 @@ impl DataLoader {
             )));
         }
 
-        let text = JsFuture::from(resp.text().map_err(|e| {
-            DataLoadError::ParseError(format!("Failed to get text: {:?}", e))
-        })?)
+        let text = JsFuture::from(
+            resp.text()
+                .map_err(|e| DataLoadError::ParseError(format!("Failed to get text: {:?}", e)))?,
+        )
         .await
         .map_err(|e| DataLoadError::ParseError(format!("Failed to parse text: {:?}", e)))?;
 
-        let content = text.as_string()
+        let content = text
+            .as_string()
             .ok_or_else(|| DataLoadError::ParseError("Response is not a string".to_string()))?;
 
         Ok(content)
     }
 
     /// Load article content without front matter metadata (content only)
-    pub async fn load_article_content_only(&self, file_path: &str) -> Result<String, DataLoadError> {
+    pub async fn load_article_content_only(
+        &self,
+        file_path: &str,
+    ) -> Result<String, DataLoadError> {
         let full_content = self.load_article_content(file_path).await?;
-        
+
         // Parse and extract only the markdown content (without metadata)
         let content_only = self.parse_content_only(&full_content);
-        
+
         web_sys::console::log_1(&"DataLoader: Successfully separated content from metadata".into());
         Ok(content_only)
     }
@@ -306,8 +363,9 @@ impl DataLoader {
         opts.set_method("GET");
         opts.set_mode(RequestMode::Cors);
 
-        let request = Request::new_with_str_and_init(url, &opts)
-            .map_err(|e| DataLoadError::NetworkError(format!("Failed to create request: {:?}", e)))?;
+        let request = Request::new_with_str_and_init(url, &opts).map_err(|e| {
+            DataLoadError::NetworkError(format!("Failed to create request: {:?}", e))
+        })?;
 
         let window = web_sys::window()
             .ok_or_else(|| DataLoadError::NetworkError("No window object".to_string()))?;
@@ -328,9 +386,10 @@ impl DataLoader {
             )));
         }
 
-        let json = JsFuture::from(resp.json().map_err(|e| {
-            DataLoadError::ParseError(format!("Failed to get JSON: {:?}", e))
-        })?)
+        let json = JsFuture::from(
+            resp.json()
+                .map_err(|e| DataLoadError::ParseError(format!("Failed to get JSON: {:?}", e)))?,
+        )
         .await
         .map_err(|e| DataLoadError::ParseError(format!("Failed to parse JSON: {:?}", e)))?;
 
@@ -343,12 +402,12 @@ impl DataLoader {
     /// Add author node to the registry
     fn add_author_node(&self, registry: &mut NodeRegistry) -> Result<(), DataLoadError> {
         let author_position = Position { x: 0.0, y: 0.0 }; // Center position
-        
+
         registry.add_author_node(
             author_position,
             "Khimoo".to_string(),
             "/assets/img/author_img_small.webp".to_string(),
-            Some("Software Developer & Content Creator".to_string())
+            Some("Software Developer & Content Creator".to_string()),
         );
 
         Ok(())
@@ -376,8 +435,9 @@ impl DataLoader {
     /// Extract summary from article metadata
     fn extract_summary_from_metadata(&self, metadata: &ArticleMetadata) -> Option<String> {
         // For now, use title as summary. In future, could extract from content
-        Some(format!("Category: {:?}, Importance: {}", 
-            metadata.category.as_deref().unwrap_or("General"), 
+        Some(format!(
+            "Category: {:?}, Importance: {}",
+            metadata.category.as_deref().unwrap_or("General"),
             metadata.importance
         ))
     }
@@ -385,11 +445,11 @@ impl DataLoader {
     /// Parse content only (remove front matter)
     fn parse_content_only(&self, content: &str) -> String {
         let content = content.trim();
-        
+
         // Check if content starts with front matter delimiter
         if content.starts_with("---") {
             let lines: Vec<&str> = content.lines().collect();
-            
+
             // Find the closing delimiter
             let mut end_index = None;
             for (i, line) in lines.iter().enumerate().skip(1) {
@@ -398,14 +458,14 @@ impl DataLoader {
                     break;
                 }
             }
-            
+
             if let Some(end_idx) = end_index {
                 // Return content after the closing delimiter
                 let remaining_lines = &lines[end_idx + 1..];
                 return remaining_lines.join("\n").trim_start().to_string();
             }
         }
-        
+
         // No front matter found, return original content
         content.to_string()
     }
@@ -425,7 +485,11 @@ pub fn use_data_loader() -> UseStateHandle<Option<DataLoader>> {
 
 /// Hook for loading articles data
 #[hook]
-pub fn use_articles_data() -> (UseStateHandle<Option<ArticlesData>>, UseStateHandle<bool>, UseStateHandle<Option<DataLoadError>>) {
+pub fn use_articles_data() -> (
+    UseStateHandle<Option<ArticlesData>>,
+    UseStateHandle<bool>,
+    UseStateHandle<Option<DataLoadError>>,
+) {
     let data = use_state(|| None);
     let loading = use_state(|| true);
     let error = use_state(|| None);
@@ -463,7 +527,11 @@ pub fn use_articles_data() -> (UseStateHandle<Option<ArticlesData>>, UseStateHan
 
 /// Hook for loading lightweight articles (for list display)
 #[hook]
-pub fn use_lightweight_articles() -> (UseStateHandle<Option<Vec<LightweightArticle>>>, UseStateHandle<bool>, UseStateHandle<Option<DataLoadError>>) {
+pub fn use_lightweight_articles() -> (
+    UseStateHandle<Option<Vec<LightweightArticle>>>,
+    UseStateHandle<bool>,
+    UseStateHandle<Option<DataLoadError>>,
+) {
     let data = use_state(|| None);
     let loading = use_state(|| true);
     let error = use_state(|| None);
@@ -501,7 +569,11 @@ pub fn use_lightweight_articles() -> (UseStateHandle<Option<Vec<LightweightArtic
 
 /// Hook for loading node registry (for node graph)
 #[hook]
-pub fn use_node_registry() -> (UseStateHandle<Option<NodeRegistry>>, UseStateHandle<bool>, UseStateHandle<Option<DataLoadError>>) {
+pub fn use_node_registry() -> (
+    UseStateHandle<Option<NodeRegistry>>,
+    UseStateHandle<bool>,
+    UseStateHandle<Option<DataLoadError>>,
+) {
     let data = use_state(|| None);
     let loading = use_state(|| true);
     let error = use_state(|| None);
@@ -539,7 +611,13 @@ pub fn use_node_registry() -> (UseStateHandle<Option<NodeRegistry>>, UseStateHan
 
 /// Hook for loading a specific article by slug (with caching)
 #[hook]
-pub fn use_article_content(slug: Option<String>) -> (UseStateHandle<Option<ProcessedArticle>>, UseStateHandle<bool>, UseStateHandle<Option<DataLoadError>>) {
+pub fn use_article_content(
+    slug: Option<String>,
+) -> (
+    UseStateHandle<Option<ProcessedArticle>>,
+    UseStateHandle<bool>,
+    UseStateHandle<Option<DataLoadError>>,
+) {
     let data = use_state(|| None);
     let loading = use_state(|| false);
     let error = use_state(|| None);
@@ -551,7 +629,9 @@ pub fn use_article_content(slug: Option<String>) -> (UseStateHandle<Option<Proce
 
         use_effect_with(slug.clone(), move |slug| {
             if let Some(slug) = slug {
-                web_sys::console::log_1(&format!("use_article_content: Loading article with slug: {}", slug).into());
+                web_sys::console::log_1(
+                    &format!("use_article_content: Loading article with slug: {}", slug).into(),
+                );
 
                 let data = data.clone();
                 let loading = loading.clone();
@@ -565,12 +645,21 @@ pub fn use_article_content(slug: Option<String>) -> (UseStateHandle<Option<Proce
                     let loader = DataLoader::new();
                     match loader.load_article_by_slug(&slug).await {
                         Ok(article) => {
-                            web_sys::console::log_1(&format!("use_article_content: Successfully loaded article: {}", article.title).into());
+                            web_sys::console::log_1(
+                                &format!(
+                                    "use_article_content: Successfully loaded article: {}",
+                                    article.title
+                                )
+                                .into(),
+                            );
                             data.set(Some(article));
                             error.set(None);
                         }
                         Err(e) => {
-                            web_sys::console::log_1(&format!("use_article_content: Failed to load article: {}", e).into());
+                            web_sys::console::log_1(
+                                &format!("use_article_content: Failed to load article: {}", e)
+                                    .into(),
+                            );
                             error.set(Some(e));
                         }
                     }

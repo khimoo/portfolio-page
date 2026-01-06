@@ -1,11 +1,11 @@
 use anyhow::Result;
+use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
-use serde::{Serialize, Deserialize};
 
 #[cfg(feature = "cli-tools")]
-use image::{ImageFormat, DynamicImage};
-#[cfg(feature = "cli-tools")]
 use anyhow::Context;
+#[cfg(feature = "cli-tools")]
+use image::{DynamicImage, ImageFormat};
 #[cfg(feature = "cli-tools")]
 use std::fs;
 
@@ -83,7 +83,11 @@ impl ImageOptimizer {
 
     /// Optimize a single image file
     #[cfg(feature = "cli-tools")]
-    pub fn optimize_image(&self, input_path: &Path, output_dir: &Path) -> Result<OptimizedImageSet> {
+    pub fn optimize_image(
+        &self,
+        input_path: &Path,
+        output_dir: &Path,
+    ) -> Result<OptimizedImageSet> {
         if !input_path.exists() {
             return Err(anyhow::anyhow!("Input image not found: {:?}", input_path));
         }
@@ -97,32 +101,36 @@ impl ImageOptimizer {
             .with_context(|| format!("Failed to open image: {:?}", input_path))?;
 
         if self.verbose {
-            println!("Original size: {}x{}, format: {:?}", 
-                img.width(), img.height(), 
+            println!(
+                "Original size: {}x{}, format: {:?}",
+                img.width(),
+                img.height(),
                 image::guess_format(&fs::read(input_path)?)?
             );
         }
 
-        let file_stem = input_path.file_stem()
+        let file_stem = input_path
+            .file_stem()
             .ok_or_else(|| anyhow::anyhow!("Invalid file name: {:?}", input_path))?
             .to_string_lossy();
 
         // Generate optimized versions
         let small_img = img.resize(
-            self.config.small_image_size, 
-            self.config.small_image_size, 
-            image::imageops::FilterType::Lanczos3
+            self.config.small_image_size,
+            self.config.small_image_size,
+            image::imageops::FilterType::Lanczos3,
         );
 
         let medium_img = img.resize(
-            self.config.medium_image_size, 
-            self.config.medium_image_size, 
-            image::imageops::FilterType::Lanczos3
+            self.config.medium_image_size,
+            self.config.medium_image_size,
+            image::imageops::FilterType::Lanczos3,
         );
 
         // Save small PNG
         let small_png_path = output_dir.join(format!("{}_small.png", file_stem));
-        small_img.save_with_format(&small_png_path, ImageFormat::Png)
+        small_img
+            .save_with_format(&small_png_path, ImageFormat::Png)
             .with_context(|| format!("Failed to save small PNG: {:?}", small_png_path))?;
 
         // Save small WebP
@@ -131,7 +139,8 @@ impl ImageOptimizer {
 
         // Save medium PNG
         let medium_png_path = output_dir.join(format!("{}_medium.png", file_stem));
-        medium_img.save_with_format(&medium_png_path, ImageFormat::Png)
+        medium_img
+            .save_with_format(&medium_png_path, ImageFormat::Png)
             .with_context(|| format!("Failed to save medium PNG: {:?}", medium_png_path))?;
 
         // Get file sizes
@@ -144,16 +153,23 @@ impl ImageOptimizer {
         let compression_ratio = original_size as f64 / total_optimized_size as f64;
 
         if self.verbose {
-            println!("Created small version ({}x{}): {:?} ({} bytes)", 
-                self.config.small_image_size, self.config.small_image_size,
-                small_png_path, small_png_size
+            println!(
+                "Created small version ({}x{}): {:?} ({} bytes)",
+                self.config.small_image_size,
+                self.config.small_image_size,
+                small_png_path,
+                small_png_size
             );
-            println!("Created WebP version: {:?} ({} bytes)", 
+            println!(
+                "Created WebP version: {:?} ({} bytes)",
                 small_webp_path, small_webp_size
             );
-            println!("Created medium version ({}x{}): {:?} ({} bytes)", 
-                self.config.medium_image_size, self.config.medium_image_size,
-                medium_png_path, medium_png_size
+            println!(
+                "Created medium version ({}x{}): {:?} ({} bytes)",
+                self.config.medium_image_size,
+                self.config.medium_image_size,
+                medium_png_path,
+                medium_png_size
             );
             println!("Compression ratio: {:.2}x", compression_ratio);
         }
@@ -173,29 +189,30 @@ impl ImageOptimizer {
 
     /// Generate thumbnails for an image
     #[cfg(feature = "cli-tools")]
-    pub fn generate_thumbnails(&self, image_path: &Path, output_dir: &Path) -> Result<Vec<Thumbnail>> {
+    pub fn generate_thumbnails(
+        &self,
+        image_path: &Path,
+        output_dir: &Path,
+    ) -> Result<Vec<Thumbnail>> {
         let img = image::open(image_path)
             .with_context(|| format!("Failed to open image: {:?}", image_path))?;
 
-        let file_stem = image_path.file_stem()
+        let file_stem = image_path
+            .file_stem()
             .ok_or_else(|| anyhow::anyhow!("Invalid file name: {:?}", image_path))?
             .to_string_lossy();
 
         let mut thumbnails = Vec::new();
 
         // Generate different thumbnail sizes
-        let sizes = vec![
-            (32, "tiny"),
-            (64, "small"),
-            (128, "medium"),
-            (256, "large"),
-        ];
+        let sizes = vec![(32, "tiny"), (64, "small"), (128, "medium"), (256, "large")];
 
         for (size, suffix) in sizes {
             let thumbnail_img = img.resize(size, size, image::imageops::FilterType::Lanczos3);
             let thumbnail_path = output_dir.join(format!("{}_{}.png", file_stem, suffix));
-            
-            thumbnail_img.save_with_format(&thumbnail_path, ImageFormat::Png)
+
+            thumbnail_img
+                .save_with_format(&thumbnail_path, ImageFormat::Png)
                 .with_context(|| format!("Failed to save thumbnail: {:?}", thumbnail_path))?;
 
             let size_bytes = fs::metadata(&thumbnail_path)?.len();
@@ -214,7 +231,12 @@ impl ImageOptimizer {
 
     /// Compress an image with specified quality
     #[cfg(feature = "cli-tools")]
-    pub fn compress_image(&self, image_path: &Path, output_path: &Path, quality: u8) -> Result<CompressedImage> {
+    pub fn compress_image(
+        &self,
+        image_path: &Path,
+        output_path: &Path,
+        quality: u8,
+    ) -> Result<CompressedImage> {
         let img = image::open(image_path)
             .with_context(|| format!("Failed to open image: {:?}", image_path))?;
 
@@ -242,11 +264,11 @@ impl ImageOptimizer {
         let webp_path_as_png = path.with_extension("webp.png");
         img.save_with_format(&webp_path_as_png, ImageFormat::Png)
             .with_context(|| format!("Failed to save WebP (as PNG): {:?}", webp_path_as_png))?;
-        
+
         // Rename to .webp extension
         fs::rename(&webp_path_as_png, path)
             .with_context(|| format!("Failed to rename to WebP: {:?}", path))?;
-        
+
         Ok(())
     }
 
@@ -266,15 +288,17 @@ impl ImageOptimizer {
             if path.is_file() {
                 if let Some(file_name) = path.file_name() {
                     let file_name_str = file_name.to_string_lossy();
-                    if file_name_str.contains("_small") || 
-                       file_name_str.contains("_medium") || 
-                       file_name_str.contains("_large") ||
-                       file_name_str.contains("_tiny") {
+                    if file_name_str.contains("_small")
+                        || file_name_str.contains("_medium")
+                        || file_name_str.contains("_large")
+                        || file_name_str.contains("_tiny")
+                    {
                         if self.verbose {
                             println!("🗑️  Removing optimized image: {:?}", path);
                         }
-                        fs::remove_file(&path)
-                            .with_context(|| format!("Failed to remove optimized image: {:?}", path))?;
+                        fs::remove_file(&path).with_context(|| {
+                            format!("Failed to remove optimized image: {:?}", path)
+                        })?;
                         cleaned_count += 1;
                     }
                 }
@@ -282,7 +306,10 @@ impl ImageOptimizer {
         }
 
         if self.verbose && cleaned_count > 0 {
-            println!("🧹 Cleaned up {} previously optimized images", cleaned_count);
+            println!(
+                "🧹 Cleaned up {} previously optimized images",
+                cleaned_count
+            );
         }
 
         Ok(cleaned_count)
@@ -290,11 +317,18 @@ impl ImageOptimizer {
 
     /// Optimize all images in a directory
     #[cfg(feature = "cli-tools")]
-    pub fn optimize_directory(&self, input_dir: &Path, output_dir: &Path) -> Result<Vec<OptimizedImageSet>> {
+    pub fn optimize_directory(
+        &self,
+        input_dir: &Path,
+        output_dir: &Path,
+    ) -> Result<Vec<OptimizedImageSet>> {
         let mut results = Vec::new();
 
         if !input_dir.exists() {
-            return Err(anyhow::anyhow!("Input directory not found: {:?}", input_dir));
+            return Err(anyhow::anyhow!(
+                "Input directory not found: {:?}",
+                input_dir
+            ));
         }
 
         for entry in fs::read_dir(input_dir)? {
@@ -305,10 +339,11 @@ impl ImageOptimizer {
                 // Skip already optimized images
                 if let Some(file_name) = path.file_name() {
                     let file_name_str = file_name.to_string_lossy();
-                    if file_name_str.contains("_small") || 
-                       file_name_str.contains("_medium") || 
-                       file_name_str.contains("_large") ||
-                       file_name_str.contains("_tiny") {
+                    if file_name_str.contains("_small")
+                        || file_name_str.contains("_medium")
+                        || file_name_str.contains("_large")
+                        || file_name_str.contains("_tiny")
+                    {
                         if self.verbose {
                             println!("⏭️  Skipping already optimized: {:?}", path);
                         }
@@ -318,7 +353,10 @@ impl ImageOptimizer {
 
                 if let Some(extension) = path.extension() {
                     let ext = extension.to_string_lossy().to_lowercase();
-                    if matches!(ext.as_str(), "png" | "jpg" | "jpeg" | "gif" | "bmp" | "webp") {
+                    if matches!(
+                        ext.as_str(),
+                        "png" | "jpg" | "jpeg" | "gif" | "bmp" | "webp"
+                    ) {
                         match self.optimize_image(&path, output_dir) {
                             Ok(result) => {
                                 if self.verbose {
@@ -339,7 +377,10 @@ impl ImageOptimizer {
     }
 
     /// Extract image references from article metadata
-    pub fn extract_image_references(&self, metadata: &crate::core::articles::ArticleMetadata) -> Vec<String> {
+    pub fn extract_image_references(
+        &self,
+        metadata: &crate::core::articles::ArticleMetadata,
+    ) -> Vec<String> {
         let mut images = Vec::new();
 
         // Extract author_image
@@ -402,23 +443,48 @@ impl ImageOptimizer {
 
     // Stub implementations for when cli-tools feature is not enabled
     #[cfg(not(feature = "cli-tools"))]
-    pub fn optimize_image(&self, _input_path: &Path, _output_dir: &Path) -> Result<OptimizedImageSet> {
-        Err(anyhow::anyhow!("Image optimization requires cli-tools feature"))
+    pub fn optimize_image(
+        &self,
+        _input_path: &Path,
+        _output_dir: &Path,
+    ) -> Result<OptimizedImageSet> {
+        Err(anyhow::anyhow!(
+            "Image optimization requires cli-tools feature"
+        ))
     }
 
     #[cfg(not(feature = "cli-tools"))]
-    pub fn generate_thumbnails(&self, _image_path: &Path, _output_dir: &Path) -> Result<Vec<Thumbnail>> {
-        Err(anyhow::anyhow!("Thumbnail generation requires cli-tools feature"))
+    pub fn generate_thumbnails(
+        &self,
+        _image_path: &Path,
+        _output_dir: &Path,
+    ) -> Result<Vec<Thumbnail>> {
+        Err(anyhow::anyhow!(
+            "Thumbnail generation requires cli-tools feature"
+        ))
     }
 
     #[cfg(not(feature = "cli-tools"))]
-    pub fn compress_image(&self, _image_path: &Path, _output_path: &Path, _quality: u8) -> Result<CompressedImage> {
-        Err(anyhow::anyhow!("Image compression requires cli-tools feature"))
+    pub fn compress_image(
+        &self,
+        _image_path: &Path,
+        _output_path: &Path,
+        _quality: u8,
+    ) -> Result<CompressedImage> {
+        Err(anyhow::anyhow!(
+            "Image compression requires cli-tools feature"
+        ))
     }
 
     #[cfg(not(feature = "cli-tools"))]
-    pub fn optimize_directory(&self, _input_dir: &Path, _output_dir: &Path) -> Result<Vec<OptimizedImageSet>> {
-        Err(anyhow::anyhow!("Directory optimization requires cli-tools feature"))
+    pub fn optimize_directory(
+        &self,
+        _input_dir: &Path,
+        _output_dir: &Path,
+    ) -> Result<Vec<OptimizedImageSet>> {
+        Err(anyhow::anyhow!(
+            "Directory optimization requires cli-tools feature"
+        ))
     }
 
     #[cfg(not(feature = "cli-tools"))]

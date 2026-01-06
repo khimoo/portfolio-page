@@ -1,6 +1,6 @@
+use crate::web::components::ArticleStateRenderer;
 use crate::web::data_loader::{use_lightweight_articles, LightweightArticle};
 use crate::web::routes::Route;
-use crate::web::components::ArticleStateRenderer;
 use yew::prelude::*;
 use yew_router::prelude::*;
 

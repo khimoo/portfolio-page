@@ -1,12 +1,12 @@
-use serde::{Deserialize, Serialize};
 use anyhow::{Context, Result};
 use regex::Regex;
+use serde::{Deserialize, Serialize};
 
 /// Types of links that can be extracted from markdown content
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum LinkType {
-    MarkdownLink,  // [text](slug) format
-    ExternalLink,  // [text](http://...) format
+    MarkdownLink, // [text](slug) format
+    ExternalLink, // [text](http://...) format
 }
 
 /// Represents a link found in markdown content
@@ -30,9 +30,7 @@ impl LinkExtractor {
         let markdown_regex = Regex::new(r"\[([^\]]+)\]\(([^)]+)\)")
             .context("Failed to compile markdown link regex")?;
 
-        Ok(Self {
-            markdown_regex,
-        })
+        Ok(Self { markdown_regex })
     }
 
     /// Extract all internal links from markdown content
@@ -46,7 +44,10 @@ impl LinkExtractor {
             let target = cap.get(2).unwrap().as_str();
 
             // Only process internal links (not starting with http/https)
-            if !target.starts_with("http") && !target.starts_with("mailto:") && !target.starts_with("//") {
+            if !target.starts_with("http")
+                && !target.starts_with("mailto:")
+                && !target.starts_with("//")
+            {
                 links.push(ExtractedLink {
                     target_slug: target.to_string(),
                     link_type: LinkType::MarkdownLink,
@@ -70,7 +71,10 @@ impl LinkExtractor {
             let target = cap.get(2).unwrap().as_str();
 
             // Only process external links
-            if target.starts_with("http") || target.starts_with("mailto:") || target.starts_with("//") {
+            if target.starts_with("http")
+                || target.starts_with("mailto:")
+                || target.starts_with("//")
+            {
                 links.push(ExtractedLink {
                     target_slug: target.to_string(),
                     link_type: LinkType::ExternalLink,
@@ -99,10 +103,13 @@ impl LinkExtractor {
                 }
             }
             LinkType::ExternalLink => {
-                if !link.target_slug.starts_with("http") && 
-                   !link.target_slug.starts_with("mailto:") && 
-                   !link.target_slug.starts_with("//") {
-                    return Err(anyhow::anyhow!("External link must start with http, mailto:, or //"));
+                if !link.target_slug.starts_with("http")
+                    && !link.target_slug.starts_with("mailto:")
+                    && !link.target_slug.starts_with("//")
+                {
+                    return Err(anyhow::anyhow!(
+                        "External link must start with http, mailto:, or //"
+                    ));
                 }
             }
         }
@@ -123,15 +130,16 @@ mod tests {
     #[test]
     fn test_extract_markdown_links() {
         let extractor = LinkExtractor::new().unwrap();
-        let content = "Check out [this article](other-article) and [external](https://example.com).";
-        
+        let content =
+            "Check out [this article](other-article) and [external](https://example.com).";
+
         let internal_links = extractor.extract_internal_links(content);
         let external_links = extractor.extract_external_links(content);
-        
+
         assert_eq!(internal_links.len(), 1);
         assert_eq!(internal_links[0].target_slug, "other-article");
         assert_eq!(internal_links[0].link_type, LinkType::MarkdownLink);
-        
+
         assert_eq!(external_links.len(), 1);
         assert_eq!(external_links[0].target_slug, "https://example.com");
         assert_eq!(external_links[0].link_type, LinkType::ExternalLink);
@@ -140,7 +148,7 @@ mod tests {
     #[test]
     fn test_validate_link_format() {
         let extractor = LinkExtractor::new().unwrap();
-        
+
         let valid_markdown = ExtractedLink {
             target_slug: "valid-target".to_string(),
             link_type: LinkType::MarkdownLink,
@@ -148,7 +156,7 @@ mod tests {
             display_text: Some("text".to_string()),
         };
         assert!(extractor.validate_link_format(&valid_markdown).is_ok());
-        
+
         let invalid_markdown = ExtractedLink {
             target_slug: "".to_string(),
             link_type: LinkType::MarkdownLink,

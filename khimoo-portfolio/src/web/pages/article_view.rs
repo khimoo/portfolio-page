@@ -1,5 +1,5 @@
-use crate::web::data_loader::{use_article_content, DataLoader};
 use crate::web::components::{ArticleContent, ArticleHeader, ArticleStateRenderer};
+use crate::web::data_loader::{use_article_content, DataLoader};
 use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
@@ -79,9 +79,9 @@ pub fn article_view_page(props: &ArticleViewProps) -> Html {
                     <div class="article-container">
                         <article>
                             <ArticleHeader article={article_data.clone()} />
-                            <ArticleContent 
-                                article={article_data.clone()} 
-                                content={raw_content.clone()} 
+                            <ArticleContent
+                                article={article_data.clone()}
+                                content={raw_content.clone()}
                             />
                         </article>
                     </div>

@@ -1,5 +1,5 @@
 //! CLI commands module
-//! 
+//!
 //! This module contains individual command implementations for
 //! article processing, link validation, and other CLI operations.
 
@@ -10,6 +10,8 @@ pub mod validate_links;
 
 // Re-export command implementations
 #[cfg(feature = "cli-tools")]
-pub use process_articles::{ProcessArticlesCommand, ProcessArticlesArgs, ProcessedArticle, ArticlesData};
+pub use process_articles::{
+    ArticlesData, ProcessArticlesArgs, ProcessArticlesCommand, ProcessedArticle,
+};
 #[cfg(feature = "cli-tools")]
-pub use validate_links::{ValidateLinksCommand, ValidateLinksArgs};
+pub use validate_links::{ValidateLinksArgs, ValidateLinksCommand};

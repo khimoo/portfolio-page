@@ -74,12 +74,12 @@ test:
 # Format code
 fmt:
     @echo "🎨 Formatting code..."
-    @cargo fmt
+    @cd {{APP_DIR}} && cargo fmt
 
 # Run linter
 clippy:
     @echo "📎 Running clippy..."
-    @cargo clippy -- -D warnings
+    @cd {{APP_DIR}} && cargo clippy -- -D warnings
 
 # Clean build artifacts
 clean:

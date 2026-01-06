@@ -44,8 +44,18 @@ impl NodeRegistry {
         self.node_types.insert(id, node_type);
     }
 
-    pub fn add_author_node(&mut self, pos: Position, name: String, image_url: String, bio: Option<String>) {
-        let content = NodeContent::Author { name, image_url, bio };
+    pub fn add_author_node(
+        &mut self,
+        pos: Position,
+        name: String,
+        image_url: String,
+        bio: Option<String>,
+    ) {
+        let content = NodeContent::Author {
+            name,
+            image_url,
+            bio,
+        };
         let radius = 60;
         self.add_node(AUTHOR_NODE_ID, pos, radius, content);
     }
@@ -59,12 +69,19 @@ impl NodeRegistry {
     }
 
     pub fn get_author_node_id(&self) -> Option<NodeId> {
-        self.node_types.iter()
+        self.node_types
+            .iter()
             .find(|(_, node_type)| matches!(node_type, NodeType::Author))
             .map(|(id, _)| *id)
     }
 
-    pub fn add_connection_line(&mut self, from: NodeId, to: NodeId, connection_type: ConnectionLineType, strength: f32) {
+    pub fn add_connection_line(
+        &mut self,
+        from: NodeId,
+        to: NodeId,
+        connection_type: ConnectionLineType,
+        strength: f32,
+    ) {
         let line = ConnectionLine {
             from,
             to,
@@ -94,9 +111,9 @@ impl NodeRegistry {
     }
 
     pub fn get_category_color(&self, category: &str) -> &CategoryColor {
-        self.category_colors.get(category).unwrap_or_else(|| {
-            self.category_colors.get("default").unwrap()
-        })
+        self.category_colors
+            .get(category)
+            .unwrap_or_else(|| self.category_colors.get("default").unwrap())
     }
 
     pub fn get_nodes_by_category(&self, category: &str) -> Vec<NodeId> {
@@ -108,7 +125,8 @@ impl NodeRegistry {
     }
 
     pub fn get_all_categories(&self) -> Vec<String> {
-        let mut categories: Vec<String> = self.node_categories
+        let mut categories: Vec<String> = self
+            .node_categories
             .values()
             .cloned()
             .collect::<std::collections::HashSet<_>>()
@@ -130,12 +148,13 @@ impl NodeRegistry {
         self.node_importance.insert(node_id, importance);
     }
 
-    pub fn calculate_dynamic_radius(&self, node_id: NodeId, importance: Option<u8>, inbound_count: usize) -> i32 {
-        let base_size = if self.is_author_node(node_id) {
-            60
-        } else {
-            30
-        };
+    pub fn calculate_dynamic_radius(
+        &self,
+        node_id: NodeId,
+        importance: Option<u8>,
+        inbound_count: usize,
+    ) -> i32 {
+        let base_size = if self.is_author_node(node_id) { 60 } else { 30 };
 
         if self.is_author_node(node_id) {
             return base_size;

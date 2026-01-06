@@ -112,5 +112,6 @@ fn content_styles() -> String {
         color: #99ccff; 
         text-decoration: underline; 
     }
-    "#.to_string()
+    "#
+    .to_string()
 }

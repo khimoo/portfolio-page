@@ -15,7 +15,7 @@ impl ButtonStyles {
             SPACING.xs
         )
     }
-    
+
     pub fn secondary() -> String {
         format!(
             "background: transparent; color: {}; border: 1px solid {}; padding: {} {}; border-radius: {}; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: {};",
@@ -27,7 +27,7 @@ impl ButtonStyles {
             SPACING.xs
         )
     }
-    
+
     pub fn link() -> String {
         format!(
             "background: none; border: none; color: {}; text-decoration: none; cursor: pointer; font-weight: 600;",
@@ -48,7 +48,7 @@ impl CardStyles {
             SPACING.lg
         )
     }
-    
+
     pub fn elevated() -> String {
         format!(
             "background: {}; border-radius: {}; padding: {}; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);",
@@ -75,7 +75,7 @@ impl InputStyles {
             TYPOGRAPHY.body_md
         )
     }
-    
+
     pub fn range() -> String {
         format!(
             "width: 100%; height: 4px; border-radius: {}; background: {}; outline: none; cursor: pointer;",
@@ -96,19 +96,18 @@ impl LoadingStyles {
             BORDER_RADIUS.full
         )
     }
-    
+
     pub fn container() -> String {
         format!(
             "display: flex; justify-content: center; align-items: center; height: 100vh; background: {};",
             "#f0f0f0"
         )
     }
-    
+
     pub fn text() -> String {
         format!(
             "text-align: center; color: {}; margin-top: {};",
-            DARK_THEME.text_primary,
-            SPACING.lg
+            DARK_THEME.text_primary, SPACING.lg
         )
     }
 }
@@ -120,26 +119,24 @@ impl NodeStyles {
     pub fn text_node() -> String {
         format!(
             "color: {}; font-size: {}; text-align: center; pointer-events: none;",
-            DARK_THEME.text_primary,
-            TYPOGRAPHY.body_sm
+            DARK_THEME.text_primary, TYPOGRAPHY.body_sm
         )
     }
-    
+
     pub fn link_node() -> String {
         format!(
             "color: {}; text-decoration: none; font-size: {};",
-            DARK_THEME.link_color,
-            TYPOGRAPHY.body_sm
+            DARK_THEME.link_color, TYPOGRAPHY.body_sm
         )
     }
-    
+
     pub fn author_image() -> String {
         format!(
             "width: 100%; height: 100%; border-radius: {}; object-fit: cover;",
             BORDER_RADIUS.full
         )
     }
-    
+
     pub fn node_circle(size: f64) -> String {
         format!(
             "width: {}px; height: {}px; background-color: slateblue; border-radius: {}; transform: translate(-50%, -50%); position: absolute;",
@@ -148,7 +145,7 @@ impl NodeStyles {
             BORDER_RADIUS.full
         )
     }
-    
+
     pub fn connection_line() -> String {
         format!(
             "stroke: {}; stroke-width: 1.5; opacity: 0.6;",
@@ -171,56 +168,43 @@ impl DebugStyles {
             Z_INDEX.modal
         )
     }
-    
+
     pub fn title() -> String {
         format!(
             "margin: 0 0 {} 0; color: {}; font-size: {};",
-            SPACING.md,
-            DARK_THEME.debug_accent,
-            TYPOGRAPHY.heading_sm
+            SPACING.md, DARK_THEME.debug_accent, TYPOGRAPHY.heading_sm
         )
     }
-    
+
     pub fn section() -> String {
         format!(
             "margin-bottom: {}; border-top: 1px solid {}; padding-top: {};",
-            SPACING.lg,
-            DARK_THEME.text_muted,
-            SPACING.md
+            SPACING.lg, DARK_THEME.text_muted, SPACING.md
         )
     }
-    
+
     pub fn label() -> String {
         format!(
             "display: block; margin-bottom: {}; color: {}; font-size: {};",
-            SPACING.xs,
-            DARK_THEME.text_secondary,
-            TYPOGRAPHY.body_sm
+            SPACING.xs, DARK_THEME.text_secondary, TYPOGRAPHY.body_sm
         )
     }
-    
+
     pub fn value() -> String {
-        format!(
-            "color: {}; font-weight: bold;",
-            DARK_THEME.warning
-        )
+        format!("color: {}; font-weight: bold;", DARK_THEME.warning)
     }
-    
+
     pub fn checkbox_label() -> String {
         format!(
             "display: flex; align-items: center; gap: {}; color: {}; font-size: {};",
-            SPACING.sm,
-            DARK_THEME.text_secondary,
-            TYPOGRAPHY.body_sm
+            SPACING.sm, DARK_THEME.text_secondary, TYPOGRAPHY.body_sm
         )
     }
-    
+
     pub fn stat_text() -> String {
         format!(
             "margin: {} 0; color: {}; font-size: {};",
-            SPACING.xs,
-            DARK_THEME.success,
-            TYPOGRAPHY.caption
+            SPACING.xs, DARK_THEME.success, TYPOGRAPHY.caption
         )
     }
 }
@@ -232,36 +216,28 @@ impl ArticleStyles {
     pub fn container() -> String {
         format!(
             "max-width: 800px; margin: 0 auto; padding: {}; color: {}; line-height: 1.6;",
-            SPACING.xl,
-            DARK_THEME.text_primary
+            SPACING.xl, DARK_THEME.text_primary
         )
     }
-    
+
     pub fn title() -> String {
         format!(
             "font-size: {}; font-weight: bold; margin-bottom: {}; color: {};",
-            TYPOGRAPHY.heading_lg,
-            SPACING.lg,
-            DARK_THEME.text_primary
+            TYPOGRAPHY.heading_lg, SPACING.lg, DARK_THEME.text_primary
         )
     }
-    
+
     pub fn meta() -> String {
         format!(
             "color: {}; font-size: {}; margin-bottom: {};",
-            DARK_THEME.text_muted,
-            TYPOGRAPHY.body_sm,
-            SPACING.lg
+            DARK_THEME.text_muted, TYPOGRAPHY.body_sm, SPACING.lg
         )
     }
-    
+
     pub fn content() -> String {
-        format!(
-            "font-size: {}; line-height: 1.8;",
-            TYPOGRAPHY.body_md
-        )
+        format!("font-size: {}; line-height: 1.8;", TYPOGRAPHY.body_md)
     }
-    
+
     pub fn wiki_link() -> String {
         format!(
             "color: {}; text-decoration: underline; font-weight: 500;",
@@ -280,28 +256,25 @@ impl ErrorStyles {
             "#f0f0f0"
         )
     }
-    
+
     pub fn content() -> String {
         format!(
             "text-align: center; color: {}; padding: {};",
-            DARK_THEME.error,
-            SPACING.xl
+            DARK_THEME.error, SPACING.xl
         )
     }
-    
+
     pub fn title() -> String {
         format!(
             "font-size: {}; margin-bottom: {};",
-            TYPOGRAPHY.heading_md,
-            SPACING.md
+            TYPOGRAPHY.heading_md, SPACING.md
         )
     }
-    
+
     pub fn message() -> String {
         format!(
             "font-size: {}; color: {};",
-            TYPOGRAPHY.body_md,
-            DARK_THEME.text_muted
+            TYPOGRAPHY.body_md, DARK_THEME.text_muted
         )
     }
 }

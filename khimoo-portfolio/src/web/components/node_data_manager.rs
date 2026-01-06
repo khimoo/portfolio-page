@@ -1,6 +1,6 @@
+use crate::config::get_config;
 use crate::web::data_loader::{ArticlesData, ProcessedArticle};
 use crate::web::types::*;
-use crate::config::get_config;
 use std::collections::HashMap;
 
 /// データ処理を担当するモジュール
@@ -20,14 +20,21 @@ impl NodeDataManager {
             );
 
             // 最適化された中サイズ画像を使用
-            let optimized_image_url = if image_url.starts_with("articles/") || image_url.starts_with("/articles/") {
-                let optimized_path = image_url
-                    .replace("articles/img/author_img.png", "articles/img/author_img_medium.png")
-                    .replace("/articles/img/author_img.png", "/articles/img/author_img_medium.png");
-                get_config().get_url(&optimized_path)
-            } else {
-                get_config().get_url(image_url)
-            };
+            let optimized_image_url =
+                if image_url.starts_with("articles/") || image_url.starts_with("/articles/") {
+                    let optimized_path = image_url
+                        .replace(
+                            "articles/img/author_img.png",
+                            "articles/img/author_img_medium.png",
+                        )
+                        .replace(
+                            "/articles/img/author_img.png",
+                            "/articles/img/author_img_medium.png",
+                        );
+                    get_config().get_url(&optimized_path)
+                } else {
+                    get_config().get_url(image_url)
+                };
 
             NodeContent::Author {
                 name: article.title.clone(),
@@ -56,9 +63,15 @@ impl NodeDataManager {
         #[cfg(target_arch = "wasm32")]
         {
             web_sys::console::log_1(
-                &format!("Container bound in create_node_registry: {:?}", container_bound).into(),
+                &format!(
+                    "Container bound in create_node_registry: {:?}",
+                    container_bound
+                )
+                .into(),
             );
-            web_sys::console::log_1(&format!("Calculated center: ({}, {})", center_x, center_y).into());
+            web_sys::console::log_1(
+                &format!("Calculated center: ({}, {})", center_x, center_y).into(),
+            );
         }
 
         // home_display=trueの記事のみをノードとして追加
@@ -70,18 +83,27 @@ impl NodeDataManager {
 
         #[cfg(target_arch = "wasm32")]
         {
-            web_sys::console::log_1(&format!("Total articles: {}", articles_data.articles.len()).into());
-            web_sys::console::log_1(&format!("Home articles count: {}", home_articles.len()).into());
+            web_sys::console::log_1(
+                &format!("Total articles: {}", articles_data.articles.len()).into(),
+            );
+            web_sys::console::log_1(
+                &format!("Home articles count: {}", home_articles.len()).into(),
+            );
         }
 
         // home_articlesが空の場合はフォールバック
         if home_articles.is_empty() {
             #[cfg(target_arch = "wasm32")]
-            web_sys::console::warn_1(&"No home articles found! Creating fallback author node".into());
+            web_sys::console::warn_1(
+                &"No home articles found! Creating fallback author node".into(),
+            );
 
             reg.add_node(
                 NodeId(next_id),
-                Position { x: center_x, y: center_y },
+                Position {
+                    x: center_x,
+                    y: center_y,
+                },
                 40,
                 NodeContent::Text("Author".to_string()),
             );
@@ -104,7 +126,13 @@ impl NodeDataManager {
                 web_sys::console::log_1(
                     &format!("Placing author article '{}' at center", article.title).into(),
                 );
-                (Position { x: center_x, y: center_y }, 60)
+                (
+                    Position {
+                        x: center_x,
+                        y: center_y,
+                    },
+                    60,
+                )
             } else {
                 let angle = index as f32 * angle_step;
                 let x = center_x + radius * angle.cos();

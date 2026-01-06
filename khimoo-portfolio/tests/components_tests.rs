@@ -5,7 +5,11 @@ mod tests {
     use khimoo_portfolio::web::article_manager::ArticleManager;
     use khimoo_portfolio::web::data_loader::{ArticlesData, ProcessedArticle, ProcessedMetadata};
 
-    fn create_test_article(slug: &str, title: &str, author_image: Option<String>) -> ProcessedArticle {
+    fn create_test_article(
+        slug: &str,
+        title: &str,
+        author_image: Option<String>,
+    ) -> ProcessedArticle {
         ProcessedArticle {
             slug: slug.to_string(),
             title: title.to_string(),
@@ -32,12 +36,20 @@ mod tests {
         let articles_data = ArticlesData {
             articles: vec![
                 create_test_article("article1", "Article 1", None),
-                create_test_article("author", "About Me", Some("/images/profile.jpg".to_string())),
+                create_test_article(
+                    "author",
+                    "About Me",
+                    Some("/images/profile.jpg".to_string()),
+                ),
                 create_test_article("article2", "Article 2", None),
             ],
             generated_at: "2024-01-01T00:00:00Z".to_string(),
             total_count: 3,
-            home_articles: vec!["article1".to_string(), "author".to_string(), "article2".to_string()],
+            home_articles: vec![
+                "article1".to_string(),
+                "author".to_string(),
+                "article2".to_string(),
+            ],
         };
 
         let mut manager = ArticleManager::new();
@@ -46,13 +58,16 @@ mod tests {
         // Verify articles are loaded
         assert_eq!(manager.get_all_lightweight_articles().len(), 3);
         assert_eq!(manager.get_home_article_slugs().len(), 3);
-        
+
         // Verify author article is accessible
         let author_article = manager.get_lightweight_article("author");
         assert!(author_article.is_some());
         let author = author_article.unwrap();
         assert_eq!(author.title, "About Me");
-        assert_eq!(author.metadata.author_image, Some("/images/profile.jpg".to_string()));
+        assert_eq!(
+            author.metadata.author_image,
+            Some("/images/profile.jpg".to_string())
+        );
     }
 
     #[test]

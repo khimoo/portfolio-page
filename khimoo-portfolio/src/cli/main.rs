@@ -1,7 +1,9 @@
 use anyhow::Result;
 use clap::{Parser, Subcommand};
 
-use crate::cli::commands::{ProcessArticlesCommand, ProcessArticlesArgs, ValidateLinksCommand, ValidateLinksArgs};
+use crate::cli::commands::{
+    ProcessArticlesArgs, ProcessArticlesCommand, ValidateLinksArgs, ValidateLinksCommand,
+};
 
 /// CLI for khimoo-portfolio tools
 #[derive(Parser)]

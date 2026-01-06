@@ -11,8 +11,6 @@ use khimoo_portfolio::web::app::App;
 #[cfg(target_arch = "wasm32")]
 use khimoo_portfolio::config::get_config;
 
-
-
 #[cfg(target_arch = "wasm32")]
 #[function_component(Root)]
 fn root() -> Html {
@@ -41,11 +39,11 @@ fn main() -> anyhow::Result<()> {
     {
         use clap::Parser;
         use khimoo_portfolio::cli::Cli;
-        
+
         let cli = Cli::parse();
         cli.execute()
     }
-    
+
     #[cfg(not(feature = "cli-tools"))]
     {
         eprintln!("CLI tools not available. Build with --features cli-tools");

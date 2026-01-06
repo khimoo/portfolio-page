@@ -1,6 +1,6 @@
+use yew::NodeRef;
 /// UI関連の型定義
 use yew_hooks::UseMeasureState;
-use yew::NodeRef;
 
 /// コンポーネントのプロパティ型
 #[derive(yew::Properties, PartialEq)]

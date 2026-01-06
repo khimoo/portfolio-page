@@ -1,21 +1,20 @@
-use yew::prelude::*;
-use yew_router::prelude::*;
 use crate::web::routes::Route;
 use crate::web::styles::{LayoutStyles, DARK_THEME, TYPOGRAPHY};
+use yew::prelude::*;
+use yew_router::prelude::*;
 
 #[function_component(Header)]
 pub fn header() -> Html {
     let logo_style = format!(
         "text-decoration: none; color: {}; font-weight: 600; font-size: {};",
-        DARK_THEME.text_primary,
-        TYPOGRAPHY.heading_xl
+        DARK_THEME.text_primary, TYPOGRAPHY.heading_xl
     );
-    
+
     let nav_link_style = format!(
         "text-decoration: none; color: {}; font-weight: 600;",
         DARK_THEME.text_primary
     );
-    
+
     let github_link_style = format!(
         "text-decoration: none; color: {}; display: flex; align-items: center;",
         DARK_THEME.text_primary

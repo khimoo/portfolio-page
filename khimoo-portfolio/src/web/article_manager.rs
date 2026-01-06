@@ -1,7 +1,9 @@
 use std::collections::HashMap;
 use yew::prelude::*;
 
-use crate::web::data_loader::{ArticlesData, ProcessedArticle, LightweightArticle, DataLoadError, DataLoader};
+use crate::web::data_loader::{
+    ArticlesData, DataLoadError, DataLoader, LightweightArticle, ProcessedArticle,
+};
 use crate::web::types::data_types::NodeRegistry;
 use crate::web::types::node_types::{NodeId, AUTHOR_NODE_ID};
 
@@ -53,7 +55,8 @@ impl ArticleManager {
         self.clear_data();
 
         // Build a set of all article slugs for link validation
-        let all_slugs: std::collections::HashSet<String> = articles_data.articles
+        let all_slugs: std::collections::HashSet<String> = articles_data
+            .articles
             .iter()
             .map(|a| a.slug.clone())
             .collect();
@@ -61,15 +64,17 @@ impl ArticleManager {
         // Load articles and create lightweight versions
         for article in articles_data.articles {
             let lightweight = LightweightArticle::from(article.clone());
-            self.lightweight_articles.insert(article.slug.clone(), lightweight);
-            
+            self.lightweight_articles
+                .insert(article.slug.clone(), lightweight);
+
             // Only keep full articles for home articles in memory initially (performance optimization)
             if articles_data.home_articles.contains(&article.slug) {
                 self.articles.insert(article.slug.clone(), article.clone());
             }
 
             // Build link graph from outbound_links
-            let connections: Vec<String> = article.outbound_links
+            let connections: Vec<String> = article
+                .outbound_links
                 .iter()
                 .filter(|link| all_slugs.contains(&link.target_slug))
                 .map(|link| link.target_slug.clone())
@@ -78,7 +83,7 @@ impl ArticleManager {
                 self.link_graph.insert(article.slug.clone(), connections);
             }
         }
-        
+
         self.home_articles = articles_data.home_articles;
         self.assign_node_ids();
     }
@@ -102,7 +107,8 @@ impl ArticleManager {
 
             // Build link graph from inbound_links (pre-calculated for performance)
             if !article.inbound_links.is_empty() {
-                let connections: Vec<String> = article.inbound_links
+                let connections: Vec<String> = article
+                    .inbound_links
                     .iter()
                     .filter(|slug| all_slugs.contains(slug.as_str()))
                     .cloned()
@@ -112,7 +118,8 @@ impl ArticleManager {
                 }
             }
 
-            self.lightweight_articles.insert(article.slug.clone(), article);
+            self.lightweight_articles
+                .insert(article.slug.clone(), article);
         }
 
         self.assign_node_ids();
@@ -276,14 +283,14 @@ impl ArticleManager {
             // Update author node (always fixed size)
             let mut registry = registry.clone();
             registry.update_node_radius(AUTHOR_NODE_ID, 60);
-            
+
             // Update article nodes
             for (slug, node_id) in &self.slug_to_node_id {
                 if let Some(article) = self.lightweight_articles.get(slug) {
                     let new_radius = registry.calculate_dynamic_radius(
                         *node_id,
                         Some(article.metadata.importance),
-                        article.inbound_links.len()
+                        article.inbound_links.len(),
                     );
                     registry.update_node_radius(*node_id, new_radius);
                 }
@@ -296,7 +303,11 @@ impl ArticleManager {
         self.lightweight_articles
             .values()
             .filter(|article| {
-                article.metadata.category.as_ref().map_or(false, |cat| cat == category)
+                article
+                    .metadata
+                    .category
+                    .as_ref()
+                    .map_or(false, |cat| cat == category)
             })
             .collect()
     }
@@ -306,14 +317,19 @@ impl ArticleManager {
         self.articles
             .values()
             .filter(|article| {
-                article.metadata.category.as_ref().map_or(false, |cat| cat == category)
+                article
+                    .metadata
+                    .category
+                    .as_ref()
+                    .map_or(false, |cat| cat == category)
             })
             .collect()
     }
 
     /// Get all categories
     pub fn get_categories(&self) -> Vec<String> {
-        let mut categories: Vec<String> = self.lightweight_articles
+        let mut categories: Vec<String> = self
+            .lightweight_articles
             .values()
             .filter_map(|article| article.metadata.category.clone())
             .collect::<std::collections::HashSet<_>>()
@@ -341,7 +357,8 @@ impl ArticleManager {
 
     /// Get all tags
     pub fn get_all_tags(&self) -> Vec<String> {
-        let mut tags: Vec<String> = self.lightweight_articles
+        let mut tags: Vec<String> = self
+            .lightweight_articles
             .values()
             .flat_map(|article| article.metadata.tags.iter().cloned())
             .collect::<std::collections::HashSet<_>>()
@@ -356,9 +373,7 @@ impl ArticleManager {
         let query_lower = query.to_lowercase();
         self.lightweight_articles
             .values()
-            .filter(|article| {
-                article.title.to_lowercase().contains(&query_lower)
-            })
+            .filter(|article| article.title.to_lowercase().contains(&query_lower))
             .collect()
     }
 
@@ -367,9 +382,7 @@ impl ArticleManager {
         let query_lower = query.to_lowercase();
         self.articles
             .values()
-            .filter(|article| {
-                article.title.to_lowercase().contains(&query_lower)
-            })
+            .filter(|article| article.title.to_lowercase().contains(&query_lower))
             .collect()
     }
 
@@ -439,7 +452,7 @@ pub struct ArticleStats {
 pub fn use_article_manager() -> (
     UseStateHandle<Option<ArticleManager>>,
     UseStateHandle<bool>,
-    UseStateHandle<Option<DataLoadError>>
+    UseStateHandle<Option<DataLoadError>>,
 ) {
     let manager = use_state(|| None);
     let loading = use_state(|| true);
@@ -449,29 +462,31 @@ pub fn use_article_manager() -> (
         let manager = manager.clone();
         let loading = loading.clone();
         let error = error.clone();
-        
+
         use_effect_with((), move |_| {
             let manager = manager.clone();
             let loading = loading.clone();
             let error = error.clone();
-            
+
             wasm_bindgen_futures::spawn_local(async move {
                 let loader = DataLoader::new();
                 match loader.load_articles().await {
                     Ok(articles_data) => {
                         let mut article_manager = ArticleManager::new();
                         article_manager.load_from_data(articles_data);
-                        
+
                         // Also load node registry for unified management
                         match loader.build_node_registry().await {
                             Ok(node_registry) => {
                                 article_manager.set_node_registry(node_registry);
                             }
                             Err(e) => {
-                                web_sys::console::warn_1(&format!("Failed to load node registry: {}", e).into());
+                                web_sys::console::warn_1(
+                                    &format!("Failed to load node registry: {}", e).into(),
+                                );
                             }
                         }
-                        
+
                         manager.set(Some(article_manager));
                         error.set(None);
                     }
@@ -481,7 +496,7 @@ pub fn use_article_manager() -> (
                 }
                 loading.set(false);
             });
-            
+
             || {}
         });
     }
@@ -495,7 +510,7 @@ pub fn use_article_manager() -> (
 pub fn use_lightweight_article_manager() -> (
     UseStateHandle<Option<ArticleManager>>,
     UseStateHandle<bool>,
-    UseStateHandle<Option<DataLoadError>>
+    UseStateHandle<Option<DataLoadError>>,
 ) {
     let manager = use_state(|| None);
     let loading = use_state(|| true);
@@ -505,29 +520,31 @@ pub fn use_lightweight_article_manager() -> (
         let manager = manager.clone();
         let loading = loading.clone();
         let error = error.clone();
-        
+
         use_effect_with((), move |_| {
             let manager = manager.clone();
             let loading = loading.clone();
             let error = error.clone();
-            
+
             wasm_bindgen_futures::spawn_local(async move {
                 let loader = DataLoader::new();
                 match loader.load_lightweight_articles().await {
                     Ok(lightweight_articles) => {
                         let mut article_manager = ArticleManager::new();
                         article_manager.load_lightweight_data(lightweight_articles);
-                        
+
                         // Also load node registry for unified management
                         match loader.build_node_registry().await {
                             Ok(node_registry) => {
                                 article_manager.set_node_registry(node_registry);
                             }
                             Err(e) => {
-                                web_sys::console::warn_1(&format!("Failed to load node registry: {}", e).into());
+                                web_sys::console::warn_1(
+                                    &format!("Failed to load node registry: {}", e).into(),
+                                );
                             }
                         }
-                        
+
                         manager.set(Some(article_manager));
                         error.set(None);
                     }
@@ -537,7 +554,7 @@ pub fn use_lightweight_article_manager() -> (
                 }
                 loading.set(false);
             });
-            
+
             || {}
         });
     }
@@ -550,7 +567,7 @@ pub fn use_lightweight_article_manager() -> (
 #[hook]
 pub fn use_lazy_article_loader(
     manager: UseStateHandle<Option<ArticleManager>>,
-    slug: Option<String>
+    slug: Option<String>,
 ) -> (UseStateHandle<bool>, UseStateHandle<Option<DataLoadError>>) {
     let loading = use_state(|| false);
     let error = use_state(|| None);
@@ -559,7 +576,7 @@ pub fn use_lazy_article_loader(
         let manager = manager.clone();
         let loading = loading.clone();
         let error = error.clone();
-        
+
         use_effect_with(slug.clone(), move |slug| {
             if let (Some(slug), Some(current_manager)) = (slug, (*manager).clone()) {
                 // Check if article is already loaded
@@ -568,10 +585,10 @@ pub fn use_lazy_article_loader(
                     let loading = loading.clone();
                     let error = error.clone();
                     let slug = slug.clone();
-                    
+
                     loading.set(true);
                     error.set(None);
-                    
+
                     wasm_bindgen_futures::spawn_local(async move {
                         let loader = DataLoader::new();
                         match loader.load_article_by_slug(&slug).await {
@@ -590,7 +607,7 @@ pub fn use_lazy_article_loader(
                     });
                 }
             }
-            
+
             || {}
         });
     }

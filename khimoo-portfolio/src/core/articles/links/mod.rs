@@ -2,8 +2,8 @@ pub mod extractor;
 pub mod validator;
 
 // Re-export types
-pub use extractor::{ExtractedLink, LinkType, LinkExtractor};
+pub use extractor::{ExtractedLink, LinkExtractor, LinkType};
 pub use validator::{
-    LinkValidator, ValidationReport, ValidationError,
-    ValidationErrorType, ValidationSummary, ProcessedArticleRef
+    LinkValidator, ProcessedArticleRef, ValidationError, ValidationErrorType, ValidationReport,
+    ValidationSummary,
 };

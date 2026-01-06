@@ -1,5 +1,5 @@
-use crate::web::data_loader::ProcessedArticle;
 use crate::config::get_config;
+use crate::web::data_loader::ProcessedArticle;
 use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]

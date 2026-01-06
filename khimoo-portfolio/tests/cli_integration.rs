@@ -1,11 +1,15 @@
 //! CLI integration tests
-//! 
+//!
 //! These tests can be used to execute CLI commands during development and CI.
 
 #[cfg(all(not(target_arch = "wasm32"), feature = "cli-tools"))]
 mod tests {
-    use khimoo_portfolio::cli::commands::process_articles::{ProcessArticlesCommand, ProcessArticlesArgs};
-    use khimoo_portfolio::cli::commands::validate_links::{ValidateLinksCommand, ValidateLinksArgs};
+    use khimoo_portfolio::cli::commands::process_articles::{
+        ProcessArticlesArgs, ProcessArticlesCommand,
+    };
+    use khimoo_portfolio::cli::commands::validate_links::{
+        ValidateLinksArgs, ValidateLinksCommand,
+    };
     use std::path::PathBuf;
 
     #[test]
@@ -19,7 +23,7 @@ mod tests {
             parallel: false,
             optimize_images: false,
         };
-        
+
         command.execute(args).expect("Failed to process articles");
     }
 
@@ -34,8 +38,10 @@ mod tests {
             parallel: false,
             optimize_images: true,
         };
-        
-        command.execute(args).expect("Failed to process articles with images");
+
+        command
+            .execute(args)
+            .expect("Failed to process articles with images");
     }
 
     #[test]
@@ -46,7 +52,7 @@ mod tests {
             articles_dir: Some(PathBuf::from("../content/articles")),
             verbose: true,
         };
-        
+
         command.execute(args).expect("Failed to validate links");
     }
 }

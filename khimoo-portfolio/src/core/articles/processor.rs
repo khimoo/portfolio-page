@@ -1,8 +1,8 @@
 use anyhow::Result;
 use std::path::Path;
 
-use super::metadata::MetadataExtractor;
 use super::links::{LinkExtractor, ProcessedArticleRef};
+use super::metadata::MetadataExtractor;
 
 /// High-level article processing functionality
 /// Provides UI-independent business logic for article processing
@@ -24,16 +24,16 @@ impl ArticleProcessor {
     pub fn process_article(&self, file_path: &Path, content: &str) -> Result<ProcessedArticleRef> {
         // Parse front matter and content
         let (metadata, markdown_content) = self.metadata_extractor.extract_frontmatter(content)?;
-        
+
         // Validate metadata
         self.metadata_extractor.validate_metadata(&metadata)?;
-        
+
         // Extract links from content
         let outbound_links = self.link_extractor.extract_links(&markdown_content);
-        
+
         // Generate slug from file path
         let slug = self.generate_slug_from_path(file_path);
-        
+
         Ok(ProcessedArticleRef {
             slug,
             title: metadata.title.clone(),
@@ -47,16 +47,19 @@ impl ArticleProcessor {
     /// Process multiple articles from a directory
     pub fn process_all(&self, articles_dir: &Path) -> Result<Vec<ProcessedArticleRef>> {
         let mut articles = Vec::new();
-        
+
         if !articles_dir.exists() {
-            return Err(anyhow::anyhow!("Articles directory not found: {:?}", articles_dir));
+            return Err(anyhow::anyhow!(
+                "Articles directory not found: {:?}",
+                articles_dir
+            ));
         }
 
         // Read all markdown files in the directory
         for entry in std::fs::read_dir(articles_dir)? {
             let entry = entry?;
             let path = entry.path();
-            
+
             if path.is_file() && path.extension().map_or(false, |ext| ext == "md") {
                 let content = std::fs::read_to_string(&path)?;
                 match self.process_article(&path, &content) {
@@ -67,7 +70,7 @@ impl ArticleProcessor {
                 }
             }
         }
-        
+
         Ok(articles)
     }
 
@@ -130,7 +133,7 @@ This is a test article with [markdown link](other-article).
 
         let path = PathBuf::from("test-article.md");
         let result = processor.process_article(&path, content).unwrap();
-        
+
         assert_eq!(result.slug, "test-article");
         assert_eq!(result.title, "Test Article");
         assert_eq!(result.metadata.importance, 4);

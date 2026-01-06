@@ -13,7 +13,7 @@ pub struct NodeRendererProps {
 #[function_component(NodeRenderer)]
 pub fn node_renderer(props: &NodeRendererProps) -> Html {
     let registry = props.node_registry.borrow();
-    
+
     html! {
         <>
             // 背景のエッジ描画
@@ -36,7 +36,7 @@ pub fn node_renderer(props: &NodeRendererProps) -> Html {
                     }).collect::<Html>()
                 }
             </svg>
-            
+
             // ノード描画
             {
                 registry.iter().map(|(id, pos, radius, content)| {
@@ -85,7 +85,9 @@ pub struct NodeProps {
 pub fn node_component(props: &NodeProps) -> Html {
     // Author画像の場合は画像がノード全体を覆うようにする
     let content_container_style = match &props.content {
-        NodeContent::Author { .. } => "width: 80%; height: 80%; object-fit: contain; overflow: hidden; pointer-events: none;",
+        NodeContent::Author { .. } => {
+            "width: 80%; height: 80%; object-fit: contain; overflow: hidden; pointer-events: none;"
+        }
         _ => "max-width: 80%; max-height: 80%; overflow: hidden; pointer-events: none;",
     };
 

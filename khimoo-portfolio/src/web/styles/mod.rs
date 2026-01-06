@@ -1,5 +1,5 @@
 //! Web styles module
-//! 
+//!
 //! This module contains styling definitions and utilities
 //! for the web application components and layout.
 

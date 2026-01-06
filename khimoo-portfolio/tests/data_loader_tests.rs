@@ -26,4 +26,4 @@ fn test_error_display() {
 fn test_placeholder() {
     // Data loader tests are only available for wasm32 target
     assert!(true);
-} 
+}

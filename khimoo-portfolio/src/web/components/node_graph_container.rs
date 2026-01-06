@@ -1,10 +1,10 @@
+use crate::web::components::node_data_manager::NodeDataManager;
+use crate::web::components::physics_renderer::PhysicsRenderer;
 use crate::web::data_loader::use_articles_data;
 use crate::web::physics_sim::{PhysicsWorld, Viewport};
 use crate::web::routes::Route;
-use crate::web::styles::{LoadingStyles, ErrorStyles};
+use crate::web::styles::{ErrorStyles, LoadingStyles};
 use crate::web::types::*;
-use crate::web::components::node_data_manager::NodeDataManager;
-use crate::web::components::physics_renderer::PhysicsRenderer;
 use std::cell::RefCell;
 use std::collections::HashMap;
 use std::rc::Rc;
@@ -47,7 +47,11 @@ pub fn node_graph_container(props: &NodeGraphContainerProps) -> Html {
         if !*initialized {
             #[cfg(target_arch = "wasm32")]
             web_sys::console::log_1(
-                &format!("Initializing with container_bound: {:?}", props.container_bound).into(),
+                &format!(
+                    "Initializing with container_bound: {:?}",
+                    props.container_bound
+                )
+                .into(),
             );
 
             let (new_registry, slug_mapping) =
@@ -72,13 +76,15 @@ pub fn node_graph_container(props: &NodeGraphContainerProps) -> Html {
     let on_node_click = {
         let navigator = navigator.clone();
         let node_slug_mapping = node_slug_mapping.clone();
-        
+
         Callback::from(move |node_id: NodeId| {
             if let Some(slug) = node_slug_mapping.get(&node_id) {
                 // フォールバック作者ノードの場合はホームに留まる
                 if slug == "author" {
                     #[cfg(target_arch = "wasm32")]
-                    web_sys::console::log_1(&"Fallback author node clicked - staying on home page".into());
+                    web_sys::console::log_1(
+                        &"Fallback author node clicked - staying on home page".into(),
+                    );
                     return;
                 }
 

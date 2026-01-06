@@ -1,5 +1,5 @@
 //! CLI utilities module
-//! 
+//!
 //! This module contains utility functions and helpers for CLI operations.
 //! Following KISS principle, we keep utilities minimal and avoid over-engineering.
 

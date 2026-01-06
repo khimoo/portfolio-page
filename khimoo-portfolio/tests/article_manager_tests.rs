@@ -5,7 +5,12 @@ mod tests {
     use khimoo_portfolio::web::article_manager::ArticleManager;
     use khimoo_portfolio::web::data_loader::{ArticlesData, ProcessedArticle, ProcessedMetadata};
 
-    fn create_test_article(slug: &str, title: &str, home_display: bool, importance: u8) -> ProcessedArticle {
+    fn create_test_article(
+        slug: &str,
+        title: &str,
+        home_display: bool,
+        importance: u8,
+    ) -> ProcessedArticle {
         ProcessedArticle {
             slug: slug.to_string(),
             title: title.to_string(),

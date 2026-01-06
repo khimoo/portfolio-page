@@ -15,7 +15,7 @@ impl AppConfig {
     /// Create configuration based on current environment
     pub fn new() -> Self {
         let base_path = Self::detect_base_path();
-        
+
         Self {
             data_path: format!("{}/data", base_path),
             articles_path: format!("{}/articles", base_path),
@@ -39,9 +39,10 @@ impl AppConfig {
                     return "/portfolio-page".to_string();
                 }
             }
-            
+
             if let Ok(pathname) = window.location().pathname() {
-                if pathname.starts_with("/portfolio-page/") || pathname.contains("/portfolio-page") {
+                if pathname.starts_with("/portfolio-page/") || pathname.contains("/portfolio-page")
+                {
                     return "/portfolio-page".to_string();
                 }
             }
@@ -70,14 +71,14 @@ impl AppConfig {
     pub fn article_url(&self, filepath: &str) -> String {
         // Remove any leading path components and keep only the filename
         let clean_path = filepath.trim_start_matches('/');
-        
+
         // Extract just the filename from paths like "../content/articles/about-khimoo.md"
         let filename = if let Some(filename) = clean_path.split('/').last() {
             filename
         } else {
             clean_path
         };
-        
+
         if self.base_path.is_empty() {
             format!("/articles/{}", filename)
         } else {
