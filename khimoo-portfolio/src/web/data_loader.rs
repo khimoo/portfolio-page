@@ -193,7 +193,7 @@ impl DataLoader {
     /// Requirements: 3.2, 3.3 - Node graph data construction
     pub async fn build_node_registry(&self) -> Result<NodeRegistry, DataLoadError> {
         let articles_data = self.load_articles().await?;
-        let mut registry = NodeRegistry::new();
+        let mut registry = NodeRegistry::new_with_config(self.config.node_config.clone());
 
         web_sys::console::log_1(&"DataLoader: Building node registry from articles data".into());
 
@@ -219,7 +219,7 @@ impl DataLoader {
             };
 
             // Add node to registry
-            registry.add_node(node_id, position, 30, content);
+            registry.add_node(node_id, position, registry.node_config.default_node_radius, content);
 
             // Set category and importance
             if let Some(category) = &article.metadata.category {

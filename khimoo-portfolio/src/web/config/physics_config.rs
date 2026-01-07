@@ -50,10 +50,4 @@ impl PhysicsConfig {
     /// 物理シミュレーションのフレームレート設定
     pub const PHYSICS_FPS: u32 = 120;
     pub const PHYSICS_INTERVAL_MS: u32 = 1000 / Self::PHYSICS_FPS;
-
-    /// ノードサイズの設定
-    pub const MIN_NODE_RADIUS: i32 = 20;
-    pub const MAX_NODE_RADIUS: i32 = 80;
-    pub const DEFAULT_NODE_RADIUS: i32 = 30;
-    pub const AUTHOR_NODE_RADIUS: i32 = 60;
 }

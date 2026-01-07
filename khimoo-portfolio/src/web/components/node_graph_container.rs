@@ -1,3 +1,4 @@
+use crate::config::get_config;
 use crate::web::components::node_data_manager::NodeDataManager;
 use crate::web::components::physics_renderer::PhysicsRenderer;
 use crate::web::data_loader::use_articles_data;
@@ -28,10 +29,10 @@ pub fn node_graph_container(props: &NodeGraphContainerProps) -> Html {
     let (articles_data, loading, error) = use_articles_data();
 
     // 記事データが読み込まれたらノードレジストリと物理世界を一度だけ初期化
-    let node_registry = use_state(|| Rc::new(RefCell::new(NodeRegistry::new())));
+    let node_registry = use_state(|| Rc::new(RefCell::new(NodeRegistry::new_with_config(get_config().node_config.clone()))));
     let node_slug_mapping = use_state(|| HashMap::<NodeId, String>::new());
     let physics_world = use_state(|| {
-        let empty_registry = Rc::new(RefCell::new(NodeRegistry::new()));
+        let empty_registry = Rc::new(RefCell::new(NodeRegistry::new_with_config(get_config().node_config.clone())));
         let default_bound = ContainerBound::default();
         Rc::new(RefCell::new(PhysicsWorld::new(
             empty_registry,

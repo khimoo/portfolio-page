@@ -51,7 +51,7 @@ impl NodeDataManager {
         articles_data: &ArticlesData,
         container_bound: &ContainerBound,
     ) -> (NodeRegistry, HashMap<NodeId, String>) {
-        let mut reg = NodeRegistry::new();
+        let mut reg = NodeRegistry::new_with_config(get_config().node_config.clone());
         let mut slug_to_id = HashMap::new();
         let mut id_to_slug = HashMap::new();
         let mut next_id = 1u32;

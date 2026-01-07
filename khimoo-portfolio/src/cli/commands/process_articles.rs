@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
 
-use crate::config_loader::{get_default_articles_dir, get_images_dir};
+use crate::config_loader::{get_default_articles_dir, get_images_dir, get_node_config};
 use crate::core::articles::links::{ExtractedLink, ProcessedArticleRef};
 use crate::core::articles::metadata::ArticleMetadata;
 use crate::core::articles::processor::ArticleProcessor;

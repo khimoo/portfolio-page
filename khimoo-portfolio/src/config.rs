@@ -2,6 +2,32 @@ use serde::{Deserialize, Serialize};
 
 use std::sync::OnceLock;
 
+/// Node configuration structure
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct NodeConfig {
+    pub author_node_radius: i32,
+    pub default_node_radius: i32,
+    pub min_node_radius: i32,
+    pub max_node_radius: i32,
+    pub importance_multiplier: i32,
+    pub inbound_link_multiplier: i32,
+    pub default_importance: u8,
+}
+
+impl Default for NodeConfig {
+    fn default() -> Self {
+        Self {
+            author_node_radius: 60,
+            default_node_radius: 30,
+            min_node_radius: 20,
+            max_node_radius: 80,
+            importance_multiplier: 8,
+            inbound_link_multiplier: 4,
+            default_importance: 3,
+        }
+    }
+}
+
 /// Application configuration that handles environment-specific settings
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AppConfig {
@@ -9,6 +35,7 @@ pub struct AppConfig {
     pub data_path: String,
     pub articles_path: String,
     pub assets_path: String,
+    pub node_config: NodeConfig,
 }
 
 impl AppConfig {
@@ -21,6 +48,7 @@ impl AppConfig {
             articles_path: format!("{base_path}/articles"),
             assets_path: format!("{base_path}/assets"),
             base_path,
+            node_config: NodeConfig::default(),
         }
     }
 

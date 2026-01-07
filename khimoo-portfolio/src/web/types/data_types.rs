@@ -1,6 +1,7 @@
 use super::node_types::*;
 use super::physics_types::Position;
 use crate::web::styles::{get_default_category_colors, CategoryColor};
+use crate::config::NodeConfig;
 use std::collections::HashMap;
 
 /// ノードレジストリ - ノード管理の中心的な構造体
@@ -16,6 +17,7 @@ pub struct NodeRegistry {
     pub category_colors: HashMap<String, CategoryColor>,
     pub node_importance: HashMap<NodeId, u8>,
     pub node_inbound_counts: HashMap<NodeId, usize>,
+    pub node_config: NodeConfig,
 }
 
 impl NodeRegistry {
@@ -33,6 +35,25 @@ impl NodeRegistry {
             category_colors,
             node_importance: HashMap::new(),
             node_inbound_counts: HashMap::new(),
+            node_config: NodeConfig::default(),
+        }
+    }
+
+    pub fn new_with_config(node_config: NodeConfig) -> Self {
+        let category_colors = get_default_category_colors();
+
+        Self {
+            positions: HashMap::new(),
+            radii: HashMap::new(),
+            contents: HashMap::new(),
+            edges: Vec::new(),
+            node_types: HashMap::new(),
+            connection_lines: Vec::new(),
+            node_categories: HashMap::new(),
+            category_colors,
+            node_importance: HashMap::new(),
+            node_inbound_counts: HashMap::new(),
+            node_config,
         }
     }
 
@@ -56,7 +77,7 @@ impl NodeRegistry {
             image_url,
             bio,
         };
-        let radius = 60;
+        let radius = self.node_config.author_node_radius;
         self.add_node(AUTHOR_NODE_ID, pos, radius, content);
     }
 
@@ -154,20 +175,24 @@ impl NodeRegistry {
         importance: Option<u8>,
         inbound_count: usize,
     ) -> i32 {
-        let base_size = if self.is_author_node(node_id) { 60 } else { 30 };
+        let base_size = if self.is_author_node(node_id) { 
+            self.node_config.author_node_radius 
+        } else { 
+            self.node_config.default_node_radius 
+        };
 
         if self.is_author_node(node_id) {
             return base_size;
         }
 
-        let importance_multiplier = importance.unwrap_or(3) as i32;
-        let importance_bonus = (importance_multiplier - 3) * 8;
+        let importance_multiplier = importance.unwrap_or(self.node_config.default_importance) as i32;
+        let importance_bonus = (importance_multiplier - self.node_config.default_importance as i32) * self.node_config.importance_multiplier;
 
         let inbound_multiplier = (inbound_count as f32).sqrt() as i32;
-        let inbound_bonus = inbound_multiplier * 4;
+        let inbound_bonus = inbound_multiplier * self.node_config.inbound_link_multiplier;
 
         let calculated_size = base_size + importance_bonus + inbound_bonus;
-        calculated_size.clamp(20, 80)
+        calculated_size.clamp(self.node_config.min_node_radius, self.node_config.max_node_radius)
     }
 
     pub fn iter(&self) -> impl Iterator<Item = (&NodeId, &Position, &i32, &NodeContent)> {
@@ -195,7 +220,7 @@ impl NodeRegistry {
     }
 
     pub fn calculate_physics_radius(&self, node_id: NodeId) -> f32 {
-        let visual_radius = self.radii.get(&node_id).copied().unwrap_or(30);
+        let visual_radius = self.radii.get(&node_id).copied().unwrap_or(self.node_config.default_node_radius);
         let importance = self.get_node_importance(node_id);
 
         if let Some(5) = importance {

@@ -282,7 +282,7 @@ impl ArticleManager {
         if let Some(registry) = &self.node_registry {
             // Update author node (always fixed size)
             let mut registry = registry.clone();
-            registry.update_node_radius(AUTHOR_NODE_ID, 60);
+            registry.update_node_radius(AUTHOR_NODE_ID, registry.node_config.author_node_radius);
 
             // Update article nodes
             for (slug, node_id) in &self.slug_to_node_id {

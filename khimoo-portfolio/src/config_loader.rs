@@ -3,6 +3,7 @@ use std::path::PathBuf;
 
 #[cfg(feature = "cli-tools")]
 use crate::core::media::image_optimizer::ImageOptimizationConfig;
+use crate::config::NodeConfig;
 
 /// Load configuration from project.toml
 pub fn load_project_config() -> Result<HashMap<String, String>, Box<dyn std::error::Error>> {
@@ -84,6 +85,63 @@ pub fn get_image_optimization_config() -> ImageOptimizationConfig {
             opt_config
         }
         Err(_) => ImageOptimizationConfig::default(),
+    }
+}
+
+/// Get node configuration from project.toml
+pub fn get_node_config() -> NodeConfig {
+    match load_full_config() {
+        Ok(config) => {
+            let mut node_config = NodeConfig::default();
+
+            if let Some(nodes) = config.get("nodes").and_then(|v| v.as_table()) {
+                if let Some(author_radius) = nodes
+                    .get("author_node_radius")
+                    .and_then(|v| v.as_integer())
+                {
+                    node_config.author_node_radius = author_radius as i32;
+                }
+                if let Some(default_radius) = nodes
+                    .get("default_node_radius")
+                    .and_then(|v| v.as_integer())
+                {
+                    node_config.default_node_radius = default_radius as i32;
+                }
+                if let Some(min_radius) = nodes
+                    .get("min_node_radius")
+                    .and_then(|v| v.as_integer())
+                {
+                    node_config.min_node_radius = min_radius as i32;
+                }
+                if let Some(max_radius) = nodes
+                    .get("max_node_radius")
+                    .and_then(|v| v.as_integer())
+                {
+                    node_config.max_node_radius = max_radius as i32;
+                }
+                if let Some(importance_mult) = nodes
+                    .get("importance_multiplier")
+                    .and_then(|v| v.as_integer())
+                {
+                    node_config.importance_multiplier = importance_mult as i32;
+                }
+                if let Some(inbound_mult) = nodes
+                    .get("inbound_link_multiplier")
+                    .and_then(|v| v.as_integer())
+                {
+                    node_config.inbound_link_multiplier = inbound_mult as i32;
+                }
+                if let Some(default_imp) = nodes
+                    .get("default_importance")
+                    .and_then(|v| v.as_integer())
+                {
+                    node_config.default_importance = default_imp as u8;
+                }
+            }
+
+            node_config
+        }
+        Err(_) => NodeConfig::default(),
     }
 }
 

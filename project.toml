@@ -34,3 +34,15 @@ wasm_target = "khimoo-portfolio"
 webp_quality = 85
 small_image_size = 64
 medium_image_size = 128
+
+[nodes]
+# ノードサイズ設定
+author_node_radius = 60
+default_node_radius = 30
+min_node_radius = 20
+max_node_radius = 80
+
+# サイズ計算パラメータ
+importance_multiplier = 8
+inbound_link_multiplier = 4
+default_importance = 3

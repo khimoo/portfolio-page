@@ -167,8 +167,8 @@ impl PhysicsWorld {
                     continue; // 距離が近すぎる場合はスキップ
                 }
 
-                let radius1 = registry.radii.get(id1).copied().unwrap_or(30) as f32;
-                let radius2 = registry.radii.get(id2).copied().unwrap_or(30) as f32;
+                let radius1 = registry.radii.get(id1).copied().unwrap_or(registry.node_config.default_node_radius) as f32;
+                let radius2 = registry.radii.get(id2).copied().unwrap_or(registry.node_config.default_node_radius) as f32;
 
                 // 作者ノードが関わる場合は専用の最小距離を使用
                 let base_min_distance =
