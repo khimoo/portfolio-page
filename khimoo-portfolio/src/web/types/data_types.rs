@@ -224,10 +224,14 @@ impl NodeRegistry {
         let visual_radius = self.radii.get(&node_id).copied().unwrap_or(self.node_config.default_node_radius);
         let importance = self.get_node_importance(node_id);
 
-        if let Some(5) = importance {
-            visual_radius as f32 * 2.5
+        if let Some(imp) = importance {
+            if imp >= self.node_config.high_importance_threshold {
+                visual_radius as f32 * self.node_config.physics_radius_multiplier_high_importance
+            } else {
+                visual_radius as f32 * self.node_config.physics_radius_multiplier_default
+            }
         } else {
-            visual_radius as f32
+            visual_radius as f32 * self.node_config.physics_radius_multiplier_default
         }
     }
 }

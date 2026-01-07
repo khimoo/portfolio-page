@@ -12,6 +12,9 @@ pub struct NodeConfig {
     pub importance_multiplier: i32,
     pub inbound_link_multiplier: i32,
     pub default_importance: u8,
+    pub physics_radius_multiplier_default: f32,
+    pub physics_radius_multiplier_high_importance: f32,
+    pub high_importance_threshold: u8,
 }
 
 impl NodeConfig {
@@ -28,6 +31,9 @@ impl NodeConfig {
             importance_multiplier: 10,
             inbound_link_multiplier: 20,
             default_importance: 3,
+            physics_radius_multiplier_default: 1.2,
+            physics_radius_multiplier_high_importance: 1.5,
+            high_importance_threshold: 5,
         }
     }
 
@@ -64,6 +70,21 @@ impl NodeConfig {
     /// Get default importance
     pub fn get_default_importance(&self) -> u8 {
         self.default_importance
+    }
+
+    /// Get physics radius multiplier for default importance nodes
+    pub fn get_physics_radius_multiplier_default(&self) -> f32 {
+        self.physics_radius_multiplier_default
+    }
+
+    /// Get physics radius multiplier for high importance nodes
+    pub fn get_physics_radius_multiplier_high_importance(&self) -> f32 {
+        self.physics_radius_multiplier_high_importance
+    }
+
+    /// Get high importance threshold
+    pub fn get_high_importance_threshold(&self) -> u8 {
+        self.high_importance_threshold
     }
 
     /// Calculate node radius based on importance and inbound links
