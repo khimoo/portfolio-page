@@ -26,7 +26,7 @@ Rustの練習用に作ってみましたが、結果的にはリアルタイム�
 # ProvablyGoodPlanarMappings
 [リポジトリ](https://github.com/khimoo/ProvablyGoodPlanarMappings)
 
-サマーインターンで[こちら](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC)の論文を実装しました。実働4〜5日にしてはよくがんばったと思います。
+サマーインターンの一環で[こちら](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC)の論文を実装しました。
 
 詳細：[ブログ](provably-good-planar-mappings)
 
