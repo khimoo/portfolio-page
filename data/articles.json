@@ -17,7 +17,7 @@
       "file_path": "../content/articles/pitch-bend.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.551104371+00:00"
+      "processed_at": "2026-01-08T09:32:03.163653587+00:00"
     },
     {
       "slug": "music",
@@ -36,7 +36,7 @@
       "file_path": "../content/articles/music.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.551233643+00:00"
+      "processed_at": "2026-01-08T09:32:03.163791524+00:00"
     },
     {
       "slug": "Neovim",
@@ -55,7 +55,7 @@
       "file_path": "../content/articles/Neovim.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.551346475+00:00"
+      "processed_at": "2026-01-08T09:32:03.163910536+00:00"
     },
     {
       "slug": "myworks",
@@ -135,7 +135,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.552275925+00:00"
+      "processed_at": "2026-01-08T09:32:03.164841278+00:00"
     },
     {
       "slug": "mini_farm",
@@ -154,7 +154,7 @@
       "file_path": "../content/articles/mini_farm.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.552408023+00:00"
+      "processed_at": "2026-01-08T09:32:03.164987641+00:00"
     },
     {
       "slug": "Linux",
@@ -173,7 +173,7 @@
       "file_path": "../content/articles/Linux.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.552545550+00:00"
+      "processed_at": "2026-01-08T09:32:03.165104839+00:00"
     },
     {
       "slug": "template_article",
@@ -192,7 +192,7 @@
       "file_path": "../content/articles/Templates/template_article.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.552627925+00:00"
+      "processed_at": "2026-01-08T09:32:03.165188524+00:00"
     },
     {
       "slug": "drawing",
@@ -211,7 +211,7 @@
       "file_path": "../content/articles/drawing.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.552754602+00:00"
+      "processed_at": "2026-01-08T09:32:03.165338093+00:00"
     },
     {
       "slug": "gakuchika",
@@ -230,7 +230,7 @@
       "file_path": "../content/articles/gakuchika.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.552870930+00:00"
+      "processed_at": "2026-01-08T09:32:03.165461132+00:00"
     },
     {
       "slug": "myblog",
@@ -249,7 +249,7 @@
       "file_path": "../content/articles/myblog.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.552991776+00:00"
+      "processed_at": "2026-01-08T09:32:03.165583049+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -335,7 +335,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.553555622+00:00"
+      "processed_at": "2026-01-08T09:32:03.166161445+00:00"
     },
     {
       "slug": "math",
@@ -361,7 +361,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.553727814+00:00"
+      "processed_at": "2026-01-08T09:32:03.166356458+00:00"
     },
     {
       "slug": "programming",
@@ -393,7 +393,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.553920575+00:00"
+      "processed_at": "2026-01-08T09:32:03.166550649+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -405,14 +405,14 @@
         "importance": 2,
         "related_articles": [],
         "tags": [],
-        "created_at": null,
-        "updated_at": null,
+        "created_at": "2026-01-08T06:28:23Z",
+        "updated_at": "2026-01-08T06:28:25Z",
         "author_image": null
       },
       "file_path": "../content/articles/provably-good-planar-mappings.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.554020673+00:00"
+      "processed_at": "2026-01-08T09:32:03.166683717+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -431,7 +431,7 @@
       "file_path": "../content/articles/continuum_theory.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.554104951+00:00"
+      "processed_at": "2026-01-08T09:32:03.166774526+00:00"
     },
     {
       "slug": "hobby",
@@ -487,10 +487,10 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-07T03:56:18.554307530+00:00"
+      "processed_at": "2026-01-08T09:32:03.166980469+00:00"
     }
   ],
-  "generated_at": "2026-01-07T03:56:18.789552669+00:00",
+  "generated_at": "2026-01-08T09:32:03.769227346+00:00",
   "total_count": 16,
   "home_articles": [
     "pitch-bend",
