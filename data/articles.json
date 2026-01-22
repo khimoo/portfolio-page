@@ -17,7 +17,7 @@
       "file_path": "../content/articles/pitch-bend.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.929273885+00:00"
+      "processed_at": "2026-01-22T05:02:45.547465744+00:00"
     },
     {
       "slug": "music",
@@ -36,7 +36,7 @@
       "file_path": "../content/articles/music.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.929386884+00:00"
+      "processed_at": "2026-01-22T05:02:45.547599302+00:00"
     },
     {
       "slug": "Neovim",
@@ -55,7 +55,7 @@
       "file_path": "../content/articles/Neovim.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.929477061+00:00"
+      "processed_at": "2026-01-22T05:02:45.547710228+00:00"
     },
     {
       "slug": "myworks",
@@ -135,7 +135,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.930289775+00:00"
+      "processed_at": "2026-01-22T05:02:45.548623327+00:00"
     },
     {
       "slug": "mini_farm",
@@ -154,7 +154,7 @@
       "file_path": "../content/articles/mini_farm.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.930402343+00:00"
+      "processed_at": "2026-01-22T05:02:45.548753199+00:00"
     },
     {
       "slug": "Linux",
@@ -173,7 +173,7 @@
       "file_path": "../content/articles/Linux.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.930493158+00:00"
+      "processed_at": "2026-01-22T05:02:45.548870156+00:00"
     },
     {
       "slug": "template_article",
@@ -192,7 +192,7 @@
       "file_path": "../content/articles/Templates/template_article.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.930556429+00:00"
+      "processed_at": "2026-01-22T05:02:45.548971004+00:00"
     },
     {
       "slug": "drawing",
@@ -211,7 +211,7 @@
       "file_path": "../content/articles/drawing.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.930655698+00:00"
+      "processed_at": "2026-01-22T05:02:45.549092299+00:00"
     },
     {
       "slug": "gakuchika",
@@ -230,7 +230,26 @@
       "file_path": "../content/articles/gakuchika.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.930746066+00:00"
+      "processed_at": "2026-01-22T05:02:45.549212774+00:00"
+    },
+    {
+      "slug": "infinite_topology",
+      "title": "無限次元位相幾何",
+      "metadata": {
+        "title": "無限次元位相幾何",
+        "home_display": true,
+        "category": "",
+        "importance": 2,
+        "related_articles": [],
+        "tags": [],
+        "created_at": "2026-01-11T05:01:36Z",
+        "updated_at": "2026-01-11T08:02:45Z",
+        "author_image": null
+      },
+      "file_path": "../content/articles/infinite_topology.md",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-01-22T05:02:45.549329420+00:00"
     },
     {
       "slug": "myblog",
@@ -249,7 +268,7 @@
       "file_path": "../content/articles/myblog.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.930837122+00:00"
+      "processed_at": "2026-01-22T05:02:45.549444735+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -335,7 +354,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.931316654+00:00"
+      "processed_at": "2026-01-22T05:02:45.550009546+00:00"
     },
     {
       "slug": "math",
@@ -358,10 +377,16 @@
           "link_type": "MarkdownLink",
           "original_text": "[連続体理論](continuum_theory)",
           "display_text": "連続体理論"
+        },
+        {
+          "target_slug": "infinite_topology",
+          "link_type": "MarkdownLink",
+          "original_text": "[無限次元位相幾何](infinite_topology)",
+          "display_text": "無限次元位相幾何"
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.931453712+00:00"
+      "processed_at": "2026-01-22T05:02:45.550216050+00:00"
     },
     {
       "slug": "programming",
@@ -393,7 +418,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.931600794+00:00"
+      "processed_at": "2026-01-22T05:02:45.550393771+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -412,7 +437,7 @@
       "file_path": "../content/articles/provably-good-planar-mappings.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.931700858+00:00"
+      "processed_at": "2026-01-22T05:02:45.550516539+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -431,7 +456,7 @@
       "file_path": "../content/articles/continuum_theory.md",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.931768757+00:00"
+      "processed_at": "2026-01-22T05:02:45.550604924+00:00"
     },
     {
       "slug": "hobby",
@@ -487,11 +512,11 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-08T16:43:32.931932877+00:00"
+      "processed_at": "2026-01-22T05:02:45.550805146+00:00"
     }
   ],
-  "generated_at": "2026-01-08T16:43:33.496862216+00:00",
-  "total_count": 16,
+  "generated_at": "2026-01-22T05:02:46.150256343+00:00",
+  "total_count": 17,
   "home_articles": [
     "pitch-bend",
     "music",
@@ -501,6 +526,7 @@
     "Linux",
     "drawing",
     "gakuchika",
+    "infinite_topology",
     "myblog",
     "about-khimoo",
     "math",
