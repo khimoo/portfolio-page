@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "myworks.md",
+                "file": "about-khimoo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "myworks"
+              "title": "about-khimoo"
             }
           }
         ]
@@ -186,15 +186,16 @@
   },
   "active": "db48dff8e671f506",
   "lastOpenFiles": [
-    "provably-good-planar-mappings.md",
+    "math.md",
+    "infinite_topology.md",
     "myworks.md",
+    "provably-good-planar-mappings.md",
     "programming.md",
     "pitch-bend.md",
     "Neovim.md",
     "myblog.md",
     "music.md",
     "mini_farm.md",
-    "math.md",
     "Linux.md",
     "hobby.md",
     "gakuchika.md",
