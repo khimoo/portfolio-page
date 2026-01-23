@@ -20,42 +20,27 @@
           targets = [ "wasm32-unknown-unknown" ];
         };
 
-        # CI-specific tools
         ciTools = with pkgs; [
-          # Image processing
           python3
           python3Packages.pillow
-
-          # File operations and utilities
           coreutils
           findutils
           gnugrep
           gawk
-          
-          # Verification tools
           file
           tree
-          
-          # Additional utilities for CI
           curl
           jq
         ];
-      in
-      {
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            # Rust toolchain
-            rustToolchain
 
-            # WebAssembly tools
+        # devShellを変数として定義してnix run(apps.default)で使えるようにしたい
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            rustToolchain
             wasm-pack
             trunk
-
-            # Development tools
             watchexec
             just
-
-            # System dependencies
             pkg-config
             openssl
           ] ++ ciTools;
@@ -64,8 +49,7 @@
             echo "🦀 Rust WebAssembly development environment"
             echo "📦 Available commands:"
             just --list
-            
-            # CI environment detection and setup
+
             if [ "$CI" = "true" ]; then
               echo "🔧 CI environment detected"
               echo "🐍 Python version: $(python3 --version)"
@@ -77,6 +61,9 @@
             fi
           '';
         };
+      in
+      {
+        devShells.default = devShell;
 
         packages.default = pkgs.rustPlatform.buildRustPackage {
           pname = "khimoo-portfolio";
@@ -86,11 +73,21 @@
 
           buildInputs = with pkgs; [ pkg-config openssl ];
 
-          # WebAssembly build
           buildPhase = ''
             cargo build --release
             wasm-pack build --target web --out-dir pkg
           '';
+        };
+
+        apps.default = {
+          type = "app";
+          program = "${pkgs.writeShellApplication {
+            name = "dev";
+            runtimeInputs = devShell.buildInputs;
+            text = ''
+              exec just dev
+            '';
+          }}/bin/dev";
         };
       });
 }
