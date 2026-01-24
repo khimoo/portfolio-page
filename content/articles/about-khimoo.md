@@ -4,7 +4,7 @@ author_image: /assets/img/author_img.png
 home_display: true
 importance: 5
 category: ""
-tags: []
+tags: ["自己紹介"]
 created_at: "2024-01-02T03:00:00Z"
 updated_at: "2026-01-03T21:45:57Z"
 ---
