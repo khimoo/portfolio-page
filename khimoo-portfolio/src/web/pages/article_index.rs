@@ -1,12 +1,12 @@
 use crate::web::components::ArticleStateRenderer;
-use crate::web::data_loader::{use_lightweight_articles_with_summaries, LightweightArticle};
+use crate::web::data_loader::{use_articles_data, LightweightArticle};
 use crate::web::routes::Route;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
 #[function_component(ArticleIndexPage)]
 pub fn article_index_page() -> Html {
-    let (articles, loading, error) = use_lightweight_articles_with_summaries();
+    let (articles_data, loading, error) = use_articles_data();
 
     if *loading {
         return ArticleStateRenderer::render_index_loading();
@@ -16,13 +16,21 @@ pub fn article_index_page() -> Html {
         return ArticleStateRenderer::render_index_error(&format!("{}", err));
     }
 
+    let articles = articles_data.as_ref().map(|data| {
+        data.articles
+            .iter()
+            .cloned()
+            .map(LightweightArticle::from)
+            .collect::<Vec<_>>()
+    });
+
     html! {
         <>
             <style>{index_styles()}</style>
             <div class="article-index-container">
                 <h1>{"記事一覧"}</h1>
 
-                {render_articles_list(&*articles)}
+                {render_articles_list(&articles)}
             </div>
         </>
     }

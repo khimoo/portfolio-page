@@ -1,4 +1,3 @@
-use pulldown_cmark::{Event, Parser};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use wasm_bindgen::prelude::*;
@@ -29,6 +28,7 @@ pub struct ProcessedArticle {
     pub title: String,
     pub metadata: ArticleMetadata,
     pub file_path: String,
+    pub summary: Option<String>,
     pub outbound_links: Vec<ExtractedLink>,
     pub inbound_links: Vec<ExtractedLink>,
     pub processed_at: String,
@@ -55,7 +55,7 @@ impl From<ProcessedArticle> for LightweightArticle {
                 .into_iter()
                 .map(|link| link.target_slug)
                 .collect(),
-            summary: None, // Summary will be loaded separately for performance
+            summary: article.summary,
         }
     }
 }
@@ -128,66 +128,6 @@ impl DataLoader {
         }
     }
 
-    /// Convert ArticlesData to LightweightArticle for performance optimization
-    /// Requirements: 3.2, 3.3 - Data flow optimization
-    pub async fn load_lightweight_articles(
-        &self,
-    ) -> Result<Vec<LightweightArticle>, DataLoadError> {
-        let articles_data = self.load_articles().await?;
-        let lightweight_articles: Vec<LightweightArticle> = articles_data
-            .articles
-            .into_iter()
-            .map(LightweightArticle::from)
-            .collect();
-
-        web_sys::console::log_1(
-            &format!(
-                "DataLoader: Converted to {} lightweight articles",
-                lightweight_articles.len()
-            )
-            .into(),
-        );
-        Ok(lightweight_articles)
-    }
-
-    /// Load lightweight articles with summaries for list display
-    pub async fn load_lightweight_articles_with_summaries(
-        &self,
-    ) -> Result<Vec<LightweightArticle>, DataLoadError> {
-        let articles_data = self.load_articles().await?;
-        let mut lightweight_articles: Vec<LightweightArticle> = Vec::new();
-
-        web_sys::console::log_1(&"DataLoader: Loading articles with summaries...".into());
-
-        for article in articles_data.articles {
-            let mut lightweight_article = LightweightArticle::from(article.clone());
-
-            // Generate summary from content
-            match self.generate_article_summary(&article.file_path).await {
-                Ok(summary) => {
-                    lightweight_article.summary = Some(summary);
-                }
-                Err(e) => {
-                    web_sys::console::warn_1(
-                        &format!("Failed to generate summary for {}: {}", article.slug, e).into(),
-                    );
-                    lightweight_article.summary =
-                        Some("サマリーを読み込めませんでした。".to_string());
-                }
-            }
-
-            lightweight_articles.push(lightweight_article);
-        }
-
-        web_sys::console::log_1(
-            &format!(
-                "DataLoader: Loaded {} articles with summaries",
-                lightweight_articles.len()
-            )
-            .into(),
-        );
-        Ok(lightweight_articles)
-    }
 
     /// Build NodeRegistry for node graph visualization
     /// Requirements: 3.2, 3.3 - Node graph data construction
@@ -474,81 +414,6 @@ impl DataLoader {
         }
     }
 
-    /// Generate summary from article content
-    pub async fn generate_article_summary(&self, file_path: &str) -> Result<String, DataLoadError> {
-        let content = self.load_article_content_only(file_path).await?;
-
-        // Extract first paragraph or first few sentences as summary
-        let summary = self.extract_summary_from_content(&content);
-        Ok(summary)
-    }
-
-    /// Extract summary from article content (first paragraph or 150 characters)
-    fn extract_summary_from_content(&self, content: &str) -> String {
-        // First, convert markdown to plain text
-        let plain_text = self.extract_plain_text_from_markdown(content);
-        let content = plain_text.trim();
-
-        // Try to get first paragraph
-        if let Some(first_paragraph) = content.split("\n\n").next() {
-            let cleaned = first_paragraph
-                .lines()
-                .map(|line| line.trim())
-                .filter(|line| !line.is_empty())
-                .collect::<Vec<_>>()
-                .join(" ");
-
-            if !cleaned.is_empty() {
-                return self.truncate_string_safely(&cleaned, 150);
-            }
-        }
-
-        // Fallback: take first 150 characters
-        let cleaned = content
-            .lines()
-            .map(|line| line.trim())
-            .filter(|line| !line.is_empty())
-            .collect::<Vec<_>>()
-            .join(" ");
-
-        if cleaned.is_empty() {
-            "記事の概要はありません。".to_string()
-        } else {
-            self.truncate_string_safely(&cleaned, 150)
-        }
-    }
-
-    /// Safely truncate string at character boundary
-    fn truncate_string_safely(&self, text: &str, max_len: usize) -> String {
-        if text.len() <= max_len {
-            return text.to_string();
-        }
-
-        // Find safe truncation point
-        let mut truncate_at = max_len - 3; // Reserve space for "..."
-
-        // Move back to find character boundary
-        while truncate_at > 0 && !text.is_char_boundary(truncate_at) {
-            truncate_at -= 1;
-        }
-
-        format!("{}...", &text[..truncate_at])
-    }
-
-    /// Extract plain text from markdown using pulldown-cmark
-    fn extract_plain_text_from_markdown(&self, content: &str) -> String {
-        let parser = Parser::new(content);
-        let mut plain_text = String::new();
-
-        for event in parser {
-            if let Event::Text(text) = event {
-                plain_text.push_str(&text);
-            }
-        }
-
-        plain_text
-    }
-
     /// Parse content only (remove front matter)
     fn parse_content_only(&self, content: &str) -> String {
         let content = content.trim();
@@ -632,89 +497,6 @@ pub fn use_articles_data() -> (
     (data, loading, error)
 }
 
-/// Hook for loading lightweight articles (for list display)
-#[hook]
-pub fn use_lightweight_articles() -> (
-    UseStateHandle<Option<Vec<LightweightArticle>>>,
-    UseStateHandle<bool>,
-    UseStateHandle<Option<DataLoadError>>,
-) {
-    let data = use_state(|| None);
-    let loading = use_state(|| true);
-    let error = use_state(|| None);
-
-    {
-        let data = data.clone();
-        let loading = loading.clone();
-        let error = error.clone();
-
-        use_effect_with((), move |_| {
-            let data = data.clone();
-            let loading = loading.clone();
-            let error = error.clone();
-
-            wasm_bindgen_futures::spawn_local(async move {
-                let loader = DataLoader::new();
-                match loader.load_lightweight_articles().await {
-                    Ok(lightweight_articles) => {
-                        data.set(Some(lightweight_articles));
-                        error.set(None);
-                    }
-                    Err(e) => {
-                        error.set(Some(e));
-                    }
-                }
-                loading.set(false);
-            });
-
-            || {}
-        });
-    }
-
-    (data, loading, error)
-}
-
-/// Hook for loading lightweight articles with summaries (for list display)
-#[hook]
-pub fn use_lightweight_articles_with_summaries() -> (
-    UseStateHandle<Option<Vec<LightweightArticle>>>,
-    UseStateHandle<bool>,
-    UseStateHandle<Option<DataLoadError>>,
-) {
-    let data = use_state(|| None);
-    let loading = use_state(|| true);
-    let error = use_state(|| None);
-
-    {
-        let data = data.clone();
-        let loading = loading.clone();
-        let error = error.clone();
-
-        use_effect_with((), move |_| {
-            let data = data.clone();
-            let loading = loading.clone();
-            let error = error.clone();
-
-            wasm_bindgen_futures::spawn_local(async move {
-                let loader = DataLoader::new();
-                match loader.load_lightweight_articles_with_summaries().await {
-                    Ok(lightweight_articles) => {
-                        data.set(Some(lightweight_articles));
-                        error.set(None);
-                    }
-                    Err(e) => {
-                        error.set(Some(e));
-                    }
-                }
-                loading.set(false);
-            });
-
-            || {}
-        });
-    }
-
-    (data, loading, error)
-}
 
 /// Hook for loading node registry (for node graph)
 #[hook]

@@ -1,6 +1,7 @@
 use anyhow::{Context, Result};
 use chrono::Utc;
 use clap::Parser;
+use pulldown_cmark::{Event, Parser as MarkdownParser};
 use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
@@ -45,6 +46,7 @@ pub struct ProcessedArticle {
     pub title: String,
     pub metadata: ArticleMetadata,
     pub file_path: String,
+    pub summary: Option<String>,
     pub outbound_links: Vec<ExtractedLink>,
     pub inbound_links: Vec<ExtractedLink>,
     pub processed_at: String,
@@ -52,7 +54,11 @@ pub struct ProcessedArticle {
 
 impl ProcessedArticle {
     /// Create from ProcessedArticleRef and file path
-    pub fn from_ref_and_file_path(article_ref: ProcessedArticleRef, file_path: String) -> Self {
+    pub fn from_ref_and_file_path(
+        article_ref: ProcessedArticleRef,
+        file_path: String,
+        summary: Option<String>,
+    ) -> Self {
         use chrono::Utc;
 
         Self {
@@ -60,6 +66,7 @@ impl ProcessedArticle {
             title: article_ref.title,
             metadata: article_ref.metadata,
             file_path,
+            summary,
             outbound_links: article_ref.outbound_links,
             inbound_links: article_ref.inbound_links,
             processed_at: Utc::now().to_rfc3339(),
@@ -165,9 +172,15 @@ impl ProcessArticlesCommand {
                 let content = std::fs::read_to_string(path)
                     .with_context(|| format!("Failed to read file: {}", path.display()))?;
 
+                let content_only = self.parse_content_only(&content);
+                let summary = self.extract_summary_from_content(&content_only);
                 let processed_ref = self.processor.process_article(path, &content)?;
                 let file_path = path.to_string_lossy().to_string();
-                let processed = ProcessedArticle::from_ref_and_file_path(processed_ref, file_path);
+                let processed = ProcessedArticle::from_ref_and_file_path(
+                    processed_ref,
+                    file_path,
+                    Some(summary),
+                );
                 articles.push(processed);
             }
         }
@@ -181,6 +194,86 @@ impl ProcessArticlesCommand {
         }
 
         Ok(articles)
+    }
+
+    fn extract_summary_from_content(&self, content: &str) -> String {
+        let plain_text = self.extract_plain_text_from_markdown(content);
+        let content = plain_text.trim();
+
+        if let Some(first_paragraph) = content.split("\n\n").next() {
+            let cleaned = first_paragraph
+                .lines()
+                .map(|line| line.trim())
+                .filter(|line| !line.is_empty())
+                .collect::<Vec<_>>()
+                .join(" ");
+
+            if !cleaned.is_empty() {
+                return self.truncate_string_safely(&cleaned, 150);
+            }
+        }
+
+        let cleaned = content
+            .lines()
+            .map(|line| line.trim())
+            .filter(|line| !line.is_empty())
+            .collect::<Vec<_>>()
+            .join(" ");
+
+        if cleaned.is_empty() {
+            "記事の概要はありません。".to_string()
+        } else {
+            self.truncate_string_safely(&cleaned, 150)
+        }
+    }
+
+    fn truncate_string_safely(&self, text: &str, max_len: usize) -> String {
+        if text.len() <= max_len {
+            return text.to_string();
+        }
+
+        let mut truncate_at = max_len.saturating_sub(3);
+        while truncate_at > 0 && !text.is_char_boundary(truncate_at) {
+            truncate_at -= 1;
+        }
+
+        format!("{}...", &text[..truncate_at])
+    }
+
+    fn extract_plain_text_from_markdown(&self, content: &str) -> String {
+        let parser = MarkdownParser::new(content);
+        let mut plain_text = String::new();
+
+        for event in parser {
+            if let Event::Text(text) = event {
+                plain_text.push_str(&text);
+            }
+        }
+
+        plain_text
+    }
+
+    fn parse_content_only(&self, content: &str) -> String {
+        let content = content.trim();
+
+        if content.starts_with("---") {
+            let lines: Vec<&str> = content.lines().collect();
+
+            let mut end_index = None;
+            for (i, line) in lines.iter().enumerate().skip(1) {
+                if line.trim() == "---" {
+                    end_index = Some(i);
+                    break;
+                }
+            }
+
+            if let Some(end_idx) = end_index {
+                let remaining_lines = &lines[end_idx + 1..];
+                return remaining_lines.join("\n").trim_start().to_string();
+            }
+        }
+
+        content.to_string()
     }
 
     #[cfg(feature = "cli-tools")]

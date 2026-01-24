@@ -528,8 +528,13 @@ pub fn use_lightweight_article_manager() -> (
 
             wasm_bindgen_futures::spawn_local(async move {
                 let loader = DataLoader::new();
-                match loader.load_lightweight_articles().await {
-                    Ok(lightweight_articles) => {
+                match loader.load_articles().await {
+                    Ok(articles_data) => {
+                        let lightweight_articles: Vec<LightweightArticle> = articles_data
+                            .articles
+                            .into_iter()
+                            .map(LightweightArticle::from)
+                            .collect();
                         let mut article_manager = ArticleManager::new();
                         article_manager.load_lightweight_data(lightweight_articles);
 
