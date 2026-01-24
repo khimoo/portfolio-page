@@ -1,6 +1,6 @@
 use crate::web::components::{ArticleStateRenderer, TagPill, TagStyles};
 use crate::web::data_loader::{use_articles_data, LightweightArticle};
-use crate::web::routes::Route;
+use crate::web::routes::{Route, TagQuery};
 use yew::prelude::*;
 use yew_router::prelude::*;
 
@@ -8,6 +8,23 @@ use yew_router::prelude::*;
 pub fn article_index_page() -> Html {
     let (articles_data, loading, error) = use_articles_data();
     let selected_tags = use_state(|| Vec::<String>::new());
+    let location = use_location();
+
+    {
+        let selected_tags = selected_tags.clone();
+        use_effect_with(location.clone(), move |location| {
+            if let Some(location) = location.as_ref() {
+                if let Ok(query) = location.query::<TagQuery>() {
+                    let tags = query.tags.map(|t| vec![t]).unwrap_or_default();
+                    selected_tags.set(tags);
+                } else {
+                    selected_tags.set(Vec::new());
+                }
+            }
+
+            || {}
+        });
+    }
 
     if *loading {
         return ArticleStateRenderer::render_index_loading();

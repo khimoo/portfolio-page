@@ -1,7 +1,10 @@
 use crate::config::get_config;
 use crate::web::components::{TagPill, TagStyles};
 use crate::web::data_loader::ProcessedArticle;
+use crate::web::routes::{Route, TagQuery};
+use web_sys::window;
 use yew::prelude::*;
+use yew_router::prelude::*;
 
 #[derive(Properties, PartialEq)]
 pub struct ArticleHeaderProps {
@@ -11,6 +14,26 @@ pub struct ArticleHeaderProps {
 #[function_component(ArticleHeader)]
 pub fn article_header(props: &ArticleHeaderProps) -> Html {
     let article = &props.article;
+    let navigator = use_navigator();
+    let on_tag_click = {
+        let navigator = navigator.clone();
+        Callback::from(move |tag: String| {
+            let query = TagQuery { tags: Some(tag.clone()) };
+            if let Some(navigator) = navigator.as_ref() {
+                if navigator
+                    .push_with_query(&Route::ArticleIndex, &query)
+                    .is_ok()
+                {
+                    return;
+                }
+            }
+
+            let fallback_url = format!("{}?tags={}", get_config().get_url("article"), tag);
+            if let Some(window) = window() {
+                let _ = window.location().set_href(&fallback_url);
+            }
+        })
+    };
 
     html! {
         <>
@@ -26,7 +49,7 @@ pub fn article_header(props: &ArticleHeaderProps) -> Html {
                         {render_inbound_links_count(article.inbound_links.len())}
                     </div>
                     <div style="font-size: 14px; color: #aaa; display: flex; gap: 16px; flex-wrap: wrap;">
-                        {render_tags(&article.metadata.tags)}
+                        {render_tags(&article.metadata.tags, &on_tag_click)}
                     </div>
                 </div>
                 {render_author_image(&article.metadata.author_image)}
@@ -61,14 +84,14 @@ fn render_inbound_links_count(count: usize) -> Html {
     }
 }
 
-fn render_tags(tags: &[String]) -> Html {
+fn render_tags(tags: &[String], on_tag_click: &Callback<String>) -> Html {
     if !tags.is_empty() {
         html! {
             <span class="tag-list">
                 <span class="tag-list-label">{"Tags: "}</span>
                 {tags.iter().map(|tag| {
                     html! {
-                        <TagPill label={tag.clone()} />
+                        <TagPill label={tag.clone()} on_click={Some(on_tag_click.clone())} />
                     }
                 }).collect::<Html>()}
             </span>
