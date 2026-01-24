@@ -1,4 +1,5 @@
 use crate::config::get_config;
+use crate::web::components::{TagPill, TagStyles};
 use crate::web::data_loader::ProcessedArticle;
 use yew::prelude::*;
 
@@ -12,20 +13,25 @@ pub fn article_header(props: &ArticleHeaderProps) -> Html {
     let article = &props.article;
 
     html! {
-        <header style="margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
-            <div style="flex: 1;">
-                <h1 style="margin: 0 0 16px 0; font-size: 2.5em; color: #e0e0e0;">
-                    {&article.title}
-                </h1>
-                <div style="font-size: 14px; color: #aaa; display: flex; gap: 16px; flex-wrap: wrap;">
-                    {render_category(&article.metadata.category)}
-                    {render_importance(Some(article.metadata.importance))}
-                    {render_inbound_links_count(article.inbound_links.len())}
-                    {render_tags(&article.metadata.tags)}
+        <>
+            <TagStyles />
+            <header style="margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+                <div style="flex: 1;">
+                    <h1 style="margin: 0 0 16px 0; font-size: 2.5em; color: #e0e0e0;">
+                        {&article.title}
+                    </h1>
+                    <div style="font-size: 14px; color: #aaa; display: flex; gap: 16px; flex-wrap: wrap;">
+                        {render_category(&article.metadata.category)}
+                        {render_importance(Some(article.metadata.importance))}
+                        {render_inbound_links_count(article.inbound_links.len())}
+                    </div>
+                    <div style="font-size: 14px; color: #aaa; display: flex; gap: 16px; flex-wrap: wrap;">
+                        {render_tags(&article.metadata.tags)}
+                    </div>
                 </div>
-            </div>
-            {render_author_image(&article.metadata.author_image)}
-        </header>
+                {render_author_image(&article.metadata.author_image)}
+            </header>
+        </>
     }
 }
 
@@ -58,20 +64,13 @@ fn render_inbound_links_count(count: usize) -> Html {
 fn render_tags(tags: &[String]) -> Html {
     if !tags.is_empty() {
         html! {
-            <span>
-                {"Tags: "}
-                {
-                    tags.iter().enumerate().map(|(i, tag)| {
-                        html! {
-                            <>
-                                {if i > 0 { ", " } else { "" }}
-                                <span style="background: #4a5568; color: #e0e0e0; padding: 2px 6px; border-radius: 3px; font-size: 12px;">
-                                    {tag}
-                                </span>
-                            </>
-                        }
-                    }).collect::<Html>()
-                }
+            <span class="tag-list">
+                <span class="tag-list-label">{"Tags: "}</span>
+                {tags.iter().map(|tag| {
+                    html! {
+                        <TagPill label={tag.clone()} />
+                    }
+                }).collect::<Html>()}
             </span>
         }
     } else {

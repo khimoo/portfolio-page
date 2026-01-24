@@ -98,6 +98,15 @@ pub fn article_view_page(props: &ArticleViewProps) -> Html {
 
 fn article_styles() -> &'static str {
     r#"
+    :root {
+        --bg-color: #081D35;
+        --text-color: #e0e0e0;
+        --link-color: #66b3ff;
+        --meta-color: #aaa;
+        --summary-color: #ccc;
+        --border-color: #333;
+    }
+
     html, body { 
         background: #081D35; 
         color: #e0e0e0; 

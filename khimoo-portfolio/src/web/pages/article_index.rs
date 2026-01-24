@@ -1,4 +1,4 @@
-use crate::web::components::ArticleStateRenderer;
+use crate::web::components::{ArticleStateRenderer, TagPill, TagStyles};
 use crate::web::data_loader::{use_articles_data, LightweightArticle};
 use crate::web::routes::Route;
 use yew::prelude::*;
@@ -50,6 +50,7 @@ pub fn article_index_page() -> Html {
     html! {
         <>
             <style>{index_styles()}</style>
+            <TagStyles />
             <div class="article-index-container">
                 <h1>{"記事一覧"}</h1>
 
@@ -110,28 +111,12 @@ fn render_tag_filters(
             <div class="tag-filter-options">
                 {all_tags.iter().map(|tag| {
                     let is_selected = selected_tags.contains(tag);
-                    render_tag_button(tag, is_selected, on_toggle_tag)
+                    html! {
+                        <TagPill label={tag.clone()} selected={is_selected} on_click={Some(on_toggle_tag.clone())} />
+                    }
                 }).collect::<Html>()}
             </div>
         </div>
-    }
-}
-
-fn render_tag_button(tag: &str, is_selected: bool, on_toggle_tag: &Callback<String>) -> Html {
-    let tag_label = tag.to_string();
-    let on_toggle_tag = on_toggle_tag.clone();
-    let onclick = Callback::from(move |_| on_toggle_tag.emit(tag_label.clone()));
-
-    let class_name = if is_selected {
-        "tag-option selected"
-    } else {
-        "tag-option"
-    };
-
-    html! {
-        <button type="button" class={class_name} {onclick}>
-            {tag}
-        </button>
     }
 }
 
@@ -279,23 +264,6 @@ fn index_styles() -> &'static str {
         flex-wrap: wrap;
         gap: 8px;
     }
-
-    .tag-option {
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid var(--border-color);
-        background: transparent;
-        color: var(--text-color);
-        font-size: 12px;
-        cursor: pointer;
-    }
-
-    .tag-option.selected {
-        background: var(--link-color);
-        color: #fff;
-        border-color: var(--link-color);
-    }
-
 
     "#
 }

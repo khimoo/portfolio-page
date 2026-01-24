@@ -11,6 +11,7 @@ pub mod node_data_manager;
 pub mod node_graph_container;
 pub mod node_renderer;
 pub mod physics_renderer;
+pub mod tag;
 
 // Re-export commonly used components
 pub use article_content::*;
@@ -21,3 +22,4 @@ pub use node_data_manager::*;
 pub use node_graph_container::*;
 pub use node_renderer::*;
 pub use physics_renderer::*;
+pub use tag::*;
