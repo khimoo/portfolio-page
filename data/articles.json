@@ -17,7 +17,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.997062056+00:00"
+      "processed_at": "2026-01-27T06:02:09.596019160+00:00"
     },
     {
       "slug": "music",
@@ -36,7 +36,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.997197021+00:00"
+      "processed_at": "2026-01-27T06:02:09.596177866+00:00"
     },
     {
       "slug": "Neovim",
@@ -55,7 +55,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.997297173+00:00"
+      "processed_at": "2026-01-27T06:02:09.596305645+00:00"
     },
     {
       "slug": "myworks",
@@ -135,7 +135,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.998221229+00:00"
+      "processed_at": "2026-01-27T06:02:09.597354300+00:00"
     },
     {
       "slug": "mini_farm",
@@ -154,7 +154,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.998342656+00:00"
+      "processed_at": "2026-01-27T06:02:09.597499901+00:00"
     },
     {
       "slug": "Linux",
@@ -173,7 +173,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.998443932+00:00"
+      "processed_at": "2026-01-27T06:02:09.597631396+00:00"
     },
     {
       "slug": "template_article",
@@ -192,7 +192,7 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.998563923+00:00"
+      "processed_at": "2026-01-27T06:02:09.597776787+00:00"
     },
     {
       "slug": "drawing",
@@ -202,16 +202,18 @@
         "home_display": true,
         "importance": 2,
         "related_articles": [],
-        "tags": [],
-        "created_at": "2025-12-28T18:30:38Z",
-        "updated_at": "2025-12-29T00:52:41Z",
+        "tags": [
+          "絵"
+        ],
+        "created_at": "2025-12-29T03:30:38Z",
+        "updated_at": "2026-01-27T02:50:18Z",
         "author_image": null
       },
       "file_path": "../content/articles/drawing.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.998677611+00:00"
+      "processed_at": "2026-01-27T06:02:09.597925525+00:00"
     },
     {
       "slug": "gakuchika",
@@ -221,35 +223,21 @@
         "home_display": true,
         "importance": 4,
         "related_articles": [],
-        "tags": [],
-        "created_at": "2025-12-29T03:30:38Z",
-        "updated_at": "2025-12-29T01:59:55Z",
+        "tags": [
+          "バイト",
+          "授業",
+          "専門",
+          "自己紹介"
+        ],
+        "created_at": "2025-12-29T09:30:38Z",
+        "updated_at": "2026-01-27T02:58:52Z",
         "author_image": null
       },
       "file_path": "../content/articles/gakuchika.md",
-      "summary": "記事の概要はありません。",
+      "summary": "アルバイトの経験",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.998775700+00:00"
-    },
-    {
-      "slug": "infinite_topology",
-      "title": "無限次元位相幾何",
-      "metadata": {
-        "title": "無限次元位相幾何",
-        "home_display": true,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [],
-        "created_at": "2026-01-11T05:01:36Z",
-        "updated_at": "2026-01-11T08:02:45Z",
-        "author_image": null
-      },
-      "file_path": "../content/articles/infinite_topology.md",
-      "summary": "記事の概要はありません。",
-      "outbound_links": [],
-      "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.998871958+00:00"
+      "processed_at": "2026-01-27T06:02:09.598124696+00:00"
     },
     {
       "slug": "myblog",
@@ -268,7 +256,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.998975906+00:00"
+      "processed_at": "2026-01-27T06:02:09.598276279+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -362,7 +350,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.999610413+00:00"
+      "processed_at": "2026-01-27T06:02:09.598990310+00:00"
     },
     {
       "slug": "math",
@@ -394,7 +382,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.999812303+00:00"
+      "processed_at": "2026-01-27T06:02:09.599253961+00:00"
     },
     {
       "slug": "programming",
@@ -426,7 +414,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:33.999975108+00:00"
+      "processed_at": "2026-01-27T06:02:09.599469253+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -445,13 +433,13 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:34.000080964+00:00"
+      "processed_at": "2026-01-27T06:02:09.599607921+00:00"
     },
     {
       "slug": "continuum_theory",
-      "title": "連続体理論",
+      "title": "研究テーマ",
       "metadata": {
-        "title": "連続体理論",
+        "title": "研究テーマ",
         "home_display": true,
         "importance": 2,
         "related_articles": [],
@@ -459,15 +447,15 @@
           "専門",
           "数学"
         ],
-        "created_at": null,
-        "updated_at": null,
+        "created_at": "2026-01-09T01:58:40Z",
+        "updated_at": "2026-01-27T02:58:56Z",
         "author_image": null
       },
       "file_path": "../content/articles/continuum_theory.md",
-      "summary": "記事の概要はありません。",
+      "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:34.000184316+00:00"
+      "processed_at": "2026-01-27T06:02:09.599786965+00:00"
     },
     {
       "slug": "hobby",
@@ -479,7 +467,7 @@
         "related_articles": [],
         "tags": [],
         "created_at": "2025-12-29T03:30:38Z",
-        "updated_at": "2026-01-06T11:52:12Z",
+        "updated_at": "2026-01-27T02:58:49Z",
         "author_image": null
       },
       "file_path": "../content/articles/hobby.md",
@@ -523,11 +511,11 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T03:37:34.000394664+00:00"
+      "processed_at": "2026-01-27T06:02:09.600049013+00:00"
     }
   ],
-  "generated_at": "2026-01-27T03:37:34.561477763+00:00",
-  "total_count": 17,
+  "generated_at": "2026-01-27T06:02:10.196468226+00:00",
+  "total_count": 16,
   "home_articles": [
     "pitch-bend",
     "music",
@@ -537,7 +525,6 @@
     "Linux",
     "drawing",
     "gakuchika",
-    "infinite_topology",
     "myblog",
     "about-khimoo",
     "math",
