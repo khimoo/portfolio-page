@@ -1,0 +1,3 @@
+[submodule "content"]
+	path = content
+	url = git@github.com:khimoo/portfolio_content.git

@@ -12,6 +12,14 @@ LOCAL_DEV_PATH := `python3 scripts/config.py local_dev_path --section deployment
 default:
     @just --list
 
+# === SETUP ===
+
+# Initialize project and submodules
+setup:
+    @echo "🛠️ Setting up project..."
+    @git submodule update --init --recursive
+    @echo "✅ Setup complete"
+
 # === DEVELOPMENT ===
 
 # Start development server with file watchers
