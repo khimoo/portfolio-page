@@ -37,8 +37,18 @@ jobs:
       - name: Update content submodule
         if: github.event_action == 'content-updated'
         run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git submodule update --init --recursive --remote
           echo "Updated content submodule to latest remote commit"
+          
+          if ! git diff --quiet; then
+            git add content
+            git commit -m "chore(content): update content submodule"
+            git push
+          else
+            echo "No changes to commit"
+          fi
 
       - name: Setup Nix environment
         uses: cachix/install-nix-action@v26
