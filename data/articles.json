@@ -6,7 +6,6 @@
       "metadata": {
         "title": "pitch-bend",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -18,7 +17,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.477101148+00:00"
+      "processed_at": "2026-01-27T03:37:33.997062056+00:00"
     },
     {
       "slug": "music",
@@ -26,7 +25,6 @@
       "metadata": {
         "title": "音楽",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -38,7 +36,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.477241850+00:00"
+      "processed_at": "2026-01-27T03:37:33.997197021+00:00"
     },
     {
       "slug": "Neovim",
@@ -46,7 +44,6 @@
       "metadata": {
         "title": "Neovim",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -58,7 +55,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.477368717+00:00"
+      "processed_at": "2026-01-27T03:37:33.997297173+00:00"
     },
     {
       "slug": "myworks",
@@ -66,7 +63,6 @@
       "metadata": {
         "title": "個人開発",
         "home_display": true,
-        "category": "",
         "importance": 4,
         "related_articles": [],
         "tags": [],
@@ -139,7 +135,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.478403556+00:00"
+      "processed_at": "2026-01-27T03:37:33.998221229+00:00"
     },
     {
       "slug": "mini_farm",
@@ -147,7 +143,6 @@
       "metadata": {
         "title": "家庭菜園",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -159,7 +154,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.478568794+00:00"
+      "processed_at": "2026-01-27T03:37:33.998342656+00:00"
     },
     {
       "slug": "Linux",
@@ -167,7 +162,6 @@
       "metadata": {
         "title": "Linux",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -179,7 +173,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.478713674+00:00"
+      "processed_at": "2026-01-27T03:37:33.998443932+00:00"
     },
     {
       "slug": "template_article",
@@ -187,7 +181,6 @@
       "metadata": {
         "title": "Untitled",
         "home_display": false,
-        "category": null,
         "importance": 3,
         "related_articles": [],
         "tags": [],
@@ -199,7 +192,7 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.478869675+00:00"
+      "processed_at": "2026-01-27T03:37:33.998563923+00:00"
     },
     {
       "slug": "drawing",
@@ -207,7 +200,6 @@
       "metadata": {
         "title": "絵",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -219,7 +211,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.479014605+00:00"
+      "processed_at": "2026-01-27T03:37:33.998677611+00:00"
     },
     {
       "slug": "gakuchika",
@@ -227,7 +219,6 @@
       "metadata": {
         "title": "ガクチカ",
         "home_display": true,
-        "category": "",
         "importance": 4,
         "related_articles": [],
         "tags": [],
@@ -239,7 +230,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.479156019+00:00"
+      "processed_at": "2026-01-27T03:37:33.998775700+00:00"
     },
     {
       "slug": "infinite_topology",
@@ -247,7 +238,6 @@
       "metadata": {
         "title": "無限次元位相幾何",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -259,7 +249,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.479289307+00:00"
+      "processed_at": "2026-01-27T03:37:33.998871958+00:00"
     },
     {
       "slug": "myblog",
@@ -267,7 +257,6 @@
       "metadata": {
         "title": "myblog",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -279,7 +268,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.479427615+00:00"
+      "processed_at": "2026-01-27T03:37:33.998975906+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -287,14 +276,13 @@
       "metadata": {
         "title": "自己紹介",
         "home_display": true,
-        "category": "",
         "importance": 5,
         "related_articles": [],
         "tags": [
           "自己紹介"
         ],
-        "created_at": "2024-01-02T03:00:00Z",
-        "updated_at": "2026-01-03T21:45:57Z",
+        "created_at": "2024-01-02T12:00:00Z",
+        "updated_at": "2026-01-27T09:51:26Z",
         "author_image": "/assets/img/author_img.png"
       },
       "file_path": "../content/articles/about-khimoo.md",
@@ -343,6 +331,12 @@
           "display_text": "Rust\\Yew, wasmで実装したブログ"
         },
         {
+          "target_slug": "https://github.com/khimoo/flake_public",
+          "link_type": "ExternalLink",
+          "original_text": "[dotfiles](https://github.com/khimoo/flake_public)",
+          "display_text": "dotfiles"
+        },
+        {
           "target_slug": "https://github.com/khimoo/DriveStatus",
           "link_type": "ExternalLink",
           "original_text": "[サークル内で実際に使用していたカーシェア管理サイト](https://github.com/khimoo/DriveStatus)",
@@ -368,7 +362,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.480116750+00:00"
+      "processed_at": "2026-01-27T03:37:33.999610413+00:00"
     },
     {
       "slug": "math",
@@ -376,7 +370,6 @@
       "metadata": {
         "title": "数学",
         "home_display": true,
-        "category": "",
         "importance": 4,
         "related_articles": [],
         "tags": [],
@@ -401,7 +394,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.480364582+00:00"
+      "processed_at": "2026-01-27T03:37:33.999812303+00:00"
     },
     {
       "slug": "programming",
@@ -409,7 +402,6 @@
       "metadata": {
         "title": "プログラミング",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -434,7 +426,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.480625378+00:00"
+      "processed_at": "2026-01-27T03:37:33.999975108+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -442,7 +434,6 @@
       "metadata": {
         "title": "provably-good-planar-mappings",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
         "tags": [],
@@ -454,7 +445,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.480768705+00:00"
+      "processed_at": "2026-01-27T03:37:34.000080964+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -462,10 +453,12 @@
       "metadata": {
         "title": "連続体理論",
         "home_display": true,
-        "category": "",
         "importance": 2,
         "related_articles": [],
-        "tags": [],
+        "tags": [
+          "専門",
+          "数学"
+        ],
         "created_at": null,
         "updated_at": null,
         "author_image": null
@@ -474,7 +467,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.480890452+00:00"
+      "processed_at": "2026-01-27T03:37:34.000184316+00:00"
     },
     {
       "slug": "hobby",
@@ -482,7 +475,6 @@
       "metadata": {
         "title": "趣味",
         "home_display": true,
-        "category": "",
         "importance": 4,
         "related_articles": [],
         "tags": [],
@@ -531,10 +523,10 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-24T13:07:30.481153793+00:00"
+      "processed_at": "2026-01-27T03:37:34.000394664+00:00"
     }
   ],
-  "generated_at": "2026-01-24T13:07:31.081996202+00:00",
+  "generated_at": "2026-01-27T03:37:34.561477763+00:00",
   "total_count": 17,
   "home_articles": [
     "pitch-bend",
