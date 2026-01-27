@@ -1,6 +1,5 @@
 use super::node_types::*;
 use super::physics_types::Position;
-use crate::web::styles::{get_default_category_colors, CategoryColor};
 use crate::config::NodeConfig;
 use std::collections::HashMap;
 
@@ -13,8 +12,6 @@ pub struct NodeRegistry {
     pub edges: Vec<(NodeId, NodeId)>,
     pub node_types: HashMap<NodeId, NodeType>,
     pub connection_lines: Vec<ConnectionLine>,
-    pub node_categories: HashMap<NodeId, String>,
-    pub category_colors: HashMap<String, CategoryColor>,
     pub node_importance: HashMap<NodeId, u8>,
     pub node_inbound_counts: HashMap<NodeId, usize>,
     pub node_config: NodeConfig,
@@ -22,8 +19,6 @@ pub struct NodeRegistry {
 
 impl NodeRegistry {
     pub fn new() -> Self {
-        let category_colors = get_default_category_colors();
-
         Self {
             positions: HashMap::new(),
             radii: HashMap::new(),
@@ -31,8 +26,6 @@ impl NodeRegistry {
             edges: Vec::new(),
             node_types: HashMap::new(),
             connection_lines: Vec::new(),
-            node_categories: HashMap::new(),
-            category_colors,
             node_importance: HashMap::new(),
             node_inbound_counts: HashMap::new(),
             node_config: NodeConfig::default(),
@@ -40,8 +33,6 @@ impl NodeRegistry {
     }
 
     pub fn new_with_config(node_config: NodeConfig) -> Self {
-        let category_colors = get_default_category_colors();
-
         Self {
             positions: HashMap::new(),
             radii: HashMap::new(),
@@ -49,8 +40,6 @@ impl NodeRegistry {
             edges: Vec::new(),
             node_types: HashMap::new(),
             connection_lines: Vec::new(),
-            node_categories: HashMap::new(),
-            category_colors,
             node_importance: HashMap::new(),
             node_inbound_counts: HashMap::new(),
             node_config,
@@ -121,40 +110,6 @@ impl NodeRegistry {
         for line in &mut self.connection_lines {
             line.visible = visible;
         }
-    }
-
-    pub fn set_node_category(&mut self, node_id: NodeId, category: String) {
-        self.node_categories.insert(node_id, category);
-    }
-
-    pub fn get_node_category(&self, node_id: NodeId) -> Option<&String> {
-        self.node_categories.get(&node_id)
-    }
-
-    pub fn get_category_color(&self, category: &str) -> &CategoryColor {
-        self.category_colors
-            .get(category)
-            .unwrap_or_else(|| self.category_colors.get("default").unwrap())
-    }
-
-    pub fn get_nodes_by_category(&self, category: &str) -> Vec<NodeId> {
-        self.node_categories
-            .iter()
-            .filter(|(_, cat)| *cat == category)
-            .map(|(id, _)| *id)
-            .collect()
-    }
-
-    pub fn get_all_categories(&self) -> Vec<String> {
-        let mut categories: Vec<String> = self
-            .node_categories
-            .values()
-            .cloned()
-            .collect::<std::collections::HashSet<_>>()
-            .into_iter()
-            .collect();
-        categories.sort();
-        categories
     }
 
     pub fn update_node_radius(&mut self, node_id: NodeId, new_radius: i32) {

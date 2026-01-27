@@ -3,10 +3,11 @@ title: 自己紹介
 author_image: /assets/img/author_img.png
 home_display: true
 importance: 5
-category: ""
-tags: ["自己紹介"]
-created_at: "2024-01-02T03:00:00Z"
-updated_at: "2026-01-03T21:45:57Z"
+category: 自分語り
+tags:
+  - 自己紹介
+created_at: "2024-01-02T12:00:00Z"
+updated_at: "2026-01-27T09:51:26Z"
 ---
 # プロフィール
 日比野 文です。\
@@ -26,6 +27,7 @@ updated_at: "2026-01-03T21:45:57Z"
 業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。
 # 個人開発
 - [Rust\Yew, wasmで実装したブログ](https://github.com/khimoo/portfolio-page)
+- [dotfiles](https://github.com/khimoo/flake_public)
 - [サークル内で実際に使用していたカーシェア管理サイト](https://github.com/khimoo/DriveStatus)
 - [ゲームコントローラーでピッチベンドが使用できるようになるツール](https://github.com/khimoo/pitch_controller)
 - [chromebook用imeのskkでstickey shiftを設定できるようにしたもの](https://github.com/khimoo/chrome-skk)

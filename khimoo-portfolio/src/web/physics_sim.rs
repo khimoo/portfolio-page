@@ -273,8 +273,6 @@ impl PhysicsWorld {
 
         // 反発力を適用
         self.apply_repulsion_forces(viewport);
-        // カテゴリベースの引力を適用
-        self.apply_category_attraction_forces(viewport);
 
         let mut pipeline = PhysicsPipeline::new();
         pipeline.step(
@@ -371,74 +369,6 @@ impl PhysicsWorld {
 
         let mut registry = self.node_registry.borrow_mut();
         registry.set_connection_line_visibility(visible && self.force_settings.debug_mode);
-    }
-
-    // カテゴリベースの引力を適用
-    fn apply_category_attraction_forces(&mut self, _viewport: &Viewport) {
-        if !self.force_settings.enable_category_clustering {
-            return;
-        }
-
-        let registry = self.node_registry.borrow();
-        let categories = registry.get_all_categories();
-        let dt = self.integration_parameters.dt;
-
-        for category in categories {
-            let nodes_in_category = registry.get_nodes_by_category(&category);
-
-            // 同じカテゴリのノード間に引力を適用
-            for i in 0..nodes_in_category.len() {
-                for j in (i + 1)..nodes_in_category.len() {
-                    let node1 = nodes_in_category[i];
-                    let node2 = nodes_in_category[j];
-
-                    // 作者ノードはスキップ
-                    if registry.is_author_node(node1) || registry.is_author_node(node2) {
-                        continue;
-                    }
-
-                    if let (Some(pos1), Some(pos2)) = (
-                        registry.positions.get(&node1),
-                        registry.positions.get(&node2),
-                    ) {
-                        let dx = pos2.x - pos1.x;
-                        let dy = pos2.y - pos1.y;
-                        let distance = (dx * dx + dy * dy).sqrt();
-
-                        // 範囲内の場合のみ引力を適用
-                        if distance > 0.0
-                            && distance < self.force_settings.category_attraction_range
-                        {
-                            let force_magnitude = self.force_settings.category_attraction_strength
-                                / (distance + 50.0);
-
-                            if let (Some(&handle1), Some(&handle2)) =
-                                (self.body_map.get(&node1), self.body_map.get(&node2))
-                            {
-                                let fx = (dx / distance) * force_magnitude * dt;
-                                let fy = (dy / distance) * force_magnitude * dt;
-
-                                // Apply force to first body
-                                if let Some(body1) = self.bodies.get_mut(handle1) {
-                                    body1.apply_impulse(vector![fx, fy], true);
-                                }
-
-                                // Apply opposite force to second body
-                                if let Some(body2) = self.bodies.get_mut(handle2) {
-                                    body2.apply_impulse(vector![-fx, -fy], true);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        drop(registry);
-    }
-
-    // カテゴリクラスタリングの有効/無効切り替え
-    pub fn set_category_clustering_enabled(&mut self, enabled: bool) {
-        self.force_settings.enable_category_clustering = enabled;
     }
 
     // ノードサイズを動的に更新（物理コライダーも含む）

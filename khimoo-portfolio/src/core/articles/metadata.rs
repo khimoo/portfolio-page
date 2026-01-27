@@ -9,7 +9,6 @@ pub struct ArticleMetadata {
     pub title: String,
     #[serde(default)]
     pub home_display: bool,
-    pub category: Option<String>,
     #[serde(default = "default_importance")]
     pub importance: u8,
     #[serde(default)]
@@ -26,7 +25,6 @@ impl Default for ArticleMetadata {
         Self {
             title: "Untitled".to_string(),
             home_display: false,
-            category: None,
             importance: default_importance(),
             related_articles: Vec::new(),
             tags: Vec::new(),

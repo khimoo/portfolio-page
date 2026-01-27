@@ -44,7 +44,6 @@ pub fn article_header(props: &ArticleHeaderProps) -> Html {
                         {&article.title}
                     </h1>
                     <div style="font-size: 14px; color: #aaa; display: flex; gap: 16px; flex-wrap: wrap;">
-                        {render_category(&article.metadata.category)}
                         {render_importance(Some(article.metadata.importance))}
                         {render_inbound_links_count(article.inbound_links.len())}
                     </div>
@@ -55,16 +54,6 @@ pub fn article_header(props: &ArticleHeaderProps) -> Html {
                 {render_author_image(&article.metadata.author_image)}
             </header>
         </>
-    }
-}
-
-fn render_category(category: &Option<String>) -> Html {
-    if let Some(category) = category {
-        html! {
-            <span>{"Category: "}<strong>{category}</strong></span>
-        }
-    } else {
-        html! {}
     }
 }
 

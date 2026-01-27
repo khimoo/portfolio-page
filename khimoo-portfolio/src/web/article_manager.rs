@@ -299,45 +299,45 @@ impl ArticleManager {
     }
 
     /// Get lightweight articles by category
-    pub fn get_lightweight_articles_by_category(&self, category: &str) -> Vec<&LightweightArticle> {
-        self.lightweight_articles
-            .values()
-            .filter(|article| {
-                article
-                    .metadata
-                    .category
-                    .as_ref()
-                    .map_or(false, |cat| cat == category)
-            })
-            .collect()
-    }
+    // pub fn get_lightweight_articles_by_category(&self, category: &str) -> Vec<&LightweightArticle> {
+    //     self.lightweight_articles
+    //         .values()
+    //         .filter(|article| {
+    //             article
+    //                 .metadata
+    //                 .category
+    //                 .as_ref()
+    //                 .map_or(false, |cat| cat == category)
+    //         })
+    //         .collect()
+    // }
 
     /// Get articles by category (full articles only)
-    pub fn get_articles_by_category(&self, category: &str) -> Vec<&ProcessedArticle> {
-        self.articles
-            .values()
-            .filter(|article| {
-                article
-                    .metadata
-                    .category
-                    .as_ref()
-                    .map_or(false, |cat| cat == category)
-            })
-            .collect()
-    }
+    // pub fn get_articles_by_category(&self, category: &str) -> Vec<&ProcessedArticle> {
+    //     self.articles
+    //         .values()
+    //         .filter(|article| {
+    //             article
+    //                 .metadata
+    //                 .category
+    //                 .as_ref()
+    //                 .map_or(false, |cat| cat == category)
+    //         })
+    //         .collect()
+    // }
 
     /// Get all categories
-    pub fn get_categories(&self) -> Vec<String> {
-        let mut categories: Vec<String> = self
-            .lightweight_articles
-            .values()
-            .filter_map(|article| article.metadata.category.clone())
-            .collect::<std::collections::HashSet<_>>()
-            .into_iter()
-            .collect();
-        categories.sort();
-        categories
-    }
+    // pub fn get_categories(&self) -> Vec<String> {
+    //     let mut categories: Vec<String> = self
+    //         .lightweight_articles
+    //         .values()
+    //         .filter_map(|article| article.metadata.category.clone())
+    //         .collect::<std::collections::HashSet<_>>()
+    //         .into_iter()
+    //         .collect();
+    //     categories.sort();
+    //     categories
+    // }
 
     /// Get lightweight articles by tag
     pub fn get_lightweight_articles_by_tag(&self, tag: &str) -> Vec<&LightweightArticle> {
@@ -391,14 +391,14 @@ impl ArticleManager {
         let total_articles = self.lightweight_articles.len();
         let home_articles_count = self.home_articles.len();
         let total_connections = self.link_graph.values().map(|v| v.len()).sum();
-        let categories_count = self.get_categories().len();
+        // let categories_count = self.get_categories().len();
         let tags_count = self.get_all_tags().len();
 
         ArticleStats {
             total_articles,
             home_articles_count,
             total_connections,
-            categories_count,
+            // categories_count,
             tags_count,
         }
     }
@@ -442,7 +442,7 @@ pub struct ArticleStats {
     pub total_articles: usize,
     pub home_articles_count: usize,
     pub total_connections: usize,
-    pub categories_count: usize,
+    // pub categories_count: usize,
     pub tags_count: usize,
 }
 

@@ -60,15 +60,4 @@ impl ThemeConfig {
         // 現在はライトテーマ固定、将来的にはユーザー設定やシステム設定から取得
         Self::light_theme()
     }
-
-    /// カテゴリ別の色設定
-    pub fn category_colors() -> std::collections::HashMap<String, String> {
-        let mut colors = std::collections::HashMap::new();
-        colors.insert("math".to_string(), "#3b82f6".to_string());
-        colors.insert("programming".to_string(), "#10b981".to_string());
-        colors.insert("hobby".to_string(), "#f59e0b".to_string());
-        colors.insert("about".to_string(), "#8b5cf6".to_string());
-        colors.insert("default".to_string(), "#64748b".to_string());
-        colors
-    }
 }

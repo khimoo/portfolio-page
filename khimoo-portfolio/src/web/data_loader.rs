@@ -149,7 +149,7 @@ impl DataLoader {
             let node_id = NodeId(node_id_counter);
             node_id_counter += 1;
 
-            // Calculate position based on importance and category
+            // Calculate position based on importance
             let position = self.calculate_node_position(&article.metadata, node_id);
 
             // Create node content
@@ -161,10 +161,7 @@ impl DataLoader {
             // Add node to registry
             registry.add_node(node_id, position, registry.node_config.default_node_radius, content);
 
-            // Set category and importance
-            if let Some(category) = &article.metadata.category {
-                registry.set_node_category(node_id, category.clone());
-            }
+            // Set importance
             registry.set_node_importance(node_id, article.metadata.importance);
 
             // Calculate inbound count for dynamic sizing

@@ -22,9 +22,6 @@ impl PhysicsConfig {
             direct_link_damping: 200.0,
             debug_mode: false,
             show_connection_lines: false,
-            category_attraction_strength: 1000.0,
-            category_attraction_range: 250.0,
-            enable_category_clustering: true,
         }
     }
 
@@ -41,9 +38,6 @@ impl PhysicsConfig {
             direct_link_damping: 400.0,
             debug_mode: false,
             show_connection_lines: true,
-            category_attraction_strength: 2000.0,
-            category_attraction_range: 350.0,
-            enable_category_clustering: true,
         }
     }
 

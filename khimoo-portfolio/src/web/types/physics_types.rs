@@ -11,9 +11,6 @@ pub struct ForceSettings {
     pub direct_link_damping: f32,
     pub debug_mode: bool,
     pub show_connection_lines: bool,
-    pub category_attraction_strength: f32,
-    pub category_attraction_range: f32,
-    pub enable_category_clustering: bool,
 }
 
 impl Default for ForceSettings {
@@ -29,9 +26,6 @@ impl Default for ForceSettings {
             direct_link_damping: 300.0,
             debug_mode: false,
             show_connection_lines: true,
-            category_attraction_strength: 1500.0,
-            category_attraction_range: 300.0,
-            enable_category_clustering: true,
         }
     }
 }

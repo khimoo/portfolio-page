@@ -180,17 +180,8 @@ fn render_article_summary(article: &LightweightArticle) -> Html {
 fn render_article_meta(article: &LightweightArticle) -> Html {
     html! {
         <div class="article-meta">
-            {render_category(&article.metadata.category)}
             <span>{"Links: "}{article.inbound_links.len()}</span>
         </div>
-    }
-}
-
-fn render_category(category: &Option<String>) -> Html {
-    if let Some(category) = category {
-        html! { <span style="margin-right: 16px;">{"Category: "}{category}</span> }
-    } else {
-        html! {}
     }
 }
 
