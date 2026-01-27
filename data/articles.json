@@ -17,7 +17,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.596019160+00:00"
+      "processed_at": "2026-01-27T07:12:23.714607577+00:00"
     },
     {
       "slug": "music",
@@ -28,15 +28,15 @@
         "importance": 2,
         "related_articles": [],
         "tags": [],
-        "created_at": "2025-12-28T18:30:38Z",
-        "updated_at": "2025-12-29T00:52:22Z",
+        "created_at": "2025-12-29T03:30:38Z",
+        "updated_at": "2026-01-27T04:02:34Z",
         "author_image": null
       },
       "file_path": "../content/articles/music.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.596177866+00:00"
+      "processed_at": "2026-01-27T07:12:23.714752668+00:00"
     },
     {
       "slug": "Neovim",
@@ -55,7 +55,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.596305645+00:00"
+      "processed_at": "2026-01-27T07:12:23.714883123+00:00"
     },
     {
       "slug": "myworks",
@@ -135,7 +135,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.597354300+00:00"
+      "processed_at": "2026-01-27T07:12:23.715963205+00:00"
     },
     {
       "slug": "mini_farm",
@@ -154,7 +154,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.597499901+00:00"
+      "processed_at": "2026-01-27T07:12:23.716128144+00:00"
     },
     {
       "slug": "Linux",
@@ -173,7 +173,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.597631396+00:00"
+      "processed_at": "2026-01-27T07:12:23.716264679+00:00"
     },
     {
       "slug": "template_article",
@@ -192,7 +192,7 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.597776787+00:00"
+      "processed_at": "2026-01-27T07:12:23.716415572+00:00"
     },
     {
       "slug": "drawing",
@@ -213,31 +213,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.597925525+00:00"
-    },
-    {
-      "slug": "gakuchika",
-      "title": "ガクチカ",
-      "metadata": {
-        "title": "ガクチカ",
-        "home_display": true,
-        "importance": 4,
-        "related_articles": [],
-        "tags": [
-          "バイト",
-          "授業",
-          "専門",
-          "自己紹介"
-        ],
-        "created_at": "2025-12-29T09:30:38Z",
-        "updated_at": "2026-01-27T02:58:52Z",
-        "author_image": null
-      },
-      "file_path": "../content/articles/gakuchika.md",
-      "summary": "アルバイトの経験",
-      "outbound_links": [],
-      "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.598124696+00:00"
+      "processed_at": "2026-01-27T07:12:23.716567376+00:00"
     },
     {
       "slug": "myblog",
@@ -256,7 +232,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.598276279+00:00"
+      "processed_at": "2026-01-27T07:12:23.716715273+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -350,7 +326,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.598990310+00:00"
+      "processed_at": "2026-01-27T07:12:23.717451682+00:00"
     },
     {
       "slug": "math",
@@ -382,7 +358,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.599253961+00:00"
+      "processed_at": "2026-01-27T07:12:23.717702752+00:00"
     },
     {
       "slug": "programming",
@@ -414,7 +390,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.599469253+00:00"
+      "processed_at": "2026-01-27T07:12:23.717914659+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -433,7 +409,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.599607921+00:00"
+      "processed_at": "2026-01-27T07:12:23.718074247+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -455,7 +431,7 @@
       "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.599786965+00:00"
+      "processed_at": "2026-01-27T07:12:23.718259965+00:00"
     },
     {
       "slug": "hobby",
@@ -467,11 +443,11 @@
         "related_articles": [],
         "tags": [],
         "created_at": "2025-12-29T03:30:38Z",
-        "updated_at": "2026-01-27T02:58:49Z",
+        "updated_at": "2026-01-27T03:57:36Z",
         "author_image": null
       },
       "file_path": "../content/articles/hobby.md",
-      "summary": "プログラミングLinuxNeovim家庭菜園絵音楽",
+      "summary": "プログラミングLinuxNeovim家庭菜園絵音楽数学",
       "outbound_links": [
         {
           "target_slug": "programming",
@@ -508,14 +484,20 @@
           "link_type": "MarkdownLink",
           "original_text": "[音楽](music)",
           "display_text": "音楽"
+        },
+        {
+          "target_slug": "math",
+          "link_type": "MarkdownLink",
+          "original_text": "[数学](math)",
+          "display_text": "数学"
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T06:02:09.600049013+00:00"
+      "processed_at": "2026-01-27T07:12:23.718534039+00:00"
     }
   ],
-  "generated_at": "2026-01-27T06:02:10.196468226+00:00",
-  "total_count": 16,
+  "generated_at": "2026-01-27T07:12:24.314060426+00:00",
+  "total_count": 15,
   "home_articles": [
     "pitch-bend",
     "music",
@@ -524,7 +506,6 @@
     "mini_farm",
     "Linux",
     "drawing",
-    "gakuchika",
     "myblog",
     "about-khimoo",
     "math",
