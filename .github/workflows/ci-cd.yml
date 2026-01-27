@@ -39,15 +39,25 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # detached HEAD から main ブランチへ切り替え
+          git checkout main
+          git pull origin main
+
+          # サブモジュールのURL同期と更新
+          git submodule sync --recursive
           git submodule update --init --recursive --remote
+          
           echo "Updated content submodule to latest remote commit"
           
           if ! git diff --quiet; then
             git add content
             git commit -m "chore(content): update content submodule"
-            git push
+            git push origin main
+            echo "Changes pushed to main branch"
           else
             echo "No changes to commit"
+          fi
           fi
 
       - name: Setup Nix environment
