@@ -1,6 +1,11 @@
 name: CI/CD Pipeline
 
 on:
+  repository_dispatch:
+    types: [content-updated]
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
@@ -11,8 +16,6 @@ on:
       - 'flake.lock'
       - 'justfile'
       - 'project.toml'
-  repository_dispatch:
-    types: [content-updated]
 
 env:
   CARGO_TERM_COLOR: always
@@ -33,10 +36,13 @@ jobs:
           lfs: true
           submodules: recursive
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update content submodule
-        if: github.event_action == 'content-updated'
+        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
+          echo "Triggered by event: ${{ github.event_name }}"
+
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
@@ -48,16 +54,15 @@ jobs:
           git submodule sync --recursive
           git submodule update --init --recursive --remote
           
-          echo "Updated content submodule to latest remote commit"
+          echo "Force updated submodules."
           
           if ! git diff --quiet; then
-            git add content
-            git commit -m "chore(content): update content submodule"
+            git add .
+            git commit -m "chore(content): update submodule from ${{ github.event_name }} trigger"
             git push origin main
-            echo "Changes pushed to main branch"
+            echo "::notice::Pushed updated submodule pointer to main."
           else
-            echo "No changes to commit"
-          fi
+            echo "::notice::Submodule is already up to date."
           fi
 
       - name: Setup Nix environment
