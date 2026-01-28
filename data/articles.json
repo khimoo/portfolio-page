@@ -17,7 +17,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.273809381+00:00"
+      "processed_at": "2026-01-28T06:02:31.366054702+00:00"
     },
     {
       "slug": "music",
@@ -36,7 +36,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.273948603+00:00"
+      "processed_at": "2026-01-28T06:02:31.366194433+00:00"
     },
     {
       "slug": "Neovim",
@@ -55,7 +55,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.274097775+00:00"
+      "processed_at": "2026-01-28T06:02:31.366337371+00:00"
     },
     {
       "slug": "myworks",
@@ -135,7 +135,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.275140360+00:00"
+      "processed_at": "2026-01-28T06:02:31.367383498+00:00"
     },
     {
       "slug": "mini_farm",
@@ -154,7 +154,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.275286556+00:00"
+      "processed_at": "2026-01-28T06:02:31.367529652+00:00"
     },
     {
       "slug": "Linux",
@@ -173,7 +173,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.275419386+00:00"
+      "processed_at": "2026-01-28T06:02:31.367662190+00:00"
     },
     {
       "slug": "template_article",
@@ -192,7 +192,7 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.275569610+00:00"
+      "processed_at": "2026-01-28T06:02:31.367808313+00:00"
     },
     {
       "slug": "drawing",
@@ -213,7 +213,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.275723590+00:00"
+      "processed_at": "2026-01-28T06:02:31.367977781+00:00"
     },
     {
       "slug": "myblog",
@@ -232,7 +232,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.275863243+00:00"
+      "processed_at": "2026-01-28T06:02:31.368120969+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -320,7 +320,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.276578872+00:00"
+      "processed_at": "2026-01-28T06:02:31.368835486+00:00"
     },
     {
       "slug": "math",
@@ -352,7 +352,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.276826208+00:00"
+      "processed_at": "2026-01-28T06:02:31.369082949+00:00"
     },
     {
       "slug": "programming",
@@ -362,13 +362,16 @@
         "home_display": true,
         "importance": 2,
         "related_articles": [],
-        "tags": [],
-        "created_at": "2025-12-29T03:30:38Z",
-        "updated_at": "2026-01-07T02:33:53Z",
+        "tags": [
+          "趣味",
+          "プログラミング"
+        ],
+        "created_at": "2025-12-29T12:30:38Z",
+        "updated_at": "2026-01-28T02:57:57Z",
         "author_image": null
       },
       "file_path": "../content/articles/programming.md",
-      "summary": "LinuxNeovim",
+      "summary": "プログラミングの何がすきか抽象度を上手に扱うことでうまく世界を捉え直す必要があることが好き最近はbev...",
       "outbound_links": [
         {
           "target_slug": "Linux",
@@ -384,7 +387,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.277034071+00:00"
+      "processed_at": "2026-01-28T06:02:31.369385074+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -403,7 +406,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.277194453+00:00"
+      "processed_at": "2026-01-28T06:02:31.369532410+00:00"
     },
     {
       "slug": "jijoden",
@@ -425,7 +428,7 @@
       "summary": "就活つらすぎる。二週間のサマーインターンに参加した企業に最終で落とされたのでES沢山書かなきゃいけな...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.277379101+00:00"
+      "processed_at": "2026-01-28T06:02:31.369705243+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -447,7 +450,7 @@
       "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.277558620+00:00"
+      "processed_at": "2026-01-28T06:02:31.369885681+00:00"
     },
     {
       "slug": "hobby",
@@ -509,10 +512,10 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-28T03:26:02.277842344+00:00"
+      "processed_at": "2026-01-28T06:02:31.370158411+00:00"
     }
   ],
-  "generated_at": "2026-01-28T03:26:02.887636030+00:00",
+  "generated_at": "2026-01-28T06:02:31.966364658+00:00",
   "total_count": 16,
   "home_articles": [
     "pitch-bend",
