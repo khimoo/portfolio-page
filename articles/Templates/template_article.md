@@ -14,7 +14,6 @@
     fm.title = title;
     fm.home_display = true;
     fm.importance = 2;
-    fm.category = "";
     fm.tags = [];
   });
 %>

@@ -17,7 +17,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.020662136+00:00"
+      "processed_at": "2026-01-28T03:26:02.273809381+00:00"
     },
     {
       "slug": "music",
@@ -36,7 +36,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.020806655+00:00"
+      "processed_at": "2026-01-28T03:26:02.273948603+00:00"
     },
     {
       "slug": "Neovim",
@@ -55,7 +55,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.020940124+00:00"
+      "processed_at": "2026-01-28T03:26:02.274097775+00:00"
     },
     {
       "slug": "myworks",
@@ -135,7 +135,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.021994100+00:00"
+      "processed_at": "2026-01-28T03:26:02.275140360+00:00"
     },
     {
       "slug": "mini_farm",
@@ -154,7 +154,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.022145613+00:00"
+      "processed_at": "2026-01-28T03:26:02.275286556+00:00"
     },
     {
       "slug": "Linux",
@@ -173,7 +173,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.022282598+00:00"
+      "processed_at": "2026-01-28T03:26:02.275419386+00:00"
     },
     {
       "slug": "template_article",
@@ -192,7 +192,7 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.022435243+00:00"
+      "processed_at": "2026-01-28T03:26:02.275569610+00:00"
     },
     {
       "slug": "drawing",
@@ -213,7 +213,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.022632140+00:00"
+      "processed_at": "2026-01-28T03:26:02.275723590+00:00"
     },
     {
       "slug": "myblog",
@@ -232,7 +232,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.022782320+00:00"
+      "processed_at": "2026-01-28T03:26:02.275863243+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -246,7 +246,7 @@
           "自己紹介"
         ],
         "created_at": "2024-01-02T12:00:00Z",
-        "updated_at": "2026-01-27T09:51:26Z",
+        "updated_at": "2026-01-27T09:12:23Z",
         "author_image": "/assets/img/author_img.png"
       },
       "file_path": "../content/articles/about-khimoo.md",
@@ -275,12 +275,6 @@
           "link_type": "MarkdownLink",
           "original_text": "[趣味](hobby)",
           "display_text": "趣味"
-        },
-        {
-          "target_slug": "gakuchika",
-          "link_type": "MarkdownLink",
-          "original_text": "[こちら](gakuchika)",
-          "display_text": "こちら"
         },
         {
           "target_slug": "myworks",
@@ -326,7 +320,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.023529824+00:00"
+      "processed_at": "2026-01-28T03:26:02.276578872+00:00"
     },
     {
       "slug": "math",
@@ -358,7 +352,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.023783017+00:00"
+      "processed_at": "2026-01-28T03:26:02.276826208+00:00"
     },
     {
       "slug": "programming",
@@ -390,7 +384,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.024000993+00:00"
+      "processed_at": "2026-01-28T03:26:02.277034071+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -409,7 +403,29 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.024147536+00:00"
+      "processed_at": "2026-01-28T03:26:02.277194453+00:00"
+    },
+    {
+      "slug": "jijoden",
+      "title": "シン・自己紹介",
+      "metadata": {
+        "title": "シン・自己紹介",
+        "home_display": false,
+        "importance": 5,
+        "related_articles": [],
+        "tags": [
+          "自己紹介",
+          "雑"
+        ],
+        "created_at": "2026-01-27T09:15:01Z",
+        "updated_at": "2026-01-27T11:47:59Z",
+        "author_image": null
+      },
+      "file_path": "../content/articles/jijoden.md",
+      "summary": "就活つらすぎる。二週間のサマーインターンに参加した企業に最終で落とされたのでES沢山書かなきゃいけな...",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-01-28T03:26:02.277379101+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -424,14 +440,14 @@
           "数学"
         ],
         "created_at": "2026-01-09T01:58:40Z",
-        "updated_at": "2026-01-27T02:58:56Z",
+        "updated_at": "2026-01-27T04:13:13Z",
         "author_image": null
       },
       "file_path": "../content/articles/continuum_theory.md",
       "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.024332732+00:00"
+      "processed_at": "2026-01-28T03:26:02.277558620+00:00"
     },
     {
       "slug": "hobby",
@@ -443,7 +459,7 @@
         "related_articles": [],
         "tags": [],
         "created_at": "2025-12-29T03:30:38Z",
-        "updated_at": "2026-01-27T03:57:36Z",
+        "updated_at": "2026-01-27T11:50:20Z",
         "author_image": null
       },
       "file_path": "../content/articles/hobby.md",
@@ -493,11 +509,11 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-01-27T16:01:08.024627692+00:00"
+      "processed_at": "2026-01-28T03:26:02.277842344+00:00"
     }
   ],
-  "generated_at": "2026-01-27T16:01:08.622104615+00:00",
-  "total_count": 15,
+  "generated_at": "2026-01-28T03:26:02.887636030+00:00",
+  "total_count": 16,
   "home_articles": [
     "pitch-bend",
     "music",

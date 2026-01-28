@@ -7,7 +7,7 @@ category: 自分語り
 tags:
   - 自己紹介
 created_at: "2024-01-02T12:00:00Z"
-updated_at: "2026-01-27T09:51:26Z"
+updated_at: "2026-01-27T09:12:23Z"
 ---
 # プロフィール
 日比野 文です。\
@@ -23,8 +23,6 @@ updated_at: "2026-01-27T09:51:26Z"
 # アルバイト経験
 - 2023-2025年 株式会社shinonomeでバックエンド処理、API開発
 - 2026年-現在 シリコンスタジオで開発環境整備
-
-業務の詳細や炎上経験などを[こちら](gakuchika)に書きました。
 # 個人開発
 - [Rust\Yew, wasmで実装したブログ](https://github.com/khimoo/portfolio-page)
 - [dotfiles](https://github.com/khimoo/flake_public)
@@ -34,4 +32,3 @@ updated_at: "2026-01-27T09:51:26Z"
 - [Roi Poranneらの論文を実装したもの](https://github.com/khimoo/ProvablyGoodPlanarMappings)
 
 各ツールの詳細は[個人開発の記事一覧](myworks)をご覧ください。
-

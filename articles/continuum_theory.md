@@ -7,7 +7,7 @@ tags:
   - 専門
   - 数学
 created_at: "2026-01-09T01:58:40Z"
-updated_at: "2026-01-27T02:58:56Z"
+updated_at: "2026-01-27T04:13:13Z"
 ---
 # セミナー、研究テーマ概要
 学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theory an Introduction(Sam B. Nadler)という本を読み、連続体について包括的に勉強しています。
