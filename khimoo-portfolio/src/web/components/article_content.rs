@@ -66,42 +66,42 @@ fn render_related_articles(article: &ProcessedArticle) -> Html {
 fn content_styles() -> String {
     r#"
     .markdown-body {
-        line-height: 1.6;
-        color: #e0e0e0;
+       line-height: 1.6;
+       color: #e0e0e0;
     }
-    .markdown-body h1, .markdown-body h2, .markdown-body h3 {
-        margin-top: 24px;
-        margin-bottom: 6px;
-        color: #e0e0e0;
+    .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5{
+       margin-top: 36px;
+       margin-bottom: -18px;
+       color: #e0e0e0;
     }
     .markdown-body p {
-        margin-bottom: 16px;
-        color: #e0e0e0;
+       margin-bottom: 16px;
+       color: #e0e0e0;
     }
     .markdown-body ul, .markdown-body ol {
-        margin-bottom: 16px;
-        padding-left: 30px;
-        color: #e0e0e0;
+       margin-bottom: 16px;
+       padding-left: 30px;
+       color: #e0e0e0;
     }
     .markdown-body code {
-        background: #2d3748;
-        color: #e0e0e0;
-        padding: 2px 4px;
-        border-radius: 3px;
-        font-size: 85%;
+       background: #2d3748;
+       color: #e0e0e0;
+       padding: 2px 4px;
+       border-radius: 3px;
+       font-size: 85%;
     }
     .markdown-body pre {
-        background: #2d3748;
-        color: #e0e0e0;
-        padding: 16px;
-        border-radius: 6px;
-        overflow: auto;
+       background: #2d3748;
+       color: #e0e0e0;
+       padding: 16px;
+       border-radius: 6px;
+       overflow: auto;
     }
     .markdown-body blockquote {
-        border-left: 4px solid #66b3ff;
-        padding-left: 16px;
-        color: #aaa;
-        margin: 0 0 16px 0;
+       border-left: 4px solid #66b3ff;
+       padding-left: 16px;
+       color: #aaa;
+       margin: 0 0 16px 0;
     }
     .markdown-body a {
         color: #66b3ff;
