@@ -71,7 +71,7 @@ fn content_styles() -> String {
     }
     .markdown-body h1, .markdown-body h2, .markdown-body h3 {
         margin-top: 24px;
-        margin-bottom: 16px;
+        margin-bottom: 6px;
         color: #e0e0e0;
     }
     .markdown-body p {
