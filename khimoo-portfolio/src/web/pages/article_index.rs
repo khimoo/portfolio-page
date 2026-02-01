@@ -39,6 +39,7 @@ pub fn article_index_page() -> Html {
             .iter()
             .cloned()
             .map(LightweightArticle::from)
+            .filter(|article| article.metadata.hub_tag.is_none())
             .collect::<Vec<_>>()
     });
 

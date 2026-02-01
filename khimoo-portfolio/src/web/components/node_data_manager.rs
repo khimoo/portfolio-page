@@ -73,11 +73,7 @@ impl NodeDataManager {
 
     /// 記事情報からナビゲーション動作を決定
     fn determine_navigation(article: &ProcessedArticle) -> NodeNavigation {
-        if let Some(tag) = &article.metadata.hub_tag {
-            NodeNavigation::FilterByTag(tag.clone())
-        } else {
-            NodeNavigation::ShowArticle(article.slug.clone())
-        }
+        NodeNavigation::ShowArticle(article.slug.clone())
     }
 
     /// ArticlesDataからNodeRegistryを生成

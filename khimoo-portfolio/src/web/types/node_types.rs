@@ -20,8 +20,6 @@ pub enum NodeType {
 pub enum NodeNavigation {
     /// Navigate to article detail page (/article/:slug)
     ShowArticle(String),
-    /// Navigate to article list filtered by tag (/article?tags=:tag)
-    FilterByTag(String),
     /// Do nothing or stay on home
     StayOnHome,
 }

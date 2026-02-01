@@ -1,6 +1,8 @@
 use crate::web::components::{ArticleContent, ArticleHeader, ArticleStateRenderer};
 use crate::web::data_loader::{use_article_content, DataLoader};
+use crate::web::routes::{Route, TagQuery};
 use yew::prelude::*;
+use yew_router::prelude::*;
 
 #[derive(Properties, PartialEq)]
 pub struct ArticleViewProps {
@@ -14,6 +16,29 @@ pub fn article_view_page(props: &ArticleViewProps) -> Html {
     let article_content = use_state(|| None::<String>);
     let content_loading = use_state(|| false);
     let content_error = use_state(|| None::<String>);
+    let navigator = use_navigator().expect("Navigator not found");
+
+    // Tags-Hub機能: hub_tagが設定されている記事の場合、タグ一覧ページへリダイレクト
+    {
+        let article = article.clone();
+        let navigator = navigator.clone();
+        use_effect_with(article, move |article| {
+            if let Some(article_data) = article.as_ref() {
+                if let Some(hub_tag) = &article_data.metadata.hub_tag {
+                    #[cfg(target_arch = "wasm32")]
+                    web_sys::console::log_1(
+                        &format!("Redirecting tags-hub article to tag index: {}", hub_tag).into(),
+                    );
+                    
+                    let query = TagQuery {
+                        tags: Some(hub_tag.clone()),
+                    };
+                    let _ = navigator.replace_with_query(&Route::ArticleIndex, &query);
+                }
+            }
+            || {}
+        });
+    }
 
     // コンテンツ読み込み処理
     {

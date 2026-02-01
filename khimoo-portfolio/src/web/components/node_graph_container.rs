@@ -89,16 +89,6 @@ pub fn node_graph_container(props: &NodeGraphContainerProps) -> Html {
                         let route = Route::ArticleShow { slug: slug.clone() };
                         navigator.push(&route);
                     }
-                    NodeNavigation::FilterByTag(tag) => {
-                        // タグ付きで記事一覧へ遷移
-                        #[cfg(target_arch = "wasm32")]
-                        web_sys::console::log_1(&format!("Navigating to tag index: {}", tag).into());
-                        let query = TagQuery { tags: Some(tag.clone()) };
-                        if let Err(e) = navigator.push_with_query(&Route::ArticleIndex, &query) {
-                            #[cfg(target_arch = "wasm32")]
-                            web_sys::console::log_1(&format!("Navigation error: {:?}", e).into());
-                        }
-                    }
                     NodeNavigation::StayOnHome => {
                         #[cfg(target_arch = "wasm32")]
                         web_sys::console::log_1(
