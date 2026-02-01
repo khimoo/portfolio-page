@@ -1,11 +1,11 @@
 ---
-title: culture_shock_btwn_yamagata&tokyo
+title: シン・自己紹介
 home_display: false
 importance: 2
 tags:
   - 雑
-created_at: "2026-01-27T06:15:01Z"
-updated_at: "2026-02-01T04:16:56Z"
+created_at: 2026-01-27T06:15:01Z
+updated_at: 2026-02-01T04:16:56Z
 ---
 2週間サマーインターンに参加した企業に最終面接で落とされてしまった。
 就活つらすぎる。\
