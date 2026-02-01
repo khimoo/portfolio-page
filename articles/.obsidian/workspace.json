@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "38fca810e9f9e8ce",
+        "id": "e9a5a21307677f16",
         "type": "tabs",
         "children": [
           {
-            "id": "db48dff8e671f506",
+            "id": "fd3af65ac1d323b6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:雑",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "ブックマーク"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -195,15 +196,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "db48dff8e671f506",
+  "active": "82bb9fffeb640288",
   "lastOpenFiles": [
-    "Linux.md",
+    "culture_shock_btwn_yamagata&tokyo.md",
     "jijoden.md",
+    "jijoden.md~",
+    "conflict-files-obsidian-git.md",
+    "Linux.md",
     "hobby.md",
     "Templates/template_article.md",
     "programming.md",
     "about-khimoo.md",
-    "conflict-files-obsidian-git.md",
     "gakuchika.md",
     "continuum_theory.md",
     "drawing.md",
