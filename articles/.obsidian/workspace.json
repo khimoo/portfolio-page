@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "jijoden.md",
+                "file": "abstraction.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "jijoden"
+              "title": "abstraction"
             }
           }
         ]
@@ -197,6 +197,8 @@
   },
   "active": "fd3af65ac1d323b6",
   "lastOpenFiles": [
+    "jijoden.md",
+    "abstraction.md",
     "myblog.md",
     "myworks.md",
     "Neovim.md",
@@ -204,7 +206,6 @@
     "programming.md",
     "provably-good-planar-mappings.md",
     "about-khimoo.md",
-    "jijoden.md",
     "culture_shock_btwn_yamagata&tokyo.md",
     "jijoden.md~",
     "conflict-files-obsidian-git.md",
