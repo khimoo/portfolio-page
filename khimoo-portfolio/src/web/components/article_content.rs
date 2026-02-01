@@ -68,6 +68,7 @@ fn content_styles() -> String {
     .markdown-body {
        line-height: 1.6;
        color: #e0e0e0;
+       font-size: 20px;
     }
     .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5{
        margin-top: 36px;
