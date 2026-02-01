@@ -7,7 +7,7 @@ category: 自分語り
 tags:
   - 自己紹介
 created_at: "2024-01-02T12:00:00Z"
-updated_at: "2026-01-27T09:12:23Z"
+updated_at: "2026-02-01T11:12:59Z"
 ---
 # プロフィール
 日比野 文です。\
@@ -31,4 +31,4 @@ updated_at: "2026-01-27T09:12:23Z"
 - [chromebook用imeのskkでstickey shiftを設定できるようにしたもの](https://github.com/khimoo/chrome-skk)
 - [Roi Poranneらの論文を実装したもの](https://github.com/khimoo/ProvablyGoodPlanarMappings)
 
-各ツールの詳細は[個人開発の記事一覧](myworks)をご覧ください。
+各ツールの詳細は #個人開発 をご覧ください。

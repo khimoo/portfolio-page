@@ -18,7 +18,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.495933129+00:00"
+      "processed_at": "2026-02-01T14:15:18.027987165+00:00"
     },
     {
       "slug": "music",
@@ -38,7 +38,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.496072970+00:00"
+      "processed_at": "2026-02-01T14:15:18.028128989+00:00"
     },
     {
       "slug": "Neovim",
@@ -58,7 +58,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.496198985+00:00"
+      "processed_at": "2026-02-01T14:15:18.028256777+00:00"
     },
     {
       "slug": "myworks",
@@ -143,7 +143,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.497290604+00:00"
+      "processed_at": "2026-02-01T14:15:18.029340935+00:00"
     },
     {
       "slug": "mini_farm",
@@ -163,7 +163,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.497435625+00:00"
+      "processed_at": "2026-02-01T14:15:18.029486696+00:00"
     },
     {
       "slug": "Linux",
@@ -183,7 +183,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.497569444+00:00"
+      "processed_at": "2026-02-01T14:15:18.029621396+00:00"
     },
     {
       "slug": "template_article",
@@ -203,7 +203,7 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.497744251+00:00"
+      "processed_at": "2026-02-01T14:15:18.029780142+00:00"
     },
     {
       "slug": "drawing",
@@ -225,7 +225,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.497895083+00:00"
+      "processed_at": "2026-02-01T14:15:18.029947103+00:00"
     },
     {
       "slug": "universality",
@@ -250,7 +250,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.498040885+00:00"
+      "processed_at": "2026-02-01T14:15:18.030096029+00:00"
     },
     {
       "slug": "myblog",
@@ -272,7 +272,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.498186266+00:00"
+      "processed_at": "2026-02-01T14:15:18.030242352+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -286,7 +286,7 @@
           "自己紹介"
         ],
         "created_at": "2024-01-02T12:00:00Z",
-        "updated_at": "2026-01-27T09:12:23Z",
+        "updated_at": "2026-02-01T11:12:59Z",
         "author_image": "/assets/img/author_img.png",
         "hub_tag": null
       },
@@ -316,12 +316,6 @@
           "link_type": "MarkdownLink",
           "original_text": "[趣味](hobby)",
           "display_text": "趣味"
-        },
-        {
-          "target_slug": "myworks",
-          "link_type": "MarkdownLink",
-          "original_text": "[個人開発の記事一覧](myworks)",
-          "display_text": "個人開発の記事一覧"
         },
         {
           "target_slug": "https://github.com/khimoo/portfolio-page",
@@ -361,7 +355,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.498888106+00:00"
+      "processed_at": "2026-02-01T14:15:18.030930432+00:00"
     },
     {
       "slug": "math",
@@ -394,7 +388,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.499137011+00:00"
+      "processed_at": "2026-02-01T14:15:18.031191428+00:00"
     },
     {
       "slug": "programming",
@@ -430,7 +424,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.499393230+00:00"
+      "processed_at": "2026-02-01T14:15:18.031448226+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -450,7 +444,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.499531378+00:00"
+      "processed_at": "2026-02-01T14:15:18.031586763+00:00"
     },
     {
       "slug": "jijoden",
@@ -486,7 +480,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.500203152+00:00"
+      "processed_at": "2026-02-01T14:15:18.032242213+00:00"
     },
     {
       "slug": "culture_shock_btwn_yamagata&tokyo",
@@ -508,7 +502,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.500319690+00:00"
+      "processed_at": "2026-02-01T14:15:18.032365443+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -531,7 +525,7 @@
       "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.500494025+00:00"
+      "processed_at": "2026-02-01T14:15:18.032539737+00:00"
     },
     {
       "slug": "hobby",
@@ -594,10 +588,10 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T14:14:29.500824081+00:00"
+      "processed_at": "2026-02-01T14:15:18.032822593+00:00"
     }
   ],
-  "generated_at": "2026-02-01T14:14:30.102602273+00:00",
+  "generated_at": "2026-02-01T14:15:18.634771455+00:00",
   "total_count": 18,
   "home_articles": [
     "pitch-bend",

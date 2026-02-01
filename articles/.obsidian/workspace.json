@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "jijoden.md",
+                "file": "about-khimoo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "jijoden"
+              "title": "about-khimoo"
             }
           }
         ]
@@ -197,16 +197,16 @@
   },
   "active": "fd3af65ac1d323b6",
   "lastOpenFiles": [
-    "universality.md",
+    "myworks.md",
+    "about-khimoo.md",
     "jijoden.md",
+    "universality.md",
     "abstraction.md",
     "myblog.md",
-    "myworks.md",
     "Neovim.md",
     "pitch-bend.md",
     "programming.md",
     "provably-good-planar-mappings.md",
-    "about-khimoo.md",
     "culture_shock_btwn_yamagata&tokyo.md",
     "jijoden.md~",
     "conflict-files-obsidian-git.md",
