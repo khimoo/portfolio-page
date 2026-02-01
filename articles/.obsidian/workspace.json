@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tags-hub/個人開発.md",
+                "file": "about-khimoo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "個人開発"
+              "title": "about-khimoo"
             }
           }
         ]
@@ -195,14 +195,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e8645d5b0c9292d9",
+  "active": "fd3af65ac1d323b6",
   "lastOpenFiles": [
     "myworks.md",
-    "tags-hub/個人開発.md",
     "about-khimoo.md",
-    "tags-hub",
-    "tags/個人開発.md",
-    "tags",
     "jijoden.md",
     "universality.md",
     "abstraction.md",
