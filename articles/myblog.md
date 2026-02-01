@@ -3,8 +3,9 @@ title: myblog
 home_display: true
 importance: 2
 category: ""
-tags: []
-created_at: "2026-01-03T09:39:31Z"
-updated_at: "2026-01-04T03:27:24Z"
+tags:
+  - 個人開発
+created_at: "2026-01-03T06:39:31Z"
+updated_at: "2026-02-01T06:30:35Z"
 ---
 a

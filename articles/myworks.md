@@ -3,9 +3,13 @@ title: 個人開発
 home_display: true
 importance: 4
 category: ""
-tags: []
-created_at: "2025-12-29T03:30:38Z"
-updated_at: "2026-01-06T11:45:16Z"
+tags:
+  - プログラミング
+  - 趣味
+  - 個人開発
+created_at: "2025-12-29T12:30:38Z"
+updated_at: "2026-02-01T06:30:28Z"
+hub_tag: 個人開発
 ---
 #  WebAssemblyで作ってみたブログ
 [リポジトリ](https://github.com/khimoo/portfolio-page)
