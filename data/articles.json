@@ -18,7 +18,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.699711033+00:00"
+      "processed_at": "2026-02-01T13:48:26.607950204+00:00"
     },
     {
       "slug": "music",
@@ -38,7 +38,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.699877954+00:00"
+      "processed_at": "2026-02-01T13:48:26.608090936+00:00"
     },
     {
       "slug": "Neovim",
@@ -58,7 +58,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.700009370+00:00"
+      "processed_at": "2026-02-01T13:48:26.608250994+00:00"
     },
     {
       "slug": "myworks",
@@ -143,7 +143,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.701093403+00:00"
+      "processed_at": "2026-02-01T13:48:26.609337707+00:00"
     },
     {
       "slug": "mini_farm",
@@ -163,7 +163,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.701238995+00:00"
+      "processed_at": "2026-02-01T13:48:26.609484060+00:00"
     },
     {
       "slug": "Linux",
@@ -183,7 +183,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.701373236+00:00"
+      "processed_at": "2026-02-01T13:48:26.609617568+00:00"
     },
     {
       "slug": "template_article",
@@ -203,7 +203,7 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.701531+00:00"
+      "processed_at": "2026-02-01T13:48:26.609776735+00:00"
     },
     {
       "slug": "drawing",
@@ -225,7 +225,32 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.701679067+00:00"
+      "processed_at": "2026-02-01T13:48:26.609924480+00:00"
+    },
+    {
+      "slug": "universality",
+      "title": "数学、プログラミング、日常生活での抽象度",
+      "metadata": {
+        "title": "数学、プログラミング、日常生活での抽象度",
+        "home_display": false,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "雑",
+          "数学",
+          "趣味",
+          "プログラミング"
+        ],
+        "created_at": "2026-02-01T10:45:21Z",
+        "updated_at": "2026-02-01T10:45:52Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/universality.md",
+      "summary": "記事の概要はありません。",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-02-01T13:48:26.610072455+00:00"
     },
     {
       "slug": "myblog",
@@ -247,7 +272,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.701828906+00:00"
+      "processed_at": "2026-02-01T13:48:26.610241500+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -336,7 +361,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.702536056+00:00"
+      "processed_at": "2026-02-01T13:48:26.610925353+00:00"
     },
     {
       "slug": "math",
@@ -369,7 +394,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.702785682+00:00"
+      "processed_at": "2026-02-01T13:48:26.611190527+00:00"
     },
     {
       "slug": "programming",
@@ -405,7 +430,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.703059183+00:00"
+      "processed_at": "2026-02-01T13:48:26.611446273+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -425,7 +450,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.703204063+00:00"
+      "processed_at": "2026-02-01T13:48:26.611587416+00:00"
     },
     {
       "slug": "jijoden",
@@ -454,14 +479,14 @@
           "display_text": "山形<=>東京カルチャーショック"
         },
         {
-          "target_slug": "abstraction",
+          "target_slug": "universality",
           "link_type": "MarkdownLink",
-          "original_text": "[抽象度](abstraction)",
+          "original_text": "[抽象度](universality)",
           "display_text": "抽象度"
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.703856400+00:00"
+      "processed_at": "2026-02-01T13:48:26.612252935+00:00"
     },
     {
       "slug": "culture_shock_btwn_yamagata&tokyo",
@@ -483,7 +508,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.703976044+00:00"
+      "processed_at": "2026-02-01T13:48:26.612371356+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -506,7 +531,7 @@
       "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.704149808+00:00"
+      "processed_at": "2026-02-01T13:48:26.612550690+00:00"
     },
     {
       "slug": "hobby",
@@ -569,32 +594,10 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.704423289+00:00"
-    },
-    {
-      "slug": "abstraction",
-      "title": "abstraction",
-      "metadata": {
-        "title": "abstraction",
-        "home_display": false,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [
-          "雑"
-        ],
-        "created_at": null,
-        "updated_at": null,
-        "author_image": null,
-        "hub_tag": null
-      },
-      "file_path": "../content/articles/abstraction.md",
-      "summary": "記事の概要はありません。",
-      "outbound_links": [],
-      "inbound_links": [],
-      "processed_at": "2026-02-01T12:58:17.704623022+00:00"
+      "processed_at": "2026-02-01T13:48:26.612839147+00:00"
     }
   ],
-  "generated_at": "2026-02-01T12:58:18.305514747+00:00",
+  "generated_at": "2026-02-01T13:48:27.214807201+00:00",
   "total_count": 18,
   "home_articles": [
     "pitch-bend",

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "abstraction.md",
+                "file": "jijoden.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "abstraction"
+              "title": "jijoden"
             }
           }
         ]
@@ -197,6 +197,7 @@
   },
   "active": "fd3af65ac1d323b6",
   "lastOpenFiles": [
+    "universality.md",
     "jijoden.md",
     "abstraction.md",
     "myblog.md",
