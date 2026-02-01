@@ -17,7 +17,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.976338603+00:00"
+      "processed_at": "2026-02-01T07:47:21.024871816+00:00"
     },
     {
       "slug": "music",
@@ -36,7 +36,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.976506477+00:00"
+      "processed_at": "2026-02-01T07:47:21.025040630+00:00"
     },
     {
       "slug": "Neovim",
@@ -55,7 +55,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.976638113+00:00"
+      "processed_at": "2026-02-01T07:47:21.025176933+00:00"
     },
     {
       "slug": "myworks",
@@ -135,7 +135,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.977702131+00:00"
+      "processed_at": "2026-02-01T07:47:21.026240910+00:00"
     },
     {
       "slug": "mini_farm",
@@ -154,7 +154,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.977847823+00:00"
+      "processed_at": "2026-02-01T07:47:21.026389556+00:00"
     },
     {
       "slug": "Linux",
@@ -173,7 +173,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.977982635+00:00"
+      "processed_at": "2026-02-01T07:47:21.026528114+00:00"
     },
     {
       "slug": "template_article",
@@ -192,7 +192,7 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.978140590+00:00"
+      "processed_at": "2026-02-01T07:47:21.026678594+00:00"
     },
     {
       "slug": "drawing",
@@ -213,7 +213,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.978340613+00:00"
+      "processed_at": "2026-02-01T07:47:21.026831538+00:00"
     },
     {
       "slug": "myblog",
@@ -232,7 +232,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.978504620+00:00"
+      "processed_at": "2026-02-01T07:47:21.026996985+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -320,7 +320,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.979204768+00:00"
+      "processed_at": "2026-02-01T07:47:21.027703018+00:00"
     },
     {
       "slug": "math",
@@ -352,7 +352,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.979472869+00:00"
+      "processed_at": "2026-02-01T07:47:21.027973169+00:00"
     },
     {
       "slug": "programming",
@@ -387,7 +387,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.979732063+00:00"
+      "processed_at": "2026-02-01T07:47:21.028234826+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -406,7 +406,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.979871493+00:00"
+      "processed_at": "2026-02-01T07:47:21.028382530+00:00"
     },
     {
       "slug": "jijoden",
@@ -414,48 +414,21 @@
       "metadata": {
         "title": "シン・自己紹介",
         "home_display": false,
-        "importance": 2,
+        "importance": 5,
         "related_articles": [],
         "tags": [
+          "自己紹介",
           "雑"
         ],
-        "created_at": "2026-01-27T06:15:01Z",
-        "updated_at": "2026-02-01T04:16:56Z",
+        "created_at": "2026-01-27T09:15:01Z",
+        "updated_at": "2026-01-30T03:46:47Z",
         "author_image": null
       },
       "file_path": "../content/articles/jijoden.md",
-      "summary": "2週間サマーインターンに参加した企業に最終面接で落とされてしまった。就活つらすぎる。\\作文嫌いにとっ...",
-      "outbound_links": [
-        {
-          "target_slug": "culture_shock_btwn_yamagata&tokyo",
-          "link_type": "MarkdownLink",
-          "original_text": "[山形<=>東京カルチャーショック](culture_shock_btwn_yamagata&tokyo)",
-          "display_text": "山形<=>東京カルチャーショック"
-        }
-      ],
-      "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.980471394+00:00"
-    },
-    {
-      "slug": "culture_shock_btwn_yamagata&tokyo",
-      "title": "culture_shock_btwn_yamagata&tokyo",
-      "metadata": {
-        "title": "culture_shock_btwn_yamagata&tokyo",
-        "home_display": false,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [
-          "雑"
-        ],
-        "created_at": null,
-        "updated_at": null,
-        "author_image": null
-      },
-      "file_path": "../content/articles/culture_shock_btwn_yamagata&tokyo.md",
-      "summary": "記事の概要はありません。",
+      "summary": "就活つらすぎる。2週間のサマーインターンに参加した企業に最終で落とされたのでES沢山書かなきゃいけなく...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.980590617+00:00"
+      "processed_at": "2026-02-01T07:47:21.028642213+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -477,7 +450,7 @@
       "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.980764873+00:00"
+      "processed_at": "2026-02-01T07:47:21.028823109+00:00"
     },
     {
       "slug": "hobby",
@@ -539,11 +512,11 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T07:36:27.981039927+00:00"
+      "processed_at": "2026-02-01T07:47:21.029124650+00:00"
     }
   ],
-  "generated_at": "2026-02-01T07:36:28.602371634+00:00",
-  "total_count": 17,
+  "generated_at": "2026-02-01T07:47:21.629089016+00:00",
+  "total_count": 16,
   "home_articles": [
     "pitch-bend",
     "music",

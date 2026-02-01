@@ -12,8 +12,8 @@
   // frontmatter に title を書き込む
   await app.fileManager.processFrontMatter(app.workspace.getActiveFile(), (fm) => {
     fm.title = title;
-    fm.home_display = false;
+    fm.home_display = true;
     fm.importance = 2;
-    fm.tags = ["雑"];
+    fm.tags = [];
   });
 %>
