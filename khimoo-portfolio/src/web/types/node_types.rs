@@ -15,6 +15,17 @@ pub enum NodeType {
     Article,
 }
 
+/// Navigation action when a node is clicked
+#[derive(Debug, Clone, PartialEq)]
+pub enum NodeNavigation {
+    /// Navigate to article detail page (/article/:slug)
+    ShowArticle(String),
+    /// Navigate to article list filtered by tag (/article?tags=:tag)
+    FilterByTag(String),
+    /// Do nothing or stay on home
+    StayOnHome,
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum NodeContent {
     Text(String),

@@ -18,6 +18,8 @@ pub struct ArticleMetadata {
     pub created_at: Option<String>,
     pub updated_at: Option<String>,
     pub author_image: Option<String>,
+    /// Link to a specific tag view instead of article page
+    pub hub_tag: Option<String>,
 }
 
 impl Default for ArticleMetadata {
@@ -31,6 +33,7 @@ impl Default for ArticleMetadata {
             created_at: None,
             updated_at: None,
             author_image: None,
+            hub_tag: None,
         }
     }
 }

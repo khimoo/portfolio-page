@@ -1,6 +1,7 @@
 use crate::config::get_config;
 use crate::web::data_loader::{ArticlesData, ProcessedArticle};
 use crate::web::types::*;
+use crate::web::types::node_types::NodeNavigation;
 use std::collections::HashMap;
 
 /// 簡単な疑似乱数生成器（線形合同法）
@@ -70,14 +71,24 @@ impl NodeDataManager {
         }
     }
 
+    /// 記事情報からナビゲーション動作を決定
+    fn determine_navigation(article: &ProcessedArticle) -> NodeNavigation {
+        if let Some(tag) = &article.metadata.hub_tag {
+            NodeNavigation::FilterByTag(tag.clone())
+        } else {
+            NodeNavigation::ShowArticle(article.slug.clone())
+        }
+    }
+
     /// ArticlesDataからNodeRegistryを生成
     pub fn create_node_registry_from_articles(
         articles_data: &ArticlesData,
         container_bound: &ContainerBound,
-    ) -> (NodeRegistry, HashMap<NodeId, String>) {
+    ) -> (NodeRegistry, HashMap<NodeId, NodeNavigation>) {
         let mut reg = NodeRegistry::new_with_config(get_config().node_config.clone());
         let mut slug_to_id = HashMap::new();
-        let mut id_to_slug = HashMap::new();
+        // ID -> NodeNavigation のマップに変更
+        let mut id_to_action = HashMap::new();
         let mut next_id = 1u32;
 
         // コンテナの中心を計算
@@ -132,8 +143,8 @@ impl NodeDataManager {
                 NodeContent::Text("Author".to_string()),
             );
             slug_to_id.insert("author".to_string(), NodeId(next_id));
-            id_to_slug.insert(NodeId(next_id), "author".to_string());
-            return (reg, id_to_slug);
+            id_to_action.insert(NodeId(next_id), NodeNavigation::StayOnHome);
+            return (reg, id_to_action);
         }
 
         // 疑似乱数生成器を初期化（記事数をシードに使用して再現性を保つ）
@@ -194,7 +205,9 @@ impl NodeDataManager {
             );
 
             slug_to_id.insert(article.slug.clone(), node_id);
-            id_to_slug.insert(node_id, article.slug.clone());
+            // ナビゲーションアクションを設定
+            let action = Self::determine_navigation(article);
+            id_to_action.insert(node_id, action);
             next_id += 1;
         }
 
@@ -217,6 +230,6 @@ impl NodeDataManager {
             }
         }
 
-        (reg, id_to_slug)
+        (reg, id_to_action)
     }
 }

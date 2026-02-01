@@ -3,9 +3,10 @@ use crate::web::components::node_data_manager::NodeDataManager;
 use crate::web::components::physics_renderer::PhysicsRenderer;
 use crate::web::data_loader::use_articles_data;
 use crate::web::physics_sim::{PhysicsWorld, Viewport};
-use crate::web::routes::Route;
+use crate::web::routes::{Route, TagQuery};
 use crate::web::styles::{ErrorStyles, LoadingStyles};
 use crate::web::types::*;
+use crate::web::types::node_types::NodeNavigation;
 use std::cell::RefCell;
 use std::collections::HashMap;
 use std::rc::Rc;
@@ -30,7 +31,7 @@ pub fn node_graph_container(props: &NodeGraphContainerProps) -> Html {
 
     // 記事データが読み込まれたらノードレジストリと物理世界を一度だけ初期化
     let node_registry = use_state(|| Rc::new(RefCell::new(NodeRegistry::new_with_config(get_config().node_config.clone()))));
-    let node_slug_mapping = use_state(|| HashMap::<NodeId, String>::new());
+    let node_action_mapping = use_state(|| HashMap::<NodeId, NodeNavigation>::new());
     let physics_world = use_state(|| {
         let empty_registry = Rc::new(RefCell::new(NodeRegistry::new_with_config(get_config().node_config.clone())));
         let default_bound = ContainerBound::default();
@@ -55,11 +56,11 @@ pub fn node_graph_container(props: &NodeGraphContainerProps) -> Html {
                 .into(),
             );
 
-            let (new_registry, slug_mapping) =
+            let (new_registry, action_mapping) =
                 NodeDataManager::create_node_registry_from_articles(data, &props.container_bound);
             let registry_rc = Rc::new(RefCell::new(new_registry));
             node_registry.set(Rc::clone(&registry_rc));
-            node_slug_mapping.set(slug_mapping);
+            node_action_mapping.set(action_mapping);
 
             let new_physics_world = PhysicsWorld::new(
                 registry_rc,
@@ -76,24 +77,35 @@ pub fn node_graph_container(props: &NodeGraphContainerProps) -> Html {
     let navigator = use_navigator().unwrap();
     let on_node_click = {
         let navigator = navigator.clone();
-        let node_slug_mapping = node_slug_mapping.clone();
+        let node_action_mapping = node_action_mapping.clone();
 
         Callback::from(move |node_id: NodeId| {
-            if let Some(slug) = node_slug_mapping.get(&node_id) {
-                // フォールバック作者ノードの場合はホームに留まる
-                if slug == "author" {
-                    #[cfg(target_arch = "wasm32")]
-                    web_sys::console::log_1(
-                        &"Fallback author node clicked - staying on home page".into(),
-                    );
-                    return;
+            if let Some(action) = node_action_mapping.get(&node_id) {
+                match action {
+                    NodeNavigation::ShowArticle(slug) => {
+                        // 記事ページに遷移
+                        #[cfg(target_arch = "wasm32")]
+                        web_sys::console::log_1(&format!("Navigating to article: {}", slug).into());
+                        let route = Route::ArticleShow { slug: slug.clone() };
+                        navigator.push(&route);
+                    }
+                    NodeNavigation::FilterByTag(tag) => {
+                        // タグ付きで記事一覧へ遷移
+                        #[cfg(target_arch = "wasm32")]
+                        web_sys::console::log_1(&format!("Navigating to tag index: {}", tag).into());
+                        let query = TagQuery { tags: Some(tag.clone()) };
+                        if let Err(e) = navigator.push_with_query(&Route::ArticleIndex, &query) {
+                            #[cfg(target_arch = "wasm32")]
+                            web_sys::console::log_1(&format!("Navigation error: {:?}", e).into());
+                        }
+                    }
+                    NodeNavigation::StayOnHome => {
+                        #[cfg(target_arch = "wasm32")]
+                        web_sys::console::log_1(
+                            &"Stay on home node clicked".into(),
+                        );
+                    }
                 }
-
-                // 記事ページに遷移
-                #[cfg(target_arch = "wasm32")]
-                web_sys::console::log_1(&format!("Navigating to article: {}", slug).into());
-                let route = Route::ArticleShow { slug: slug.clone() };
-                navigator.push(&route);
             }
         })
     };
