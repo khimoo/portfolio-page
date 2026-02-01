@@ -11,13 +11,14 @@
         "tags": [],
         "created_at": "2026-01-06T11:48:45Z",
         "updated_at": "2026-01-06T11:48:50Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/pitch-bend.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.455839996+00:00"
+      "processed_at": "2026-02-01T09:37:01.464367444+00:00"
     },
     {
       "slug": "music",
@@ -30,13 +31,14 @@
         "tags": [],
         "created_at": "2025-12-29T03:30:38Z",
         "updated_at": "2026-01-27T04:02:34Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/music.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.455980008+00:00"
+      "processed_at": "2026-02-01T09:37:01.464511162+00:00"
     },
     {
       "slug": "Neovim",
@@ -49,13 +51,14 @@
         "tags": [],
         "created_at": "2025-12-28T18:30:38Z",
         "updated_at": "2025-12-29T00:51:53Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/Neovim.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.456107696+00:00"
+      "processed_at": "2026-02-01T09:37:01.464644289+00:00"
     },
     {
       "slug": "myworks",
@@ -72,7 +75,8 @@
         ],
         "created_at": "2025-12-29T12:30:38Z",
         "updated_at": "2026-02-01T06:30:28Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": "個人開発"
       },
       "file_path": "../content/articles/myworks.md",
       "summary": "WebAssemblyで作ってみたブログリポジトリwasmに興味があり、あえてRust\\Yewを使用しました。wasmの良さを活かして...",
@@ -139,7 +143,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.457198724+00:00"
+      "processed_at": "2026-02-01T09:37:01.465725901+00:00"
     },
     {
       "slug": "mini_farm",
@@ -152,13 +156,14 @@
         "tags": [],
         "created_at": "2025-12-28T18:30:38Z",
         "updated_at": "2025-12-29T00:52:32Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/mini_farm.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.457357531+00:00"
+      "processed_at": "2026-02-01T09:37:01.465875249+00:00"
     },
     {
       "slug": "Linux",
@@ -171,13 +176,14 @@
         "tags": [],
         "created_at": "2025-12-28T18:30:38Z",
         "updated_at": "2025-12-29T00:51:46Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/Linux.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.457514104+00:00"
+      "processed_at": "2026-02-01T09:37:01.466015620+00:00"
     },
     {
       "slug": "template_article",
@@ -190,13 +196,14 @@
         "tags": [],
         "created_at": null,
         "updated_at": null,
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/Templates/template_article.md",
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.457674443+00:00"
+      "processed_at": "2026-02-01T09:37:01.466196526+00:00"
     },
     {
       "slug": "drawing",
@@ -211,13 +218,14 @@
         ],
         "created_at": "2025-12-29T03:30:38Z",
         "updated_at": "2026-01-27T02:50:18Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/drawing.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.457836376+00:00"
+      "processed_at": "2026-02-01T09:37:01.466351525+00:00"
     },
     {
       "slug": "myblog",
@@ -232,13 +240,14 @@
         ],
         "created_at": "2026-01-03T06:39:31Z",
         "updated_at": "2026-02-01T06:30:35Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/myblog.md",
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.457987498+00:00"
+      "processed_at": "2026-02-01T09:37:01.466505882+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -253,7 +262,8 @@
         ],
         "created_at": "2024-01-02T12:00:00Z",
         "updated_at": "2026-01-27T09:12:23Z",
-        "author_image": "/assets/img/author_img.png"
+        "author_image": "/assets/img/author_img.png",
+        "hub_tag": null
       },
       "file_path": "../content/articles/about-khimoo.md",
       "summary": "プロフィール日比野 文です。専門：数学\\連続体理論趣味：絵、音楽、漫画、映画、Neovim、NixOS、Rust、家庭菜...",
@@ -326,7 +336,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.458702774+00:00"
+      "processed_at": "2026-02-01T09:37:01.467218828+00:00"
     },
     {
       "slug": "math",
@@ -339,7 +349,8 @@
         "tags": [],
         "created_at": "2025-12-29T03:30:38Z",
         "updated_at": "2026-01-06T11:52:32Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/math.md",
       "summary": "連続体理論無限次元位相幾何",
@@ -358,7 +369,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.458953703+00:00"
+      "processed_at": "2026-02-01T09:37:01.467471598+00:00"
     },
     {
       "slug": "programming",
@@ -374,7 +385,8 @@
         ],
         "created_at": "2025-12-29T12:30:38Z",
         "updated_at": "2026-01-28T02:57:57Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/programming.md",
       "summary": "プログラミングの何がすきか抽象度を上手に扱うことでうまく世界を捉え直す必要があることが好き最近はbev...",
@@ -393,7 +405,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.459210062+00:00"
+      "processed_at": "2026-02-01T09:37:01.467730810+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -406,13 +418,14 @@
         "tags": [],
         "created_at": "2026-01-08T06:28:23Z",
         "updated_at": "2026-01-08T06:28:25Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/provably-good-planar-mappings.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.459354782+00:00"
+      "processed_at": "2026-02-01T09:37:01.467874197+00:00"
     },
     {
       "slug": "jijoden",
@@ -428,7 +441,8 @@
         ],
         "created_at": "2026-01-27T03:15:01Z",
         "updated_at": "2026-02-01T04:37:50Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/jijoden.md",
       "summary": "2週間サマーインターンに参加した企業に最終面接で落とされてしまった。就活つらすぎる。作文嫌いにとっ...",
@@ -441,7 +455,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.459973468+00:00"
+      "processed_at": "2026-02-01T09:37:01.468468292+00:00"
     },
     {
       "slug": "culture_shock_btwn_yamagata&tokyo",
@@ -456,13 +470,14 @@
         ],
         "created_at": null,
         "updated_at": null,
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/culture_shock_btwn_yamagata&tokyo.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.460092109+00:00"
+      "processed_at": "2026-02-01T09:37:01.468589147+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -478,13 +493,14 @@
         ],
         "created_at": "2026-01-09T01:58:40Z",
         "updated_at": "2026-01-27T04:13:13Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/continuum_theory.md",
       "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.460265704+00:00"
+      "processed_at": "2026-02-01T09:37:01.468767088+00:00"
     },
     {
       "slug": "hobby",
@@ -497,7 +513,8 @@
         "tags": [],
         "created_at": "2025-12-29T03:30:38Z",
         "updated_at": "2026-01-27T11:50:20Z",
-        "author_image": null
+        "author_image": null,
+        "hub_tag": null
       },
       "file_path": "../content/articles/hobby.md",
       "summary": "プログラミングLinuxNeovim家庭菜園絵音楽数学",
@@ -546,10 +563,10 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-01T09:32:50.460585381+00:00"
+      "processed_at": "2026-02-01T09:37:01.469043713+00:00"
     }
   ],
-  "generated_at": "2026-02-01T09:32:51.060440406+00:00",
+  "generated_at": "2026-02-01T09:37:02.071233705+00:00",
   "total_count": 17,
   "home_articles": [
     "pitch-bend",
