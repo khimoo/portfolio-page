@@ -7,9 +7,9 @@ tags:
   - プログラミング
   - 趣味
   - 個人開発
-created_at: "2025-12-29T12:30:38Z"
-updated_at: "2026-02-01T06:30:28Z"
-hub_tag: 個人開発
+created_at: "2025-12-29T09:30:38Z"
+updated_at: "2026-02-02T01:05:38Z"
+tags_hub_tag: 個人開発
 ---
 #  WebAssemblyで作ってみたブログ
 [リポジトリ](https://github.com/khimoo/portfolio-page)

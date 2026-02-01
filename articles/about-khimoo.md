@@ -31,4 +31,4 @@ updated_at: "2026-02-01T11:12:59Z"
 - [chromebook用imeのskkでstickey shiftを設定できるようにしたもの](https://github.com/khimoo/chrome-skk)
 - [Roi Poranneらの論文を実装したもの](https://github.com/khimoo/ProvablyGoodPlanarMappings)
 
-各ツールの詳細は #個人開発 をご覧ください。
+各ツールの詳細は[個人開発の記事一覧](myworks)をご覧ください。
