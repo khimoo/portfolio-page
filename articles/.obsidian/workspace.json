@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "math.md",
+                "file": "culture_shock_btwn_yamagata&tokyo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "math"
+              "title": "culture_shock_btwn_yamagata&tokyo"
             }
           }
         ]
@@ -197,6 +197,9 @@
   },
   "active": "fd3af65ac1d323b6",
   "lastOpenFiles": [
+    "continuum_theory.md",
+    "about-khimoo.md",
+    "math.md",
     "hobby.md",
     "music.md",
     "drawing.md",
@@ -205,15 +208,12 @@
     "programming.md",
     "jijoden.md",
     "culture_shock_btwn_yamagata&tokyo.md",
-    "continuum_theory.md",
-    "about-khimoo.md",
     "myworks.md",
     "provably-good-planar-mappings.md",
     "pitch-bend.md",
     "myblog.md",
     "universality.md",
     "tags-hub/個人開発.md",
-    "math.md",
     "tags-hub",
     "tags/個人開発.md",
     "tags",
