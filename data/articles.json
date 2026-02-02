@@ -20,7 +20,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.918036972+00:00"
+      "processed_at": "2026-02-02T15:16:14.293873183+00:00"
     },
     {
       "slug": "music",
@@ -42,7 +42,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.918180969+00:00"
+      "processed_at": "2026-02-02T15:16:14.293990046+00:00"
     },
     {
       "slug": "Neovim",
@@ -62,7 +62,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.918308497+00:00"
+      "processed_at": "2026-02-02T15:16:14.294087933+00:00"
     },
     {
       "slug": "myworks",
@@ -78,7 +78,7 @@
           "個人開発"
         ],
         "created_at": "2025-12-29T06:30:38Z",
-        "updated_at": "2026-02-02T01:07:50Z",
+        "updated_at": "2026-02-03T12:02:52Z",
         "author_image": null,
         "hub_tag": "個人開発"
       },
@@ -102,6 +102,12 @@
           "link_type": "MarkdownLink",
           "original_text": "[ブログ](provably-good-planar-mappings)",
           "display_text": "ブログ"
+        },
+        {
+          "target_slug": "typst-resume",
+          "link_type": "MarkdownLink",
+          "original_text": "[Typstで履歴書とスキルシート作ってみた](typst-resume)",
+          "display_text": "Typstで履歴書とスキルシート作ってみた"
         },
         {
           "target_slug": "https://github.com/khimoo/portfolio-page",
@@ -147,7 +153,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.919409022+00:00"
+      "processed_at": "2026-02-02T15:16:14.295114399+00:00"
     },
     {
       "slug": "mini_farm",
@@ -169,7 +175,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.919558871+00:00"
+      "processed_at": "2026-02-02T15:16:14.295251504+00:00"
     },
     {
       "slug": "Linux",
@@ -191,7 +197,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.919698280+00:00"
+      "processed_at": "2026-02-02T15:16:14.295361684+00:00"
     },
     {
       "slug": "template_article",
@@ -211,7 +217,7 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.919859520+00:00"
+      "processed_at": "2026-02-02T15:16:14.295493936+00:00"
     },
     {
       "slug": "drawing",
@@ -234,7 +240,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.920006703+00:00"
+      "processed_at": "2026-02-02T15:16:14.295615676+00:00"
     },
     {
       "slug": "universality",
@@ -259,7 +265,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.920153676+00:00"
+      "processed_at": "2026-02-02T15:16:14.295728420+00:00"
     },
     {
       "slug": "myblog",
@@ -281,7 +287,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.920303835+00:00"
+      "processed_at": "2026-02-02T15:16:14.295842975+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -370,7 +376,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.921014216+00:00"
+      "processed_at": "2026-02-02T15:16:14.296428641+00:00"
     },
     {
       "slug": "math",
@@ -384,10 +390,10 @@
           "趣味",
           "専門"
         ],
-        "created_at": "2025-12-29T12:30:38Z",
-        "updated_at": "2026-02-02T01:21:18Z",
+        "created_at": "2025-12-29T09:30:38Z",
+        "updated_at": "2026-02-03T12:01:52Z",
         "author_image": null,
-        "hub_tag": null
+        "hub_tag": "数学"
       },
       "file_path": "../content/articles/math.md",
       "summary": "連続体理論無限次元位相幾何",
@@ -406,7 +412,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.921267647+00:00"
+      "processed_at": "2026-02-02T15:16:14.296648008+00:00"
     },
     {
       "slug": "programming",
@@ -442,7 +448,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.921547417+00:00"
+      "processed_at": "2026-02-02T15:16:14.296853290+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -464,7 +470,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.921691966+00:00"
+      "processed_at": "2026-02-02T15:16:14.296965445+00:00"
     },
     {
       "slug": "jijoden",
@@ -500,7 +506,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.922328830+00:00"
+      "processed_at": "2026-02-02T15:16:14.297509231+00:00"
     },
     {
       "slug": "culture_shock_btwn_yamagata&tokyo",
@@ -522,7 +528,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.922462708+00:00"
+      "processed_at": "2026-02-02T15:16:14.297601141+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -545,7 +551,39 @@
       "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.922636411+00:00"
+      "processed_at": "2026-02-02T15:16:14.297737689+00:00"
+    },
+    {
+      "slug": "typst-resume",
+      "title": "Typstで履歴書とスキルシート",
+      "metadata": {
+        "title": "Typstで履歴書とスキルシート",
+        "home_display": false,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "雑",
+          "個人開発",
+          "プログラミング",
+          "趣味"
+        ],
+        "created_at": "2026-02-03T06:02:55Z",
+        "updated_at": "2026-02-03T12:14:10Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/typst-resume.md",
+      "summary": "リポジトリTypstのyaml機能を使ってみたかったtypstファイルから相対ディレクトリでyamlファイルを参照できる。...",
+      "outbound_links": [
+        {
+          "target_slug": "https://github.com/khimoo/typst-resume",
+          "link_type": "ExternalLink",
+          "original_text": "[リポジトリ](https://github.com/khimoo/typst-resume)",
+          "display_text": "リポジトリ"
+        }
+      ],
+      "inbound_links": [],
+      "processed_at": "2026-02-02T15:16:14.297976118+00:00"
     },
     {
       "slug": "hobby",
@@ -608,11 +646,11 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-02T01:11:49.922929696+00:00"
+      "processed_at": "2026-02-02T15:16:14.298215678+00:00"
     }
   ],
-  "generated_at": "2026-02-02T01:11:50.523981778+00:00",
-  "total_count": 18,
+  "generated_at": "2026-02-02T15:16:14.860563110+00:00",
+  "total_count": 19,
   "home_articles": [
     "pitch-bend",
     "music",
