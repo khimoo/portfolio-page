@@ -20,7 +20,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.328902018+00:00"
+      "processed_at": "2026-02-04T15:18:44.023449094+00:00"
     },
     {
       "slug": "music",
@@ -42,7 +42,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.329045276+00:00"
+      "processed_at": "2026-02-04T15:18:44.023594554+00:00"
     },
     {
       "slug": "Neovim",
@@ -62,7 +62,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.329215725+00:00"
+      "processed_at": "2026-02-04T15:18:44.023723846+00:00"
     },
     {
       "slug": "myworks",
@@ -153,7 +153,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.330349317+00:00"
+      "processed_at": "2026-02-04T15:18:44.024851987+00:00"
     },
     {
       "slug": "mini_farm",
@@ -175,7 +175,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.330501893+00:00"
+      "processed_at": "2026-02-04T15:18:44.025004972+00:00"
     },
     {
       "slug": "Linux",
@@ -197,7 +197,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.330640102+00:00"
+      "processed_at": "2026-02-04T15:18:44.025162536+00:00"
     },
     {
       "slug": "template_article",
@@ -217,7 +217,42 @@
       "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.330798168+00:00"
+      "processed_at": "2026-02-04T15:18:44.025322934+00:00"
+    },
+    {
+      "slug": "team-project",
+      "title": "team-project",
+      "metadata": {
+        "title": "team-project",
+        "home_display": false,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "雑"
+        ],
+        "created_at": "2026-02-04T11:57:15Z",
+        "updated_at": "2026-02-04T11:59:22Z",
+        "author_image": null,
+        "hub_tag": "チーム開発"
+      },
+      "file_path": "../content/articles/team-project.md",
+      "summary": "しののめで炎上MDA経験",
+      "outbound_links": [
+        {
+          "target_slug": "shinonome_enjo",
+          "link_type": "MarkdownLink",
+          "original_text": "[しののめで炎上](shinonome_enjo)",
+          "display_text": "しののめで炎上"
+        },
+        {
+          "target_slug": "MDA",
+          "link_type": "MarkdownLink",
+          "original_text": "[MDA経験](MDA)",
+          "display_text": "MDA経験"
+        }
+      ],
+      "inbound_links": [],
+      "processed_at": "2026-02-04T15:18:44.025583490+00:00"
     },
     {
       "slug": "drawing",
@@ -240,7 +275,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.330950743+00:00"
+      "processed_at": "2026-02-04T15:18:44.025735012+00:00"
     },
     {
       "slug": "universality",
@@ -265,7 +300,29 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.331102567+00:00"
+      "processed_at": "2026-02-04T15:18:44.025887687+00:00"
+    },
+    {
+      "slug": "shinonome_enjo",
+      "title": "受注開発での炎上経験",
+      "metadata": {
+        "title": "受注開発での炎上経験",
+        "home_display": true,
+        "importance": 3,
+        "related_articles": [],
+        "tags": [
+          "雑"
+        ],
+        "created_at": "2026-02-04T11:59:25Z",
+        "updated_at": "2026-02-04T11:59:49Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/shinonome_enjo.md",
+      "summary": "記事の概要はありません。",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-02-04T15:18:44.026022498+00:00"
     },
     {
       "slug": "myblog",
@@ -287,7 +344,7 @@
       "summary": "a",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.331271173+00:00"
+      "processed_at": "2026-02-04T15:18:44.026189840+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -301,7 +358,7 @@
           "自己紹介"
         ],
         "created_at": "2024-01-02T12:00:00Z",
-        "updated_at": "2026-02-01T11:12:59Z",
+        "updated_at": "2026-02-04T11:57:13Z",
         "author_image": "/assets/img/author_img.png",
         "hub_tag": null
       },
@@ -331,6 +388,12 @@
           "link_type": "MarkdownLink",
           "original_text": "[趣味](hobby)",
           "display_text": "趣味"
+        },
+        {
+          "target_slug": "team-project",
+          "link_type": "MarkdownLink",
+          "original_text": "[インターン、チーム開発](team-project)",
+          "display_text": "インターン、チーム開発"
         },
         {
           "target_slug": "myworks",
@@ -376,7 +439,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.331943692+00:00"
+      "processed_at": "2026-02-04T15:18:44.026898079+00:00"
     },
     {
       "slug": "math",
@@ -412,7 +475,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.332226511+00:00"
+      "processed_at": "2026-02-04T15:18:44.027171739+00:00"
     },
     {
       "slug": "programming",
@@ -448,7 +511,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.332484845+00:00"
+      "processed_at": "2026-02-04T15:18:44.027427185+00:00"
     },
     {
       "slug": "provably-good-planar-mappings",
@@ -470,7 +533,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.332629396+00:00"
+      "processed_at": "2026-02-04T15:18:44.027578918+00:00"
     },
     {
       "slug": "jijoden",
@@ -506,7 +569,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.333297416+00:00"
+      "processed_at": "2026-02-04T15:18:44.028254046+00:00"
     },
     {
       "slug": "culture_shock_btwn_yamagata&tokyo",
@@ -528,7 +591,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.333416359+00:00"
+      "processed_at": "2026-02-04T15:18:44.028384909+00:00"
     },
     {
       "slug": "continuum_theory",
@@ -551,7 +614,7 @@
       "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.333589633+00:00"
+      "processed_at": "2026-02-04T15:18:44.028559815+00:00"
     },
     {
       "slug": "typst-resume",
@@ -583,7 +646,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.333872583+00:00"
+      "processed_at": "2026-02-04T15:18:44.028833405+00:00"
     },
     {
       "slug": "hobby",
@@ -594,13 +657,13 @@
         "importance": 4,
         "related_articles": [],
         "tags": [],
-        "created_at": "2025-12-29T03:30:38Z",
-        "updated_at": "2026-01-27T11:50:20Z",
+        "created_at": "2025-12-29T12:30:38Z",
+        "updated_at": "2026-02-05T12:03:10Z",
         "author_image": null,
         "hub_tag": "趣味"
       },
       "file_path": "../content/articles/hobby.md",
-      "summary": "プログラミングLinuxNeovim家庭菜園絵音楽数学",
+      "summary": "プログラミングLinuxNeovim家庭菜園絵音楽",
       "outbound_links": [
         {
           "target_slug": "programming",
@@ -637,20 +700,36 @@
           "link_type": "MarkdownLink",
           "original_text": "[音楽](music)",
           "display_text": "音楽"
-        },
-        {
-          "target_slug": "math",
-          "link_type": "MarkdownLink",
-          "original_text": "[数学](math)",
-          "display_text": "数学"
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-04T01:07:58.334187713+00:00"
+      "processed_at": "2026-02-04T15:18:44.029113236+00:00"
+    },
+    {
+      "slug": "MDA",
+      "title": "MDA",
+      "metadata": {
+        "title": "MDA",
+        "home_display": true,
+        "importance": 3,
+        "related_articles": [],
+        "tags": [
+          "雑"
+        ],
+        "created_at": "2026-02-04T11:59:55Z",
+        "updated_at": "2026-02-04T11:59:59Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/MDA.md",
+      "summary": "記事の概要はありません。",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-02-04T15:18:44.029357972+00:00"
     }
   ],
-  "generated_at": "2026-02-04T01:07:58.929340578+00:00",
-  "total_count": 19,
+  "generated_at": "2026-02-04T15:18:44.626318145+00:00",
+  "total_count": 22,
   "home_articles": [
     "pitch-bend",
     "music",
@@ -659,12 +738,14 @@
     "mini_farm",
     "Linux",
     "drawing",
+    "shinonome_enjo",
     "myblog",
     "about-khimoo",
     "math",
     "programming",
     "provably-good-planar-mappings",
     "continuum_theory",
-    "hobby"
+    "hobby",
+    "MDA"
   ]
 }

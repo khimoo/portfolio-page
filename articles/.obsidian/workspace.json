@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "typst-resume.md",
+                "file": "MDA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "typst-resume"
+              "title": "MDA"
             }
           }
         ]
@@ -197,20 +197,23 @@
   },
   "active": "fd3af65ac1d323b6",
   "lastOpenFiles": [
-    "myworks.md",
-    "typst-resume.md",
-    "hobby.md",
-    "math.md",
-    "culture_shock_btwn_yamagata&tokyo.md",
-    "continuum_theory.md",
+    "team-project.md",
+    "shinonome_enjo.md",
     "about-khimoo.md",
+    "hobby.md",
+    "myworks.md",
+    "MDA.md",
+    "math.md",
+    "provably-good-planar-mappings.md",
+    "continuum_theory.md",
+    "typst-resume.md",
+    "culture_shock_btwn_yamagata&tokyo.md",
     "music.md",
     "drawing.md",
     "mini_farm.md",
     "Linux.md",
     "programming.md",
     "jijoden.md",
-    "provably-good-planar-mappings.md",
     "pitch-bend.md",
     "myblog.md",
     "universality.md",
@@ -222,8 +225,6 @@
     "Neovim.md",
     "jijoden.md~",
     "conflict-files-obsidian-git.md",
-    "Templates/template_article.md",
-    "gakuchika.md",
-    "infinite_topology.md"
+    "Templates/template_article.md"
   ]
 }
