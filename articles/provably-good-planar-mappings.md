@@ -17,6 +17,7 @@ wip\
 
 論文： https://scholar.google.com/citations?view_op=view_citation&hl=en&user=xC6XLaYAAAAJ&citation_for_view=xC6XLaYAAAAJ:UeHWp8X0CEIC
 
+リポジトリ： https://github.com/khimoo/ProvablyGoodPlanarMappings
 ## 実行方法
 ```shell
 nix run github:khimoo/ProvablyGoodPlanarMappings
