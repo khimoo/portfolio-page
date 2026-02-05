@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "provably-good-planar-mappings.md",
+                "file": "myblog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "provably-good-planar-mappings"
+              "title": "myblog"
             }
           }
         ]
@@ -197,6 +197,7 @@
   },
   "active": "fd3af65ac1d323b6",
   "lastOpenFiles": [
+    "provably-good-planar-mappings.md",
     "team-project.md",
     "MDA.md",
     "shinonome_enjo.md",
@@ -204,7 +205,6 @@
     "hobby.md",
     "myworks.md",
     "math.md",
-    "provably-good-planar-mappings.md",
     "continuum_theory.md",
     "typst-resume.md",
     "culture_shock_btwn_yamagata&tokyo.md",
