@@ -6,7 +6,7 @@ category: ""
 tags:
   - 個人開発
 created_at: "2026-01-08T03:28:23Z"
-updated_at: "2026-02-05T11:31:08Z"
+updated_at: "2026-02-05T11:41:15Z"
 ---
 wip\
 いつか綺麗に纏めます。
@@ -19,13 +19,10 @@ wip\
 
 ## 実行方法
 ```shell
-nix develop
-```
-立ちあがったshellで以下を実行
-```shell
-python ui-for-refactored2.py
+nix run github:khimoo/ProvablyGoodPlanarMappings
 ```
 
+リポジトリをcloneしてnix runでも可
 ## 成果
 
 2週間のうちに論文を読み切り, アルゴリズムの実装まで完了することができた.
