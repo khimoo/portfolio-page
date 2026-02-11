@@ -1,12 +1,11 @@
 ---
-title: シン・自己紹介
+title: universality
 home_display: false
 importance: 2
 tags:
   - 雑
-  - 自己紹介
-created_at: "2026-01-27T12:15:01Z"
-updated_at: "2026-02-01T10:54:13Z"
+created_at: 2026-01-27T12:15:01Z
+updated_at: 2026-02-01T10:54:13Z
 ---
 2週間サマーインターンに参加した企業に最終面接で落とされてしまった。\
 就活つらすぎる。
