@@ -1,50 +1,6 @@
 {
   "articles": [
     {
-      "slug": "pitch-bend",
-      "title": "pitch-bend",
-      "metadata": {
-        "title": "pitch-bend",
-        "home_display": true,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [
-          "個人開発"
-        ],
-        "created_at": "2026-01-06T08:48:45Z",
-        "updated_at": "2026-02-02T01:19:09Z",
-        "author_image": null,
-        "hub_tag": null
-      },
-      "file_path": "../content/articles/pitch-bend.md",
-      "summary": "記事の概要はありません。",
-      "outbound_links": [],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.754261598+00:00"
-    },
-    {
-      "slug": "music",
-      "title": "音楽",
-      "metadata": {
-        "title": "音楽",
-        "home_display": true,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [
-          "趣味"
-        ],
-        "created_at": "2025-12-29T12:30:38Z",
-        "updated_at": "2026-02-02T01:21:06Z",
-        "author_image": null,
-        "hub_tag": null
-      },
-      "file_path": "../content/articles/music.md",
-      "summary": "記事の概要はありません。",
-      "outbound_links": [],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.754425244+00:00"
-    },
-    {
       "slug": "Neovim",
       "title": "Neovim",
       "metadata": {
@@ -62,7 +18,210 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.754553423+00:00"
+      "processed_at": "2026-02-26T01:09:44.944623744+00:00"
+    },
+    {
+      "slug": "programming",
+      "title": "プログラミング",
+      "metadata": {
+        "title": "プログラミング",
+        "home_display": true,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "趣味",
+          "プログラミング"
+        ],
+        "created_at": "2025-12-29T12:30:38Z",
+        "updated_at": "2026-01-28T02:57:57Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/programming.md",
+      "summary": "プログラミングの何がすきか抽象度を上手に扱うことでうまく世界を捉え直す必要があることが好き最近はbev...",
+      "outbound_links": [
+        {
+          "target_slug": "Linux",
+          "link_type": "MarkdownLink",
+          "original_text": "[Linux](Linux)",
+          "display_text": "Linux"
+        },
+        {
+          "target_slug": "Neovim",
+          "link_type": "MarkdownLink",
+          "original_text": "[Neovim](Neovim)",
+          "display_text": "Neovim"
+        }
+      ],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.945145895+00:00"
+    },
+    {
+      "slug": "continuum_theory",
+      "title": "研究テーマ",
+      "metadata": {
+        "title": "研究テーマ",
+        "home_display": true,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "専門",
+          "数学"
+        ],
+        "created_at": "2026-01-09T01:58:40Z",
+        "updated_at": "2026-01-27T04:13:13Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/continuum_theory.md",
+      "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.945322480+00:00"
+    },
+    {
+      "slug": "math",
+      "title": "数学",
+      "metadata": {
+        "title": "数学",
+        "home_display": true,
+        "importance": 4,
+        "related_articles": [],
+        "tags": [
+          "趣味",
+          "専門"
+        ],
+        "created_at": "2025-12-29T09:30:38Z",
+        "updated_at": "2026-02-03T12:01:52Z",
+        "author_image": null,
+        "hub_tag": "数学"
+      },
+      "file_path": "../content/articles/math.md",
+      "summary": "連続体理論無限次元位相幾何",
+      "outbound_links": [
+        {
+          "target_slug": "continuum_theory",
+          "link_type": "MarkdownLink",
+          "original_text": "[連続体理論](continuum_theory)",
+          "display_text": "連続体理論"
+        },
+        {
+          "target_slug": "infinite_topology",
+          "link_type": "MarkdownLink",
+          "original_text": "[無限次元位相幾何](infinite_topology)",
+          "display_text": "無限次元位相幾何"
+        }
+      ],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.945584367+00:00"
+    },
+    {
+      "slug": "culture_shock_btwn_yamagata&tokyo",
+      "title": "東京<=>山形カルチャーショック",
+      "metadata": {
+        "title": "東京<=>山形カルチャーショック",
+        "home_display": false,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "雑"
+        ],
+        "created_at": null,
+        "updated_at": null,
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/culture_shock_btwn_yamagata&tokyo.md",
+      "summary": "記事の概要はありません。",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.945676226+00:00"
+    },
+    {
+      "slug": "hobby",
+      "title": "趣味",
+      "metadata": {
+        "title": "趣味",
+        "home_display": true,
+        "importance": 4,
+        "related_articles": [],
+        "tags": [],
+        "created_at": "2025-12-29T12:30:38Z",
+        "updated_at": "2026-02-05T12:03:10Z",
+        "author_image": null,
+        "hub_tag": "趣味"
+      },
+      "file_path": "../content/articles/hobby.md",
+      "summary": "プログラミングLinuxNeovim家庭菜園絵音楽",
+      "outbound_links": [
+        {
+          "target_slug": "programming",
+          "link_type": "MarkdownLink",
+          "original_text": "[プログラミング](programming)",
+          "display_text": "プログラミング"
+        },
+        {
+          "target_slug": "Linux",
+          "link_type": "MarkdownLink",
+          "original_text": "[Linux](Linux)",
+          "display_text": "Linux"
+        },
+        {
+          "target_slug": "Neovim",
+          "link_type": "MarkdownLink",
+          "original_text": "[Neovim](Neovim)",
+          "display_text": "Neovim"
+        },
+        {
+          "target_slug": "mini_farm",
+          "link_type": "MarkdownLink",
+          "original_text": "[家庭菜園](mini_farm)",
+          "display_text": "家庭菜園"
+        },
+        {
+          "target_slug": "drawing",
+          "link_type": "MarkdownLink",
+          "original_text": "[絵](drawing)",
+          "display_text": "絵"
+        },
+        {
+          "target_slug": "music",
+          "link_type": "MarkdownLink",
+          "original_text": "[音楽](music)",
+          "display_text": "音楽"
+        }
+      ],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.945905526+00:00"
+    },
+    {
+      "slug": "provably-good-planar-mappings",
+      "title": "provably-good-planar-mappings",
+      "metadata": {
+        "title": "provably-good-planar-mappings",
+        "home_display": true,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "個人開発"
+        ],
+        "created_at": "2026-01-08T03:28:23Z",
+        "updated_at": "2026-02-05T11:41:15Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/provably-good-planar-mappings.md",
+      "summary": "wipいつか綺麗に纏めます。概要ある企業のサマーインターンでRoiらによるリアルタイム画像変形のアルゴリズ...",
+      "outbound_links": [
+        {
+          "target_slug": "https://github.com/khimoo/ProvablyGoodPlanarMappings",
+          "link_type": "ExternalLink",
+          "original_text": "[https://github.com/khimoo/ProvablyGoodPlanarMappings](https://github.com/khimoo/ProvablyGoodPlanarMappings)",
+          "display_text": "https://github.com/khimoo/ProvablyGoodPlanarMappings"
+        }
+      ],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.958440622+00:00"
     },
     {
       "slug": "myworks",
@@ -153,7 +312,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.755681747+00:00"
+      "processed_at": "2026-02-26T01:09:44.959178324+00:00"
     },
     {
       "slug": "mini_farm",
@@ -175,49 +334,7 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.755833941+00:00"
-    },
-    {
-      "slug": "Linux",
-      "title": "Linux",
-      "metadata": {
-        "title": "Linux",
-        "home_display": true,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [
-          "趣味"
-        ],
-        "created_at": "2025-12-29T03:30:38Z",
-        "updated_at": "2026-02-02T01:19:58Z",
-        "author_image": null,
-        "hub_tag": null
-      },
-      "file_path": "../content/articles/Linux.md",
-      "summary": "記事の概要はありません。",
-      "outbound_links": [],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.755972619+00:00"
-    },
-    {
-      "slug": "template_article",
-      "title": "Untitled",
-      "metadata": {
-        "title": "Untitled",
-        "home_display": false,
-        "importance": 3,
-        "related_articles": [],
-        "tags": [],
-        "created_at": null,
-        "updated_at": null,
-        "author_image": null,
-        "hub_tag": null
-      },
-      "file_path": "../content/articles/Templates/template_article.md",
-      "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
-      "outbound_links": [],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.756142156+00:00"
+      "processed_at": "2026-02-26T01:09:44.959322886+00:00"
     },
     {
       "slug": "team-project",
@@ -239,7 +356,61 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.756296414+00:00"
+      "processed_at": "2026-02-26T01:09:44.959436461+00:00"
+    },
+    {
+      "slug": "myblog",
+      "title": "myblog",
+      "metadata": {
+        "title": "myblog",
+        "home_display": true,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "個人開発"
+        ],
+        "created_at": "2026-01-03T06:39:31Z",
+        "updated_at": "2026-02-05T11:17:20Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/myblog.md",
+      "summary": "Rust/Yewで作成wasmを使用するということで, 敢えてweb向けでない物理演算ライブラリを使用しました",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.959557186+00:00"
+    },
+    {
+      "slug": "typst-resume",
+      "title": "Typstで履歴書とスキルシート",
+      "metadata": {
+        "title": "Typstで履歴書とスキルシート",
+        "home_display": false,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "雑",
+          "個人開発",
+          "プログラミング",
+          "趣味"
+        ],
+        "created_at": "2026-02-03T06:02:55Z",
+        "updated_at": "2026-02-03T12:14:10Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/typst-resume.md",
+      "summary": "リポジトリTypstのyaml機能を使ってみたかったtypstファイルから相対ディレクトリでyamlファイルを参照できる。...",
+      "outbound_links": [
+        {
+          "target_slug": "https://github.com/khimoo/typst-resume",
+          "link_type": "ExternalLink",
+          "original_text": "[リポジトリ](https://github.com/khimoo/typst-resume)",
+          "display_text": "リポジトリ"
+        }
+      ],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.959789150+00:00"
     },
     {
       "slug": "drawing",
@@ -262,7 +433,29 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.756458065+00:00"
+      "processed_at": "2026-02-26T01:09:44.959902962+00:00"
+    },
+    {
+      "slug": "pitch-bend",
+      "title": "pitch-bend",
+      "metadata": {
+        "title": "pitch-bend",
+        "home_display": true,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "個人開発"
+        ],
+        "created_at": "2026-01-06T08:48:45Z",
+        "updated_at": "2026-02-02T01:19:09Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/pitch-bend.md",
+      "summary": "記事の概要はありません。",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.960003959+00:00"
     },
     {
       "slug": "universality",
@@ -287,29 +480,29 @@
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.756607273+00:00"
+      "processed_at": "2026-02-26T01:09:44.960117213+00:00"
     },
     {
-      "slug": "myblog",
-      "title": "myblog",
+      "slug": "music",
+      "title": "音楽",
       "metadata": {
-        "title": "myblog",
+        "title": "音楽",
         "home_display": true,
         "importance": 2,
         "related_articles": [],
         "tags": [
-          "個人開発"
+          "趣味"
         ],
-        "created_at": "2026-01-03T06:39:31Z",
-        "updated_at": "2026-02-05T11:17:20Z",
+        "created_at": "2025-12-29T12:30:38Z",
+        "updated_at": "2026-02-02T01:21:06Z",
         "author_image": null,
         "hub_tag": null
       },
-      "file_path": "../content/articles/myblog.md",
-      "summary": "Rust/Yewで作成wasmを使用するということで, 敢えてweb向けでない物理演算ライブラリを使用しました",
+      "file_path": "../content/articles/music.md",
+      "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.756764016+00:00"
+      "processed_at": "2026-02-26T01:09:44.960216775+00:00"
     },
     {
       "slug": "about-khimoo",
@@ -404,108 +597,7 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.757488246+00:00"
-    },
-    {
-      "slug": "math",
-      "title": "数学",
-      "metadata": {
-        "title": "数学",
-        "home_display": true,
-        "importance": 4,
-        "related_articles": [],
-        "tags": [
-          "趣味",
-          "専門"
-        ],
-        "created_at": "2025-12-29T09:30:38Z",
-        "updated_at": "2026-02-03T12:01:52Z",
-        "author_image": null,
-        "hub_tag": "数学"
-      },
-      "file_path": "../content/articles/math.md",
-      "summary": "連続体理論無限次元位相幾何",
-      "outbound_links": [
-        {
-          "target_slug": "continuum_theory",
-          "link_type": "MarkdownLink",
-          "original_text": "[連続体理論](continuum_theory)",
-          "display_text": "連続体理論"
-        },
-        {
-          "target_slug": "infinite_topology",
-          "link_type": "MarkdownLink",
-          "original_text": "[無限次元位相幾何](infinite_topology)",
-          "display_text": "無限次元位相幾何"
-        }
-      ],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.757749504+00:00"
-    },
-    {
-      "slug": "programming",
-      "title": "プログラミング",
-      "metadata": {
-        "title": "プログラミング",
-        "home_display": true,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [
-          "趣味",
-          "プログラミング"
-        ],
-        "created_at": "2025-12-29T12:30:38Z",
-        "updated_at": "2026-01-28T02:57:57Z",
-        "author_image": null,
-        "hub_tag": null
-      },
-      "file_path": "../content/articles/programming.md",
-      "summary": "プログラミングの何がすきか抽象度を上手に扱うことでうまく世界を捉え直す必要があることが好き最近はbev...",
-      "outbound_links": [
-        {
-          "target_slug": "Linux",
-          "link_type": "MarkdownLink",
-          "original_text": "[Linux](Linux)",
-          "display_text": "Linux"
-        },
-        {
-          "target_slug": "Neovim",
-          "link_type": "MarkdownLink",
-          "original_text": "[Neovim](Neovim)",
-          "display_text": "Neovim"
-        }
-      ],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.758006313+00:00"
-    },
-    {
-      "slug": "provably-good-planar-mappings",
-      "title": "provably-good-planar-mappings",
-      "metadata": {
-        "title": "provably-good-planar-mappings",
-        "home_display": true,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [
-          "個人開発"
-        ],
-        "created_at": "2026-01-08T03:28:23Z",
-        "updated_at": "2026-02-05T11:41:15Z",
-        "author_image": null,
-        "hub_tag": null
-      },
-      "file_path": "../content/articles/provably-good-planar-mappings.md",
-      "summary": "wipいつか綺麗に纏めます。概要ある企業のサマーインターンでRoiらによるリアルタイム画像変形のアルゴリズ...",
-      "outbound_links": [
-        {
-          "target_slug": "https://github.com/khimoo/ProvablyGoodPlanarMappings",
-          "link_type": "ExternalLink",
-          "original_text": "[https://github.com/khimoo/ProvablyGoodPlanarMappings](https://github.com/khimoo/ProvablyGoodPlanarMappings)",
-          "display_text": "https://github.com/khimoo/ProvablyGoodPlanarMappings"
-        }
-      ],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.772572232+00:00"
+      "processed_at": "2026-02-26T01:09:44.960816319+00:00"
     },
     {
       "slug": "jijoden",
@@ -540,159 +632,67 @@
         }
       ],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.773260636+00:00"
+      "processed_at": "2026-02-26T01:09:44.961382354+00:00"
     },
     {
-      "slug": "culture_shock_btwn_yamagata&tokyo",
-      "title": "東京<=>山形カルチャーショック",
+      "slug": "template_article",
+      "title": "Untitled",
       "metadata": {
-        "title": "東京<=>山形カルチャーショック",
+        "title": "Untitled",
         "home_display": false,
-        "importance": 2,
+        "importance": 3,
         "related_articles": [],
-        "tags": [
-          "雑"
-        ],
+        "tags": [],
         "created_at": null,
         "updated_at": null,
         "author_image": null,
         "hub_tag": null
       },
-      "file_path": "../content/articles/culture_shock_btwn_yamagata&tokyo.md",
+      "file_path": "../content/articles/Templates/template_article.md",
+      "summary": "<%*// 現在の tm.file.title を取得let title = tp.file.title;// もし \"Untitled\" のままならユーザーにタイトル入力を促すif (...",
+      "outbound_links": [],
+      "inbound_links": [],
+      "processed_at": "2026-02-26T01:09:44.961505340+00:00"
+    },
+    {
+      "slug": "Linux",
+      "title": "Linux",
+      "metadata": {
+        "title": "Linux",
+        "home_display": true,
+        "importance": 2,
+        "related_articles": [],
+        "tags": [
+          "趣味"
+        ],
+        "created_at": "2025-12-29T03:30:38Z",
+        "updated_at": "2026-02-02T01:19:58Z",
+        "author_image": null,
+        "hub_tag": null
+      },
+      "file_path": "../content/articles/Linux.md",
       "summary": "記事の概要はありません。",
       "outbound_links": [],
       "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.773399495+00:00"
-    },
-    {
-      "slug": "continuum_theory",
-      "title": "研究テーマ",
-      "metadata": {
-        "title": "研究テーマ",
-        "home_display": true,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [
-          "専門",
-          "数学"
-        ],
-        "created_at": "2026-01-09T01:58:40Z",
-        "updated_at": "2026-01-27T04:13:13Z",
-        "author_image": null,
-        "hub_tag": null
-      },
-      "file_path": "../content/articles/continuum_theory.md",
-      "summary": "セミナー、研究テーマ概要学科の特性上研究テーマはまだ未定ですが、研究テーマの決定のためにContinuum Theor...",
-      "outbound_links": [],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.773577416+00:00"
-    },
-    {
-      "slug": "typst-resume",
-      "title": "Typstで履歴書とスキルシート",
-      "metadata": {
-        "title": "Typstで履歴書とスキルシート",
-        "home_display": false,
-        "importance": 2,
-        "related_articles": [],
-        "tags": [
-          "雑",
-          "個人開発",
-          "プログラミング",
-          "趣味"
-        ],
-        "created_at": "2026-02-03T06:02:55Z",
-        "updated_at": "2026-02-03T12:14:10Z",
-        "author_image": null,
-        "hub_tag": null
-      },
-      "file_path": "../content/articles/typst-resume.md",
-      "summary": "リポジトリTypstのyaml機能を使ってみたかったtypstファイルから相対ディレクトリでyamlファイルを参照できる。...",
-      "outbound_links": [
-        {
-          "target_slug": "https://github.com/khimoo/typst-resume",
-          "link_type": "ExternalLink",
-          "original_text": "[リポジトリ](https://github.com/khimoo/typst-resume)",
-          "display_text": "リポジトリ"
-        }
-      ],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.773850997+00:00"
-    },
-    {
-      "slug": "hobby",
-      "title": "趣味",
-      "metadata": {
-        "title": "趣味",
-        "home_display": true,
-        "importance": 4,
-        "related_articles": [],
-        "tags": [],
-        "created_at": "2025-12-29T12:30:38Z",
-        "updated_at": "2026-02-05T12:03:10Z",
-        "author_image": null,
-        "hub_tag": "趣味"
-      },
-      "file_path": "../content/articles/hobby.md",
-      "summary": "プログラミングLinuxNeovim家庭菜園絵音楽",
-      "outbound_links": [
-        {
-          "target_slug": "programming",
-          "link_type": "MarkdownLink",
-          "original_text": "[プログラミング](programming)",
-          "display_text": "プログラミング"
-        },
-        {
-          "target_slug": "Linux",
-          "link_type": "MarkdownLink",
-          "original_text": "[Linux](Linux)",
-          "display_text": "Linux"
-        },
-        {
-          "target_slug": "Neovim",
-          "link_type": "MarkdownLink",
-          "original_text": "[Neovim](Neovim)",
-          "display_text": "Neovim"
-        },
-        {
-          "target_slug": "mini_farm",
-          "link_type": "MarkdownLink",
-          "original_text": "[家庭菜園](mini_farm)",
-          "display_text": "家庭菜園"
-        },
-        {
-          "target_slug": "drawing",
-          "link_type": "MarkdownLink",
-          "original_text": "[絵](drawing)",
-          "display_text": "絵"
-        },
-        {
-          "target_slug": "music",
-          "link_type": "MarkdownLink",
-          "original_text": "[音楽](music)",
-          "display_text": "音楽"
-        }
-      ],
-      "inbound_links": [],
-      "processed_at": "2026-02-25T01:16:35.774125419+00:00"
+      "processed_at": "2026-02-26T01:09:44.961619472+00:00"
     }
   ],
-  "generated_at": "2026-02-25T01:16:36.371291046+00:00",
+  "generated_at": "2026-02-26T01:09:45.528380060+00:00",
   "total_count": 20,
   "home_articles": [
-    "pitch-bend",
-    "music",
     "Neovim",
+    "programming",
+    "continuum_theory",
+    "math",
+    "hobby",
+    "provably-good-planar-mappings",
     "myworks",
     "mini_farm",
-    "Linux",
-    "drawing",
     "myblog",
+    "drawing",
+    "pitch-bend",
+    "music",
     "about-khimoo",
-    "math",
-    "programming",
-    "provably-good-planar-mappings",
-    "continuum_theory",
-    "hobby"
+    "Linux"
   ]
 }
