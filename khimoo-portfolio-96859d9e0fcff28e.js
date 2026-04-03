@@ -749,8 +749,8 @@ function __wbg_get_imports() {
             return ret;
         },
         __wbindgen_cast_0000000000000001: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 1537, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
-            const ret = makeClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h9f3cb1750bef364c);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 1536, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
+            const ret = makeClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h2110407774ec26f7);
             return ret;
         },
         __wbindgen_cast_0000000000000002: function(arg0, arg1) {
@@ -760,7 +760,7 @@ function __wbg_get_imports() {
         },
         __wbindgen_cast_0000000000000003: function(arg0, arg1) {
             // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Ref(NamedExternref("Event"))], shim_idx: 1725, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
-            const ret = makeClosure(arg0, arg1, wasm_bindgen__convert__closures________invoke__hee21637b7962eff9);
+            const ret = makeClosure(arg0, arg1, wasm_bindgen__convert__closures________invoke__h6e665a38104ce16d);
             return ret;
         },
         __wbindgen_cast_0000000000000004: function(arg0, arg1) {
@@ -774,8 +774,8 @@ function __wbg_get_imports() {
             return ret;
         },
         __wbindgen_cast_0000000000000006: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Vector(NamedExternref("ResizeObserverEntry"))], shim_idx: 1535, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
-            const ret = makeClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h5fe313edb0b75dbe);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Vector(NamedExternref("ResizeObserverEntry"))], shim_idx: 1538, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
+            const ret = makeClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h87f52a81361067a7);
             return ret;
         },
         __wbindgen_cast_0000000000000007: function(arg0, arg1) {
@@ -823,12 +823,12 @@ function wasm_bindgen__convert__closures_____invoke__h441d076262500f0a(arg0, arg
     wasm.wasm_bindgen__convert__closures_____invoke__h441d076262500f0a(arg0, arg1);
 }
 
-function wasm_bindgen__convert__closures_____invoke__h9f3cb1750bef364c(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h9f3cb1750bef364c(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h2110407774ec26f7(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h2110407774ec26f7(arg0, arg1, arg2);
 }
 
-function wasm_bindgen__convert__closures________invoke__hee21637b7962eff9(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures________invoke__hee21637b7962eff9(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures________invoke__h6e665a38104ce16d(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures________invoke__h6e665a38104ce16d(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures________invoke__h986d7c373de3d4c3(arg0, arg1, arg2) {
@@ -846,10 +846,10 @@ function wasm_bindgen__convert__closures_____invoke__hcf29e2b8027c85ff(arg0, arg
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h5fe313edb0b75dbe(arg0, arg1, arg2) {
+function wasm_bindgen__convert__closures_____invoke__h87f52a81361067a7(arg0, arg1, arg2) {
     const ptr0 = passArrayJsValueToWasm0(arg2, wasm.__wbindgen_malloc);
     const len0 = WASM_VECTOR_LEN;
-    wasm.wasm_bindgen__convert__closures_____invoke__h5fe313edb0b75dbe(arg0, arg1, ptr0, len0);
+    wasm.wasm_bindgen__convert__closures_____invoke__h87f52a81361067a7(arg0, arg1, ptr0, len0);
 }
 
 
