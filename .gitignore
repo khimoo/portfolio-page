@@ -18,3 +18,7 @@ Cargo.lock
 
 **/dist/**
 **/data/**
+
+# Nix / direnv
+result
+.direnv/
