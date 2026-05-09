@@ -19,6 +19,9 @@ Cargo.lock
 **/dist/**
 **/data/**
 
+# Content (symlink to ../portfolio_content)
+content
+
 # Nix / direnv
 result
 .direnv/

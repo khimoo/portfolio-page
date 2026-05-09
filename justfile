@@ -14,11 +14,21 @@ default:
 
 # === SETUP ===
 
-# Initialize project and submodules
+# Initialize project (create content symlink if needed)
 setup:
     @echo "🛠️ Setting up project..."
-    @git submodule update --init --recursive
-    @echo "✅ Setup complete"
+    @if [ ! -e content ]; then \
+        if [ -d ../portfolio_content ]; then \
+            ln -s ../portfolio_content content; \
+            echo "✅ Created symlink: content → ../portfolio_content"; \
+        else \
+            echo "❌ ../portfolio_content not found. Clone it first:"; \
+            echo "   git clone git@github.com:khimoo/portfolio_content.git ../portfolio_content"; \
+            exit 1; \
+        fi \
+    else \
+        echo "✅ content already exists"; \
+    fi
 
 # === DEVELOPMENT ===
 
