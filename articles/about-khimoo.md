@@ -7,7 +7,7 @@ category: 自分語り
 tags:
   - 自己紹介
 created_at: "2024-01-02T12:00:00Z"
-updated_at: "2026-02-01T11:12:59Z"
+updated_at: "2026-02-04T11:57:13Z"
 ---
 # プロフィール
 日比野 文です。\
@@ -20,9 +20,11 @@ updated_at: "2026-02-01T11:12:59Z"
 2021年 筑波大学 理工学群 数学類 入学\
 2025年 筑波大学 理工学群 数学類 卒業\
 2025年 筑波大学 理工情報生命学術院 数理物質科学研究群 数学学位プログラム 入学
+
 # アルバイト経験
 - 2023-2025年 株式会社shinonomeでバックエンド処理、API開発
 - 2026年-現在 シリコンスタジオで開発環境整備
+[インターン、チーム開発](team-project)の経験もあります。
 # 個人開発
 - [Rust\Yew, wasmで実装したブログ](https://github.com/khimoo/portfolio-page)
 - [dotfiles](https://github.com/khimoo/flake_public)
