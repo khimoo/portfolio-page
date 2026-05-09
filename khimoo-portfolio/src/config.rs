@@ -18,9 +18,6 @@ pub struct NodeConfig {
 }
 
 impl NodeConfig {
-}
-
-impl NodeConfig {
     /// Get default node configuration values
     pub fn new() -> Self {
         Self {
@@ -152,7 +149,8 @@ impl AppConfig {
                 }
 
                 if let Ok(pathname) = window.location().pathname() {
-                    if pathname.starts_with(&format!("{}/", github_pages_path)) || pathname.contains(&github_pages_path)
+                    if pathname.starts_with(&format!("{github_pages_path}/"))
+                        || pathname.contains(&github_pages_path)
                     {
                         return github_pages_path;
                     }
@@ -181,7 +179,8 @@ impl AppConfig {
                 }
 
                 if let Ok(pathname) = window.location().pathname() {
-                    if pathname.starts_with("/portfolio-page/") || pathname.contains("/portfolio-page")
+                    if pathname.starts_with("/portfolio-page/")
+                        || pathname.contains("/portfolio-page")
                     {
                         return "/portfolio-page".to_string();
                     }

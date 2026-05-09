@@ -37,7 +37,7 @@ impl ValidateLinksCommand {
         let articles_dir = args
             .articles_dir
             .clone()
-            .unwrap_or_else(|| get_default_articles_dir());
+            .unwrap_or_else(get_default_articles_dir);
 
         if args.verbose {
             println!(
@@ -107,10 +107,10 @@ impl ValidateLinksCommand {
                 );
 
                 if let Some(context) = &error.context {
-                    formatted.push_str(&format!(" ({})", context));
+                    formatted.push_str(&format!(" ({context})"));
                 }
 
-                println!("{}", formatted);
+                println!("{formatted}");
             }
         } else {
             println!("   ✅ All links valid");

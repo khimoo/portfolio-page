@@ -18,22 +18,20 @@ impl AnimationStyles {
     /// Fade in animation
     pub fn fade_in(duration: &str) -> String {
         format!(
-            "animation: fadeIn {} ease-in-out; @keyframes fadeIn {{ 0% {{ opacity: 0; }} 100% {{ opacity: 1; }} }}",
-            duration
+            "animation: fadeIn {duration} ease-in-out; @keyframes fadeIn {{ 0% {{ opacity: 0; }} 100% {{ opacity: 1; }} }}"
         )
     }
 
     /// Slide in from top
     pub fn slide_in_top(duration: &str) -> String {
         format!(
-            "animation: slideInTop {} ease-out; @keyframes slideInTop {{ 0% {{ transform: translateY(-20px); opacity: 0; }} 100% {{ transform: translateY(0); opacity: 1; }} }}",
-            duration
+            "animation: slideInTop {duration} ease-out; @keyframes slideInTop {{ 0% {{ transform: translateY(-20px); opacity: 0; }} 100% {{ transform: translateY(0); opacity: 1; }} }}"
         )
     }
 
     /// Smooth transition
     pub fn smooth_transition(properties: &str, duration: &str) -> String {
-        format!("transition: {} {};", properties, duration)
+        format!("transition: {properties} {duration};")
     }
 }
 
@@ -68,8 +66,7 @@ impl TextStyles {
 
     pub fn line_clamp(lines: u32) -> String {
         format!(
-            "display: -webkit-box; -webkit-line-clamp: {}; -webkit-box-orient: vertical; overflow: hidden;",
-            lines
+            "display: -webkit-box; -webkit-line-clamp: {lines}; -webkit-box-orient: vertical; overflow: hidden;"
         )
     }
 
@@ -186,7 +183,7 @@ impl StyleHelpers {
     pub fn from_pairs(pairs: &[(&str, &str)]) -> String {
         pairs
             .iter()
-            .map(|(key, value)| format!("{}: {};", key, value))
+            .map(|(key, value)| format!("{key}: {value};"))
             .collect::<Vec<_>>()
             .join(" ")
     }
@@ -194,7 +191,7 @@ impl StyleHelpers {
     /// Add conditional styles
     pub fn conditional(base: &str, condition: bool, conditional_style: &str) -> String {
         if condition {
-            format!("{} {}", base, conditional_style)
+            format!("{base} {conditional_style}")
         } else {
             base.to_string()
         }

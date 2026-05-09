@@ -95,13 +95,12 @@ impl NodeDataManager {
         {
             web_sys::console::log_1(
                 &format!(
-                    "Container bound in create_node_registry: {:?}",
-                    container_bound
+                    "Container bound in create_node_registry: {container_bound:?}"
                 )
                 .into(),
             );
             web_sys::console::log_1(
-                &format!("Calculated center: ({}, {})", center_x, center_y).into(),
+                &format!("Calculated center: ({center_x}, {center_y})").into(),
             );
         }
 
@@ -148,7 +147,7 @@ impl NodeDataManager {
         let scatter_radius = 80.0; // 中心からの最大散らばり距離
 
         // 円形配置の計算を削除し、疑似乱数で少しバラけさせて配置
-        for (index, article) in home_articles.iter().enumerate() {
+        for article in home_articles.iter() {
             let node_id = NodeId(next_id);
             let content = Self::determine_node_content(article);
 

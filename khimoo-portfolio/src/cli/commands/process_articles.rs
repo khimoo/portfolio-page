@@ -110,7 +110,7 @@ impl ProcessArticlesCommand {
         let articles_dir = args
             .articles_dir
             .clone()
-            .unwrap_or_else(|| get_default_articles_dir());
+            .unwrap_or_else(get_default_articles_dir);
 
         if args.verbose {
             println!("Processing articles from: {}", articles_dir.display());
@@ -293,8 +293,7 @@ impl ProcessArticlesCommand {
         let cleaned_count = optimizer.cleanup_optimized_images(&images_dir)?;
         if args.verbose && cleaned_count > 0 {
             println!(
-                "🧹 Cleaned up {} previously optimized images",
-                cleaned_count
+                "🧹 Cleaned up {cleaned_count} previously optimized images"
             );
         }
 

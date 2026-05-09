@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 
 /// Core color palette for the application
 #[derive(Debug, Clone)]

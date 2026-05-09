@@ -17,6 +17,12 @@ pub struct NodeRegistry {
     pub node_config: NodeConfig,
 }
 
+impl Default for NodeRegistry {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl NodeRegistry {
     pub fn new() -> Self {
         Self {
@@ -128,7 +134,7 @@ impl NodeRegistry {
         &self,
         node_id: NodeId,
         importance: Option<u8>,
-        inbound_count: usize,
+        _inbound_count: usize,
     ) -> i32 {
         let base_size = if self.is_author_node(node_id) {
             self.node_config.author_node_radius

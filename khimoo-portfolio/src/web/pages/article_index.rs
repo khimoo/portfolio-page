@@ -7,7 +7,7 @@ use yew_router::prelude::*;
 #[function_component(ArticleIndexPage)]
 pub fn article_index_page() -> Html {
     let (articles_data, loading, error) = use_articles_data();
-    let selected_tags = use_state(|| Vec::<String>::new());
+    let selected_tags = use_state(Vec::<String>::new);
     let location = use_location();
 
     {
@@ -31,7 +31,7 @@ pub fn article_index_page() -> Html {
     }
 
     if let Some(err) = error.as_ref() {
-        return ArticleStateRenderer::render_index_error(&format!("{}", err));
+        return ArticleStateRenderer::render_index_error(&format!("{err}"));
     }
 
     let articles = articles_data.as_ref().map(|data| {
@@ -102,15 +102,13 @@ fn filter_articles_by_tags(
     }
 
     articles_list
-        .iter()
-        .cloned()
-        .filter(|article| {
+        .iter().filter(|&article| {
             article
                 .metadata
                 .tags
                 .iter()
                 .any(|tag| selected_tags.contains(tag))
-        })
+        }).cloned()
         .collect::<Vec<_>>()
 }
 

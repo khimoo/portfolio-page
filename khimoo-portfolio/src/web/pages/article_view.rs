@@ -27,7 +27,7 @@ pub fn article_view_page(props: &ArticleViewProps) -> Html {
                 if let Some(hub_tag) = &article_data.metadata.hub_tag {
                     #[cfg(target_arch = "wasm32")]
                     web_sys::console::log_1(
-                        &format!("Redirecting tags-hub article to tag index: {}", hub_tag).into(),
+                        &format!("Redirecting tags-hub article to tag index: {hub_tag}").into(),
                     );
                     
                     let query = TagQuery {
@@ -65,7 +65,7 @@ pub fn article_view_page(props: &ArticleViewProps) -> Html {
                             content_error.set(None);
                         }
                         Err(e) => {
-                            content_error.set(Some(format!("{}", e)));
+                            content_error.set(Some(format!("{e}")));
                         }
                     }
                     content_loading.set(false);
@@ -82,7 +82,7 @@ pub fn article_view_page(props: &ArticleViewProps) -> Html {
     }
 
     if let Some(err) = error.as_ref() {
-        return ArticleStateRenderer::render_article_not_found(&format!("{}", err));
+        return ArticleStateRenderer::render_article_not_found(&format!("{err}"));
     }
 
     if let Some(article_data) = article.as_ref() {

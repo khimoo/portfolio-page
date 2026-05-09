@@ -136,8 +136,8 @@ impl PhysicsWorld {
         force_settings: &ForceSettings,
         dt: f32,
     ) {
-        let dx = (center_pos.x - current_pos.x) as f32;
-        let dy = (center_pos.y - current_pos.y) as f32;
+        let dx = center_pos.x - current_pos.x;
+        let dy = center_pos.y - current_pos.y;
         let v = body.linvel();
 
         let fx = force_settings.center_strength * dx - force_settings.center_damping * v.x;
@@ -161,7 +161,7 @@ impl PhysicsWorld {
 
                 let dx = pos2.x - pos1.x;
                 let dy = pos2.y - pos1.y;
-                let distance = ((dx * dx + dy * dy) as f32).sqrt();
+                let distance = (dx * dx + dy * dy).sqrt();
 
                 if distance < 1.0 {
                     continue; // 距離が近すぎる場合はスキップ
@@ -187,8 +187,8 @@ impl PhysicsWorld {
                         / min_distance;
 
                     // 力の方向（id1からid2への方向）
-                    let force_x = (dx as f32 / distance) * force_magnitude;
-                    let force_y = (dy as f32 / distance) * force_magnitude;
+                    let force_x = (dx / distance) * force_magnitude;
+                    let force_y = (dy / distance) * force_magnitude;
 
                     // id1に-id2方向の力を、id2にid1方向の力を適用
                     *forces.entry(*id1).or_insert((0.0, 0.0)) = (

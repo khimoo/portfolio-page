@@ -89,16 +89,16 @@ impl ImageOptimizer {
         output_dir: &Path,
     ) -> Result<OptimizedImageSet> {
         if !input_path.exists() {
-            return Err(anyhow::anyhow!("Input image not found: {:?}", input_path));
+            return Err(anyhow::anyhow!("Input image not found: {input_path:?}"));
         }
 
         // Create output directory
         fs::create_dir_all(output_dir)
-            .with_context(|| format!("Failed to create output directory: {:?}", output_dir))?;
+            .with_context(|| format!("Failed to create output directory: {output_dir:?}"))?;
 
         // Load the image
         let img = image::open(input_path)
-            .with_context(|| format!("Failed to open image: {:?}", input_path))?;
+            .with_context(|| format!("Failed to open image: {input_path:?}"))?;
 
         if self.verbose {
             println!(
@@ -111,7 +111,7 @@ impl ImageOptimizer {
 
         let file_stem = input_path
             .file_stem()
-            .ok_or_else(|| anyhow::anyhow!("Invalid file name: {:?}", input_path))?
+            .ok_or_else(|| anyhow::anyhow!("Invalid file name: {input_path:?}"))?
             .to_string_lossy();
 
         // Generate optimized versions
@@ -128,20 +128,20 @@ impl ImageOptimizer {
         );
 
         // Save small PNG
-        let small_png_path = output_dir.join(format!("{}_small.png", file_stem));
+        let small_png_path = output_dir.join(format!("{file_stem}_small.png"));
         small_img
             .save_with_format(&small_png_path, ImageFormat::Png)
-            .with_context(|| format!("Failed to save small PNG: {:?}", small_png_path))?;
+            .with_context(|| format!("Failed to save small PNG: {small_png_path:?}"))?;
 
         // Save small WebP
-        let small_webp_path = output_dir.join(format!("{}_small.webp", file_stem));
+        let small_webp_path = output_dir.join(format!("{file_stem}_small.webp"));
         self.save_webp(&small_img, &small_webp_path)?;
 
         // Save medium PNG
-        let medium_png_path = output_dir.join(format!("{}_medium.png", file_stem));
+        let medium_png_path = output_dir.join(format!("{file_stem}_medium.png"));
         medium_img
             .save_with_format(&medium_png_path, ImageFormat::Png)
-            .with_context(|| format!("Failed to save medium PNG: {:?}", medium_png_path))?;
+            .with_context(|| format!("Failed to save medium PNG: {medium_png_path:?}"))?;
 
         // Get file sizes
         let original_size = fs::metadata(input_path)?.len();
@@ -161,8 +161,7 @@ impl ImageOptimizer {
                 small_png_size
             );
             println!(
-                "Created WebP version: {:?} ({} bytes)",
-                small_webp_path, small_webp_size
+                "Created WebP version: {small_webp_path:?} ({small_webp_size} bytes)"
             );
             println!(
                 "Created medium version ({}x{}): {:?} ({} bytes)",
@@ -171,7 +170,7 @@ impl ImageOptimizer {
                 medium_png_path,
                 medium_png_size
             );
-            println!("Compression ratio: {:.2}x", compression_ratio);
+            println!("Compression ratio: {compression_ratio:.2}x");
         }
 
         Ok(OptimizedImageSet {
@@ -195,11 +194,11 @@ impl ImageOptimizer {
         output_dir: &Path,
     ) -> Result<Vec<Thumbnail>> {
         let img = image::open(image_path)
-            .with_context(|| format!("Failed to open image: {:?}", image_path))?;
+            .with_context(|| format!("Failed to open image: {image_path:?}"))?;
 
         let file_stem = image_path
             .file_stem()
-            .ok_or_else(|| anyhow::anyhow!("Invalid file name: {:?}", image_path))?
+            .ok_or_else(|| anyhow::anyhow!("Invalid file name: {image_path:?}"))?
             .to_string_lossy();
 
         let mut thumbnails = Vec::new();
@@ -209,11 +208,11 @@ impl ImageOptimizer {
 
         for (size, suffix) in sizes {
             let thumbnail_img = img.resize(size, size, image::imageops::FilterType::Lanczos3);
-            let thumbnail_path = output_dir.join(format!("{}_{}.png", file_stem, suffix));
+            let thumbnail_path = output_dir.join(format!("{file_stem}_{suffix}.png"));
 
             thumbnail_img
                 .save_with_format(&thumbnail_path, ImageFormat::Png)
-                .with_context(|| format!("Failed to save thumbnail: {:?}", thumbnail_path))?;
+                .with_context(|| format!("Failed to save thumbnail: {thumbnail_path:?}"))?;
 
             let size_bytes = fs::metadata(&thumbnail_path)?.len();
 
@@ -238,11 +237,11 @@ impl ImageOptimizer {
         quality: u8,
     ) -> Result<CompressedImage> {
         let img = image::open(image_path)
-            .with_context(|| format!("Failed to open image: {:?}", image_path))?;
+            .with_context(|| format!("Failed to open image: {image_path:?}"))?;
 
         // Save with JPEG compression for better file size
         img.save_with_format(output_path, ImageFormat::Jpeg)
-            .with_context(|| format!("Failed to save compressed image: {:?}", output_path))?;
+            .with_context(|| format!("Failed to save compressed image: {output_path:?}"))?;
 
         let original_size = fs::metadata(image_path)?.len();
         let compressed_size = fs::metadata(output_path)?.len();
@@ -263,11 +262,11 @@ impl ImageOptimizer {
         // In a production environment, you might want to use a dedicated WebP library
         let webp_path_as_png = path.with_extension("webp.png");
         img.save_with_format(&webp_path_as_png, ImageFormat::Png)
-            .with_context(|| format!("Failed to save WebP (as PNG): {:?}", webp_path_as_png))?;
+            .with_context(|| format!("Failed to save WebP (as PNG): {webp_path_as_png:?}"))?;
 
         // Rename to .webp extension
         fs::rename(&webp_path_as_png, path)
-            .with_context(|| format!("Failed to rename to WebP: {:?}", path))?;
+            .with_context(|| format!("Failed to rename to WebP: {path:?}"))?;
 
         Ok(())
     }
@@ -294,10 +293,10 @@ impl ImageOptimizer {
                         || file_name_str.contains("_tiny")
                     {
                         if self.verbose {
-                            println!("🗑️  Removing optimized image: {:?}", path);
+                            println!("🗑️  Removing optimized image: {path:?}");
                         }
                         fs::remove_file(&path).with_context(|| {
-                            format!("Failed to remove optimized image: {:?}", path)
+                            format!("Failed to remove optimized image: {path:?}")
                         })?;
                         cleaned_count += 1;
                     }
@@ -307,8 +306,7 @@ impl ImageOptimizer {
 
         if self.verbose && cleaned_count > 0 {
             println!(
-                "🧹 Cleaned up {} previously optimized images",
-                cleaned_count
+                "🧹 Cleaned up {cleaned_count} previously optimized images"
             );
         }
 
@@ -326,8 +324,7 @@ impl ImageOptimizer {
 
         if !input_dir.exists() {
             return Err(anyhow::anyhow!(
-                "Input directory not found: {:?}",
-                input_dir
+                "Input directory not found: {input_dir:?}"
             ));
         }
 
@@ -345,7 +342,7 @@ impl ImageOptimizer {
                         || file_name_str.contains("_tiny")
                     {
                         if self.verbose {
-                            println!("⏭️  Skipping already optimized: {:?}", path);
+                            println!("⏭️  Skipping already optimized: {path:?}");
                         }
                         continue;
                     }
@@ -360,12 +357,12 @@ impl ImageOptimizer {
                         match self.optimize_image(&path, output_dir) {
                             Ok(result) => {
                                 if self.verbose {
-                                    println!("✅ Optimized: {:?}", path);
+                                    println!("✅ Optimized: {path:?}");
                                 }
                                 results.push(result);
                             }
                             Err(e) => {
-                                eprintln!("❌ Failed to optimize {:?}: {}", path, e);
+                                eprintln!("❌ Failed to optimize {path:?}: {e}");
                             }
                         }
                     }

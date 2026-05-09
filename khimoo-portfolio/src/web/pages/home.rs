@@ -7,7 +7,7 @@ use yew_hooks::use_measure;
 pub fn home_page() -> Html {
     let container_ref = use_node_ref();
     let container_measure_handle = use_measure(container_ref.clone());
-    let mouse_pos_handle = use_state(|| Position::default());
+    let mouse_pos_handle = use_state(Position::default);
 
     let on_mouse_move = {
         let mouse_pos_handle = mouse_pos_handle.clone();

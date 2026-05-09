@@ -58,7 +58,7 @@ pub fn physics_renderer(props: &PhysicsRendererProps) -> Html {
             move |container_bound| {
                 #[cfg(target_arch = "wasm32")]
                 web_sys::console::log_1(
-                    &format!("Container bound changed in effect: {:?}", container_bound).into(),
+                    &format!("Container bound changed in effect: {container_bound:?}").into(),
                 );
                 physics_world
                     .borrow_mut()

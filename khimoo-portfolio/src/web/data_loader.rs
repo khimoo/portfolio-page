@@ -72,10 +72,10 @@ pub enum DataLoadError {
 impl std::fmt::Display for DataLoadError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DataLoadError::NetworkError(msg) => write!(f, "Network error: {}", msg),
-            DataLoadError::ParseError(msg) => write!(f, "Parse error: {}", msg),
-            DataLoadError::NotFound(msg) => write!(f, "Not found: {}", msg),
-            DataLoadError::NodeGraphError(msg) => write!(f, "Node graph error: {}", msg),
+            DataLoadError::NetworkError(msg) => write!(f, "Network error: {msg}"),
+            DataLoadError::ParseError(msg) => write!(f, "Parse error: {msg}"),
+            DataLoadError::NotFound(msg) => write!(f, "Not found: {msg}"),
+            DataLoadError::NodeGraphError(msg) => write!(f, "Node graph error: {msg}"),
         }
     }
 }
@@ -102,7 +102,7 @@ impl DataLoader {
     pub async fn load_articles(&self) -> Result<ArticlesData, DataLoadError> {
         let url = self.config.data_url("articles.json");
 
-        web_sys::console::log_1(&format!("DataLoader: Loading articles from: {}", url).into());
+        web_sys::console::log_1(&format!("DataLoader: Loading articles from: {url}").into());
 
         match self.fetch_json::<ArticlesData>(&url).await {
             Ok(data) => {
@@ -116,7 +116,7 @@ impl DataLoader {
                 Ok(data)
             }
             Err(e) => {
-                web_sys::console::warn_1(&format!("Failed to load articles data: {}", e).into());
+                web_sys::console::warn_1(&format!("Failed to load articles data: {e}").into());
                 // Fallback to empty data structure
                 Ok(ArticlesData {
                     articles: Vec::new(),
@@ -244,7 +244,7 @@ impl DataLoader {
         slug: &str,
     ) -> Result<ProcessedArticle, DataLoadError> {
         web_sys::console::log_1(
-            &format!("DataLoader: Looking for article with slug: {}", slug).into(),
+            &format!("DataLoader: Looking for article with slug: {slug}").into(),
         );
 
         let articles_data = self.load_articles().await?;
@@ -262,10 +262,9 @@ impl DataLoader {
                 Ok(article)
             }
             None => {
-                web_sys::console::log_1(&format!("DataLoader: Article not found: {}", slug).into());
+                web_sys::console::log_1(&format!("DataLoader: Article not found: {slug}").into());
                 Err(DataLoadError::NotFound(format!(
-                    "Article not found: {}",
-                    slug
+                    "Article not found: {slug}"
                 )))
             }
         }
@@ -275,7 +274,7 @@ impl DataLoader {
     pub async fn load_article_content(&self, file_path: &str) -> Result<String, DataLoadError> {
         let url = self.config.article_url(file_path);
         web_sys::console::log_1(
-            &format!("DataLoader: Loading article content from: {}", url).into(),
+            &format!("DataLoader: Loading article content from: {url}").into(),
         );
 
         let opts = RequestInit::new();
@@ -283,7 +282,7 @@ impl DataLoader {
         opts.set_mode(RequestMode::Cors);
 
         let request = Request::new_with_str_and_init(&url, &opts).map_err(|e| {
-            DataLoadError::NetworkError(format!("Failed to create request: {:?}", e))
+            DataLoadError::NetworkError(format!("Failed to create request: {e:?}"))
         })?;
 
         let window = web_sys::window()
@@ -291,11 +290,11 @@ impl DataLoader {
 
         let resp_value = JsFuture::from(window.fetch_with_request(&request))
             .await
-            .map_err(|e| DataLoadError::NetworkError(format!("Fetch failed: {:?}", e)))?;
+            .map_err(|e| DataLoadError::NetworkError(format!("Fetch failed: {e:?}")))?;
 
         let resp: Response = resp_value
             .dyn_into()
-            .map_err(|e| DataLoadError::NetworkError(format!("Invalid response: {:?}", e)))?;
+            .map_err(|e| DataLoadError::NetworkError(format!("Invalid response: {e:?}")))?;
 
         if !resp.ok() {
             return Err(DataLoadError::NotFound(format!(
@@ -307,10 +306,10 @@ impl DataLoader {
 
         let text = JsFuture::from(
             resp.text()
-                .map_err(|e| DataLoadError::ParseError(format!("Failed to get text: {:?}", e)))?,
+                .map_err(|e| DataLoadError::ParseError(format!("Failed to get text: {e:?}")))?,
         )
         .await
-        .map_err(|e| DataLoadError::ParseError(format!("Failed to parse text: {:?}", e)))?;
+        .map_err(|e| DataLoadError::ParseError(format!("Failed to parse text: {e:?}")))?;
 
         let content = text
             .as_string()
@@ -343,7 +342,7 @@ impl DataLoader {
         opts.set_mode(RequestMode::Cors);
 
         let request = Request::new_with_str_and_init(url, &opts).map_err(|e| {
-            DataLoadError::NetworkError(format!("Failed to create request: {:?}", e))
+            DataLoadError::NetworkError(format!("Failed to create request: {e:?}"))
         })?;
 
         let window = web_sys::window()
@@ -351,11 +350,11 @@ impl DataLoader {
 
         let resp_value = JsFuture::from(window.fetch_with_request(&request))
             .await
-            .map_err(|e| DataLoadError::NetworkError(format!("Fetch failed: {:?}", e)))?;
+            .map_err(|e| DataLoadError::NetworkError(format!("Fetch failed: {e:?}")))?;
 
         let resp: Response = resp_value
             .dyn_into()
-            .map_err(|e| DataLoadError::NetworkError(format!("Invalid response: {:?}", e)))?;
+            .map_err(|e| DataLoadError::NetworkError(format!("Invalid response: {e:?}")))?;
 
         if !resp.ok() {
             return Err(DataLoadError::NotFound(format!(
@@ -367,13 +366,13 @@ impl DataLoader {
 
         let json = JsFuture::from(
             resp.json()
-                .map_err(|e| DataLoadError::ParseError(format!("Failed to get JSON: {:?}", e)))?,
+                .map_err(|e| DataLoadError::ParseError(format!("Failed to get JSON: {e:?}")))?,
         )
         .await
-        .map_err(|e| DataLoadError::ParseError(format!("Failed to parse JSON: {:?}", e)))?;
+        .map_err(|e| DataLoadError::ParseError(format!("Failed to parse JSON: {e:?}")))?;
 
         let data: T = serde_wasm_bindgen::from_value(json)
-            .map_err(|e| DataLoadError::ParseError(format!("Failed to deserialize: {:?}", e)))?;
+            .map_err(|e| DataLoadError::ParseError(format!("Failed to deserialize: {e:?}")))?;
 
         Ok(data)
     }
@@ -558,7 +557,7 @@ pub fn use_article_content(
         use_effect_with(slug.clone(), move |slug| {
             if let Some(slug) = slug {
                 web_sys::console::log_1(
-                    &format!("use_article_content: Loading article with slug: {}", slug).into(),
+                    &format!("use_article_content: Loading article with slug: {slug}").into(),
                 );
 
                 let data = data.clone();
@@ -585,7 +584,7 @@ pub fn use_article_content(
                         }
                         Err(e) => {
                             web_sys::console::log_1(
-                                &format!("use_article_content: Failed to load article: {}", e)
+                                &format!("use_article_content: Failed to load article: {e}")
                                     .into(),
                             );
                             error.set(Some(e));

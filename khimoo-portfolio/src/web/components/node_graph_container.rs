@@ -3,7 +3,7 @@ use crate::web::components::node_data_manager::NodeDataManager;
 use crate::web::components::physics_renderer::PhysicsRenderer;
 use crate::web::data_loader::use_articles_data;
 use crate::web::physics_sim::{PhysicsWorld, Viewport};
-use crate::web::routes::{Route, TagQuery};
+use crate::web::routes::Route;
 use crate::web::styles::{ErrorStyles, LoadingStyles};
 use crate::web::types::*;
 use crate::web::types::node_types::NodeNavigation;
@@ -31,7 +31,7 @@ pub fn node_graph_container(props: &NodeGraphContainerProps) -> Html {
 
     // 記事データが読み込まれたらノードレジストリと物理世界を一度だけ初期化
     let node_registry = use_state(|| Rc::new(RefCell::new(NodeRegistry::new_with_config(get_config().node_config.clone()))));
-    let node_action_mapping = use_state(|| HashMap::<NodeId, NodeNavigation>::new());
+    let node_action_mapping = use_state(HashMap::<NodeId, NodeNavigation>::new);
     let physics_world = use_state(|| {
         let empty_registry = Rc::new(RefCell::new(NodeRegistry::new_with_config(get_config().node_config.clone())));
         let default_bound = ContainerBound::default();
@@ -85,7 +85,7 @@ pub fn node_graph_container(props: &NodeGraphContainerProps) -> Html {
                     NodeNavigation::ShowArticle(slug) => {
                         // 記事ページに遷移
                         #[cfg(target_arch = "wasm32")]
-                        web_sys::console::log_1(&format!("Navigating to article: {}", slug).into());
+                        web_sys::console::log_1(&format!("Navigating to article: {slug}").into());
                         let route = Route::ArticleShow { slug: slug.clone() };
                         navigator.push(&route);
                     }

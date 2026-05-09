@@ -107,7 +107,7 @@ pub fn get_images_dir() -> PathBuf {
     match load_project_config() {
         Ok(config) => {
             if let Some(images_dir) = config.get("images_dir") {
-                PathBuf::from(format!("../{}", images_dir))
+                PathBuf::from(format!("../{images_dir}"))
             } else {
                 PathBuf::from("../content/assets/img")
             }
@@ -120,27 +120,24 @@ pub fn get_images_dir() -> PathBuf {
 pub fn get_deployment_config() -> (String, String) {
     #[cfg(feature = "cli-tools")]
     {
-        match load_full_config() {
-            Ok(config) => {
-                if let Some(deployment) = config.get("deployment").and_then(|v| v.as_table()) {
-                    let github_pages_path = deployment
-                        .get("github_pages_path")
-                        .and_then(|v| v.as_str())
-                        .unwrap_or("/portfolio-page/")
-                        .trim_end_matches('/')
-                        .to_string();
-                    
-                    let local_dev_path = deployment
-                        .get("local_dev_path")
-                        .and_then(|v| v.as_str())
-                        .unwrap_or("/")
-                        .trim_end_matches('/')
-                        .to_string();
-                    
-                    return (github_pages_path, local_dev_path);
-                }
+        if let Ok(config) = load_full_config() {
+            if let Some(deployment) = config.get("deployment").and_then(|v| v.as_table()) {
+                let github_pages_path = deployment
+                    .get("github_pages_path")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or("/portfolio-page/")
+                    .trim_end_matches('/')
+                    .to_string();
+                
+                let local_dev_path = deployment
+                    .get("local_dev_path")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or("/")
+                    .trim_end_matches('/')
+                    .to_string();
+                
+                return (github_pages_path, local_dev_path);
             }
-            Err(_) => {}
         }
     }
     
