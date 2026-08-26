@@ -3,8 +3,6 @@ name: CI/CD Pipeline
 on:
   repository_dispatch:
     types: [content-updated]
-  schedule:
-    - cron: '0 0 * * *'
   workflow_dispatch:
   push:
     branches: [main]

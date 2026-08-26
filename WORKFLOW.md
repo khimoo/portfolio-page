@@ -77,7 +77,6 @@ CI/CD (GitHub Actions) は以下のいずれかで起動します:
 |----------|------|
 | `repository_dispatch` | content リポジトリへの push (自動連携) |
 | `push` | portfolio-page の main ブランチへの push |
-| `schedule` | 毎日 0:00 UTC |
 | `workflow_dispatch` | 手動実行 |
 
 CI では `portfolio_content` リポジトリを `git clone` して `content/` に配置し、ビルド・デプロイを行います。
