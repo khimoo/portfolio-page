@@ -43,7 +43,7 @@ pub fn debug_panel(props: &DebugPanelProps) -> Html {
     };
 
     html! {
-        <div style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.8); color: white; padding: 20px; border-radius: 10px; z-index: 100;">
+        <div class="debug-panel" style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.8); color: white; padding: 20px; border-radius: 10px; z-index: 100;">
             <h3 style="margin: 0 0 15px 0;">{"力の設定"}</h3>
 
             <div style="margin-bottom: 15px;">

@@ -6,6 +6,20 @@ impl StyleConfig {
     pub const MOBILE_BREAKPOINT: i32 = 768;
     pub const TABLET_BREAKPOINT: i32 = 1024;
     pub const DESKTOP_BREAKPOINT: i32 = 1200;
+    pub const SMALL_MOBILE_BREAKPOINT: i32 = 420;
+
+    /// コンテナ幅がモバイルブレークポイント以下か
+    pub fn is_mobile_width(width: f32) -> bool {
+        width > 0.0 && width <= Self::MOBILE_BREAKPOINT as f32
+    }
+
+    /// 画面幅に応じたノードサイズの倍率（狭い画面ではノードを縮小する）
+    pub fn node_scale_for_width(width: f32) -> f32 {
+        if !Self::is_mobile_width(width) {
+            return 1.0;
+        }
+        (width / Self::MOBILE_BREAKPOINT as f32).clamp(0.55, 1.0)
+    }
 
     /// 共通のアニメーション設定
     pub const TRANSITION_DURATION: &'static str = "0.2s";

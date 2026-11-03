@@ -1,4 +1,5 @@
 use crate::config::get_config;
+use crate::web::config::StyleConfig;
 use crate::web::data_loader::{ArticlesData, ProcessedArticle};
 use crate::web::types::*;
 use crate::web::types::node_types::NodeNavigation;
@@ -81,7 +82,11 @@ impl NodeDataManager {
         articles_data: &ArticlesData,
         container_bound: &ContainerBound,
     ) -> (NodeRegistry, HashMap<NodeId, NodeNavigation>) {
-        let mut reg = NodeRegistry::new_with_config(get_config().node_config.clone());
+        // 狭い画面ではノードを縮小する
+        let node_config = get_config()
+            .node_config
+            .scaled(StyleConfig::node_scale_for_width(container_bound.width));
+        let mut reg = NodeRegistry::new_with_config(node_config.clone());
         let mut slug_to_id = HashMap::new();
         // ID -> NodeNavigation のマップに変更
         let mut id_to_action = HashMap::new();
@@ -134,7 +139,7 @@ impl NodeDataManager {
                     x: center_x,
                     y: center_y,
                 },
-                get_config().node_config.default_node_radius,
+                node_config.default_node_radius,
                 NodeContent::Text("Author".to_string()),
             );
             slug_to_id.insert("author".to_string(), NodeId(next_id));
@@ -163,7 +168,7 @@ impl NodeDataManager {
                         x: center_x,
                         y: center_y,
                     },
-                    get_config().node_config.author_node_radius,
+                    node_config.author_node_radius,
                 )
             } else {
                 // 記事ノードは中心から少しずらして配置
@@ -174,7 +179,7 @@ impl NodeDataManager {
                         x: center_x + offset_x,
                         y: center_y + offset_y,
                     },
-                    get_config().node_config.default_node_radius,
+                    node_config.default_node_radius,
                 )
             };
 

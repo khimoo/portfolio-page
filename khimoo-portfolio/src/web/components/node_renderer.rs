@@ -7,7 +7,7 @@ use yew::prelude::*;
 #[derive(Properties, PartialEq)]
 pub struct NodeRendererProps {
     pub node_registry: Rc<RefCell<NodeRegistry>>,
-    pub on_mouse_down: Callback<(NodeId, MouseEvent)>,
+    pub on_pointer_down: Callback<(NodeId, PointerEvent)>,
 }
 
 #[function_component(NodeRenderer)]
@@ -43,12 +43,12 @@ pub fn node_renderer(props: &NodeRendererProps) -> Html {
                     let importance = registry.get_node_importance(*id);
                     let inbound_count = registry.get_node_inbound_count(*id);
 
-                    let on_mouse_down = {
-                        let on_mouse_down = props.on_mouse_down.clone();
+                    let on_pointer_down = {
+                        let on_pointer_down = props.on_pointer_down.clone();
                         let id = *id;
-                        Callback::from(move |e: MouseEvent| {
+                        Callback::from(move |e: PointerEvent| {
                             e.stop_propagation();
-                            on_mouse_down.emit((id, e));
+                            on_pointer_down.emit((id, e));
                         })
                     };
 
@@ -61,7 +61,7 @@ pub fn node_renderer(props: &NodeRendererProps) -> Html {
                             content={content.clone()}
                             {importance}
                             {inbound_count}
-                            {on_mouse_down}
+                            {on_pointer_down}
                         />
                     }
                 }).collect::<Html>()
@@ -76,7 +76,7 @@ pub struct NodeProps {
     pub pos: Position,
     pub radius: i32,
     pub content: NodeContent,
-    pub on_mouse_down: Callback<MouseEvent>,
+    pub on_pointer_down: Callback<PointerEvent>,
     pub importance: Option<u8>,
     pub inbound_count: usize,
 }
@@ -94,7 +94,8 @@ pub fn node_component(props: &NodeProps) -> Html {
     html! {
         <div
             key={props.id.0.to_string()}
-            onmousedown={props.on_mouse_down.clone()}
+            class="graph-node"
+            onpointerdown={props.on_pointer_down.clone()}
             style={format!(
                 "{} left: {}px; top: {}px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 10; display: flex; justify-content: center; align-items: center; position: absolute; cursor: pointer; transition: transform 0.2s ease-in-out; user-select: none;",
                 NodeStyles::node_circle(props.radius as f64 * 2.0),

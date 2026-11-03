@@ -34,6 +34,19 @@ impl NodeConfig {
         }
     }
 
+    /// 全ノード半径を倍率でスケールした設定を返す（狭い画面向け）
+    pub fn scaled(&self, factor: f32) -> Self {
+        let scale = |r: i32| ((r as f32 * factor).round() as i32).max(1);
+        Self {
+            author_node_radius: scale(self.author_node_radius),
+            default_node_radius: scale(self.default_node_radius),
+            min_node_radius: scale(self.min_node_radius),
+            max_node_radius: scale(self.max_node_radius),
+            importance_multiplier: scale(self.importance_multiplier),
+            ..self.clone()
+        }
+    }
+
     /// Get author node radius
     pub fn get_author_node_radius(&self) -> i32 {
         self.author_node_radius

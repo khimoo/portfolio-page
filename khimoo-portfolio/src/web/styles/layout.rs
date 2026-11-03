@@ -7,7 +7,7 @@ impl LayoutStyles {
     /// Main application wrapper
     pub fn app_wrapper() -> String {
         format!(
-            "height: 100vh; margin: 0; padding: 0; display: flex; flex-direction: column; background: {};",
+            "height: 100vh; height: 100dvh; margin: 0; padding: 0; display: flex; flex-direction: column; background: {};",
             DARK_THEME.primary_bg
         )
     }

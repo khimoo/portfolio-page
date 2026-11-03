@@ -1,4 +1,6 @@
+use crate::config::get_config;
 use crate::web::components::debug_panel::DebugPanel;
+use crate::web::config::StyleConfig;
 use crate::web::components::node_renderer::NodeRenderer;
 use crate::web::physics_sim::{PhysicsWorld, Viewport};
 use crate::web::styles::{AnimationStyles, LayoutStyles};
@@ -6,7 +8,7 @@ use crate::web::types::*;
 use std::cell::RefCell;
 use std::rc::Rc;
 use yew::prelude::*;
-use yew_hooks::{use_effect_update_with_deps, use_interval, use_window_scroll};
+use yew_hooks::{use_effect_update_with_deps, use_interval};
 
 #[derive(Properties)]
 pub struct PhysicsRendererProps {
@@ -27,14 +29,44 @@ impl PartialEq for PhysicsRendererProps {
     }
 }
 
+/// ドラッグ中のポインタ状態
+#[derive(Default)]
+struct DragState {
+    node_id: Option<NodeId>,
+    pointer_id: Option<i32>,
+    start_pos: Option<(i32, i32)>,
+    is_dragging: bool,
+}
+
+/// タッチ操作では指のブレが大きいので閾値を少し大きくする
+fn drag_threshold(e: &PointerEvent) -> f32 {
+    if e.pointer_type() == "mouse" {
+        5.0
+    } else {
+        10.0
+    }
+}
+
+/// ポインタのクライアント座標をコンテナ内のローカル座標に変換
+fn to_container_position(container_ref: &NodeRef, e: &PointerEvent) -> Position {
+    let (left, top) = container_ref
+        .cast::<web_sys::Element>()
+        .map(|el| {
+            let rect = el.get_bounding_client_rect();
+            (rect.left() as f32, rect.top() as f32)
+        })
+        .unwrap_or((0.0, 0.0));
+    Position {
+        x: e.client_x() as f32 - left,
+        y: e.client_y() as f32 - top,
+    }
+}
+
 #[function_component(PhysicsRenderer)]
 pub fn physics_renderer(props: &PhysicsRendererProps) -> Html {
-    let dragged_node_id = use_state(|| None::<NodeId>);
+    let drag_state = use_mut_ref(DragState::default);
     let viewport = use_state(Viewport::default);
     let force_settings = use_state(ForceSettings::default);
-    let drag_start_pos = use_state(|| None::<(i32, i32)>);
-    let is_dragging = use_state(|| false);
-    let scroll = use_window_scroll();
 
     // 力の設定が変更されたらPhysicsWorldを更新
     {
@@ -69,74 +101,112 @@ pub fn physics_renderer(props: &PhysicsRendererProps) -> Html {
         );
     }
 
-    // マウス移動処理
-    let on_mouse_move = {
-        let dragged_node_id = dragged_node_id.clone();
+    // ポインタ移動処理（マウス・タッチ・ペン共通）
+    let on_pointer_move = {
+        let drag_state = drag_state.clone();
         let physics_world = props.physics_world.clone();
         let viewport = viewport.clone();
-        let drag_start_pos = drag_start_pos.clone();
-        let is_dragging = is_dragging.clone();
+        let container_ref = props.container_ref.clone();
 
-        Callback::from(move |e: MouseEvent| {
-            if let Some(id) = *dragged_node_id {
-                if let Some((start_x, start_y)) = *drag_start_pos {
-                    let dx = e.client_x() - start_x;
-                    let dy = e.client_y() - start_y;
-                    let distance = ((dx * dx + dy * dy) as f32).sqrt();
+        Callback::from(move |e: PointerEvent| {
+            let mut state = drag_state.borrow_mut();
+            if state.pointer_id != Some(e.pointer_id()) {
+                return;
+            }
+            let (Some(id), Some((start_x, start_y))) = (state.node_id, state.start_pos) else {
+                return;
+            };
 
-                    // 5px以上移動したらドラッグ開始
-                    if distance > 5.0 && !*is_dragging {
-                        is_dragging.set(true);
-                        physics_world.borrow_mut().set_node_kinematic(id);
-                    }
+            let dx = e.client_x() - start_x;
+            let dy = e.client_y() - start_y;
+            let distance = ((dx * dx + dy * dy) as f32).sqrt();
 
-                    // ドラッグ中の場合のみノード位置を更新
-                    if *is_dragging {
-                        let mut world = physics_world.borrow_mut();
-                        let screen_pos = Position {
-                            x: (e.client_x() + scroll.0 as i32) as f32,
-                            y: (e.client_y() + scroll.1 as i32) as f32,
-                        };
-                        world.set_node_position(id, &screen_pos, &viewport);
-                    }
-                }
+            // 閾値以上移動したらドラッグ開始
+            if !state.is_dragging && distance > drag_threshold(&e) {
+                state.is_dragging = true;
+                physics_world.borrow_mut().set_node_kinematic(id);
+            }
+
+            // ドラッグ中の場合のみノード位置を更新
+            if state.is_dragging {
+                e.prevent_default();
+                let pos = to_container_position(&container_ref, &e);
+                physics_world
+                    .borrow_mut()
+                    .set_node_position(id, &pos, &viewport);
             }
         })
     };
 
-    // マウスダウン処理
-    let on_mouse_down = {
-        let dragged_node_id = dragged_node_id.clone();
-        let drag_start_pos = drag_start_pos.clone();
-        let is_dragging = is_dragging.clone();
+    // ポインタダウン処理
+    let on_pointer_down = {
+        let drag_state = drag_state.clone();
 
-        Callback::from(move |(id, e): (NodeId, MouseEvent)| {
-            drag_start_pos.set(Some((e.client_x(), e.client_y())));
-            is_dragging.set(false);
-            dragged_node_id.set(Some(id));
+        Callback::from(move |(id, e): (NodeId, PointerEvent)| {
+            let mut state = drag_state.borrow_mut();
+            // マルチタッチ時は最初の指だけを扱う
+            if state.pointer_id.is_some() {
+                return;
+            }
+            if e.pointer_type() == "mouse" && e.button() != 0 {
+                return;
+            }
+            // テキスト選択や互換マウスイベントの発生を防ぐ
+            e.prevent_default();
+            // ノード外にポインタが出てもイベントを受け取り続ける
+            if let Some(target) = e.target_dyn_into::<web_sys::Element>() {
+                let _ = target.set_pointer_capture(e.pointer_id());
+            }
+            *state = DragState {
+                node_id: Some(id),
+                pointer_id: Some(e.pointer_id()),
+                start_pos: Some((e.client_x(), e.client_y())),
+                is_dragging: false,
+            };
         })
     };
 
-    // マウスアップ処理
-    let on_mouse_up = {
-        let dragged_node_id = dragged_node_id.clone();
+    // ポインタアップ処理（ドラッグしていなければクリックとして扱う）
+    let on_pointer_up = {
+        let drag_state = drag_state.clone();
         let physics_world = props.physics_world.clone();
-        let drag_start_pos = drag_start_pos.clone();
-        let is_dragging = is_dragging.clone();
         let on_node_click = props.on_node_click.clone();
 
-        Callback::from(move |_: MouseEvent| {
-            if let Some(id) = *dragged_node_id {
-                if *is_dragging {
+        Callback::from(move |e: PointerEvent| {
+            let finished = {
+                let mut state = drag_state.borrow_mut();
+                if state.pointer_id != Some(e.pointer_id()) {
+                    return;
+                }
+                std::mem::take(&mut *state)
+            };
+
+            if let Some(id) = finished.node_id {
+                if finished.is_dragging {
                     physics_world.borrow_mut().set_node_dynamic(id);
                 } else {
                     on_node_click.emit(id);
                 }
             }
+        })
+    };
 
-            dragged_node_id.set(None);
-            drag_start_pos.set(None);
-            is_dragging.set(false);
+    // ポインタキャンセル処理（スクロール開始・通知割り込みなど）
+    let on_pointer_cancel = {
+        let drag_state = drag_state.clone();
+        let physics_world = props.physics_world.clone();
+
+        Callback::from(move |e: PointerEvent| {
+            let finished = {
+                let mut state = drag_state.borrow_mut();
+                if state.pointer_id != Some(e.pointer_id()) {
+                    return;
+                }
+                std::mem::take(&mut *state)
+            };
+            if let (Some(id), true) = (finished.node_id, finished.is_dragging) {
+                physics_world.borrow_mut().set_node_dynamic(id);
+            }
         })
     };
 
@@ -165,28 +235,42 @@ pub fn physics_renderer(props: &PhysicsRendererProps) -> Html {
         })
     };
 
+    // ウェルカム文の位置: デスクトップは従来通り、モバイルでは縮小した作者ノードの直下に置く
+    let welcome_top = {
+        let bound = &props.container_bound;
+        if StyleConfig::is_mobile_width(bound.width) {
+            let author_radius = get_config().node_config.author_node_radius as f32
+                * StyleConfig::node_scale_for_width(bound.width);
+            (bound.height / 2.0 + author_radius + 16.0) as i32
+        } else {
+            (bound.height / 2.0 + 200.0) as i32
+        }
+    };
+
     html! {
         <>
             <style>
                 {AnimationStyles::spinner_keyframes()}
             </style>
             <div
+                class="physics-container"
                 style={LayoutStyles::physics_container()}
-                onmousemove={on_mouse_move}
-                onmouseup={on_mouse_up}
+                onpointermove={on_pointer_move}
+                onpointerup={on_pointer_up}
+                onpointercancel={on_pointer_cancel}
                 ref={props.container_ref.clone()}
             >
                 // ウェルカムオーバーレイていうんや
-                <div style={format!(
+                <div class="welcome-overlay" style={format!(
                     "{} top: {}px;",
                     LayoutStyles::welcome_overlay(),
-                    (props.container_bound.height / 2.0 + 200.0) as i32
+                    welcome_top
                 )}>
                     <span style="display:flex; flex-direction: column; margin-bottom:12px">
-                        <span style="font-size: 32px; font-weight: bold;">{"日比野 文"}</span>
-                        <span style="font-size: 16px; font-weight: bold;">{"Bun Hibino"}</span>
+                        <span class="welcome-name" style="font-size: 32px; font-weight: bold;">{"日比野 文"}</span>
+                        <span class="welcome-name-en" style="font-size: 16px; font-weight: bold;">{"Bun Hibino"}</span>
                     </span>
-                    <div style="white-space: nowrap; margin: 10px 0; line-height: 1.5;">
+                    <div class="welcome-body" style="white-space: nowrap; margin: 10px 0; line-height: 1.5;">
                         {"筑波大学 理工情報生命学術院 数理物質科学研究群 数学学位プログラム"}<br/>
                         {"専門：幾何学/連続体理論"}<br/>
                         {"Rust, neovim, NixOS, HoTTにも興味があります！"}
@@ -211,7 +295,7 @@ pub fn physics_renderer(props: &PhysicsRendererProps) -> Html {
                 // ノード描画
                 <NodeRenderer
                     node_registry={props.node_registry.clone()}
-                    on_mouse_down={on_mouse_down}
+                    on_pointer_down={on_pointer_down}
                 />
             </div>
         </>

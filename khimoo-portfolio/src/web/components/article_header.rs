@@ -38,9 +38,9 @@ pub fn article_header(props: &ArticleHeaderProps) -> Html {
     html! {
         <>
             <TagStyles />
-            <header style="margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+            <header class="article-header" style="margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
                 <div style="flex: 1;">
-                    <h1 style="margin: 0 0 16px 0; font-size: 2.5em; color: #e0e0e0;">
+                    <h1 class="article-title-heading" style="margin: 0 0 16px 0; font-size: 2.5em; color: #e0e0e0;">
                         {&article.title}
                     </h1>
                     <div style="font-size: 14px; color: #aaa; display: flex; gap: 16px; flex-wrap: wrap;">
@@ -94,7 +94,7 @@ fn render_author_image(author_image: &Option<String>) -> Html {
     if let Some(author_image) = author_image {
         let resolved_image_path = get_config().get_url(author_image);
         html! {
-            <div style="flex-shrink: 0; display: flex; align-items: stretch;">
+            <div class="article-author-image" style="flex-shrink: 0; display: flex; align-items: stretch;">
                 <img
                     src={resolved_image_path}
                     alt="Author image"

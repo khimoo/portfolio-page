@@ -2,7 +2,7 @@ use crate::config::get_config;
 use crate::web::header::Header;
 use crate::web::pages::{ArticleIndexPage, ArticleViewPage, HomePage};
 use crate::web::routes::Route;
-use crate::web::styles::LayoutStyles;
+use crate::web::styles::{GlobalResponsiveStyles, LayoutStyles};
 use yew::prelude::*;
 use yew_router::prelude::*;
 
@@ -17,6 +17,7 @@ pub fn app() -> Html {
 
     html! {
         <BrowserRouter basename={basename}>
+            <GlobalResponsiveStyles />
             <div style={LayoutStyles::app_wrapper()}>
                 <Header />
                 <main style={LayoutStyles::main_content()}>
